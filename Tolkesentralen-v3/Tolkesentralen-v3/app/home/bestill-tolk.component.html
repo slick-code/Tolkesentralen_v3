@@ -1,0 +1,8 @@
+﻿<h3>Bestill Tolk</h3>
+<h4>Innsente søknader:</h4>
+<ul>
+    <li *ngFor="let kunde of liste">{{kunde.fornavn}}</li>
+</ul>
+<label>Ny kunde: <input #nyttNavn /></label>
+<button (click)="post(nyttNavn.value); nyttNavn.value=''">Send søknad</button>
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

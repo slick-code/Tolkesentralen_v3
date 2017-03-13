@@ -1,0 +1,30 @@
+
+<div>
+<p><span class="glyphicon glyphicon-info-sign"></span> Kunde-forespørsler som venter behandling</p>
+    <hr />
+    <br />
+    
+    <table class="table table-bordered table-condensed">
+
+        <thead>
+            <tr>
+                <th>Firma</th>
+                <th>E-Post</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let kunde of arrayNyeKunder; let i = index">
+            <tr>
+                <td>{{kunde.firma}}</td>
+                <td>{{kunde.email}}</td>
+                <td width="190">
+                    <button  class="btn btn-danger" >Slett</button>
+                    <button  class="btn btn-success" (click)="godkjennKunde(kunde.email)">Legg til kunde</button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+</div>
