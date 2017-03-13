@@ -33,7 +33,7 @@ namespace Tolkesentralen_v3.Models
                             firma = row.firma,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
-                            telefon = row.tlf,
+                            tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
                             postnr = row.poststed.postNr,
