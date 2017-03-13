@@ -25,9 +25,9 @@ export class RegistrerComponent implements OnInit {
             firma: [],
             fornavn: [],
             etternavn: [],
-            telefon: [],
+            tlf: [],
             telefax: [],
-            epost: [],
+            email: [],
             passord: [],
             bekreftpassord: [],
             fakturaadresse: [],
@@ -52,9 +52,8 @@ export class RegistrerComponent implements OnInit {
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
         ny.etternavn = this.form.value.etternavn;
-        ny.telefon = this.form.value.telefon;
+        ny.tlf = this.form.value.tlf;
         ny.telefax = this.form.value.telefax;
-        ny.epost = this.form.value.epost;
         ny.passord = this.form.value.passord;
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.poststed = this.form.value.poststed;
