@@ -79,7 +79,6 @@ export class Oversettelse {
 export class Kunde extends Person {
     firma: string;
     kontaktperson: string;
-    telefon: number;
     telefax: number;
     epost: string;
     passord: string;
