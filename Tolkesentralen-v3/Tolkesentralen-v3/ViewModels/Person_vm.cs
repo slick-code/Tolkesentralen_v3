@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Tolkesentralen_v3.ViewModels
 {
+
     public class Person_vm
     {
         public int persId { get; set; }
@@ -23,6 +24,8 @@ namespace Tolkesentralen_v3.ViewModels
         public int godkjent { get; set; }
     }
 
+    
+
     public class Kunde_vm : Person_vm {
         public string firma { get; set; }
         public string kontaktperson { get; set; }
@@ -32,4 +35,6 @@ namespace Tolkesentralen_v3.ViewModels
         public string passord { get; set; }
         public string fakturaadresse { get; set; }
     }
+
+
 }

@@ -41,7 +41,7 @@ namespace Tolkesentralen_v3.Controllers
         [HttpGet]
         public HttpResponseMessage GetN()
         {
-            List<FKunde> liste = repository.ListeAlleKunder(0);
+            List<Kunde_vm> liste = repository.ListeAlleKunder(0);
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -55,7 +55,7 @@ namespace Tolkesentralen_v3.Controllers
 
         public HttpResponseMessage Get()
         {
-            List<FKunde> liste = repository.ListeAlleKunder(1);
+            List<Kunde_vm> liste = repository.ListeAlleKunder(1);
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);

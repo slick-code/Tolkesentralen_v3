@@ -17,23 +17,28 @@ namespace Tolkesentralen_v3.Models
         /// /Liste all the registered members
         /// </summary>
         /// <returns></returns>
-        public List<FKunde> ListeAlleKunder(int godkjent)
+        public List<Kunde_vm> ListeAlleKunder(int godkjent)
         {
             var db = new DbNetcont();
             //List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
             try
             {
-                List<FKunde> vm_liste = new List<FKunde>();
+                List<Kunde_vm> vm_liste = new List<Kunde_vm>();
                 foreach (var row in db.Personer.OfType<Kunde>())
                 {
                     if(row.godkjent == godkjent)
                     {
-                        var kunde = new FKunde()
+                        var kunde = new Kunde_vm()
                         {
                             firma = row.firma,
+                            fornavn = row.fornavn,
+                            etternavn = row.etternavn,
+                            telefon = row.tlf,
+                            telefax = row.telefax,
+                            fakturaadresse = row.fakturaAddress,
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
                             email = row.email
-                            
-                            // ,navn....
                         };
                         vm_liste.Add(kunde);
                     }

@@ -23,7 +23,8 @@ export class RegistrerComponent implements OnInit {
         this.form = fb.group({
 
             firma: [],
-            kontaktperson: [],
+            fornavn: [],
+            etternavn: [],
             telefon: [],
             telefax: [],
             epost: [],
@@ -49,12 +50,16 @@ export class RegistrerComponent implements OnInit {
     postKunde() {
         var ny = new Kunde();
         ny.firma = this.form.value.firma;
-        //ny.kontaktperson = this.form.value.kontaktperson;
-        ny.telefon = 999;//this.form.value.telefon;
-        ny.telefax = 999;//this.form.value.telefax;
+        ny.fornavn = this.form.value.fornavn;
+        ny.etternavn = this.form.value.etternavn;
+        ny.telefon = this.form.value.telefon;
+        ny.telefax = this.form.value.telefax;
         ny.epost = this.form.value.epost;
-        //ny.passord = this.form.value.passord;
-        //ny.fakturaadresse = this.form.value.fakturaadresse;
+        ny.passord = this.form.value.passord;
+        ny.fakturaadresse = this.form.value.fakturaadresse;
+        ny.poststed = this.form.value.poststed;
+        ny.email = this.form.value.email;
+        ny.passord = this.form.value.passord;
 
         var body: string = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(
