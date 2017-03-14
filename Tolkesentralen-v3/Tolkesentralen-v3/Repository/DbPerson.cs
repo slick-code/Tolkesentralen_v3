@@ -20,11 +20,17 @@ namespace Tolkesentralen_v3.Models
         public List<Kunde_vm> ListeAlleKunder(int godkjent)
         {
             var db = new DbNetcont();
-            //List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+            List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
             try
             {
+              // List<Kunde> liste = db.Personer.OfType<Kunde>().ToList();
+                
+
+
+
+                // var a = liste;
                 List<Kunde_vm> vm_liste = new List<Kunde_vm>();
-                foreach (var row in db.Personer.OfType<Kunde>())
+                foreach (var row in alleKunder)
                 {
                     if(row.godkjent == godkjent)
                     {
