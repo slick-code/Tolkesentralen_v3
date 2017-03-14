@@ -36,8 +36,8 @@ namespace Tolkesentralen_v3.Models
                             tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            postnr = row.poststed.postNr,
-                            poststed = row.poststed.postSted,
+                            //postnr = row.poststed.postNr,
+                            //poststed = row.poststed.postSted,
                             email = row.email
                         };
                         vm_liste.Add(kunde);
