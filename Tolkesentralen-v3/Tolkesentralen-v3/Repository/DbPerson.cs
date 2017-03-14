@@ -36,13 +36,8 @@ namespace Tolkesentralen_v3.Models
                             tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-<<<<<<< HEAD
-                            //postnr = row.poststed.postNr,
-                            //poststed = row.poststed.postSted,
-=======
-                          //  postnr = row.poststed.postNr,
-                          //  poststed = row.poststed.postSted,
->>>>>>> 22c03cac3f3b47d757dc22fb17bcc231c98a4014
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
                             email = row.email
                         };
                         vm_liste.Add(kunde);
@@ -106,7 +101,7 @@ namespace Tolkesentralen_v3.Models
                 fornavn = innkunde.fornavn,
                 etternavn = innkunde.etternavn,
                 tlf = innkunde.tlf,
-                email = innkunde.email,
+                email = innkunde.epost,
                 adresse = innkunde.adresse,
                 regDato = DateTime.Now,
                 godkjent = 0,

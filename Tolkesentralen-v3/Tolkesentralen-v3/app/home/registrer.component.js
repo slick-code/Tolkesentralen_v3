@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var kunde_service_1 = require("../_services/kunde.service");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var kunde_service_1 = require('../_services/kunde.service');
+var forms_1 = require('@angular/forms');
 var RegistrerComponent = (function () {
     function RegistrerComponent(kundeService, fb) {
         this.kundeService = kundeService;
@@ -22,9 +21,9 @@ var RegistrerComponent = (function () {
             firma: [],
             fornavn: [],
             etternavn: [],
-            tlf: [],
+            telefon: [],
             telefax: [],
-            email: [],
+            epost: [],
             passord: [],
             bekreftpassord: [],
             fakturaadresse: [],
@@ -46,12 +45,9 @@ var RegistrerComponent = (function () {
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
         ny.etternavn = this.form.value.etternavn;
-<<<<<<< HEAD
-        ny.tlf = this.form.value.tlf;
-=======
         ny.tlf = this.form.value.telefon;
->>>>>>> e60c4a73eae9b513c0a006593804f1971b1b7eaa
         ny.telefax = this.form.value.telefax;
+        ny.epost = this.form.value.epost;
         ny.passord = this.form.value.passord;
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.postnr = this.form.value.postnr;
@@ -64,16 +60,16 @@ var RegistrerComponent = (function () {
             console.log("Success POST : " + ny.firma);
         }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+    RegistrerComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/home/registrer.component.html',
+            providers: [kunde_service_1.KundeService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [kunde_service_1.KundeService, forms_1.FormBuilder])
+    ], RegistrerComponent);
     return RegistrerComponent;
 }());
-RegistrerComponent = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        templateUrl: './app/home/registrer.component.html',
-        providers: [kunde_service_1.KundeService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [kunde_service_1.KundeService, forms_1.FormBuilder])
-], RegistrerComponent);
 exports.RegistrerComponent = RegistrerComponent;
 //# sourceMappingURL=registrer.component.js.map

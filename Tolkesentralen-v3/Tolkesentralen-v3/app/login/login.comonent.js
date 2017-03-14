@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var login_1 = require("../_models/login");
-var auth_service_1 = require("../_services/auth.service");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var login_1 = require('../_models/login');
+var auth_service_1 = require('../_services/auth.service');
+var router_1 = require('@angular/router');
 var LoginComponent = (function () {
     function LoginComponent(authService, router, fb) {
         this.authService = authService;
@@ -49,15 +48,13 @@ var LoginComponent = (function () {
             }
         });
     };
+    LoginComponent = __decorate([
+        core_1.Component({
+            templateUrl: 'app/login/login.component.html',
+        }), 
+        __metadata('design:paramtypes', [auth_service_1.AuthenticationService, router_1.Router, forms_1.FormBuilder])
+    ], LoginComponent);
     return LoginComponent;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        templateUrl: 'app/login/login.component.html',
-    }),
-    __metadata("design:paramtypes", [auth_service_1.AuthenticationService,
-        router_1.Router,
-        forms_1.FormBuilder])
-], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.comonent.js.map
