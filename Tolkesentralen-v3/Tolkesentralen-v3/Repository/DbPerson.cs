@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using Tolkesentralen_v3.Models;
 using Tolkesentralen_v3.ViewModels;
@@ -20,11 +22,11 @@ namespace Tolkesentralen_v3.Models
         public List<Kunde_vm> ListeAlleKunder(int godkjent)
         {
             var db = new DbNetcont();
-            //List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+            List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
             try
             {
                 List<Kunde_vm> vm_liste = new List<Kunde_vm>();
-                foreach (var row in db.Personer.OfType<Kunde>())
+                foreach (var row in alleKunder)
                 {
                     if(row.godkjent == godkjent)
                     {
@@ -83,7 +85,32 @@ namespace Tolkesentralen_v3.Models
                 {
                     return false;
                 }
-            
+           
+             
+        }
+
+        public byte[] lagHash(string innStreng)
+        {
+            byte[] innData, utData;
+          
+            var algoritme = SHA512.Create();
+            innData = Encoding.UTF8.GetBytes(innStreng);
+            utData = algoritme.ComputeHash(innData);
+            return utData;
+            //var algoritme = SHA256.Create();
+            //innData = Encoding.UTF8.GetBytes(innStreng);
+            //utData = algoritme.ComputeHash(innData);
+        }
+
+        public string lagSalt()
+        {
+            byte[] randomArray = new byte[10];
+            string randomString;
+
+            var strg = new RNGCryptoServiceProvider();
+            strg.GetBytes(randomArray);
+            randomString = Convert.ToBase64String(randomArray);
+            return randomString;
         }
         /// <summary>
         /// SettInn en kunde
@@ -95,6 +122,11 @@ namespace Tolkesentralen_v3.Models
         public bool settInnKunde(Kunde_vm innkunde)
         {
             var db = new DbNetcont();
+           
+            string salt = lagSalt();
+            var passordOgSalt = innkunde.passord + salt;
+            byte[] dbPassword = lagHash(passordOgSalt);
+
             var nykunde = new Kunde()
             {
 
@@ -105,8 +137,8 @@ namespace Tolkesentralen_v3.Models
                 adresse = innkunde.adresse,
                 regDato = DateTime.Now,
                 godkjent = 0,
-                password = innkunde.password,
-
+                password = dbPassword,
+                Salt = salt,
                 firma = innkunde.firma,
                 kontaktperson = innkunde.kontaktperson,
                 telefax = innkunde.telefax,
@@ -139,6 +171,25 @@ namespace Tolkesentralen_v3.Models
             return true;
                
         }
+
+
+        public bool reggisteret_i_db(Person innBruker)
+        {
+            using (var db = new DbNetcont())
+            {
+                Person exsistereBruker = db.Personer.FirstOrDefault(b => b.email == innBruker.email);
+                if (exsistereBruker != null)
+                {
+                    byte[] passordForTest = lagHash(innBruker.password + exsistereBruker.Salt);
+                    bool riktigBruker = exsistereBruker.password.SequenceEqual(passordForTest);
+                    return riktigBruker;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         /// <summary>
         /// this method lists all the tolks
         /// </summary>
@@ -169,7 +220,7 @@ namespace Tolkesentralen_v3.Models
                 adresse = inntolk.adresse,
                 regDato = DateTime.Now,
                 tolkNr = "29292992",
-                password = inntolk.password
+                password = lagHash(inntolk.password)
 
             };
             var db = new DbNetcont();
@@ -235,7 +286,7 @@ namespace Tolkesentralen_v3.Models
                 adresse = innAdmin.adresse,
                 regDato = DateTime.Now,
                 adminNr = "019901999",
-                password = innAdmin.password,
+                password = lagHash (innAdmin.password),
 
             };
             var db = new DbNetcont();
