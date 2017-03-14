@@ -29,8 +29,12 @@ namespace Tolkesentralen_v3.ViewModels
     public class Kunde_vm : Person_vm {
         public string firma { get; set; }
         public string kontaktperson { get; set; }
+<<<<<<< HEAD
+       // public int telefon { get; set; }
+=======
+>>>>>>> e60c4a73eae9b513c0a006593804f1971b1b7eaa
         public int telefax { get; set; }
-        public string epost { get; set; }
+       // public string epost { get; set; }
         public string passord { get; set; }
         public string fakturaadresse { get; set; }
     }
