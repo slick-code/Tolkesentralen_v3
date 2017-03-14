@@ -33,11 +33,11 @@ namespace Tolkesentralen_v3.Models
                             firma = row.firma,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
-                            telefon = row.tlf,
+                            tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            postnr = row.poststed.postNr,
-                            poststed = row.poststed.postSted,
+                          //  postnr = row.poststed.postNr,
+                          //  poststed = row.poststed.postSted,
                             email = row.email
                         };
                         vm_liste.Add(kunde);
@@ -101,7 +101,7 @@ namespace Tolkesentralen_v3.Models
                 fornavn = innkunde.fornavn,
                 etternavn = innkunde.etternavn,
                 tlf = innkunde.tlf,
-                email = innkunde.epost,
+                email = innkunde.email,
                 adresse = innkunde.adresse,
                 regDato = DateTime.Now,
                 godkjent = 0,
