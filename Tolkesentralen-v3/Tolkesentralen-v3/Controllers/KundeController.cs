@@ -70,6 +70,7 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Kunde_vm ny)
         {
+
             Kunde_vm test = ny;
             if (ModelState.IsValid)
             {
@@ -90,5 +91,29 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
+
+        public HttpResponseMessage Post([FromBody]string passord, string email)
+        {
+            if (true)
+            {
+                bool Ok = repository.reggisteret_i_db(email, passord);
+
+                if (Ok)
+                {
+                    return new HttpResponseMessage()
+                    {
+
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Kunde fants ikke i database sjekke opplisninger")
+            };
+        }
+
+       
     }
 }

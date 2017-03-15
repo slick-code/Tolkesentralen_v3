@@ -172,22 +172,42 @@ namespace Tolkesentralen_v3.Models
                
         }
 
+        public void hei()
+        {
+            reggisteret_i_db("", "lunga");
 
-        public bool reggisteret_i_db(Person innBruker)
+        }
+        /// <summary>
+        /// Method to check that the persons details are correct 
+        /// with the inputs at the frontend and the backend  
+        /// hence the database
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="passord"></param>
+        /// <returns></returns>
+
+        public bool reggisteret_i_db(string email, string passord)
         {
             using (var db = new DbNetcont())
             {
-                Person exsistereBruker = db.Personer.FirstOrDefault(b => b.email == innBruker.email);
-                if (exsistereBruker != null)
+
+                List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+                byte[] dbPaasord;
+                foreach (var k in alleKunder)
                 {
-                    byte[] passordForTest = lagHash(innBruker.password + exsistereBruker.Salt);
-                    bool riktigBruker = exsistereBruker.password.SequenceEqual(passordForTest);
-                    return riktigBruker;
+                    dbPaasord = lagHash(passord + k.Salt);
+
+                    if(k.password.SequenceEqual(dbPaasord))
+                    {
+
+                        return true;
+
+                    }
+                         
+                    
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
         }
         /// <summary>
