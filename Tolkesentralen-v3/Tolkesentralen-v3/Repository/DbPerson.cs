@@ -180,7 +180,7 @@ namespace Tolkesentralen_v3.Models
         /// <summary>
         /// Method to check that the persons details are correct 
         /// with the inputs at the frontend and the backend  
-        /// hence the database
+        /// hence the database.
         /// </summary>
         /// <param name="email"></param>
         /// <param name="passord"></param>
