@@ -25,6 +25,12 @@ namespace Tolkesentralen_v3.Models
             List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
             try
             {
+              // List<Kunde> liste = db.Personer.OfType<Kunde>().ToList();
+                
+
+
+
+                // var a = liste;
                 List<Kunde_vm> vm_liste = new List<Kunde_vm>();
                 foreach (var row in alleKunder)
                 {

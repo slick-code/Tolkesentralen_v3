@@ -24,7 +24,7 @@ namespace Tolkesentralen_v3.ViewModels
         public int godkjent { get; set; }
     }
 
-    
+
 
     public class Kunde_vm : Person_vm {
         public string firma { get; set; }
@@ -33,6 +33,13 @@ namespace Tolkesentralen_v3.ViewModels
         public string epost { get; set; }
         public string passord { get; set; }
         public string fakturaadresse { get; set; }
+    }
+
+    public class Login_vm{
+        public int id { get; set; }
+        public string passord { get; set; }
+        public int role { get; set; }
+        public string email { get; set; }
     }
 
 

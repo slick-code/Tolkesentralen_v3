@@ -29,6 +29,7 @@ var OppdragComponent = (function () {
     }
     OppdragComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
         this.info = false;
         this.avbryt = false;
         this.more = false;

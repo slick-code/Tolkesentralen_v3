@@ -92,6 +92,7 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+<<<<<<< HEAD
         public HttpResponseMessage Post([FromBody]string passord, string email)
         {
             if (true)
@@ -105,15 +106,45 @@ namespace Tolkesentralen_v3.Controllers
 
                         StatusCode = HttpStatusCode.OK
                     };
+=======
+        [Route("api/kunde/login")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage Login([FromBody]Login_vm ny)
+        {
+            if (1==1)//(ModelState.IsValid)
+            {
+                //bool OK = repository.settInnKunde(ny);
+                bool OK;
+                if (ny.passord.Equals("test")) OK = true; else OK = false;
+                ny.passord = "kunde";
+                ny.role = 1;
+                if (OK)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Created, ny);
+
+                    //return new HttpResponseMessage()
+                    //{
+                    //    StatusCode = HttpStatusCode.OK
+                    //};
+
+>>>>>>> 424ecb1280e1395b3df3f3a15c856dac2489a0b5
                 }
             }
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.BadRequest,
+<<<<<<< HEAD
                 Content = new StringContent("Kunde fants ikke i database sjekke opplisninger")
             };
         }
 
        
+=======
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
+>>>>>>> 424ecb1280e1395b3df3f3a15c856dac2489a0b5
     }
 }

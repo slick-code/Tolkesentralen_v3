@@ -60,6 +60,13 @@ export class Tolk {
     valgt: boolean;
 }
 
+export class Login {
+    id: number;
+    role: number;
+    email: string;
+    passord: string;
+}
+
 export class Oversettelse {
     id: number;
 
