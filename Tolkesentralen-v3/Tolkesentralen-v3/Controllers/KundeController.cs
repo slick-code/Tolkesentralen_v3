@@ -92,59 +92,66 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-<<<<<<< HEAD
-        public HttpResponseMessage Post([FromBody]string passord, string email)
-        {
-            if (true)
-            {
-                bool Ok = repository.reggisteret_i_db(email, passord);
-
-                if (Ok)
-                {
-                    return new HttpResponseMessage()
-                    {
-
-                        StatusCode = HttpStatusCode.OK
-                    };
-=======
         [Route("api/kunde/login")]
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Login([FromBody]Login_vm ny)
         {
-            if (1==1)//(ModelState.IsValid)
+            if (1 == 1)//(ModelState.IsValid)
             {
                 //bool OK = repository.settInnKunde(ny);
-                bool OK;
-                if (ny.passord.Equals("test")) OK = true; else OK = false;
-                ny.passord = "kunde";
-                ny.role = 1;
-                if (OK)
+                Login_vm ut = repository.reggisteret_i_db(ny);
+                //bool OK;
+                //if (ny.passord.Equals("test")) OK = true; else OK = false;
+                //ny.passord = "kunde";
+                //ny.role = 1;
+                if (ut != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Created, ny);
+                    return Request.CreateResponse(HttpStatusCode.Created, ut);
 
                     //return new HttpResponseMessage()
                     //{
                     //    StatusCode = HttpStatusCode.OK
                     //};
 
->>>>>>> 424ecb1280e1395b3df3f3a15c856dac2489a0b5
+
                 }
             }
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.BadRequest,
-<<<<<<< HEAD
+
                 Content = new StringContent("Kunde fants ikke i database sjekke opplisninger")
             };
         }
 
-       
-=======
-                Content = new StringContent("Søknaden ble ikke lagret!")
-            };
-        }
 
 
->>>>>>> 424ecb1280e1395b3df3f3a15c856dac2489a0b5
+        //public HttpResponseMessage Post([FromBody]string passord, string email)
+        //{
+
+        //    bool Ok = repository.reggisteret_i_db(email, passord);
+
+        //    if (Ok)
+        //    {
+
+
+        //        return new HttpResponseMessage()
+        //        {
+
+        //            StatusCode = HttpStatusCode.OK
+        //        };
+
+
+        //        return new HttpResponseMessage()
+        //        {
+        //            StatusCode = HttpStatusCode.BadRequest,
+
+        //            Content = new StringContent("Kunde fants ikke i database sjekke opplisninger")
+        //        };
+        //    }
+        //}
+
     }
-}
+  }
+
+

@@ -178,11 +178,7 @@ namespace Tolkesentralen_v3.Models
                
         }
 
-        public void hei()
-        {
-            reggisteret_i_db("", "lunga");
-
-        }
+        
         /// <summary>
         /// Method to check that the persons details are correct 
         /// with the inputs at the frontend and the backend  
@@ -192,7 +188,7 @@ namespace Tolkesentralen_v3.Models
         /// <param name="passord"></param>
         /// <returns></returns>
 
-        public bool reggisteret_i_db(string email, string passord)
+        public Login_vm reggisteret_i_db(Login_vm ny)
         {
             using (var db = new DbNetcont())
             {
@@ -201,19 +197,22 @@ namespace Tolkesentralen_v3.Models
                 byte[] dbPaasord;
                 foreach (var k in alleKunder)
                 {
-                    dbPaasord = lagHash(passord + k.Salt);
+                    dbPaasord = lagHash(ny.passord + k.Salt);
 
                     if(k.password.SequenceEqual(dbPaasord))
                     {
-
-                        return true;
+                        Login_vm retur = new Login_vm();
+                        retur.email = k.email;
+                        retur.id = k.persId;
+                        retur.role = 1;
+                        return retur;
 
                     }
                          
                     
                 }
 
-                return false;
+                return null;
             }
         }
         /// <summary>
