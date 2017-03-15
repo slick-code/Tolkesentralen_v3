@@ -28,6 +28,12 @@ var Tolk = (function () {
     return Tolk;
 }());
 exports.Tolk = Tolk;
+var Login = (function () {
+    function Login() {
+    }
+    return Login;
+}());
+exports.Login = Login;
 var Oversettelse = (function () {
     function Oversettelse() {
     }

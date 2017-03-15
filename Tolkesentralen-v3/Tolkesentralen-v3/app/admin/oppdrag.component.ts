@@ -20,6 +20,8 @@ export class OppdragComponent {
    element: NavbarElement;
    modules: string[];
 
+   bruker: any;
+
    chosen: number;
 
    info: boolean;
@@ -37,6 +39,7 @@ export class OppdragComponent {
          }
 
     ngOnInit() {
+        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
         this.info = false;
         this.avbryt = false;
 

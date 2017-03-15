@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { LoginModel } from '../_models/login';
 import { AuthenticationService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { Login } from '../_models/models';
 
 @Component({
   templateUrl: 'app/login/login.component.html',
@@ -13,6 +14,7 @@ export class LoginComponent  {
  skjema: FormGroup;
  error: string;
  loading: boolean;
+ kunde: Login;
 
   constructor(
       private authService: AuthenticationService,
@@ -26,29 +28,40 @@ export class LoginComponent  {
         });
   }
 
+  ngOnInit() {
+      // reset login status
+      this.authService.logout();
+  }
+
+  getPath(nr: number) {
+      var path = "";
+      switch (nr) {
+          case 1: return path = "/admin";
+          case 2: return path = "/kunde";
+          case 3: return path = "/tolk";
+      }
+  }
+
   onLogin() {
     this.loading = true;
     this.error = "";
-    var login = new LoginModel();
-    login.brukernavn = this.skjema.value.brukernavn;
-    login.passord = this.skjema.value.passord;
-    var body: string = JSON.stringify(login);
-    console.log(login);
-    console.log(body);
+    var ny = new Login();
+    ny.email = this.skjema.value.brukernavn;
+    ny.passord = this.skjema.value.passord;
+    var body: string = JSON.stringify(ny);
 
-    this.authService.login(this.skjema.value.brukernavn, this.skjema.value.passord)
-            .subscribe(result => {
-                this.loading = false;
-                if (result === true) {
-                    this.router.navigate(['/admin']);
-
-                    // Todo: fjern denne når ferdigtestet:
-                    console.log("Godkjent innloggin");
-                } else {
-                    this.error = 'Feil brukernavn eller passord';
-                    
-                }
-            });
+    this.authService.login(body)
+        .subscribe(retur => {
+            
+            this.kunde = retur;
+            
+            console.log("her" + this.kunde.passord + "hh " + retur.passord);
+            this.router.navigate([this.getPath(retur.role)]);
+        },
+        error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,
+        () => { this.loading = false; console.log("ferdig post-api/bestilling"); }
+       
+    );
    
   }
 

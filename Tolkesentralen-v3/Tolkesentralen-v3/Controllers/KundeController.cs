@@ -90,5 +90,36 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
+
+        [Route("api/kunde/login")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage Login([FromBody]Login_vm ny)
+        {
+            if (1==1)//(ModelState.IsValid)
+            {
+                //bool OK = repository.settInnKunde(ny);
+                bool OK;
+                if (ny.passord.Equals("test")) OK = true; else OK = false;
+                ny.passord = "kunde";
+                ny.role = 1;
+                if (OK)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Created, ny);
+
+                    //return new HttpResponseMessage()
+                    //{
+                    //    StatusCode = HttpStatusCode.OK
+                    //};
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
     }
 }
