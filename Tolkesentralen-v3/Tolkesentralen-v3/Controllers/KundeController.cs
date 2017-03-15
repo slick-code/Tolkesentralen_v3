@@ -105,12 +105,6 @@ namespace Tolkesentralen_v3.Controllers
                 if (OK)
                 {
                     return Request.CreateResponse(HttpStatusCode.Created, ny);
-
-                    //return new HttpResponseMessage()
-                    //{
-                    //    StatusCode = HttpStatusCode.OK
-                    //};
-
                 }
             }
             return new HttpResponseMessage()
