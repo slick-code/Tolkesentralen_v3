@@ -70,6 +70,7 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Kunde_vm ny)
         {
+
             Kunde_vm test = ny;
             if (ModelState.IsValid)
             {
@@ -93,27 +94,25 @@ namespace Tolkesentralen_v3.Controllers
 
         [Route("api/kunde/login")]
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Login([FromBody]Login_vm ny)
+        public HttpResponseMessage Login([FromBody]Login_vm inn)
         {
-            if (1==1)//(ModelState.IsValid)
+            if (1 == 1)//(ModelState.IsValid)
             {
-                //bool OK = repository.settInnKunde(ny);
-                bool OK;
-                if (ny.passord.Equals("test")) OK = true; else OK = false;
-                ny.passord = "kunde";
-                ny.role = 1;
-                if (OK)
+                Login_vm ut = repository.AutoriserOgReturnerBruker(inn.email, inn.passord);
+                if (ut != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Created, ny);
+                    return Request.CreateResponse(HttpStatusCode.Created, ut);
                 }
             }
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                Content = new StringContent("Søknaden ble ikke lagret!")
+                // Midlertidlig løsning. Her må vi sende tilbake et resultat på hva som gikk galt
+                Content = new StringContent("Autorisering returnerte null")
             };
         }
 
-
     }
-}
+  }
+
+

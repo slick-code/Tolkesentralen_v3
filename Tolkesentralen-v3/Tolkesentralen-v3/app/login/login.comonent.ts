@@ -33,6 +33,7 @@ export class LoginComponent  {
       this.authService.logout();
   }
 
+  // Skal flyttes til service
   getPath(nr: number) {
       var path = "";
       switch (nr) {
@@ -52,10 +53,7 @@ export class LoginComponent  {
 
     this.authService.login(body)
         .subscribe(retur => {
-            
-            this.kunde = retur;
-            
-            console.log("her" + this.kunde.passord + "hh " + retur.passord);
+            localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             this.router.navigate([this.getPath(retur.role)]);
         },
         error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,

@@ -25,6 +25,11 @@ var LoginComponent = (function () {
             passord: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        // reset login status
+        this.authService.logout();
+    };
+    // Skal flyttes til service
     LoginComponent.prototype.getPath = function (nr) {
         var path = "";
         switch (nr) {
@@ -37,32 +42,15 @@ var LoginComponent = (function () {
         var _this = this;
         this.loading = true;
         this.error = "";
-        //var login = new LoginModel();
-        //login.brukernavn = this.skjema.value.brukernavn;
-        //login.passord = this.skjema.value.passord;
-        //var body: string = JSON.stringify(login);
         var ny = new models_1.Login();
         ny.email = this.skjema.value.brukernavn;
         ny.passord = this.skjema.value.passord;
         var body = JSON.stringify(ny);
         this.authService.login(body)
             .subscribe(function (retur) {
-            _this.kunde = retur;
-            localStorage.setItem('currentUser', JSON.stringify({ id: retur.id, bruker: retur.email, role: retur.role }));
-            console.log("her" + _this.kunde.passord + "hh " + retur.passord);
+            localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             _this.router.navigate([_this.getPath(retur.role)]);
         }, function (error) { _this.loading = false; console.log("Beklager, en feil har oppstått - " + error); }, function () { _this.loading = false; console.log("ferdig post-api/bestilling"); });
-        //result => {
-        //        this.loading = false;
-        //        if (result === true) {
-        //            console.log("Godkjent innloggin");
-        //            this.router.navigate(['/admin']);
-        //            // Todo: fjern denne når ferdigtestet:
-        //        } else {
-        //            this.error = 'Feil brukernavn eller passord';
-        //        }
-        //});
-        //this.loading = false;
     };
     LoginComponent = __decorate([
         core_1.Component({

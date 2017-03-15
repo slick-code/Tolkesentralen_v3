@@ -12,13 +12,14 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var not_found_component_1 = require('./shared/not-found.component');
 var login_comonent_1 = require('./login/login.comonent');
+var auth_guard_1 = require('./_guards/auth.guard');
 var selective_preloading_strategy_1 = require('./_services/selective-preloading-strategy');
 var appRoutes = [
     { path: 'login', component: login_comonent_1.LoginComponent },
     {
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
-        //canActivate: [AuthGuard],
+        canActivate: [auth_guard_1.AuthGuard],
         data: { preload: true }
     },
     {
