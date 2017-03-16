@@ -140,7 +140,7 @@ namespace Tolkesentralen_v3.Models
                
         }
 
-        public Login_vm AutoriserOgReturnerBruker(string brukernavn, string passord)
+        public Get_Login_VM AutoriserOgReturnerBruker(string brukernavn, string passord)
         {
             using (var db = new DbNetcont())
             {
@@ -155,11 +155,11 @@ namespace Tolkesentralen_v3.Models
                 
                 if (!riktigBruker) return null;
 
-                Login_vm retur = new Login_vm();
-                retur.email = dbData.email;
-                retur.id = dbData.persId;
-                retur.role = 1; // <-- Denne må fikses, Longa og Hussein!
-                return retur;
+                var bruker = new Get_Login_VM();
+                bruker.brukernavn = dbData.email;
+                bruker.id = dbData.persId;
+                bruker.rolle = dbData.GetType().BaseType.Name.ToLower();
+                return bruker;
             }
         }
 

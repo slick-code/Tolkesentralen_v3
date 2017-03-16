@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { LoginModel } from '../_models/login';
 import { AuthenticationService } from '../_services/auth.service';
 import { Router } from '@angular/router';
-import { Login } from '../_models/models';
 
 @Component({
   templateUrl: 'app/login/login.component.html',
@@ -14,7 +13,6 @@ export class LoginComponent  {
  skjema: FormGroup;
  error: string;
  loading: boolean;
- kunde: Login;
 
   constructor(
       private authService: AuthenticationService,
@@ -33,28 +31,15 @@ export class LoginComponent  {
       this.authService.logout();
   }
 
-  // Skal flyttes til service
-  getPath(nr: number) {
-      var path = "";
-      switch (nr) {
-          case 1: return path = "/admin";
-          case 2: return path = "/kunde";
-          case 3: return path = "/tolk";
-      }
-  }
-
   onLogin() {
     this.loading = true;
     this.error = "";
-    var ny = new Login();
-    ny.email = this.skjema.value.brukernavn;
-    ny.passord = this.skjema.value.passord;
-    var body: string = JSON.stringify(ny);
+    var body: string = JSON.stringify({ brukernavn: this.skjema.value.brukernavn, passord: this.skjema.value.passord});
 
     this.authService.login(body)
         .subscribe(retur => {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
-            this.router.navigate([this.getPath(retur.role)]);
+            this.router.navigate(["/"+retur.rolle]);
         },
         error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,
         () => { this.loading = false; console.log("ferdig post-api/bestilling"); }

@@ -94,14 +94,14 @@ namespace Tolkesentralen_v3.Controllers
 
         [Route("api/kunde/login")]
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Login([FromBody]Login_vm inn)
+        public HttpResponseMessage Login([FromBody]Post_Login_VM fraInput)
         {
             if (1 == 1)//(ModelState.IsValid)
             {
-                Login_vm ut = repository.AutoriserOgReturnerBruker(inn.email, inn.passord);
-                if (ut != null)
+                Get_Login_VM fraDB = repository.AutoriserOgReturnerBruker(fraInput.brukernavn, fraInput.passord);
+                if (fraDB != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Created, ut);
+                    return Request.CreateResponse(HttpStatusCode.Created, fraDB);
                 }
             }
             return new HttpResponseMessage()

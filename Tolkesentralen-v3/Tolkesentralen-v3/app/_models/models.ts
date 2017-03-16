@@ -62,9 +62,8 @@ export class Tolk {
 
 export class Login {
     id: number;
-    role: number;
+    rolle: string;
     email: string;
-    passord: string;
 }
 
 export class Oversettelse {

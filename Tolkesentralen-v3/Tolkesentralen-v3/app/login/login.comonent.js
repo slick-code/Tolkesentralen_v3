@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var auth_service_1 = require('../_services/auth.service');
 var router_1 = require('@angular/router');
-var models_1 = require('../_models/models');
 var LoginComponent = (function () {
     function LoginComponent(authService, router, fb) {
         this.authService = authService;
@@ -29,27 +28,15 @@ var LoginComponent = (function () {
         // reset login status
         this.authService.logout();
     };
-    // Skal flyttes til service
-    LoginComponent.prototype.getPath = function (nr) {
-        var path = "";
-        switch (nr) {
-            case 1: return path = "/admin";
-            case 2: return path = "/kunde";
-            case 3: return path = "/tolk";
-        }
-    };
     LoginComponent.prototype.onLogin = function () {
         var _this = this;
         this.loading = true;
         this.error = "";
-        var ny = new models_1.Login();
-        ny.email = this.skjema.value.brukernavn;
-        ny.passord = this.skjema.value.passord;
-        var body = JSON.stringify(ny);
+        var body = JSON.stringify({ brukernavn: this.skjema.value.brukernavn, passord: this.skjema.value.passord });
         this.authService.login(body)
             .subscribe(function (retur) {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
-            _this.router.navigate([_this.getPath(retur.role)]);
+            _this.router.navigate(["/" + retur.rolle]);
         }, function (error) { _this.loading = false; console.log("Beklager, en feil har oppstått - " + error); }, function () { _this.loading = false; console.log("ferdig post-api/bestilling"); });
     };
     LoginComponent = __decorate([
