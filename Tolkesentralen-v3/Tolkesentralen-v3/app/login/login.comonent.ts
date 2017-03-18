@@ -39,7 +39,8 @@ export class LoginComponent  {
     this.authService.login(body)
         .subscribe(retur => {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
-            this.router.navigate(["/"+retur.rolle]);
+          //  this.router.navigate(["/"+retur.rolle]);
+            this.router.navigate(["/admin" ]);
         },
         error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,
         () => { this.loading = false; console.log("ferdig post-api/bestilling"); }
