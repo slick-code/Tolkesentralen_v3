@@ -8,10 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
-var temp_service_1 = require("../_services/temp.service");
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var temp_service_1 = require('../_services/temp.service');
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService) {
         this.oppdragService = oppdragService;
@@ -42,14 +41,13 @@ var UtdelComponent = (function () {
             }
         }
     };
+    UtdelComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/utdel.component.html"
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService])
+    ], UtdelComponent);
     return UtdelComponent;
 }());
-UtdelComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./app/admin/utdel.component.html"
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
-        temp_service_1.TempService])
-], UtdelComponent);
 exports.UtdelComponent = UtdelComponent;
 //# sourceMappingURL=utdel.component.js.map

@@ -138,12 +138,7 @@ namespace Tolkesentralen_v3.Models
             return true;
                
         }
-        /// <summary>
-        /// /Logg inn verifier
-        /// </summary>
-        /// <param name="brukernavn"></param>
-        /// <param name="passord"></param>
-        /// <returns></returns>
+
         public Get_Login_VM AutoriserOgReturnerBruker(string brukernavn, string passord)
         {
             using (var db = new DbNetcont())
@@ -403,7 +398,6 @@ namespace Tolkesentralen_v3.Models
                 return false;
             }
         }
-
         /// <summary>
         /// Helping method to find a person 
         /// </summary>
@@ -464,12 +458,12 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             try
             {
-                //Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
-                //endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
-                //endreoppdrag.oppdragType = innOppdrag.oppdragType;
-                //endreoppdrag.språkFra = innOppdrag.språkFra;
-                //endreoppdrag.språkTil = innOppdrag.språkTil;
-                //endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
+                Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
+                endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
+                endreoppdrag.oppdragType = innOppdrag.oppdragType;
+                endreoppdrag.språkFra = innOppdrag.språkFra;
+                endreoppdrag.språkTil = innOppdrag.språkTil;
+                endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
                 
                 db.SaveChanges();
             }
