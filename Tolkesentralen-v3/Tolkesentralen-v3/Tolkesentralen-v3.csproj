@@ -168,9 +168,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\DbNetcont.cs" />
     <Compile Include="Models\Fil.cs" />
-    <Compile Include="Models\Fremmaate.cs" />
     <Compile Include="Models\Oppdrag.cs" />
-    <Compile Include="Models\Oversettelse.cs" />
     <Compile Include="Models\SchoolInitializer.cs" />
     <Compile Include="Models\Spraak.cs" />
     <Compile Include="Models\Tolk.cs" />

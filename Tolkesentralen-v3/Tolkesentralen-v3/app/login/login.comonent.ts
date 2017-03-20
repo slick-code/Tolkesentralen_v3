@@ -39,8 +39,13 @@ export class LoginComponent  {
     this.authService.login(body)
         .subscribe(retur => {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
+<<<<<<< HEAD
           //  this.router.navigate(["/"+retur.rolle]);
             this.router.navigate(["/admin" ]);
+=======
+            this.router.navigate(["/"+retur.rolle]); 
+            //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
+>>>>>>> 20ba562856c6a038ab6202bec96e0aa042cb4c38
         },
         error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,
         () => { this.loading = false; console.log("ferdig post-api/bestilling"); }

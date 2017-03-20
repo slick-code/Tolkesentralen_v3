@@ -6,7 +6,7 @@ using System.Web;
 namespace Tolkesentralen_v3.ViewModels
 {
 
-    public class Person_vm
+    public class Person_VM
     {
         public int persId { get; set; }
         public string fornavn { get; set; }
@@ -20,7 +20,7 @@ namespace Tolkesentralen_v3.ViewModels
         public int godkjent { get; set; }
     }
 
-    public class Kunde_vm : Person_vm {
+    public class Kunde_VM : Person_VM {
         public string firma { get; set; }
         public string kontaktperson { get; set; }
         public int telefax { get; set; }

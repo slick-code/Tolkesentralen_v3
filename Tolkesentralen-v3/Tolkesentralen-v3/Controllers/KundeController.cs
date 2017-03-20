@@ -41,7 +41,7 @@ namespace Tolkesentralen_v3.Controllers
         [HttpGet]
         public HttpResponseMessage GetN()
         {
-            List<Kunde_vm> liste = repository.ListeAlleKunder(0);
+            List<Kunde_VM> liste = repository.ListeAlleKunder(0);
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -55,7 +55,7 @@ namespace Tolkesentralen_v3.Controllers
 
         public HttpResponseMessage Get()
         {
-            List<Kunde_vm> liste = repository.ListeAlleKunder(1);
+            List<Kunde_VM> liste = repository.ListeAlleKunder(1);
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -68,10 +68,8 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Kunde_vm ny)
+        public HttpResponseMessage Post([FromBody]Kunde_VM ny)
         {
-
-            Kunde_vm test = ny;
             if (ModelState.IsValid)
             {
                 bool OK = repository.settInnKunde(ny);
@@ -94,14 +92,14 @@ namespace Tolkesentralen_v3.Controllers
 
         [Route("api/kunde/login")]
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Login([FromBody]Post_Login_VM fraInput)
+        public HttpResponseMessage Login([FromBody]Post_Login_VM input)
         {
             if (1 == 1)//(ModelState.IsValid)
             {
-                Get_Login_VM fraDB = repository.AutoriserOgReturnerBruker(fraInput.brukernavn, fraInput.passord);
-                if (fraDB != null)
+                Get_Login_VM output = repository.AutoriserOgReturnerBruker(input.brukernavn, input.passord);
+                if (output != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Created, fraDB);
+                    return Request.CreateResponse(HttpStatusCode.Created, output);
                 }
             }
             return new HttpResponseMessage()

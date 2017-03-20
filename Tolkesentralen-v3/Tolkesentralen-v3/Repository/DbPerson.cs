@@ -16,18 +16,18 @@ namespace Tolkesentralen_v3.Models
 
 
         // List alle kunder. Enten godkjente (1) eller til godkjenning (0)
-        public List<Kunde_vm> ListeAlleKunder(int godkjent)
+        public List<Kunde_VM> ListeAlleKunder(int godkjent)
         {
             var db = new DbNetcont();
             List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
             try
             {
-                List<Kunde_vm> vm_liste = new List<Kunde_vm>();
+                List<Kunde_VM> vm_liste = new List<Kunde_VM>();
                 foreach (var row in alleKunder)
                 {
                     if(row.godkjent == godkjent)
                     {
-                        var kunde = new Kunde_vm()
+                        var kunde = new Kunde_VM()
                         {
                             firma = row.firma,
                             fornavn = row.fornavn,
@@ -71,7 +71,6 @@ namespace Tolkesentralen_v3.Models
                                 break;
                             }
                         }
-                        
                     }
                     //kunde.godkjent = 1;
                     db.SaveChanges();
@@ -87,7 +86,7 @@ namespace Tolkesentralen_v3.Models
         }
 
         
-        public bool settInnKunde(Kunde_vm innkunde)
+        public bool settInnKunde(Kunde_VM innkunde)
         {
             var db = new DbNetcont();
            
@@ -154,7 +153,7 @@ namespace Tolkesentralen_v3.Models
 
                 if (dbData == null) return null;
 
-                // Sjekker om hashet passord macher brukeren
+                // Sjekker om passord#hash macher brukeren
                 byte[] passordForTest = lagHash(passord + dbData.Salt);
                 bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
                 
