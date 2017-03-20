@@ -217,6 +217,7 @@
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\index.component.ts" />
     <TypeScriptCompile Include="app\home\registrer.component.ts" />
+    <TypeScriptCompile Include="app\kunde\bestill-tolk.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde-routing.module.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.module.ts" />
