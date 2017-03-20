@@ -129,7 +129,6 @@
     <Content Include="app\home\bestill-tolk.component.html" />
     <Content Include="app\home\home.component.html" />
     <Content Include="app\home\registrer.component.html" />
-    <Content Include="app\kunde\bestill-tolk.component.html" />
     <Content Include="app\kunde\kunde.component.html" />
     <Content Include="app\login\login.component.html" />
     <Content Include="app\tolk\tolk.component.html" />
@@ -169,9 +168,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\DbNetcont.cs" />
     <Compile Include="Models\Fil.cs" />
-    <Compile Include="Models\Fremmaate.cs" />
     <Compile Include="Models\Oppdrag.cs" />
-    <Compile Include="Models\Oversettelse.cs" />
     <Compile Include="Models\SchoolInitializer.cs" />
     <Compile Include="Models\Spraak.cs" />
     <Compile Include="Models\Tolk.cs" />

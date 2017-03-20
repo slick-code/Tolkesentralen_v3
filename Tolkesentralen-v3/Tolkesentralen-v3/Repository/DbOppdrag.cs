@@ -9,12 +9,53 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
-        DbNetcont db = new DbNetcont();
+       private DbNetcont db;
 
-
+        //constractor
         public DbOppdrag()
         {
+            db = new DbNetcont();
+        }
 
+
+        
+        //Registrerer Fremmøte_Tolk
+        public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
+        {
+
+            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+            if (nyOppdrag != null)
+            {
+                var oppdragDb = new Fremmaate()
+                {
+
+                    oppdragType = nyOppdrag.typetolk,
+                    spraakFra = nyOppdrag.fraspraak,
+                    spraakTil = nyOppdrag.tilspraak,
+                    oppdragsAddres = nyOppdrag.oppdragsAddres,
+                    oppdragsDato = nyOppdrag.oppdragsdato,
+                    tidFra = nyOppdrag.frakl,
+                    tidTil = nyOppdrag.tilkl,
+                    AndreOpplisning = nyOppdrag.andreopplisninger,  
+
+                };
+
+                if (Bestiller != null)
+                {
+                    Bestiller.oppdrag.Add(oppdragDb);
+                }
+                else
+                {
+                    return false;
+                }
+                db.Oppdrag.Add(oppdragDb);
+                db.SaveChanges();
+
+                return true;
+            }
+
+
+            return false;
         }
 
         //public bool regOppdragF(Oppdrag_VM input, int kundeId)
@@ -43,6 +84,7 @@ namespace Tolkesentralen_v3.Models
 
         //    return false;
         //}
+
 
         public bool regOppdragO(Oversettelse oppdrag, int kundeID)
         {
