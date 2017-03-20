@@ -45,11 +45,14 @@ export class Oppdrag {
 }
 
 export class OppdragForRegistrert {
-    id: number;
+    kundeID: number;
     dato: string;
     typetolk: string;
     fraspraak: string;
     tilspraak: string;
+    frakl: string;
+    tilkl: string;
+    oppdragsdato: string;
     oppmotested: string;
     andreopplyninger: string;
 }

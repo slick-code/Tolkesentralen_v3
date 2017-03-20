@@ -10,11 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // Promise Version
 var core_1 = require('@angular/core');
-var kunde_service_1 = require('../_services/kunde.service');
+var models_1 = require('../_models/models');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
 var forms_1 = require('@angular/forms');
 var BestillTolkComponent = (function () {
-    function BestillTolkComponent(kundeService, fb) {
-        this.kundeService = kundeService;
+    function BestillTolkComponent(service, fb) {
+        this.service = service;
         this.fb = fb;
         this.form = fb.group({
             typetolk: [],
@@ -28,14 +29,31 @@ var BestillTolkComponent = (function () {
         });
     }
     BestillTolkComponent.prototype.ngOnInit = function () { };
+    BestillTolkComponent.prototype.postKunde = function () {
+        var _this = this;
+        var ny = new models_1.OppdragForRegistrert();
+        ny.typetolk = this.form.value.typetolk;
+        ny.fraspraak = this.form.value.fraspraak;
+        ny.tilspraak = this.form.value.tilspraak;
+        ny.oppdragsdato = this.form.value.oppdragsdato;
+        ny.frakl = this.form.value.frakl;
+        ny.tilkl = this.form.value.tilkl;
+        ny.oppmotested = this.form.value.oppmptested;
+        ny.andreopplyninger = this.form.value.andreopplysninger;
+        var body = JSON.stringify(ny);
+        this.service.postOppdrag(body).subscribe(function (retur) {
+            _this.oppdrag.push(ny);
+            console.log("Success POST oppdrag : " + ny.typetolk);
+        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+    };
     BestillTolkComponent = __decorate([
         core_1.Component({
             //moduleId: module.id,
-            templateUrl: './app/home/registrer.component.html',
-            providers: [kunde_service_1.KundeService],
+            templateUrl: './app/kunde/bestill-tolk.component.html',
+            providers: [oppdrag_service_1.OppdragService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
     ], BestillTolkComponent);
     return BestillTolkComponent;
 }());

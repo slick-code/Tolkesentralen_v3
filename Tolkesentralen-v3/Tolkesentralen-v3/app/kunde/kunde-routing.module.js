@@ -17,7 +17,7 @@ var appRoutes = [
         path: '',
         component: kunde_component_1.KundeComponent,
         children: [
-            { path: 'kunde-bestill-tolk', component: bestill_tolk_component_1.BestillTolkComponent }
+            { path: 'bestill-tolk', component: bestill_tolk_component_1.BestillTolkComponent }
         ]
     }
 ];
