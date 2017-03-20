@@ -17,6 +17,43 @@ namespace Tolkesentralen_v3.Models
 
         }
 
+        public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
+        {
+
+            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+            if (nyOppdrag != null)
+            {
+                var oppdragDb = new Fremmaate()
+                {
+
+                    oppdragType = nyOppdrag.typetolk,
+                    spraakFra = nyOppdrag.fraspraak,
+                    spraakTil = nyOppdrag.tilspraak,
+                    oppdragsAddres = nyOppdrag.oppdragsAddres,
+                    oppdragsDato = nyOppdrag.oppdragsdato,
+                    tidFra = nyOppdrag.frakl,
+                    tidTil = nyOppdrag.tilkl,
+                    AndreOpplisning = nyOppdrag.andreopplisninger,
+
+                };
+
+                if (Bestiller != null)
+                {
+                    Bestiller.oppdrag.Add(oppdragDb);
+                }
+                else
+                {
+                    return false;
+                }
+                db.Oppdrag.Add(oppdragDb);
+                db.SaveChanges();
+
+                return true;
+            }
+
+
+            return false;
+        }
         //public bool regOppdragF(Oppdrag_VM input, int kundeId)
         //{
         //    var kunde = new Fremmaate()
