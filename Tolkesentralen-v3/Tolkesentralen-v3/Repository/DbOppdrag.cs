@@ -17,7 +17,7 @@ namespace Tolkesentralen_v3.Models
             db = new DbNetcont();
         }
 
-<<<<<<< HEAD
+
         
         //Registrerer Fremmøte_Tolk
         public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
@@ -59,7 +59,7 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
-=======
+
         //public bool regOppdragF(Oppdrag_VM input, int kundeId)
         //{
         //    var kunde = new Fremmaate()
@@ -86,7 +86,7 @@ namespace Tolkesentralen_v3.Models
 
         //    return false;
         //}
->>>>>>> 20ba562856c6a038ab6202bec96e0aa042cb4c38
+
 
         public bool regOppdragO(Oversettelse oppdrag, int kundeID)
         {
