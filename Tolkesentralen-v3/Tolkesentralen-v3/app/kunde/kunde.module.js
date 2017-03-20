@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var bestill_tolk_component_1 = require('./bestill-tolk.component');
 var kunde_component_1 = require('./kunde.component');
+var forms_1 = require('@angular/forms');
 var kunde_routing_module_1 = require('./kunde-routing.module');
 var AdminModule = (function () {
     function AdminModule() {
@@ -19,10 +21,13 @@ var AdminModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                kunde_routing_module_1.KundeRoutingModule
+                kunde_routing_module_1.KundeRoutingModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule
             ],
             declarations: [
-                kunde_component_1.KundeComponent
+                kunde_component_1.KundeComponent,
+                bestill_tolk_component_1.BestillTolkComponent
             ],
         }), 
         __metadata('design:paramtypes', [])

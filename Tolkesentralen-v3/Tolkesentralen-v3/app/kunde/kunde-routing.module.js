@@ -11,8 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var kunde_component_1 = require('./kunde.component');
+var bestill_tolk_component_1 = require('./bestill-tolk.component');
 var appRoutes = [
-    { path: '', component: kunde_component_1.KundeComponent }
+    {
+        path: '',
+        component: kunde_component_1.KundeComponent,
+        children: [
+            { path: 'kunde-bestill-tolk', component: bestill_tolk_component_1.BestillTolkComponent }
+        ]
+    }
 ];
 var KundeRoutingModule = (function () {
     function KundeRoutingModule() {

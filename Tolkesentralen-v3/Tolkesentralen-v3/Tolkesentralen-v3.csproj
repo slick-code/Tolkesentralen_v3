@@ -129,6 +129,7 @@
     <Content Include="app\home\bestill-tolk.component.html" />
     <Content Include="app\home\home.component.html" />
     <Content Include="app\home\registrer.component.html" />
+    <Content Include="app\kunde\bestill-tolk.component.html" />
     <Content Include="app\kunde\kunde.component.html" />
     <Content Include="app\login\login.component.html" />
     <Content Include="app\tolk\tolk.component.html" />
@@ -219,6 +220,7 @@
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\index.component.ts" />
     <TypeScriptCompile Include="app\home\registrer.component.ts" />
+    <TypeScriptCompile Include="app\kunde\bestill-tolk.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde-routing.module.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.module.ts" />

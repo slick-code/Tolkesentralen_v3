@@ -22,6 +22,12 @@ var Oppdrag = (function () {
     return Oppdrag;
 }());
 exports.Oppdrag = Oppdrag;
+var OppdragForRegistrert = (function () {
+    function OppdragForRegistrert() {
+    }
+    return OppdragForRegistrert;
+}());
+exports.OppdragForRegistrert = OppdragForRegistrert;
 var Tolk = (function () {
     function Tolk() {
     }
