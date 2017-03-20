@@ -403,6 +403,7 @@ namespace Tolkesentralen_v3.Models
                 return false;
             }
         }
+
         /// <summary>
         /// Helping method to find a person 
         /// </summary>

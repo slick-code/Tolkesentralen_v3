@@ -40,8 +40,6 @@ namespace Tolkesentralen_v3.Models
 
                 };
 
-
-
                 if (Bestiller != null)
                 {
                     Bestiller.oppdrag.Add(oppdragDb);
