@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Models
 {
@@ -16,31 +17,32 @@ namespace Tolkesentralen_v3.Models
 
         }
 
+        //public bool regOppdragF(Oppdrag_VM input, int kundeId)
+        //{
+        //    var kunde = new Fremmaate()
+        //    {
 
-        public bool regOppdragF(Fremmaate oppdrag, int kundeId)
-        {
+        //    };
+        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+        //    if (oppdrag != null)
+        //    {
 
-            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-            if (oppdrag != null)
-            {
+        //        if (Bestiller != null)
+        //        {
+        //            Bestiller.oppdrag.Add(oppdrag);
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //        db.Oppdrag.Add(input);
+        //        db.SaveChanges();
 
-                if (Bestiller != null)
-                {
-                    Bestiller.oppdrag.Add(oppdrag);
-                }
-                else
-                {
-                    return false;
-                }
-                db.Oppdrag.Add(oppdrag);
-                db.SaveChanges();
+        //        return true;
+        //    }
 
-                return true;
-            }
-
-
-            return false;
-        }
+        //    return false;
+        //}
 
         public bool regOppdragO(Oversettelse oppdrag, int kundeID)
         {

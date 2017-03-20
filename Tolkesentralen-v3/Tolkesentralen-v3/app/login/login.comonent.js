@@ -36,7 +36,8 @@ var LoginComponent = (function () {
         this.authService.login(body)
             .subscribe(function (retur) {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
-            _this.router.navigate(["/" + retur.rolle]);
+            //this.router.navigate(["/"+retur.rolle]); 
+            _this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
         }, function (error) { _this.loading = false; console.log("Beklager, en feil har oppstått - " + error); }, function () { _this.loading = false; console.log("ferdig post-api/bestilling"); });
     };
     LoginComponent = __decorate([
