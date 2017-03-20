@@ -9,11 +9,11 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
-        DbNetcont db = new DbNetcont();
-
+        DbNetcont db; 
 
         public DbOppdrag()
         {
+             db = new DbNetcont();
 
         }
 

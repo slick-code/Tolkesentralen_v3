@@ -458,14 +458,14 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             try
             {
-                Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
-                endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
-                endreoppdrag.oppdragType = innOppdrag.oppdragType;
-                endreoppdrag.språkFra = innOppdrag.språkFra;
-                endreoppdrag.språkTil = innOppdrag.språkTil;
-                endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
+                //Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
+                //endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
+                //endreoppdrag.oppdragType = innOppdrag.oppdragType;
+                //endreoppdrag.språkFra = innOppdrag.språkFra;
+                //endreoppdrag.språkTil = innOppdrag.språkTil;
+                //endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
                 
-                db.SaveChanges();
+                //db.SaveChanges();
             }
             catch(Exception feil)
             {
