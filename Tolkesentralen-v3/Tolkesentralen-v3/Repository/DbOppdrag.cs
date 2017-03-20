@@ -3,36 +3,53 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
-        DbNetcont db = new DbNetcont();
+       private DbNetcont db;
 
-
+        //constractor
         public DbOppdrag()
         {
-
+            db = new DbNetcont();
         }
 
-
-        public bool regOppdragF(Fremmaate oppdrag, int kundeId)
+        
+        //Registrerer Fremmøte_Tolk
+        public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
         {
 
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-            if (oppdrag != null)
+            if (nyOppdrag != null)
             {
+                var oppdragDb = new Fremmaate()
+                {
+
+                    oppdragType = nyOppdrag.typetolk,
+                    spraakFra = nyOppdrag.fraspraak,
+                    spraakTil = nyOppdrag.tilspraak,
+                    oppdragsAddres = nyOppdrag.oppdragsAddres,
+                    oppdragsDato = nyOppdrag.oppdragsdato,
+                    tidFra = nyOppdrag.frakl,
+                    tidTil = nyOppdrag.tilkl,
+                    AndreOpplisning = nyOppdrag.andreopplisninger,  
+
+                };
+
+
 
                 if (Bestiller != null)
                 {
-                    Bestiller.oppdrag.Add(oppdrag);
+                    Bestiller.oppdrag.Add(oppdragDb);
                 }
                 else
                 {
                     return false;
                 }
-                db.Oppdrag.Add(oppdrag);
+                db.Oppdrag.Add(oppdragDb);
                 db.SaveChanges();
 
                 return true;
