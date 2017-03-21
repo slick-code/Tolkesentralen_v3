@@ -30,11 +30,11 @@ namespace Tolkesentralen_v3.Models
                     oppdragType = nyOppdrag.typetolk,
                     spraakFra = nyOppdrag.fraspraak,
                     spraakTil = nyOppdrag.tilspraak,
-                    oppdragsAddres = nyOppdrag.oppdragsAddres,
+                    oppdragsAddres = nyOppdrag.sted,
                     oppdragsDato = nyOppdrag.oppdragsdato,
                     tidFra = nyOppdrag.frakl,
                     tidTil = nyOppdrag.tilkl,
-                    AndreOpplisning = nyOppdrag.andreopplisninger,
+                    AndreOpplisning = nyOppdrag.andreopplysninger,
 
                 };
 
@@ -172,12 +172,12 @@ namespace Tolkesentralen_v3.Models
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
                         tilspraak = rowf.spraakTil,
-                        oppdragsAddres = rowf.oppdragsAddres,
+                        sted = rowf.oppdragsAddres,
                         oppdragsdato = rowf.oppdragsDato,
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
-                        
-                        andreopplisninger = rowf.AndreOpplisning,
+
+                        andreopplysninger = rowf.AndreOpplisning,
 
 
                     };

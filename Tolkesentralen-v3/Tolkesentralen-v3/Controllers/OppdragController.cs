@@ -16,7 +16,7 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Oppdrag_VM input)
+        public HttpResponseMessage Post([FromBody]Fremmaate_vm input)
         {
             var breakpoint = "break";
             return new HttpResponseMessage()
@@ -29,7 +29,7 @@ namespace Tolkesentralen_v3.Controllers
             {
                 //bool OK = repository.regOppdragF(input, id);
                 bool OK;
-                if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
+               // if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
 
                 if (OK)
                 {
@@ -54,7 +54,7 @@ namespace Tolkesentralen_v3.Controllers
             var output = new Oppdrag_VM
             {
                 dato = "12-12-2017",
-                sted = "Jessheim",
+                //sted = "Jessheim",
                 tid = "13:00",
                 type = "Fremmedmøtetolk",
                 fraspraak = "Spansk",

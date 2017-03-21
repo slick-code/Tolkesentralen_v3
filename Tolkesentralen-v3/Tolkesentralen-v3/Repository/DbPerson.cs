@@ -454,7 +454,6 @@ namespace Tolkesentralen_v3.Models
         /// <param name="innOppdrag"></param>
         /// <returns>
         /// </returns>
-<<<<<<< HEAD
         //public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
         //{
         //    var db = new DbNetcont();
@@ -476,7 +475,7 @@ namespace Tolkesentralen_v3.Models
         //    }
         //    return true;
         //}
-=======
+
         public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
         {
             var db = new DbNetcont();
@@ -498,7 +497,6 @@ namespace Tolkesentralen_v3.Models
             }
             return true;
         }
->>>>>>> 75304b84ca2ba1d25fb7fc28c1767bccaa09904a
 
 
         public List<Oppdrag> ListeAlleOppdrag()

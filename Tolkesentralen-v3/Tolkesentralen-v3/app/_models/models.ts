@@ -46,15 +46,15 @@ export class Oppdrag {
 
 export class OppdragForRegistrert {
     kundeID: number;
-    dato: string;
+    dato: any;
     typetolk: string;
     fraspraak: string;
     tilspraak: string;
     frakl: string;
     tilkl: string;
     oppdragsdato: string;
-    oppmotested: string;
-    andreopplyninger: string;
+    sted: string;
+    andreopplysninger: string;
 }
 
 export class Tolk {
