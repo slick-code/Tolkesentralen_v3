@@ -11,6 +11,7 @@ namespace Tolkesentralen_v3.Models
     {
         [Key]
         public int oppdragsID { get; set; }
+        
         public string oppdragType { get; set; }
 
         public string spraakFra { get; set; }
