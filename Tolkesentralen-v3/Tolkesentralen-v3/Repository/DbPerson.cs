@@ -77,12 +77,13 @@ namespace Tolkesentralen_v3.Models
                     return true;
 
                 }
+               // return false;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
                 return false;
             }
-            catch (Exception e)
-                {
-                    return false;
-                }
         }
 
         
