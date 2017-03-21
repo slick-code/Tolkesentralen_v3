@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< HEAD
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -10,6 +11,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+=======
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var NavbarElement = (function () {
     function NavbarElement() {
     }
@@ -55,7 +63,11 @@ exports.Oversettelse = Oversettelse;
 var Kunde = (function (_super) {
     __extends(Kunde, _super);
     function Kunde() {
+<<<<<<< HEAD
         return _super !== null && _super.apply(this, arguments) || this;
+=======
+        _super.apply(this, arguments);
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
     }
     return Kunde;
 }(Person));

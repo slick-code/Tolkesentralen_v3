@@ -5,6 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
@@ -14,6 +15,19 @@ var oversettelse_component_1 = require("./oversettelse.component");
 var utdel_component_1 = require("./utdel.component");
 var nye_kunder_component_1 = require("./nye-kunder.component");
 var kunde_liste_component_1 = require("./brukere/kunde-liste.component");
+=======
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var admin_component_1 = require('./admin.component');
+var oppdrag_component_1 = require('./oppdrag.component');
+var oversettelse_component_1 = require('./oversettelse.component');
+var utdel_component_1 = require('./utdel.component');
+var nye_kunder_component_1 = require('./nye-kunder.component');
+var kunde_liste_component_1 = require('./brukere/kunde-liste.component');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var appRoutes = [
     {
         path: '',
@@ -36,6 +50,7 @@ var appRoutes = [
 var AdminRoutingModule = (function () {
     function AdminRoutingModule() {
     }
+<<<<<<< HEAD
     return AdminRoutingModule;
 }());
 AdminRoutingModule = __decorate([
@@ -48,5 +63,20 @@ AdminRoutingModule = __decorate([
         ]
     })
 ], AdminRoutingModule);
+=======
+    AdminRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forChild(appRoutes)
+            ],
+            exports: [
+                router_1.RouterModule
+            ]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AdminRoutingModule);
+    return AdminRoutingModule;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.AdminRoutingModule = AdminRoutingModule;
 //# sourceMappingURL=admin-routing.module.js.map

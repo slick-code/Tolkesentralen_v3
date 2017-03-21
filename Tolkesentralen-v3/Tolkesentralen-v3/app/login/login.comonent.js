@@ -8,11 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var auth_service_1 = require("../_services/auth.service");
 var router_1 = require("@angular/router");
+=======
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var auth_service_1 = require('../_services/auth.service');
+var router_1 = require('@angular/router');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var LoginComponent = (function () {
     function LoginComponent(authService, router, fb) {
         this.authService = authService;
@@ -36,11 +43,16 @@ var LoginComponent = (function () {
         var body = JSON.stringify({ brukernavn: this.skjema.value.brukernavn, passord: this.skjema.value.passord });
         this.authService.login(body)
             .subscribe(function (retur) {
+<<<<<<< HEAD
+=======
+            localStorage.setItem('id', JSON.stringify(retur.id));
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             _this.router.navigate(["/" + retur.rolle]);
             //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
         }, function (error) { _this.loading = false; console.log("Beklager, en feil har oppstått - " + error); }, function () { _this.loading = false; console.log("ferdig post-api/bestilling"); });
     };
+<<<<<<< HEAD
     return LoginComponent;
 }());
 LoginComponent = __decorate([
@@ -51,5 +63,15 @@ LoginComponent = __decorate([
         router_1.Router,
         forms_1.FormBuilder])
 ], LoginComponent);
+=======
+    LoginComponent = __decorate([
+        core_1.Component({
+            templateUrl: 'app/login/login.component.html',
+        }), 
+        __metadata('design:paramtypes', [auth_service_1.AuthenticationService, router_1.Router, forms_1.FormBuilder])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.comonent.js.map

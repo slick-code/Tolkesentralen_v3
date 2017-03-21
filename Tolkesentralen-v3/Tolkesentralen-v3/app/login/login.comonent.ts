@@ -38,6 +38,7 @@ export class LoginComponent  {
 
     this.authService.login(body)
         .subscribe(retur => {
+            localStorage.setItem('id', JSON.stringify(retur.id));
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             this.router.navigate(["/"+retur.rolle]); 
             //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing

@@ -8,10 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var models_1 = require("../_models/models");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
+=======
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service) {
         this.service = service;
@@ -34,6 +40,7 @@ var BestillOversettelseComponent = (function () {
             console.log("Success POST : " + ny.fornavn);
         }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+<<<<<<< HEAD
     return BestillOversettelseComponent;
 }());
 BestillOversettelseComponent = __decorate([
@@ -44,5 +51,17 @@ BestillOversettelseComponent = __decorate([
     }),
     __metadata("design:paramtypes", [oppdrag_service_1.OppdragService])
 ], BestillOversettelseComponent);
+=======
+    BestillOversettelseComponent = __decorate([
+        core_1.Component({
+            templateUrl: './app/home/bestill-oversettelse.component.html',
+            providers: [oppdrag_service_1.OppdragService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService])
+    ], BestillOversettelseComponent);
+    return BestillOversettelseComponent;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
 //# sourceMappingURL=bestill-oversettelse.component.js.map

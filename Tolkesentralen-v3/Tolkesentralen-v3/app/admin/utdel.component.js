@@ -8,10 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
 var temp_service_1 = require("../_services/temp.service");
+=======
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var temp_service_1 = require('../_services/temp.service');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService) {
         this.oppdragService = oppdragService;
@@ -42,6 +48,7 @@ var UtdelComponent = (function () {
             }
         }
     };
+<<<<<<< HEAD
     return UtdelComponent;
 }());
 UtdelComponent = __decorate([
@@ -51,5 +58,15 @@ UtdelComponent = __decorate([
     __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
         temp_service_1.TempService])
 ], UtdelComponent);
+=======
+    UtdelComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/utdel.component.html"
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService])
+    ], UtdelComponent);
+    return UtdelComponent;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.UtdelComponent = UtdelComponent;
 //# sourceMappingURL=utdel.component.js.map

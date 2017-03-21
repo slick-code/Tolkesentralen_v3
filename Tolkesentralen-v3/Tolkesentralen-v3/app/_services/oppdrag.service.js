@@ -8,11 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var auth_service_1 = require("../_services/auth.service");
+=======
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
+var auth_service_1 = require('../_services/auth.service');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var OppdragService = (function () {
     function OppdragService(http, authenticationService) {
         this.http = http;
@@ -24,6 +31,14 @@ var OppdragService = (function () {
         return this.http.post(this.url, body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
+<<<<<<< HEAD
+=======
+    //postOppdrag(body: any, id: number) {
+    //    var headers = new Headers({ "Content-Type": "application/json" });
+    //    return this.http.post(this.url+"/"+id, body, { headers: headers })
+    //        .map(returData => returData.toString())
+    //}
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
     OppdragService.prototype.postOppdrag = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url, body, { headers: headers })
@@ -37,6 +52,7 @@ var OppdragService = (function () {
         return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
+<<<<<<< HEAD
     return OppdragService;
 }());
 OppdragService = __decorate([
@@ -44,5 +60,13 @@ OppdragService = __decorate([
     __metadata("design:paramtypes", [http_1.Http,
         auth_service_1.AuthenticationService])
 ], OppdragService);
+=======
+    OppdragService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+    ], OppdragService);
+    return OppdragService;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.OppdragService = OppdragService;
 //# sourceMappingURL=oppdrag.service.js.map

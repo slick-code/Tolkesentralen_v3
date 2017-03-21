@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 // Observable Version
 var core_1 = require("@angular/core");
@@ -15,6 +16,14 @@ var http_1 = require("@angular/http");
 var http_2 = require("@angular/http");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/map");
+=======
+// Observable Version
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
+require('rxjs/add/operator/catch');
+require('rxjs/add/operator/map');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var KundeService = (function () {
     function KundeService(http) {
         this.http = http;
@@ -38,12 +47,21 @@ var KundeService = (function () {
         return this.http.put(this.url, email, { headers: headers })
             .map(function (response) { return response.json(); });
     };
+<<<<<<< HEAD
     return KundeService;
 }());
 KundeService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
 ], KundeService);
+=======
+    KundeService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], KundeService);
+    return KundeService;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.KundeService = KundeService;
 /*
   private heroesUrl = 'app/heroes.json'; // URL to JSON file

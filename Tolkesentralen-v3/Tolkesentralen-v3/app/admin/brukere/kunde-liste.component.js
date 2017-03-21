@@ -8,11 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var kunde_service_1 = require("../../_services/kunde.service");
 var models_1 = require("../../_models/models");
 var data_service_1 = require("../../_services/data.service");
+=======
+var core_1 = require('@angular/core');
+var kunde_service_1 = require('../../_services/kunde.service');
+var models_1 = require('../../_models/models');
+var data_service_1 = require('../../_services/data.service');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var KundeListeComponent = (function () {
     function KundeListeComponent(service, dataService) {
         this.service = service;
@@ -31,6 +38,7 @@ var KundeListeComponent = (function () {
             _this.dataService.updateData(_this.element);
         });
     };
+<<<<<<< HEAD
     return KundeListeComponent;
 }());
 KundeListeComponent = __decorate([
@@ -40,5 +48,15 @@ KundeListeComponent = __decorate([
     __metadata("design:paramtypes", [kunde_service_1.KundeService,
         data_service_1.DataService])
 ], KundeListeComponent);
+=======
+    KundeListeComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/brukere/kunde-liste.component.html"
+        }), 
+        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
+    ], KundeListeComponent);
+    return KundeListeComponent;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.KundeListeComponent = KundeListeComponent;
 //# sourceMappingURL=kunde-liste.component.js.map

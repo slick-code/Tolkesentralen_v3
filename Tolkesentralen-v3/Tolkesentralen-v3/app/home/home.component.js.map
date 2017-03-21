@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":3,"file":"home.component.js","sourceRoot":"","sources":["home.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAA0C;AAK1C,IAAa,aAAa;IAA1B;IAA6B,CAAC;IAAD,oBAAC;AAAD,CAAC,AAA9B,IAA8B;AAAjB,aAAa;IAHzB,gBAAS,CAAC;QACT,WAAW,EAAE,8BAA8B;KAC5C,CAAC;GACW,aAAa,CAAI;AAAjB,sCAAa"}
+=======
+{"version":3,"file":"home.component.js","sourceRoot":"","sources":["home.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAK1C;IAAA;IAA6B,CAAC;IAH9B;QAAC,gBAAS,CAAC;YACT,WAAW,EAAE,8BAA8B;SAC5C,CAAC;;qBAAA;IAC2B,oBAAC;AAAD,CAAC,AAA9B,IAA8B;AAAjB,qBAAa,gBAAI,CAAA"}
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda

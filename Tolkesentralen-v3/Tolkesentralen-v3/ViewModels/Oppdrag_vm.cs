@@ -13,20 +13,20 @@ namespace Tolkesentralen_v3.ViewModels
 
         public int id { get; set; }
         public string dato { get; set; }
-        public string sted { get; set; } // <-- Adresse - Postnr - Poststed
+        //public string sted { get; set; } // <-- Adresse - Postnr - Poststed
         public string tid { get; set; }
         public string type { get; set; }
 
         public string fraspraak { get; set; }
         public string tilspraak { get; set; }
-        public string andreopplisninger { get; set; }
+        public string andreopplysninger { get; set; }
     }
 
     public class Fremmaate_vm : Oppdrag_VM
     {
 
 
-        public string oppdragsAddres { get; set; }
+        public string sted { get; set; }
         public DateTime oppdragsdato { get; set; }
 
         public DateTime frakl { get; set; }

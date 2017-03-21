@@ -8,9 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var data_service_1 = require("../_services/data.service");
+=======
+var core_1 = require('@angular/core');
+var data_service_1 = require('../_services/data.service');
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 var AdminComponent = (function () {
     function AdminComponent(dataService) {
         this.dataService = dataService;
@@ -41,6 +46,7 @@ var AdminComponent = (function () {
         sum += this.antallOversettelser == null ? 0 : this.antallOversettelser;
         return sum == 0 ? "" : "" + sum;
     };
+<<<<<<< HEAD
     return AdminComponent;
 }());
 AdminComponent = __decorate([
@@ -50,5 +56,16 @@ AdminComponent = __decorate([
     }),
     __metadata("design:paramtypes", [data_service_1.DataService])
 ], AdminComponent);
+=======
+    AdminComponent = __decorate([
+        core_1.Component({
+            selector: 'admin',
+            templateUrl: "./app/admin/admin.component.html"
+        }), 
+        __metadata('design:paramtypes', [data_service_1.DataService])
+    ], AdminComponent);
+    return AdminComponent;
+}());
+>>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
 exports.AdminComponent = AdminComponent;
 //# sourceMappingURL=admin.component.js.map
