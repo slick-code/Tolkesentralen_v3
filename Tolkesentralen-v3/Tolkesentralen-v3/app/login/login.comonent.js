@@ -35,6 +35,7 @@ var LoginComponent = (function () {
         var body = JSON.stringify({ brukernavn: this.skjema.value.brukernavn, passord: this.skjema.value.passord });
         this.authService.login(body)
             .subscribe(function (retur) {
+            localStorage.setItem('id', JSON.stringify(retur.id));
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             _this.router.navigate(["/" + retur.rolle]);
             //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing

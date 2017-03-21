@@ -14,9 +14,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class BestillTolkComponent implements OnInit {
     errorMessage: string;
     oppdrag: OppdragForRegistrert[];
-    //mode = 'Promise';
-
-    //constructor(private kundeService: KundeService) { }
+    brukerID: number;
     form: FormGroup;
 
     constructor(private service: OppdragService, private fb: FormBuilder) {
@@ -34,7 +32,10 @@ export class BestillTolkComponent implements OnInit {
 
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.brukerID = parseInt(localStorage.getItem('id'));
+        console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+    }
 
     postOppdrag() {
         var ny = new OppdragForRegistrert();

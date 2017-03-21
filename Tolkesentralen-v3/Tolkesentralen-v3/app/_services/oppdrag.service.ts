@@ -22,6 +22,12 @@ export class OppdragService {
             .map(returData => returData.toString())
     }
 
+    //postOppdrag(body: any, id: number) {
+    //    var headers = new Headers({ "Content-Type": "application/json" });
+
+    //    return this.http.post(this.url+"/"+id, body, { headers: headers })
+    //        .map(returData => returData.toString())
+    //}
     postOppdrag(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 

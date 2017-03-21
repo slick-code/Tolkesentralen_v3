@@ -28,8 +28,11 @@ var BestillTolkComponent = (function () {
             andreopplysninger: []
         });
     }
-    BestillTolkComponent.prototype.ngOnInit = function () { };
-    BestillTolkComponent.prototype.postKunde = function () {
+    BestillTolkComponent.prototype.ngOnInit = function () {
+        this.brukerID = parseInt(localStorage.getItem('id'));
+        console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+    };
+    BestillTolkComponent.prototype.postOppdrag = function () {
         var _this = this;
         var ny = new models_1.OppdragForRegistrert();
         ny.typetolk = this.form.value.typetolk;

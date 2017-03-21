@@ -453,27 +453,27 @@ namespace Tolkesentralen_v3.Models
         /// <param name="innOppdrag"></param>
         /// <returns>
         /// </returns>
-        public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
-        {
-            var db = new DbNetcont();
-            try
-            {
-                Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
-                endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
-                endreoppdrag.oppdragType = innOppdrag.oppdragType;
-                endreoppdrag.språkFra = innOppdrag.språkFra;
-                endreoppdrag.språkTil = innOppdrag.språkTil;
-                endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
+        //public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
+        //{
+        //    var db = new DbNetcont();
+        //    try
+        //    {
+        //        Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
+        //        endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
+        //        endreoppdrag.oppdragType = innOppdrag.oppdragType;
+        //        endreoppdrag.språkFra = innOppdrag.språkFra;
+        //        endreoppdrag.språkTil = innOppdrag.språkTil;
+        //        endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
                 
-                db.SaveChanges();
-            }
-            catch(Exception feil)
-            {
-                Debug.WriteLine("Exception Message: " + feil.Message);
-                return false;
-            }
-            return true;
-        }
+        //        db.SaveChanges();
+        //    }
+        //    catch(Exception feil)
+        //    {
+        //        Debug.WriteLine("Exception Message: " + feil.Message);
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
 
         public List<Oppdrag> ListeAlleOppdrag()

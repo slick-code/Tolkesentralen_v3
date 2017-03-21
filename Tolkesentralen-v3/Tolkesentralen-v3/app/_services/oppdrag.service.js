@@ -23,6 +23,11 @@ var OppdragService = (function () {
         return this.http.post(this.url, body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
+    //postOppdrag(body: any, id: number) {
+    //    var headers = new Headers({ "Content-Type": "application/json" });
+    //    return this.http.post(this.url+"/"+id, body, { headers: headers })
+    //        .map(returData => returData.toString())
+    //}
     OppdragService.prototype.postOppdrag = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url, body, { headers: headers })
