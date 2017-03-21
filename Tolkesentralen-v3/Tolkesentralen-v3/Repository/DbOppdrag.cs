@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Tolkesentralen_v3.ViewModels;
@@ -9,11 +10,11 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
-        DbNetcont db = new DbNetcont();
-
+         private DbNetcont db; 
 
         public DbOppdrag()
         {
+             db = new DbNetcont();
 
         }
 
@@ -153,10 +154,43 @@ namespace Tolkesentralen_v3.Models
             return null;
         }
 
-        public List<Oppdrag> listOppdrag()
+        public List<Fremmaate_vm> listOppdrag_fremmate()
         {
+            // return db.Oppdrag.ToList();
+            List<Fremmaate> alleFramaate = db.Oppdrag.OfType<Fremmaate>().ToList();
+            try
+            {
 
-            return db.Oppdrag.ToList();
+                List<Fremmaate_vm> vm_listeframmate = new List<Fremmaate_vm>();
+                foreach (var rowf in alleFramaate)
+                {
+
+                    var framaater = new Fremmaate_vm()
+                    {
+                        kundeID = rowf.kunde.persId,
+                        id = rowf.oppdragsID,
+                        typetolk = rowf.oppdragType,
+                        fraspraak = rowf.spraakFra,
+                        tilspraak = rowf.spraakTil,
+                        oppdragsAddres = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
+                        frakl = rowf.tidFra,
+                        tilkl = rowf.tidTil,
+                        
+                        andreopplisninger = rowf.AndreOpplisning,
+
+
+                    };
+                    vm_listeframmate.Add(framaater);
+                }
+
+                return vm_listeframmate;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
 
         }
 

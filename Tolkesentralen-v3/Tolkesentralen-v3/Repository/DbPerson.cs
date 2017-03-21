@@ -77,12 +77,13 @@ namespace Tolkesentralen_v3.Models
                     return true;
 
                 }
+               // return false;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
                 return false;
             }
-            catch (Exception e)
-                {
-                    return false;
-                }
         }
 
         
@@ -453,6 +454,7 @@ namespace Tolkesentralen_v3.Models
         /// <param name="innOppdrag"></param>
         /// <returns>
         /// </returns>
+<<<<<<< HEAD
         //public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
         //{
         //    var db = new DbNetcont();
@@ -474,6 +476,29 @@ namespace Tolkesentralen_v3.Models
         //    }
         //    return true;
         //}
+=======
+        public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
+        {
+            var db = new DbNetcont();
+            try
+            {
+                //Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
+                //endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
+                //endreoppdrag.oppdragType = innOppdrag.oppdragType;
+                //endreoppdrag.språkFra = innOppdrag.språkFra;
+                //endreoppdrag.språkTil = innOppdrag.språkTil;
+                //endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
+                
+                //db.SaveChanges();
+            }
+            catch(Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return false;
+            }
+            return true;
+        }
+>>>>>>> 75304b84ca2ba1d25fb7fc28c1767bccaa09904a
 
 
         public List<Oppdrag> ListeAlleOppdrag()
