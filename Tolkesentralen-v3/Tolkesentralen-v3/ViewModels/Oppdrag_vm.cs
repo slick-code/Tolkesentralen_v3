@@ -9,21 +9,18 @@ namespace Tolkesentralen_v3.ViewModels
     {
 
         public int kundeID { get; set; }
-        public string typetolk { get; set; }
-
         public int id { get; set; }
         public string dato { get; set; }
-        //public string sted { get; set; } // <-- Adresse - Postnr - Poststed
-        public string tid { get; set; }
         public string fraspraak { get; set; }
         public string tilspraak { get; set; }
         public string andreopplysninger { get; set; }
     }
 
-    public class Fremmaate_vm : Oppdrag_VM
+    public class Tolking_vm : Oppdrag_VM
     {
 
 
+        public string typetolk { get; set; }
         public string sted { get; set; }
         public DateTime oppdragsdato { get; set; }
 
@@ -33,16 +30,6 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
-    public class Telefontolk_vm : Oppdrag_VM
-    {
-
-        public DateTime oppdragsDato { get; set; }
-
-        public DateTime tidFra { get; set; }
-
-        public DateTime tidTil { get; set; }
-
-    }
 
     // Klassen arver Person fordi ved anonym (ikke-registrert) forespørsel må info om kunden fylles ut
     public class Oppdrag_Anonym_VM : Person_VM

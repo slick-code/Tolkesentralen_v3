@@ -16,14 +16,14 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Fremmaate_vm input)
+        public HttpResponseMessage Post([FromBody]Tolking_vm input)
         {
             //var breakpoint = "break";
             //return new HttpResponseMessage()
             //{
             //    StatusCode = HttpStatusCode.OK
             //};
-            List<Fremmaate_vm> lis = repository.listOppdrag_fremmate();
+            List<Tolking_vm> lis = repository.listOppdrag_fremmate();
 
             if (ModelState.IsValid)
             {
@@ -55,8 +55,8 @@ namespace Tolkesentralen_v3.Controllers
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
-                tid = "13:00",
-                typetolk = "Fremmedmøtetolk",
+                //tid = "13:00",
+                //typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };

@@ -18,13 +18,13 @@ namespace Tolkesentralen_v3.Models
              
         }
 
-        public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
+        public bool regOppdrag_Fremmaate(Tolking_vm nyOppdrag, int kundeId)
         {
 
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
             if (nyOppdrag != null)
             {
-                var oppdragDb = new Fremmaate()
+                var oppdragDb = new Tolking()
                 {
 
                     oppdragType = nyOppdrag.typetolk,
@@ -35,7 +35,7 @@ namespace Tolkesentralen_v3.Models
                     oppdragsDato = nyOppdrag.oppdragsdato,
                     tidFra = nyOppdrag.frakl,
                     tidTil = nyOppdrag.tilkl,
-                    AndreOpplisning = nyOppdrag.andreopplysninger,
+                    andreOpplisning = nyOppdrag.andreopplysninger,
                     
 
                 };
@@ -156,18 +156,18 @@ namespace Tolkesentralen_v3.Models
             return null;
         }
 
-        public List<Fremmaate_vm> listOppdrag_fremmate()
+        public List<Tolking_vm> listOppdrag_fremmate()
         {
             // return db.Oppdrag.ToList();
-            List<Fremmaate> alleFramaate = db.Oppdrag.OfType<Fremmaate>().ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().ToList();
             try
             {
 
-                List<Fremmaate_vm> vm_listeframmate = new List<Fremmaate_vm>();
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
                 foreach (var rowf in alleFramaate)
                 {
 
-                    var framaater = new Fremmaate_vm()
+                    var framaater = new Tolking_vm()
                     {
                         kundeID = rowf.kunde.persId,
                         id = rowf.oppdragsID,
@@ -179,7 +179,7 @@ namespace Tolkesentralen_v3.Models
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
 
-                        andreopplysninger = rowf.AndreOpplisning,
+                        andreopplysninger = rowf.andreOpplisning,
 
 
                     };
