@@ -40,7 +40,12 @@ var RegistrerComponent = (function () {
             poststed: []
         });
     }
-    RegistrerComponent.prototype.ngOnInit = function () { this.getKunder(); };
+    RegistrerComponent.prototype.ngOnInit = function () {
+        this.showForm = true;
+        this.Success = false;
+        this.getKunder();
+        this.errorMessage = "Ooops! Bestilling ble ikke sendt";
+    };
     RegistrerComponent.prototype.getKunder = function () {
         var _this = this;
         this.kundeService.getKunder()
@@ -48,8 +53,12 @@ var RegistrerComponent = (function () {
             _this.kunder = kunder;
         });
     };
+    RegistrerComponent.prototype.tilbake = function () {
+        this.showForm = true;
+    };
     RegistrerComponent.prototype.postKunde = function () {
         var _this = this;
+        this.loading = true;
         var ny = new models_1.Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
@@ -65,9 +74,11 @@ var RegistrerComponent = (function () {
         ny.passord = this.form.value.passord;
         var body = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(function (retur) {
+            _this.Success = true;
+            _this.loading = false;
             _this.kunder.push(ny);
             console.log("Success POST : " + ny.firma);
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+        }, function (error) { console.log("Beklager, en feil har oppstått - " + error), _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
 <<<<<<< HEAD
     return RegistrerComponent;

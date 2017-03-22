@@ -18,17 +18,9 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Fremmaate_vm input)
         {
-            var breakpoint = "break";
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.OK
-            };
-
-
             if (ModelState.IsValid)
             {
-                //bool OK = repository.regOppdragF(input, id);
-                bool OK;
+                bool OK = repository.regOppdrag_Fremmaate(input);
                // if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
 
                 if (OK)

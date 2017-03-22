@@ -43,7 +43,11 @@ var kunde_service_1 = require('./_services/kunde.service');
 var http_1 = require('@angular/http');
 var login_comonent_1 = require('./login/login.comonent');
 var not_found_component_1 = require('./shared/not-found.component');
+<<<<<<< HEAD
 >>>>>>> 6a02ca237e57ae0ff40f538c86c764ca37c7aeda
+=======
+var loading_component_1 = require('./shared/loading.component');
+>>>>>>> e81aaa2886ed4329a3434e79604bcde5eff2dad2
 var AppModule = (function () {
     function AppModule(router) {
         // HUSK: Fjern denne!!
@@ -73,7 +77,7 @@ AppModule = __decorate([
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
-            declarations: [app_component_1.AppComponent, login_comonent_1.LoginComponent, not_found_component_1.PageNotFoundComponent],
+            declarations: [app_component_1.AppComponent, login_comonent_1.LoginComponent, not_found_component_1.PageNotFoundComponent, loading_component_1.LoadingComponent],
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 auth_guard_1.AuthGuard,
@@ -81,7 +85,7 @@ AppModule = __decorate([
                 oppdrag_service_1.OppdragService,
                 temp_service_1.TempService,
                 data_service_1.DataService,
-                kunde_service_1.KundeService
+                kunde_service_1.KundeService,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

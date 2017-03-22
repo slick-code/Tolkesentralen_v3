@@ -19,9 +19,11 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './login/login.comonent';
 import { PageNotFoundComponent } from './shared/not-found.component';
 
+import { LoadingComponent } from './shared/loading.component';
+
 @NgModule({
     imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
-    declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
+    declarations: [AppComponent, LoginComponent, PageNotFoundComponent, LoadingComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         AuthGuard,
@@ -29,7 +31,7 @@ import { PageNotFoundComponent } from './shared/not-found.component';
         OppdragService,
         TempService,
         DataService,
-        KundeService
+        KundeService,
     ],
     bootstrap: [AppComponent]
 })

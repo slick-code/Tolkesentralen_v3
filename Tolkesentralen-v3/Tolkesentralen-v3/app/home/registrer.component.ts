@@ -14,9 +14,13 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class RegistrerComponent implements OnInit {
     errorMessage: string;
     kunder: Kunde[];
+    loading: boolean;
+    resultText: string;
+    Success: boolean;
     //mode = 'Promise';
 
     //constructor(private kundeService: KundeService) { }
+    showForm: boolean;
     form: FormGroup;
 
     constructor(private kundeService: KundeService, private fb: FormBuilder) {
@@ -37,7 +41,12 @@ export class RegistrerComponent implements OnInit {
 
     }
 
-    ngOnInit() { this.getKunder(); }
+    ngOnInit() {
+        this.showForm = true;
+        this.Success = false;
+        this.getKunder();
+        this.errorMessage = "Ooops! Bestilling ble ikke sendt"
+    }
 
 
     getKunder() {
@@ -47,7 +56,12 @@ export class RegistrerComponent implements OnInit {
             }); 
     }
 
+    tilbake() {
+        this.showForm = true;
+    }
+
     postKunde() {
+        this.loading = true;
         var ny = new Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
@@ -65,10 +79,12 @@ export class RegistrerComponent implements OnInit {
         var body: string = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(
             retur => {
+                this.Success = true;
+                this.loading = false;
                 this.kunder.push(ny);
                 console.log("Success POST : "+ ny.firma);
             },
-            error => console.log("Beklager, en feil har oppstått - " + error),
+            error => { console.log("Beklager, en feil har oppstått - " + error), this.loading = false; },
             () => console.log("ferdig post-api/bestilling")
         );
         

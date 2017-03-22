@@ -1,5 +1,5 @@
 ﻿
-<div>
+<div *ngIf="showForm">
     <h1>Registreringsskjema</h1>
     <form [formGroup]='form'>
 
@@ -84,15 +84,21 @@
         </div>
 
 
-
-        <button (click)="postKunde()" class="btn btn-success">Send</button>
+        <div class="form-group">
+            <button  (click)="postKunde()" class="btn btn-success">Send</button>
+            
+        </div>
     </form>
-
+    
+</div>
+    
+<div *ngIf="!Success">
+    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+    <button (click)="postKunde()" class="btn btn-success">Gå tilbake</button>
 </div>
 
-<h1>Registrer deg som kunde</h1>
-<h3>Kunder:</h3>
-<ul>
-    <li *ngFor="let kunde of kunder">{{kunde.firma}}</li>
-</ul>
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+<div *ngIf="Success">
+    <h3 style="color:forestgreen">Takk for din registrering! </h3>
+    <p>Du vil bli tilsendt en bekreftelse så fort søknaden er behandlet.</p>
+
+</div>
