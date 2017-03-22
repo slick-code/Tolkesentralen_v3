@@ -18,23 +18,22 @@ namespace Tolkesentralen_v3.Models
 
         }
 
-        public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
+        public bool regOppdrag_Fremmaate(Fremmaate_vm input)
         {
 
-            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-            if (nyOppdrag != null)
+            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == input.id);
+            if (input != null)
             {
                 var oppdragDb = new Fremmaate()
                 {
-
-                    oppdragType = nyOppdrag.typetolk,
-                    spraakFra = nyOppdrag.fraspraak,
-                    spraakTil = nyOppdrag.tilspraak,
-                    oppdragsAddres = nyOppdrag.sted,
-                    oppdragsDato = nyOppdrag.oppdragsdato,
-                    tidFra = nyOppdrag.frakl,
-                    tidTil = nyOppdrag.tilkl,
-                    AndreOpplisning = nyOppdrag.andreopplysninger,
+                    oppdragType = input.typetolk,
+                    spraakFra = input.fraspraak,
+                    spraakTil = input.tilspraak,
+                    oppdragsAddres = input.sted,
+                    oppdragsDato = input.oppdragsdato,
+                    tidFra = input.frakl,
+                    tidTil = input.tilkl,
+                    AndreOpplisning = input.andreopplysninger,
 
                 };
 
