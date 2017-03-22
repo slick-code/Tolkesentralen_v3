@@ -10,6 +10,7 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
+       
          private DbNetcont db; 
 
         public DbOppdrag()
@@ -17,6 +18,8 @@ namespace Tolkesentralen_v3.Models
              db = new DbNetcont();
 
         }
+
+      
 
         public bool regOppdrag_Fremmaate(Fremmaate_vm input)
         {
@@ -29,11 +32,11 @@ namespace Tolkesentralen_v3.Models
                     oppdragType = input.typetolk,
                     spraakFra = input.fraspraak,
                     spraakTil = input.tilspraak,
-                    oppdragsAddres = input.sted,
-                    oppdragsDato = input.oppdragsdato,
+                    oppdragsAddress = input.sted,
+                    regDato = input.oppdragsdato,
                     tidFra = input.frakl,
                     tidTil = input.tilkl,
-                    AndreOpplisning = input.andreopplysninger,
+                    andreOpplisning = input.andreopplysninger,
 
                 };
 
@@ -54,32 +57,7 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
-        //public bool regOppdragF(Oppdrag_VM input, int kundeId)
-        //{
-        //    var kunde = new Fremmaate()
-        //    {
-
-        //    };
-        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-        //    if (oppdrag != null)
-        //    {
-
-        //        if (Bestiller != null)
-        //        {
-        //            Bestiller.oppdrag.Add(oppdrag);
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //        db.Oppdrag.Add(input);
-        //        db.SaveChanges();
-
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
+        
 
         public bool regOppdragO(Oversettelse_vm oppdragOV, int kundeID)
         {
@@ -159,7 +137,7 @@ namespace Tolkesentralen_v3.Models
 
             return null;
         }
-
+        //liste alle Framåter til kunder
         public List<Fremmaate_vm> listOppdrag_fremmate()
         {
             // return db.Oppdrag.ToList();
@@ -170,7 +148,8 @@ namespace Tolkesentralen_v3.Models
                 List<Fremmaate_vm> vm_listeframmate = new List<Fremmaate_vm>();
                 foreach (var rowf in alleFramaate)
                 {
-
+                    
+                  
                     var framaater = new Fremmaate_vm()
                     {
                         kundeID = rowf.kunde.persId,
@@ -178,12 +157,12 @@ namespace Tolkesentralen_v3.Models
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
                         tilspraak = rowf.spraakTil,
-                        sted = rowf.oppdragsAddres,
-                        oppdragsdato = rowf.oppdragsDato,
+                        sted = rowf.oppdragsAddress,
+                        oppdragsdato = rowf.regDato,
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
 
-                        andreopplysninger = rowf.AndreOpplisning,
+                        andreopplysninger = rowf.andreOpplisning,
 
 
                     };
@@ -201,6 +180,58 @@ namespace Tolkesentralen_v3.Models
         }
 
 
+
+        //Lister fremåte som tilhører en kunde 
+        //public List<Fremmaate_vm> listOppdragMedKundeId(int kundeId)
+        //{
+        //    // return db.Oppdrag.ToList();
+        //    List<Oppdrag> alleFramaate = db.Oppdrag.ToList();
+        //   // var lb = alleFramaate.OfType<Oppdrag>().FirstOrDefault(Opd => Opd.kunde.persId == kundeId);
+        //    try
+        //    {
+
+        //        List<Oppdrag_VM> utListe = new List<Oppdrag_VM>();
+
+        //        foreach (var rowf in alleFramaate)
+        //        {
+
+        //            if(rowf.kunde.persId == kundeId)
+        //            {
+
+
+        //                var framaater = new Fremmaate_vm()
+        //                {
+        //                    kundeID = rowf.kunde.persId,
+        //                    id = rowf.oppdragsID,
+        //                    typetolk = rowf.oppdragType,
+        //                    fraspraak = rowf.spraakFra,
+        //                    tilspraak = rowf.spraakTil,
+        //                    sted = rowf.
+        //                    oppdragsdato = rowf.oppdragsDato,
+        //                    frakl = rowf.tidFra,
+        //                    tilkl = rowf.tidTil,
+
+        //                    andreopplysninger = rowf.AndreOpplisning,
+
+
+        //                };
+        //                utListe.Add(framaater);
+
+
+        //            }
+
+                    
+        //        }
+
+        //        return utListe;
+        //    }
+        //    catch (Exception feil)
+        //    {
+        //        Debug.WriteLine("Exception Message: " + feil.Message);
+        //        return null;
+        //    }
+
+        //}
 
 
     }

@@ -14,13 +14,19 @@ namespace Tolkesentralen_v3.Models
         
         public string oppdragType { get; set; }
 
+        public DateTime regDato { get; set; }
+
         public string spraakFra { get; set; }
 
         public string spraakTil { get; set; }
+        public DateTime tidFra { get; set; }
+
+        public DateTime tidTil { get; set; }
+
+        public string andreOpplisning { get; set; }
 
         public virtual Kunde kunde { get; set; }
-
-
+    
         public virtual Tolk Tolk { get; set; }
     }
 
@@ -28,25 +34,12 @@ namespace Tolkesentralen_v3.Models
     public class Fremmaate : Oppdrag
     {
 
-
-        public string oppdragsAddres { get; set; }
-        public DateTime oppdragsDato { get; set; }
-
-        public DateTime tidFra { get; set; }
-
-        public DateTime tidTil { get; set; }
-        public string AndreOpplisning { get; set; }
+        public string oppdragsAddress { get; set; }
     }
 
     public class Telefontolk : Oppdrag
     {
-
-        public DateTime oppdragsDato { get; set; }
-
-        public DateTime tidFra { get; set; }
-
-        public DateTime tidTil { get; set; }
-        public string AndreOpplisning { get; set; }
+        public int oppdragsTlf { get; set; }
     }
 
     public class Oversettelse : Oppdrag
