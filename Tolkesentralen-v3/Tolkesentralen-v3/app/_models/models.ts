@@ -59,11 +59,9 @@ export class OppdragForRegistrert {
 
 export class Tolk {
     id: number;
-
     spraak: string;
     email: string;
     tlf: string;
-
     fornavn: string;
     etternavn: string;
     adresse: string;

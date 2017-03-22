@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Tolkesentralen_v3.Models;
 
 namespace Tolkesentralen_v3.ViewModels
 {
@@ -43,6 +44,18 @@ namespace Tolkesentralen_v3.ViewModels
         public DateTime tidFra { get; set; }
 
         public DateTime tidTil { get; set; }
+
+    }
+
+
+    public class Oversettelse_vm : Oppdrag_VM
+    {
+
+        public string frist { get; set; }
+        public List<Fil> fil { get; set; }
+
+
+
 
     }
 

@@ -82,15 +82,22 @@ namespace Tolkesentralen_v3.Models
         //    return false;
         //}
 
-        public bool regOppdragO(Oversettelse oppdrag, int kundeID)
+        public bool regOppdragO(Oversettelse_vm oppdragOV, int kundeID)
         {
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeID);
 
-            if (oppdrag != null)
+            if (oppdragOV != null)
             {
+                var oppdragOverset = new Oversettelse()
+                {
+                  
+
+                    fil = oppdragOV.fil,
+
+                };
                 if (Bestiller != null)
                 {
-                    Bestiller.oppdrag.Add(oppdrag);
+                    Bestiller.oppdrag.Add(oppdragOverset);
 
                 }
                 else
@@ -98,7 +105,7 @@ namespace Tolkesentralen_v3.Models
                     return false;
                 }
 
-                db.Oppdrag.Add(oppdrag);
+                db.Oppdrag.Add(oppdragOverset);
                 db.SaveChanges();
 
                 return true;
