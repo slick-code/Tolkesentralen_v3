@@ -15,8 +15,6 @@ namespace Tolkesentralen_v3.ViewModels
         public string dato { get; set; }
         //public string sted { get; set; } // <-- Adresse - Postnr - Poststed
         public string tid { get; set; }
-        public string type { get; set; }
-
         public string fraspraak { get; set; }
         public string tilspraak { get; set; }
         public string andreopplysninger { get; set; }

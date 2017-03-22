@@ -18,18 +18,17 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Fremmaate_vm input)
         {
-            var breakpoint = "break";
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.OK
-            };
-
+            //var breakpoint = "break";
+            //return new HttpResponseMessage()
+            //{
+            //    StatusCode = HttpStatusCode.OK
+            //};
+            List<Fremmaate_vm> lis = repository.listOppdrag_fremmate();
 
             if (ModelState.IsValid)
             {
-                //bool OK = repository.regOppdragF(input, id);
-                bool OK;
-               // if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
+                bool OK = repository.regOppdrag_Fremmaate(input,1);
+               
 
                 if (OK)
                 {
@@ -50,13 +49,14 @@ namespace Tolkesentralen_v3.Controllers
 
         public HttpResponseMessage Get()
         {
+
             var liste = new List<Oppdrag_VM>();
             var output = new Oppdrag_VM
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
                 tid = "13:00",
-                type = "Fremmedmøtetolk",
+                typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };

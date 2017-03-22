@@ -15,7 +15,7 @@ namespace Tolkesentralen_v3.Models
         public DbOppdrag()
         {
              db = new DbNetcont();
-
+             
         }
 
         public bool regOppdrag_Fremmaate(Fremmaate_vm nyOppdrag, int kundeId)
@@ -31,10 +31,12 @@ namespace Tolkesentralen_v3.Models
                     spraakFra = nyOppdrag.fraspraak,
                     spraakTil = nyOppdrag.tilspraak,
                     oppdragsAddres = nyOppdrag.sted,
+                    regDato = DateTime.Now,
                     oppdragsDato = nyOppdrag.oppdragsdato,
                     tidFra = nyOppdrag.frakl,
                     tidTil = nyOppdrag.tilkl,
                     AndreOpplisning = nyOppdrag.andreopplysninger,
+                    
 
                 };
 
