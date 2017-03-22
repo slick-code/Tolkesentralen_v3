@@ -16,6 +16,8 @@ export class BestillTolkComponent implements OnInit {
     oppdrag: OppdragForRegistrert[];
     //brukerID: number;
     form: FormGroup;
+    loading: boolean;
+    success: boolean;
 
     constructor(private service: OppdragService, private fb: FormBuilder) {
         this.form = fb.group({
@@ -33,6 +35,7 @@ export class BestillTolkComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.success = true;
         //this.brukerID = parseInt(localStorage.getItem('id'));
         //console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
     }
@@ -62,6 +65,7 @@ export class BestillTolkComponent implements OnInit {
         var body: string = JSON.stringify(ny);
         this.service.postOppdrag(body).subscribe(
             retur => {
+                this.success = true;
                 this.oppdrag.push(ny);
                 console.log("Success POST oppdrag : " + ny.typetolk);
             },

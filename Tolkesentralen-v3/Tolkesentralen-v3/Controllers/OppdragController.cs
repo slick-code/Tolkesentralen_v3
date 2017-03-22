@@ -18,6 +18,7 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Tolking_vm input)
         {
+<<<<<<< HEAD
             //var breakpoint = "break";
             //return new HttpResponseMessage()
             //{
@@ -29,6 +30,12 @@ namespace Tolkesentralen_v3.Controllers
             {
                 bool OK = repository.regOppdrag_Fremmaate(input,1);
                
+=======
+            if (ModelState.IsValid)
+            {
+                bool OK = repository.regOppdrag_Fremmaate(input);
+               // if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
+>>>>>>> e81aaa2886ed4329a3434e79604bcde5eff2dad2
 
                 if (OK)
                 {
