@@ -10,42 +10,27 @@ namespace Tolkesentralen_v3.ViewModels
     {
 
         public int kundeID { get; set; }
-        public string typetolk { get; set; }
-
-        public int id { get; set; }
+        public int oppdragID { get; set; }
         public string dato { get; set; }
-        //public string sted { get; set; } // <-- Adresse - Postnr - Poststed
-        public string tid { get; set; }
-        public string type { get; set; }
-
         public string fraspraak { get; set; }
         public string tilspraak { get; set; }
         public string andreopplysninger { get; set; }
     }
 
-    public class Fremmaate_vm : Oppdrag_VM
+    public class Tolking_vm : Oppdrag_VM
     {
 
 
+        public string typetolk { get; set; }
         public string sted { get; set; }
-        public DateTime oppdragsdato { get; set; }
+        public string oppdragsdato { get; set; }
 
-        public DateTime frakl { get; set; }
+        public string frakl { get; set; }
 
-        public DateTime tilkl { get; set; }
-
-    }
-
-    public class Telefontolk_vm : Oppdrag_VM
-    {
-
-        public DateTime oppdragsDato { get; set; }
-
-        public DateTime tidFra { get; set; }
-
-        public DateTime tidTil { get; set; }
+        public string tilkl { get; set; }
 
     }
+
 
 
     public class Oversettelse_vm : Oppdrag_VM

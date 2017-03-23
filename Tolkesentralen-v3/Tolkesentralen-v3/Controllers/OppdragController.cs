@@ -16,13 +16,13 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Fremmaate_vm input)
+        public HttpResponseMessage Post([FromBody]Tolking_vm input)
         {
+
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdrag_Fremmaate(input);
-               // if (input.sted.Equals("Jessheim")) OK = true; else OK = false;
-
+                bool OK = repository.regTolkOppdrag(input,input.kundeID);
+               
                 if (OK)
                 {
                     return new HttpResponseMessage()
@@ -42,13 +42,14 @@ namespace Tolkesentralen_v3.Controllers
 
         public HttpResponseMessage Get()
         {
+
             var liste = new List<Oppdrag_VM>();
             var output = new Oppdrag_VM
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
-                tid = "13:00",
-                type = "Fremmedmøtetolk",
+                //tid = "13:00",
+                //typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };

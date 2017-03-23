@@ -16,19 +16,24 @@ namespace Tolkesentralen_v3.Models
         public DbOppdrag()
         {
              db = new DbNetcont();
-
+             
         }
 
+<<<<<<< HEAD
       
 
         public bool regOppdrag_Fremmaate(Fremmaate_vm input)
+=======
+        public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
+>>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
         {
 
-            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == input.id);
-            if (input != null)
+            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+            if (Bestiller != null)
             {
-                var oppdragDb = new Fremmaate()
+                var oppdragDb = new Tolking()
                 {
+<<<<<<< HEAD
                     oppdragType = input.typetolk,
                     spraakFra = input.fraspraak,
                     spraakTil = input.tilspraak,
@@ -37,7 +42,19 @@ namespace Tolkesentralen_v3.Models
                     tidFra = input.frakl,
                     tidTil = input.tilkl,
                     andreOpplisning = input.andreopplysninger,
+=======
+>>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
 
+                    oppdragType = nyOppdrag.typetolk,
+                    spraakFra = nyOppdrag.fraspraak,
+                    spraakTil = nyOppdrag.tilspraak,
+                    oppdragsAddres = nyOppdrag.sted,
+                    regDato = DateTime.Now,
+                    oppdragsDato = nyOppdrag.oppdragsdato,
+                    tidFra = nyOppdrag.frakl,
+                    tidTil = nyOppdrag.tilkl,
+                    andreOpplisning = nyOppdrag.andreopplysninger,
+                    
                 };
 
                 if (Bestiller != null)
@@ -137,23 +154,33 @@ namespace Tolkesentralen_v3.Models
 
             return null;
         }
+<<<<<<< HEAD
         //liste alle Framåter til kunder
         public List<Fremmaate_vm> listOppdrag_fremmate()
+=======
+
+        public List<Tolking_vm> listOppdrag_fremmate()
+>>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
         {
             // return db.Oppdrag.ToList();
-            List<Fremmaate> alleFramaate = db.Oppdrag.OfType<Fremmaate>().ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().ToList();
             try
             {
 
-                List<Fremmaate_vm> vm_listeframmate = new List<Fremmaate_vm>();
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
                 foreach (var rowf in alleFramaate)
                 {
+<<<<<<< HEAD
                     
                   
                     var framaater = new Fremmaate_vm()
+=======
+
+                    var framaater = new Tolking_vm()
+>>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
                     {
                         kundeID = rowf.kunde.persId,
-                        id = rowf.oppdragsID,
+                        oppdragID = rowf.oppdragsID,
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
                         tilspraak = rowf.spraakTil,

@@ -532,11 +532,11 @@ namespace Tolkesentralen_v3.Models
         /// <return>
         /// It returns the values in foem of a list 
         /// </returns>
-        public List<Fremmaate> ListeAllefremmaate()
+        public List<Tolking> ListeAllefremmaate()
         {
             var db = new DbNetcont();
 
-            List<Fremmaate> allefremmaate = db.Oppdrag.OfType<Fremmaate>().ToList();
+            List<Tolking> allefremmaate = db.Oppdrag.OfType<Tolking>().ToList();
 
             return allefremmaate;
            // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
