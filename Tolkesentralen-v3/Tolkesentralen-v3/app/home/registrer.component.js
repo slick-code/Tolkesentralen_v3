@@ -33,9 +33,13 @@ var RegistrerComponent = (function () {
     }
     RegistrerComponent.prototype.ngOnInit = function () {
         this.showForm = true;
-        this.Success = false;
         this.getKunder();
-        this.errorMessage = "Ooops! Bestilling ble ikke sendt";
+        this.errorMessage = "Ooops! Bestilling ble ikke sendt.";
+    };
+    RegistrerComponent.prototype.showLoadingScreen = function () {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     };
     RegistrerComponent.prototype.getKunder = function () {
         var _this = this;
@@ -50,11 +54,12 @@ var RegistrerComponent = (function () {
     RegistrerComponent.prototype.postKunde = function () {
         var _this = this;
         this.loading = true;
+        this.showForm = false;
         var ny = new models_1.Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
         ny.etternavn = this.form.value.etternavn;
-        ny.tlf = this.form.value.telefon;
+        ny.telefon = this.form.value.telefon;
         ny.telefax = this.form.value.telefax;
         ny.epost = this.form.value.epost;
         ny.passord = this.form.value.passord;
@@ -69,7 +74,7 @@ var RegistrerComponent = (function () {
             _this.loading = false;
             _this.kunder.push(ny);
             console.log("Success POST : " + ny.firma);
-        }, function (error) { console.log("Beklager, en feil har oppstått - " + error), _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
+        }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
     RegistrerComponent = __decorate([
         core_1.Component({

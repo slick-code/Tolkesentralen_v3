@@ -24,7 +24,7 @@ var kunde_service_1 = require('./_services/kunde.service');
 var http_1 = require('@angular/http');
 var login_comonent_1 = require('./login/login.comonent');
 var not_found_component_1 = require('./shared/not-found.component');
-var loading_component_1 = require('./shared/loading.component');
+var shared_module_1 = require('./shared/shared.module');
 var AppModule = (function () {
     function AppModule(router) {
         // HUSK: Fjern denne!!
@@ -32,8 +32,8 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
-            declarations: [app_component_1.AppComponent, login_comonent_1.LoginComponent, not_found_component_1.PageNotFoundComponent, loading_component_1.LoadingComponent],
+            imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, shared_module_1.SharedModule],
+            declarations: [app_component_1.AppComponent, login_comonent_1.LoginComponent, not_found_component_1.PageNotFoundComponent],
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 auth_guard_1.AuthGuard,

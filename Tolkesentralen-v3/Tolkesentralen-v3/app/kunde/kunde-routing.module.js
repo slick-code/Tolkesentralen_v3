@@ -12,12 +12,16 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var kunde_component_1 = require('./kunde.component');
 var bestill_tolk_component_1 = require('./bestill-tolk.component');
+var bestill_oversettelse_component_1 = require('./bestill-oversettelse.component');
+var list_bestillinger_component_1 = require('./list-bestillinger.component');
 var appRoutes = [
     {
         path: '',
         component: kunde_component_1.KundeComponent,
         children: [
-            { path: 'bestill-tolk', component: bestill_tolk_component_1.BestillTolkComponent }
+            { path: 'bestill-tolk', component: bestill_tolk_component_1.BestillTolkComponent },
+            { path: 'bestill-oversettelse', component: bestill_oversettelse_component_1.BestillOversettelseComponent },
+            { path: 'list-bestillinger', component: list_bestillinger_component_1.ListBestillingerComponent }
         ]
     }
 ];

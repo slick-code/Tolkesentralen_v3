@@ -28,14 +28,22 @@ var BestillTolkComponent = (function () {
             andreopplysninger: []
         });
     }
+    BestillTolkComponent.prototype.tilbake = function () {
+        this.showForm = true;
+    };
     BestillTolkComponent.prototype.ngOnInit = function () {
-        this.success = true;
-        //this.brukerID = parseInt(localStorage.getItem('id'));
-        //console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+        this.showForm = true;
+    };
+    BestillTolkComponent.prototype.showLoadingScreen = function () {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     };
     BestillTolkComponent.prototype.postOppdrag = function () {
         var _this = this;
-        var ny = new models_1.OppdragForRegistrert();
+        this.loading = true;
+        this.showForm = false;
+        var ny = new models_1.Oppdrag();
         //ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
         //ny.fraspraak = this.form.value.fraspraak;
@@ -56,11 +64,12 @@ var BestillTolkComponent = (function () {
         ny.sted = "Jamaca";
         ny.andreopplysninger = "Jamaca MAN";
         var body = JSON.stringify(ny);
-        this.service.postOppdrag(body).subscribe(function (retur) {
-            _this.success = true;
+        this.service.postOppdragFraKunde(body).subscribe(function (retur) {
+            _this.Success = true;
+            _this.loading = false;
             _this.oppdrag.push(ny);
             console.log("Success POST oppdrag : " + ny.typetolk);
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+        }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
     BestillTolkComponent = __decorate([
         core_1.Component({

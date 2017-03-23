@@ -1,6 +1,6 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
-import { OppdragForRegistrert } from '../_models/models';
+import { Oppdrag } from '../_models/models';
 import { OppdragService } from '../_services/oppdrag.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -13,11 +13,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class BestillTolkComponent implements OnInit {
     errorMessage: string;
-    oppdrag: OppdragForRegistrert[];
+    oppdrag: Oppdrag[];
     //brukerID: number;
     form: FormGroup;
+    Success: boolean;
     loading: boolean;
-    success: boolean;
+    showForm: boolean;
 
     constructor(private service: OppdragService, private fb: FormBuilder) {
         this.form = fb.group({
@@ -34,14 +35,25 @@ export class BestillTolkComponent implements OnInit {
 
     }
 
+    tilbake() {
+        this.showForm = true;
+    }
+
     ngOnInit() {
-        this.success = true;
-        //this.brukerID = parseInt(localStorage.getItem('id'));
-        //console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+        this.showForm = true;
+    }
+
+    showLoadingScreen() {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     }
 
     postOppdrag() {
-        var ny = new OppdragForRegistrert();
+        this.loading = true;
+        this.showForm = false;
+
+        var ny = new Oppdrag();
         //ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
         //ny.fraspraak = this.form.value.fraspraak;
@@ -63,13 +75,14 @@ export class BestillTolkComponent implements OnInit {
         ny.andreopplysninger = "Jamaca MAN";
 
         var body: string = JSON.stringify(ny);
-        this.service.postOppdrag(body).subscribe(
+        this.service.postOppdragFraKunde(body).subscribe(
             retur => {
-                this.success = true;
+                this.Success = true;
+                this.loading = false;
                 this.oppdrag.push(ny);
                 console.log("Success POST oppdrag : " + ny.typetolk);
             },
-            error => console.log("Beklager, en feil har oppstått - " + error),
+            error => { console.log("Beklager, en feil har oppstått - " + error); this.loading = false; },
             () => console.log("ferdig post-api/bestilling")
         );
 

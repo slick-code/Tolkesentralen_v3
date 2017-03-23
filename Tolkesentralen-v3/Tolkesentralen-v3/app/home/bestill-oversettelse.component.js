@@ -9,29 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
+var forms_1 = require('@angular/forms');
 var BestillOversettelseComponent = (function () {
-    function BestillOversettelseComponent(service) {
+    function BestillOversettelseComponent(service, fb) {
         this.service = service;
-    }
-    BestillOversettelseComponent.prototype.ngOnInit = function () { this.getOversettelser(); };
-    BestillOversettelseComponent.prototype.getOversettelser = function () {
-        var _this = this;
-        this.service.getOversettelser()
-            .subscribe(function (db_liste) {
-            _this.liste = db_liste;
+        this.fb = fb;
+        this.form = fb.group({
+            typedokument: [],
+            fraspraak: [],
+            tilspraak: [],
+            ferdiggjoresdato: [],
+            firma: [],
+            fornavn: [],
+            etternavn: [],
+            telefon: [],
+            telefax: [],
+            epost: [],
+            fakturaadresse: [],
+            postnr: [],
+            poststed: [],
+            andreopplysninger: [],
         });
-    };
-    BestillOversettelseComponent.prototype.post = function (navn) {
-        var _this = this;
-        var ny = new models_1.Oversettelse();
-        ny.fornavn = navn;
-        var body = JSON.stringify(ny);
-        this.service.postOversettelse(body).subscribe(function (retur) {
-            _this.liste.push(ny);
-            console.log("Success POST : " + ny.fornavn);
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+    }
+    BestillOversettelseComponent.prototype.ngOnInit = function () {
+        //this.getOversettelser();
     };
     BestillOversettelseComponent = __decorate([
         core_1.Component({
@@ -39,7 +41,7 @@ var BestillOversettelseComponent = (function () {
             providers: [oppdrag_service_1.OppdragService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
     ], BestillOversettelseComponent);
     return BestillOversettelseComponent;
 }());

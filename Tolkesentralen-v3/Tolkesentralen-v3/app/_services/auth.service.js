@@ -22,7 +22,7 @@ var AuthenticationService = (function () {
         console.log("BOOODY " + JSON.parse(body));
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         console.log("ServiceLogin");
-        return this.http.post('/api/kunde/login', body, { headers: headers })
+        return this.http.post('/api/login', body, { headers: headers })
             .map(function (response) { return response.json(); });
         //console.log("servieceLoginn respoinde");
         //// login successful if there's a jwt token in the response

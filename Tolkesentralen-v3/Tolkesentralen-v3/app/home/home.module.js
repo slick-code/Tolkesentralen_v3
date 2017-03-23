@@ -16,6 +16,7 @@ var home_component_1 = require('./home.component');
 var registrer_component_1 = require('./registrer.component');
 var bestill_oversettelse_component_1 = require('./bestill-oversettelse.component');
 var bestill_tolk_component_1 = require('./bestill-tolk.component');
+var shared_module_1 = require('../shared/shared.module');
 var forms_1 = require('@angular/forms');
 var HomeModule = (function () {
     function HomeModule() {
@@ -24,7 +25,7 @@ var HomeModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                home_routing_module_1.HomeRoutingModule, forms_1.FormsModule, forms_1.ReactiveFormsModule
+                home_routing_module_1.HomeRoutingModule, shared_module_1.SharedModule, forms_1.FormsModule, forms_1.ReactiveFormsModule
             ],
             declarations: [
                 home_component_1.HomeComponent,
@@ -32,7 +33,7 @@ var HomeModule = (function () {
                 bestill_oversettelse_component_1.BestillOversettelseComponent,
                 bestill_tolk_component_1.BestillTolkComponent,
                 index_component_1.IndexComponent
-            ],
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], HomeModule);

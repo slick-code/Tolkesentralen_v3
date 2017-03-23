@@ -91,13 +91,21 @@
     </form>
     
 </div>
+  
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
     
-<div *ngIf="!Success">
-    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
-    <button (click)="postKunde()" class="btn btn-success">Gå tilbake</button>
+
+</div>
+  
+<div *ngIf="!Success && !showForm && !loading">
+    <p class="error">{{errorMessage}}</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
 </div>
 
-<div *ngIf="Success">
+<div *ngIf="Success && !showForm  && !loading">
     <h3 style="color:forestgreen">Takk for din registrering! </h3>
     <p>Du vil bli tilsendt en bekreftelse så fort søknaden er behandlet.</p>
 

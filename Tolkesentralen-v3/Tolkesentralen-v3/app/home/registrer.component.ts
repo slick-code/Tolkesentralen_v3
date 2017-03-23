@@ -14,12 +14,11 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class RegistrerComponent implements OnInit {
     errorMessage: string;
     kunder: Kunde[];
-    loading: boolean;
+    
     resultText: string;
-    Success: boolean;
-    //mode = 'Promise';
 
-    //constructor(private kundeService: KundeService) { }
+    Success: boolean;
+    loading: boolean;
     showForm: boolean;
     form: FormGroup;
 
@@ -43,9 +42,14 @@ export class RegistrerComponent implements OnInit {
 
     ngOnInit() {
         this.showForm = true;
-        this.Success = false;
         this.getKunder();
-        this.errorMessage = "Ooops! Bestilling ble ikke sendt"
+        this.errorMessage = "Ooops! Bestilling ble ikke sendt."
+    }
+
+    showLoadingScreen() {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     }
 
 
@@ -62,11 +66,13 @@ export class RegistrerComponent implements OnInit {
 
     postKunde() {
         this.loading = true;
+        this.showForm = false;
+
         var ny = new Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
         ny.etternavn = this.form.value.etternavn;
-        ny.tlf = this.form.value.telefon;
+        ny.telefon = this.form.value.telefon;
         ny.telefax = this.form.value.telefax;
         ny.epost = this.form.value.epost;
         ny.passord = this.form.value.passord;
@@ -84,9 +90,10 @@ export class RegistrerComponent implements OnInit {
                 this.kunder.push(ny);
                 console.log("Success POST : "+ ny.firma);
             },
-            error => { console.log("Beklager, en feil har oppstått - " + error), this.loading = false; },
+            error => { console.log("Beklager, en feil har oppstått - " + error); this.loading = false; },
             () => console.log("ferdig post-api/bestilling")
         );
+        
         
     }
     

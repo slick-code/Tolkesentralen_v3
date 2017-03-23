@@ -1,14 +1,14 @@
-export class NavbarElement {
-    nr: number;
-    element: string;
+export class Login {
+    id: number;
+    rolle: string;
+    email: string;
 }
 
 export class Person {
     id: number;
 
-    spraak: string;
     email: string;
-    tlf: string;
+    telefon: string;
 
     fornavn: string;
     etternavn: string;
@@ -19,32 +19,55 @@ export class Person {
     godkjent: number;
 }
 
-export class Oppdrag {
-    id: number;
-    dato: string;
-
-    sted: string;
-    tid: string;
-
-    type: string;
-    fraspraak: string;
-    tilspraak: string;
-    email: string;
-    tlf: string;
-
-    fornavn: string;
-    etternavn: string;
-    adresse: string;
-    postnr: string;
-    poststed: string;
-
-    melding: string;
+export class Kunde extends Person {
     firma: string;
-
-    kunde: Kunde;
+    kontaktperson: string;
+    telefax: number;
+    epost: string;
+    passord: string;
+    fakturaadresse: string;
 }
 
-export class OppdragForRegistrert {
+export class Tolk extends Person {
+    spraak: string;
+    valgt: boolean;
+}
+
+export class Oversettelse {
+    kundeID: number;
+    dato: any;
+    typedokument: string;
+    fraspraak: string;
+    tilspraak: string;
+    ferdiggjoresdato: string;
+    andreopplysninger: string;
+}
+
+export class OversettelseOgKunde extends Kunde {
+    kundeID: number;
+    dato: any;
+    typedokument: string;
+    fraspraak: string;
+    tilspraak: string;
+    ferdiggjoresdato: string;
+    andreopplysninger: string;
+}
+
+export class Oppdrag {
+    kundeID: number;
+    oppdragID: number;
+    dato: any;
+    typetolk: string;
+    fraspraak: string;
+    tilspraak: string;
+    frakl: string;
+    tilkl: string;
+    oppdragsdato: string;
+    sted: string;
+    andreopplysninger: string;
+}
+
+export class OppdragOgKunde {
     kundeID: number;
     dato: any;
     typetolk: string;
@@ -57,55 +80,72 @@ export class OppdragForRegistrert {
     andreopplysninger: string;
 }
 
-export class Tolk {
-    id: number;
-
-    spraak: string;
-    email: string;
-    tlf: string;
-
-    fornavn: string;
-    etternavn: string;
-    adresse: string;
-    postnr: string;
-    poststed: string;
-
-    valgt: boolean;
+export class NavbarElement {
+    nr: number;
+    element: string;
 }
 
-export class Login {
-    id: number;
-    rolle: string;
-    email: string;
-}
+//export class Oversettelse {
+//    id: number;
 
-export class Oversettelse {
-    id: number;
+//    spraak: string;
+//    email: string;
+//    tlf: string;
 
-    spraak: string;
-    email: string;
-    tlf: string;
+//    fornavn: string;
+//    etternavn: string;
+//    adresse: string;
+//    postnr: string;
+//    poststed: string;
 
-    fornavn: string;
-    etternavn: string;
-    adresse: string;
-    postnr: string;
-    poststed: string;
+//    valgt: boolean;
+//}
+//export class Oversettelse {
+//    id: number;
+//    dato: string;
 
-    valgt: boolean;
-}
+//    typedokument: string;
+//    fraspraak: string;
+//    tilspraak: string;
+//    ferdiggjoresdato: string;
+//    firma: string;
+//    fornavn: string;
+//    etternavn: string;
+//    epost: string;
+//    telefon: number;
+//    telefax: number;
+//    fakturaadresse: string;
+//    postnr: string;
+//    poststed: string;
+//    andreopplysninger: string;
 
-export class Kunde extends Person {
-    firma: string;
-    kontaktperson: string;
-    telefax: number;
-    epost: string;
-    passord: string;
-    fakturaadresse: string;
-}
+//    valgt: boolean;
+//}
 
-export class Hero {
-    constructor(
-        public id: number,
-        public name: string) { }
-}
+//export class Oppdrag {
+//    id: number;
+//    dato: string;
+
+//    typetolk: string;
+//    fraspraak: string;
+//    tilspraak: string;
+//    oppdragsdato: string;
+//    frakl: string;
+//    tilkl: string;
+//    oppmotested: string;
+//    firma: string;
+//    fornavn: string;
+//    etternavn: string;
+//    telefon: string;
+//    telefax: string;
+//    epost: string;
+//    fakturaadresse: string;
+//    postnr: string;
+//    poststed: string;
+//    andreopplysninger: string;
+
+
+//    kunde: Kunde;
+//}
+
+

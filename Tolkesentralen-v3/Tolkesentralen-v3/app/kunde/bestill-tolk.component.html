@@ -1,4 +1,4 @@
-﻿<div *ngIf="Success">
+﻿<div *ngIf="showForm">
     <h3>BESTILL TOLK</h3>
 
     <form [formGroup]='form'>
@@ -67,9 +67,22 @@
         <button (click)="postOppdrag()" type="submit" class="btn btn-success" [disabled]="!form.valid">Send bestilling</button>
     </form>
 </div>
-<h1>Send bestilling</h1>
-<h3>Kunder:</h3>
-<ul>
-    <li *ngFor="let kunde of kunder">{{kunde.typetolk}}</li>
-</ul>
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
+
+
+</div>
+
+<div *ngIf="!Success && !showForm && !loading">
+    <p class="error" >Ooops, bestillingen ble ikke sendt!</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>
+
+<div *ngIf="Success && !showForm  && !loading">
+    <h3 style="color:forestgreen">Bestillingen er sendt! </h3>
+    <p>Vi vil behandle din søknad så fort som mulig</p>
+
+</div>

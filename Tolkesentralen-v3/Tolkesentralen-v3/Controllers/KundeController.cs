@@ -13,8 +13,16 @@ namespace Tolkesentralen_v3.Controllers
 {
     public class KundeController : ApiController
     {
-        DbPerson repository = new DbPerson();
+        // Post   -> Når en kunde registerer seg skal kunden registreres som ikke godkjent
+        // Put    -> Admin skal oppdatere kunden-med-ID til Godkjent 
+        // Delete -> Admin skal kunne slette kunden-med-ID
+        // Get    -> Admin skal kunne hente alle kunder som IKKE er godkjent
+        // Get    -> Admin skal kunne hente alle kunder som ER godkjent
+        // Get    -> Det skal kunne hentes ut all informasjon til spesifisert kunde-med-ID
+        // Get    -> Hent alle kunder som IKKE er behandlet/godkjent
+        // Get    -> Hent alle kunder som ER behandlet/godkjent
 
+        DbPerson repository = new DbPerson();
 
         public HttpResponseMessage Put([FromBody]string email)
         {
@@ -90,25 +98,7 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        [Route("api/kunde/login")]
-        [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Login([FromBody]Post_Login_VM input)
-        {
-            if (1 == 1)//(ModelState.IsValid)
-            {
-                Get_Login_VM output = repository.AutoriserOgReturnerBruker(input.brukernavn, input.passord);
-                if (output != null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.Created, output);
-                }
-            }
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.BadRequest,
-                // Midlertidlig løsning. Her må vi sende tilbake et resultat på hva som gikk galt
-                Content = new StringContent("Autorisering returnerte null")
-            };
-        }
+        
 
     }
   }

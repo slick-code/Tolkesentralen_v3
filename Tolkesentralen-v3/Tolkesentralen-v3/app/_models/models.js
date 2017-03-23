@@ -4,48 +4,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var NavbarElement = (function () {
-    function NavbarElement() {
-    }
-    return NavbarElement;
-}());
-exports.NavbarElement = NavbarElement;
-var Person = (function () {
-    function Person() {
-    }
-    return Person;
-}());
-exports.Person = Person;
-var Oppdrag = (function () {
-    function Oppdrag() {
-    }
-    return Oppdrag;
-}());
-exports.Oppdrag = Oppdrag;
-var OppdragForRegistrert = (function () {
-    function OppdragForRegistrert() {
-    }
-    return OppdragForRegistrert;
-}());
-exports.OppdragForRegistrert = OppdragForRegistrert;
-var Tolk = (function () {
-    function Tolk() {
-    }
-    return Tolk;
-}());
-exports.Tolk = Tolk;
 var Login = (function () {
     function Login() {
     }
     return Login;
 }());
 exports.Login = Login;
-var Oversettelse = (function () {
-    function Oversettelse() {
+var Person = (function () {
+    function Person() {
     }
-    return Oversettelse;
+    return Person;
 }());
-exports.Oversettelse = Oversettelse;
+exports.Person = Person;
 var Kunde = (function (_super) {
     __extends(Kunde, _super);
     function Kunde() {
@@ -54,12 +24,97 @@ var Kunde = (function (_super) {
     return Kunde;
 }(Person));
 exports.Kunde = Kunde;
-var Hero = (function () {
-    function Hero(id, name) {
-        this.id = id;
-        this.name = name;
+var Tolk = (function (_super) {
+    __extends(Tolk, _super);
+    function Tolk() {
+        _super.apply(this, arguments);
     }
-    return Hero;
+    return Tolk;
+}(Person));
+exports.Tolk = Tolk;
+var Oversettelse = (function () {
+    function Oversettelse() {
+    }
+    return Oversettelse;
 }());
-exports.Hero = Hero;
+exports.Oversettelse = Oversettelse;
+var OversettelseOgKunde = (function (_super) {
+    __extends(OversettelseOgKunde, _super);
+    function OversettelseOgKunde() {
+        _super.apply(this, arguments);
+    }
+    return OversettelseOgKunde;
+}(Kunde));
+exports.OversettelseOgKunde = OversettelseOgKunde;
+var Oppdrag = (function () {
+    function Oppdrag() {
+    }
+    return Oppdrag;
+}());
+exports.Oppdrag = Oppdrag;
+var OppdragOgKunde = (function () {
+    function OppdragOgKunde() {
+    }
+    return OppdragOgKunde;
+}());
+exports.OppdragOgKunde = OppdragOgKunde;
+var NavbarElement = (function () {
+    function NavbarElement() {
+    }
+    return NavbarElement;
+}());
+exports.NavbarElement = NavbarElement;
+//export class Oversettelse {
+//    id: number;
+//    spraak: string;
+//    email: string;
+//    tlf: string;
+//    fornavn: string;
+//    etternavn: string;
+//    adresse: string;
+//    postnr: string;
+//    poststed: string;
+//    valgt: boolean;
+//}
+//export class Oversettelse {
+//    id: number;
+//    dato: string;
+//    typedokument: string;
+//    fraspraak: string;
+//    tilspraak: string;
+//    ferdiggjoresdato: string;
+//    firma: string;
+//    fornavn: string;
+//    etternavn: string;
+//    epost: string;
+//    telefon: number;
+//    telefax: number;
+//    fakturaadresse: string;
+//    postnr: string;
+//    poststed: string;
+//    andreopplysninger: string;
+//    valgt: boolean;
+//}
+//export class Oppdrag {
+//    id: number;
+//    dato: string;
+//    typetolk: string;
+//    fraspraak: string;
+//    tilspraak: string;
+//    oppdragsdato: string;
+//    frakl: string;
+//    tilkl: string;
+//    oppmotested: string;
+//    firma: string;
+//    fornavn: string;
+//    etternavn: string;
+//    telefon: string;
+//    telefax: string;
+//    epost: string;
+//    fakturaadresse: string;
+//    postnr: string;
+//    poststed: string;
+//    andreopplysninger: string;
+//    kunde: Kunde;
+//}
 //# sourceMappingURL=models.js.map

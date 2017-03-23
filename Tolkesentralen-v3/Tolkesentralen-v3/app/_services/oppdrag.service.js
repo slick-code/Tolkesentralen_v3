@@ -16,7 +16,7 @@ var OppdragService = (function () {
     function OppdragService(http, authenticationService) {
         this.http = http;
         this.authenticationService = authenticationService;
-        this.url = 'api/oppdrag'; // URL to web API
+        this.url = 'api/oppdrag/'; // URL to web API
     }
     OppdragService.prototype.postOversettelse = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
@@ -28,16 +28,24 @@ var OppdragService = (function () {
     //    return this.http.post(this.url+"/"+id, body, { headers: headers })
     //        .map(returData => returData.toString())
     //}
-    OppdragService.prototype.postOppdrag = function (body) {
+    OppdragService.prototype.postOppdragFraKunde = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
-        return this.http.post(this.url, body, { headers: headers })
+        return this.http.post(this.url + "/PostOppdragFraKunde", body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
     OppdragService.prototype.getOversettelser = function () {
         return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
+    OppdragService.prototype.getOversettelserTilKunde = function (id) {
+        return this.http.get(this.url + id)
+            .map(function (response) { return response.json(); });
+    };
     OppdragService.prototype.getOppdrag = function () {
+        return this.http.get(this.url)
+            .map(function (response) { return response.json(); });
+    };
+    OppdragService.prototype.getOppdragTilKunde = function (id) {
         return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
