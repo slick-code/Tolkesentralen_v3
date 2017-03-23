@@ -10,22 +10,15 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbOppdrag
     {
-       
-         private DbNetcont db; 
+        private DbNetcont db;
 
         public DbOppdrag()
         {
-             db = new DbNetcont();
-             
+            db = new DbNetcont();
+
         }
 
-<<<<<<< HEAD
-      
-
-        public bool regOppdrag_Fremmaate(Fremmaate_vm input)
-=======
         public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
->>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
         {
 
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
@@ -33,17 +26,6 @@ namespace Tolkesentralen_v3.Models
             {
                 var oppdragDb = new Tolking()
                 {
-<<<<<<< HEAD
-                    oppdragType = input.typetolk,
-                    spraakFra = input.fraspraak,
-                    spraakTil = input.tilspraak,
-                    oppdragsAddress = input.sted,
-                    regDato = input.oppdragsdato,
-                    tidFra = input.frakl,
-                    tidTil = input.tilkl,
-                    andreOpplisning = input.andreopplysninger,
-=======
->>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
 
                     oppdragType = nyOppdrag.typetolk,
                     spraakFra = nyOppdrag.fraspraak,
@@ -54,7 +36,7 @@ namespace Tolkesentralen_v3.Models
                     tidFra = nyOppdrag.frakl,
                     tidTil = nyOppdrag.tilkl,
                     andreOpplisning = nyOppdrag.andreopplysninger,
-                    
+
                 };
 
                 if (Bestiller != null)
@@ -74,24 +56,42 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
-        
+        //public bool regOppdragF(Oppdrag_VM input, int kundeId)
+        //{
+        //    var kunde = new Fremmaate()
+        //    {
 
-        public bool regOppdragO(Oversettelse_vm oppdragOV, int kundeID)
+        //    };
+        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+        //    if (oppdrag != null)
+        //    {
+
+        //        if (Bestiller != null)
+        //        {
+        //            Bestiller.oppdrag.Add(oppdrag);
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //        db.Oppdrag.Add(input);
+        //        db.SaveChanges();
+
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
+
+        public bool regOppdragO(Oversettelse oppdrag, int kundeID)
         {
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeID);
 
-            if (oppdragOV != null)
+            if (oppdrag != null)
             {
-                var oppdragOverset = new Oversettelse()
-                {
-                  
-
-                    fil = oppdragOV.fil,
-
-                };
                 if (Bestiller != null)
                 {
-                    Bestiller.oppdrag.Add(oppdragOverset);
+                    Bestiller.oppdrag.Add(oppdrag);
 
                 }
                 else
@@ -99,7 +99,7 @@ namespace Tolkesentralen_v3.Models
                     return false;
                 }
 
-                db.Oppdrag.Add(oppdragOverset);
+                db.Oppdrag.Add(oppdrag);
                 db.SaveChanges();
 
                 return true;
@@ -154,13 +154,8 @@ namespace Tolkesentralen_v3.Models
 
             return null;
         }
-<<<<<<< HEAD
-        //liste alle Framåter til kunder
-        public List<Fremmaate_vm> listOppdrag_fremmate()
-=======
 
         public List<Tolking_vm> listOppdrag_fremmate()
->>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
         {
             // return db.Oppdrag.ToList();
             List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().ToList();
@@ -170,22 +165,16 @@ namespace Tolkesentralen_v3.Models
                 List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
                 foreach (var rowf in alleFramaate)
                 {
-<<<<<<< HEAD
-                    
-                  
-                    var framaater = new Fremmaate_vm()
-=======
 
                     var framaater = new Tolking_vm()
->>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3
                     {
                         kundeID = rowf.kunde.persId,
                         oppdragID = rowf.oppdragsID,
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
                         tilspraak = rowf.spraakTil,
-                        sted = rowf.oppdragsAddress,
-                        oppdragsdato = rowf.regDato,
+                        sted = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
 
@@ -207,58 +196,58 @@ namespace Tolkesentralen_v3.Models
         }
 
 
+       // Lister Tolkinger som tilhører en kunde
+        public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
+        {
+          
+            List<Tolking> alleTolkingAvKunde = db.Oppdrag.OfType<Tolking>().ToList();
+            // var lb = alleFramaate.OfType<Oppdrag>().FirstOrDefault(Opd => Opd.kunde.persId == kundeId);
+            try
+            {
 
-        //Lister fremåte som tilhører en kunde 
-        //public List<Fremmaate_vm> listOppdragMedKundeId(int kundeId)
-        //{
-        //    // return db.Oppdrag.ToList();
-        //    List<Oppdrag> alleFramaate = db.Oppdrag.ToList();
-        //   // var lb = alleFramaate.OfType<Oppdrag>().FirstOrDefault(Opd => Opd.kunde.persId == kundeId);
-        //    try
-        //    {
+                List<Tolking_vm> utListe = new List<Tolking_vm>();
 
-        //        List<Oppdrag_VM> utListe = new List<Oppdrag_VM>();
+                foreach (var rowf in alleTolkingAvKunde)
+                {
 
-        //        foreach (var rowf in alleFramaate)
-        //        {
+                    if (rowf.kunde.persId == kundeId)
+                    {
 
-        //            if(rowf.kunde.persId == kundeId)
-        //            {
-
-
-        //                var framaater = new Fremmaate_vm()
-        //                {
-        //                    kundeID = rowf.kunde.persId,
-        //                    id = rowf.oppdragsID,
-        //                    typetolk = rowf.oppdragType,
-        //                    fraspraak = rowf.spraakFra,
-        //                    tilspraak = rowf.spraakTil,
-        //                    sted = rowf.
-        //                    oppdragsdato = rowf.oppdragsDato,
-        //                    frakl = rowf.tidFra,
-        //                    tilkl = rowf.tidTil,
-
-        //                    andreopplysninger = rowf.AndreOpplisning,
+                        var Tolking_vm = new Tolking_vm()
+                        {
+                            kundeID = rowf.kunde.persId,
+                           oppdragID = rowf.oppdragsID,
+                            typetolk = rowf.oppdragType,
+                            fraspraak = rowf.spraakFra,
+                            tilspraak = rowf.spraakTil,
+                            sted = rowf.oppdragsAddres,
+                            oppdragsdato = rowf.oppdragsDato,
+                            frakl = rowf.tidFra,
+                            tilkl = rowf.tidTil,
+                            andreopplysninger = rowf.andreOpplisning,
 
 
-        //                };
-        //                utListe.Add(framaater);
+                        };
+
+                        utListe.Add(Tolking_vm);
 
 
-        //            }
+                    }
 
-                    
-        //        }
 
-        //        return utListe;
-        //    }
-        //    catch (Exception feil)
-        //    {
-        //        Debug.WriteLine("Exception Message: " + feil.Message);
-        //        return null;
-        //    }
+                }
 
-        //}
+                return utListe;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
+
+
 
 
     }
