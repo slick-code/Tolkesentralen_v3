@@ -40,25 +40,12 @@ namespace Tolkesentralen_v3.Controllers
         }
 
 
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get(int kundeID)
         {
-
-            var liste = new List<Oppdrag_VM>();
-            var output = new Oppdrag_VM
-            {
-                dato = "12-12-2017",
-                //sted = "Jessheim",
-                //tid = "13:00",
-                //typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
-            };
-            liste.Add(output);
-
-            //List<FKunde> liste = repository.listOppdrag();
+            List<Tolking_vm> utListe = repository.listTolkOppdragMedKundeId(kundeID);
 
             var Json = new JavaScriptSerializer();
-            string JsonString = Json.Serialize(liste);
+            string JsonString = Json.Serialize(utListe);
 
             return new HttpResponseMessage()
             {
@@ -66,28 +53,5 @@ namespace Tolkesentralen_v3.Controllers
                 StatusCode = HttpStatusCode.OK
             };
         }
-
-        //[System.Web.Mvc.HttpPost]
-        //public HttpResponseMessage Post([FromBody]Kunde_vm ny)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        bool OK = repository.settInnKunde(ny);
-
-        //        if (OK)
-        //        {
-        //            return new HttpResponseMessage()
-        //            {
-        //                StatusCode = HttpStatusCode.OK
-        //            };
-
-        //        }
-        //    }
-        //    return new HttpResponseMessage()
-        //    {
-        //        StatusCode = HttpStatusCode.BadRequest,
-        //        Content = new StringContent("Søknaden ble ikke lagret!")
-        //    };
-        //}
     }
 }

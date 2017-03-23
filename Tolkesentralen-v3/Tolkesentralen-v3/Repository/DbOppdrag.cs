@@ -197,7 +197,7 @@ namespace Tolkesentralen_v3.Models
 
 
        // Lister Tolkinger som tilhører en kunde
-        public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
+        public List<Tolking_vm> listTolkOppdragMedKundeId(int kundeId)
         {
           
             List<Tolking> alleTolkingAvKunde = db.Oppdrag.OfType<Tolking>().ToList();
@@ -233,7 +233,6 @@ namespace Tolkesentralen_v3.Models
 
 
                     }
-
 
                 }
 
