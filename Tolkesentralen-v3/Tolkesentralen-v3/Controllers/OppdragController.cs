@@ -21,7 +21,7 @@ namespace Tolkesentralen_v3.Controllers
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdrag_Fremmaate(input,input.kundeID);
+                bool OK = repository.regTolkOppdrag(input,input.kundeID);
                
                 if (OK)
                 {

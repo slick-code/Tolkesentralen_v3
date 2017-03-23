@@ -30,9 +30,9 @@ namespace Tolkesentralen_v3.Models
 
         public string oppdragType { get; set; }
         public string oppdragsAddres { get; set; }
-        public DateTime oppdragsDato { get; set; }
-        public DateTime tidFra { get; set; }
-        public DateTime tidTil { get; set; }
+        public string oppdragsDato { get; set; }
+        public string tidFra { get; set; }
+        public string tidTil { get; set; }
     }
 
    // [Table("Oversettelse")]

@@ -132,3 +132,4 @@ C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkes
 C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.WebHost.xml
 C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.dll
 C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.pdb
+C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.csprojResolveAssemblyReference.cache

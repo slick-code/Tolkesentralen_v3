@@ -18,7 +18,7 @@ namespace Tolkesentralen_v3.Models
              
         }
 
-        public bool regOppdrag_Fremmaate(Tolking_vm nyOppdrag, int kundeId)
+        public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
         {
 
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
@@ -169,7 +169,7 @@ namespace Tolkesentralen_v3.Models
                     var framaater = new Tolking_vm()
                     {
                         kundeID = rowf.kunde.persId,
-                        id = rowf.oppdragsID,
+                        oppdragID = rowf.oppdragsID,
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
                         tilspraak = rowf.spraakTil,

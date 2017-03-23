@@ -9,7 +9,7 @@ namespace Tolkesentralen_v3.ViewModels
     {
 
         public int kundeID { get; set; }
-        public int id { get; set; }
+        public int oppdragID { get; set; }
         public string dato { get; set; }
         public string fraspraak { get; set; }
         public string tilspraak { get; set; }
@@ -22,11 +22,11 @@ namespace Tolkesentralen_v3.ViewModels
 
         public string typetolk { get; set; }
         public string sted { get; set; }
-        public DateTime oppdragsdato { get; set; }
+        public string oppdragsdato { get; set; }
 
-        public DateTime frakl { get; set; }
+        public string frakl { get; set; }
 
-        public DateTime tilkl { get; set; }
+        public string tilkl { get; set; }
 
     }
 
