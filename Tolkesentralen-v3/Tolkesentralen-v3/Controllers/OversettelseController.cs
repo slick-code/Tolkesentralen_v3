@@ -21,24 +21,24 @@ namespace Tolkesentralen_v3.Controllers
 
 
 
-        public class KundeController : ApiController
-        {
-            DbOppdrag repository = new DbOppdrag();
+        //public class KundeController : ApiController
+        //{
+        //    DbOppdrag repository = new DbOppdrag();
 
-            public HttpResponseMessage Get()
-            {
-                //List<kunde> alleKunder = kundeDb.hentAlleKunder();
+        //    public HttpResponseMessage Get()
+        //    {
+        //        //List<kunde> alleKunder = kundeDb.hentAlleKunder();
 
-                var Json = new JavaScriptSerializer();
-                //string JsonString = Json.Serialize(alleKunder);
-                string JsonString = "";
+        //        var Json = new JavaScriptSerializer();
+        //        //string JsonString = Json.Serialize(alleKunder);
+        //        string JsonString = "";
 
-                return new HttpResponseMessage()
-                {
-                    Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
-                    StatusCode = HttpStatusCode.OK
-                };
-            }
+        //        return new HttpResponseMessage()
+        //        {
+        //            Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+        //            StatusCode = HttpStatusCode.OK
+        //        };
+        //    }
 
             //// GET api/Kunde/5
             //public HttpResponseMessage Get(int id)
@@ -119,5 +119,5 @@ namespace Tolkesentralen_v3.Controllers
             //    };
             //}
         }
-    }
+    
 }

@@ -46,7 +46,7 @@ var OppdragService = (function () {
             .map(function (response) { return response.json(); });
     };
     OppdragService.prototype.getOppdragTilKunde = function (id) {
-        return this.http.get(this.url)
+        return this.http.get(this.url + id)
             .map(function (response) { return response.json(); });
     };
     OppdragService = __decorate([

@@ -33,7 +33,7 @@ var RegistrerComponent = (function () {
     }
     RegistrerComponent.prototype.ngOnInit = function () {
         this.showForm = true;
-        this.getKunder();
+        //this.getKunder();
         this.errorMessage = "Ooops! Bestilling ble ikke sendt.";
     };
     RegistrerComponent.prototype.showLoadingScreen = function () {

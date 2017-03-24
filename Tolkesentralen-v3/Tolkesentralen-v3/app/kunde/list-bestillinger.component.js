@@ -23,7 +23,7 @@ var ListBestillingerComponent = (function () {
     ListBestillingerComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.service.getOppdragTilKunde(this.ID).subscribe(function (retur) {
-            _this.oppdragTolk = retur;
+            _this.oppdrag = retur;
             console.log("Success POST oppdrag : ");
         }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };

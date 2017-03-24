@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class ListBestillingerComponent implements OnInit {
     ID: number;
-    oppdragTolk: Oppdrag[];
+    oppdrag: Oppdrag[];
     // oppdragOversettelse : []
 
     constructor(private service: OppdragService){}
@@ -26,11 +26,13 @@ export class ListBestillingerComponent implements OnInit {
     getOppdragTolk() {
         this.service.getOppdragTilKunde(this.ID).subscribe(
             retur => {
-                this.oppdragTolk = retur;
-                console.log("Success POST oppdrag : ");
+                console.log("RETUR  "+retur)
+                this.oppdrag = retur;
+                console.log("RETUR  " + this.oppdrag)
+                console.log("Success GET oppdrag : ");
             },
             error => console.log("Beklager, en feil har oppstått - " + error),
-            () => console.log("ferdig post-api/bestilling")
+            () => console.log("ferdig Get-api/bestilling")
         );
     }
 

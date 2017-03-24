@@ -11,7 +11,7 @@ import { Kunde } from '../_models/models';
 
 @Injectable()
 export class KundeService {
-    private url = 'api/kunde';  // URL to web API
+    private url = 'api/kunde/';  // URL to web API
 
     constructor(private http: Http) { }
     

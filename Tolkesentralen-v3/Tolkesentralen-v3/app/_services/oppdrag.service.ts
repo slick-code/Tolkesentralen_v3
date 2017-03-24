@@ -52,7 +52,7 @@ export class OppdragService {
     }
 
     getOppdragTilKunde(id: number): Observable<Oppdrag[]> {
-        return this.http.get(this.url)
+        return this.http.get(this.url+id)
             .map((response: Response) => response.json());
     }
 

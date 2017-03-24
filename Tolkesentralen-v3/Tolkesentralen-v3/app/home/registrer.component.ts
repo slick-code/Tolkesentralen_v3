@@ -42,7 +42,7 @@ export class RegistrerComponent implements OnInit {
 
     ngOnInit() {
         this.showForm = true;
-        this.getKunder();
+        //this.getKunder();
         this.errorMessage = "Ooops! Bestilling ble ikke sendt."
     }
 
@@ -67,6 +67,7 @@ export class RegistrerComponent implements OnInit {
     postKunde() {
         this.loading = true;
         this.showForm = false;
+        
 
         var ny = new Kunde();
         ny.firma = this.form.value.firma;
@@ -83,6 +84,7 @@ export class RegistrerComponent implements OnInit {
         ny.passord = this.form.value.passord;
 
         var body: string = JSON.stringify(ny);
+        
         this.kundeService.postKunde(body).subscribe(
             retur => {
                 this.Success = true;
