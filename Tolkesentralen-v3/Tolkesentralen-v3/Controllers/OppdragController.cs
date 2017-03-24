@@ -23,6 +23,7 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
+<<<<<<< HEAD
         [Route("api/oppdrag/PostOppdragFraKunde")]
         public HttpResponseMessage PostOppdragFraKunde([FromBody]Fremmaate_vm input)
         {
@@ -50,11 +51,20 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/PostOppdragFraAnonym")]
         public HttpResponseMessage PostOppdragFraAnonym([FromBody]Fremmaate_vm input)
+=======
+        public HttpResponseMessage Post([FromBody]Tolking_vm input)
+>>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
         {
+
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 bool OK = repository.regOppdrag_Fremmaate(input);
 
+=======
+                bool OK = repository.regTolkOppdrag(input,input.kundeID);
+               
+>>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
                 if (OK)
                 {
                     return new HttpResponseMessage()
@@ -127,13 +137,14 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
+
             var liste = new List<Oppdrag_VM>();
             var output = new Oppdrag_VM
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
-                tid = "13:00",
-                type = "Fremmedmøtetolk",
+                //tid = "13:00",
+                //typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };
