@@ -18,7 +18,7 @@ require("rxjs/add/operator/map");
 var KundeService = (function () {
     function KundeService(http) {
         this.http = http;
-        this.url = 'api/kunde'; // URL to web API
+        this.url = 'api/kunde/'; // URL to web API
     }
     KundeService.prototype.postKunde = function (body) {
         var headers = new http_2.Headers({ "Content-Type": "application/json" });

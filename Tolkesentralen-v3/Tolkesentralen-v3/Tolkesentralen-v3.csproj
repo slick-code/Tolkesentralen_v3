@@ -129,8 +129,10 @@
     <Content Include="app\home\bestill-tolk.component.html" />
     <Content Include="app\home\home.component.html" />
     <Content Include="app\home\registrer.component.html" />
+    <Content Include="app\kunde\bestill-oversettelse.component.html" />
     <Content Include="app\kunde\bestill-tolk.component.html" />
     <Content Include="app\kunde\kunde.component.html" />
+    <Content Include="app\kunde\list-bestillinger.component.html" />
     <Content Include="app\login\login.component.html" />
     <Content Include="app\tolk\tolk.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -161,7 +163,11 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\KundeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OppdragController.cs" />
+    <Compile Include="Controllers\OversettelseController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\TolkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,13 +223,16 @@
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\index.component.ts" />
     <TypeScriptCompile Include="app\home\registrer.component.ts" />
+    <TypeScriptCompile Include="app\kunde\bestill-oversettelse.component.ts" />
     <TypeScriptCompile Include="app\kunde\bestill-tolk.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde-routing.module.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.module.ts" />
+    <TypeScriptCompile Include="app\kunde\list-bestillinger.component.ts" />
     <TypeScriptCompile Include="app\login\login.comonent.ts" />
     <TypeScriptCompile Include="app\shared\loading.component.ts" />
     <TypeScriptCompile Include="app\shared\not-found.component.ts" />
+    <TypeScriptCompile Include="app\shared\shared.module.ts" />
     <TypeScriptCompile Include="app\tolk\tolk-routing.module.ts" />
     <TypeScriptCompile Include="app\tolk\tolk.component.ts" />
     <TypeScriptCompile Include="app\tolk\tolk.module.ts" />

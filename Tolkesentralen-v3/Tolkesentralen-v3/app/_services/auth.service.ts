@@ -18,7 +18,7 @@ export class AuthenticationService {
         console.log("BOOODY "+JSON.parse(body));
         var headers = new Headers({ "Content-Type": "application/json" });
         console.log("ServiceLogin");
-        return this.http.post('/api/kunde/login', body, { headers: headers })
+        return this.http.post('/api/login', body, { headers: headers })
             //.map((response: Response) => response.json());
             .map((response: Response) => response.json());
 

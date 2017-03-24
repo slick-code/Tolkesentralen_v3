@@ -13,16 +13,24 @@ namespace Tolkesentralen_v3.Controllers
 {
     public class OppdragController : ApiController
     {
+        // Lagre et oppdrag fra Kunde
+        // Lagre et oppdrag fra Anonym
+        // Hent alle oppdrag som er behandlet
+        // Hent alle oppdrag som ikke er behandlet
+        // Hent alle oppdrag til kunde ID
+        // Slett et oppdrag med gitt ID
+
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Tolking_vm input)
+<<<<<<< HEAD
+        [Route("api/oppdrag/PostOppdragFraKunde")]
+        public HttpResponseMessage PostOppdragFraKunde([FromBody]Fremmaate_vm input)
         {
-
             if (ModelState.IsValid)
             {
-                bool OK = repository.regTolkOppdrag(input,input.kundeID);
-               
+                bool OK = repository.regOppdrag_Fremmaate(input);
+
                 if (OK)
                 {
                     return new HttpResponseMessage()
@@ -39,8 +47,95 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        // Person må være med i ViewModellen, siden oppdraget er fra en anonym (Ikke registert)
+        [System.Web.Mvc.HttpPost]
+        [Route("api/oppdrag/PostOppdragFraAnonym")]
+        public HttpResponseMessage PostOppdragFraAnonym([FromBody]Fremmaate_vm input)
+=======
+        public HttpResponseMessage Post([FromBody]Tolking_vm input)
+>>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
+        {
 
-        public HttpResponseMessage Get()
+            if (ModelState.IsValid)
+            {
+<<<<<<< HEAD
+                bool OK = repository.regOppdrag_Fremmaate(input);
+
+=======
+                bool OK = repository.regTolkOppdrag(input,input.kundeID);
+               
+>>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+        // Admin skal hente alle forespørsler (Ubehandlede oppdrag som skal deles ut til tolk)
+        [Route("api/oppdrag/GetUbehandlet")]
+        public HttpResponseMessage GetUbehandlet()
+        {
+            var liste = new List<Oppdrag_VM>();
+            var output = new Oppdrag_VM
+            {
+                dato = "12-12-2017",
+                //sted = "Jessheim",
+                tid = "13:00",
+                type = "Fremmedmøtetolk",
+                fraspraak = "Spansk",
+                tilspraak = "Norsk"
+            };
+            liste.Add(output);
+
+            //List<FKunde> liste = repository.listOppdrag();
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        // Hent alle behandlede OG ubehandlede oppdrag gitt Kunde
+        public HttpResponseMessage Get(int id)
+        {
+            var liste = new List<Oppdrag_VM>();
+            var output = new Oppdrag_VM
+            {
+                typetolk = "Fremmedmøtetolk",
+                fraspraak = "Spansk",
+                tilspraak = "Norsk"
+            };
+            liste.Add(output);
+
+            //List<FKunde> liste = repository.listOppdrag();
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        // Denne er litt tricky siden vi må liste ut alle tolker som har mottat forespørsel
+        [Route("api/oppdrag/GetBehandlet")]
+        public HttpResponseMessage GetBehandlet()
         {
 
             var liste = new List<Oppdrag_VM>();

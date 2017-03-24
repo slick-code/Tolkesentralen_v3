@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 import { AuthenticationService } from '../_services/auth.service';
-import { Oppdrag, Oversettelse } from '../_models/models';
+import { Oppdrag, Oversettelse, OppdragOgKunde } from '../_models/models';
 
 @Injectable()
 export class OppdragService {
-    private url = 'api/oppdrag';  // URL to web API
+    private url = 'api/oppdrag/';  // URL to web API
 
     constructor(
         private http: Http,
@@ -28,10 +28,10 @@ export class OppdragService {
     //    return this.http.post(this.url+"/"+id, body, { headers: headers })
     //        .map(returData => returData.toString())
     //}
-    postOppdrag(body: any) {
+    postOppdragFraKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 
-        return this.http.post(this.url, body, { headers: headers })
+        return this.http.post(this.url +"/PostOppdragFraKunde", body, { headers: headers })
             .map(returData => returData.toString())
     }
 
@@ -41,8 +41,18 @@ export class OppdragService {
             .map((response: Response) => response.json());
     }
 
+    getOversettelserTilKunde(id: number): Observable<Oversettelse[]> {
+        return this.http.get(this.url+id)
+            .map((response: Response) => response.json());
+    }
+
     getOppdrag(): Observable<Oppdrag[]> {
         return this.http.get(this.url)
+            .map((response: Response) => response.json());
+    }
+
+    getOppdragTilKunde(id: number): Observable<Oppdrag[]> {
+        return this.http.get(this.url+id)
             .map((response: Response) => response.json());
     }
 
