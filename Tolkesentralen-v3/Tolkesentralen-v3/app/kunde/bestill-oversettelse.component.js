@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
+var oppdrag_service_1 = require("../_services/oppdrag.service");
+var forms_1 = require("@angular/forms");
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -57,16 +58,16 @@ var BestillOversettelseComponent = (function () {
         //    () => console.log("ferdig post-api/bestilling")
         //);
     };
-    BestillOversettelseComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/kunde/bestill-oversettelse.component.html',
-            providers: [oppdrag_service_1.OppdragService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
-    ], BestillOversettelseComponent);
     return BestillOversettelseComponent;
 }());
+BestillOversettelseComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/kunde/bestill-oversettelse.component.html',
+        providers: [oppdrag_service_1.OppdragService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+], BestillOversettelseComponent);
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
 //# sourceMappingURL=bestill-oversettelse.component.js.map

@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../_services/oppdrag.service");
 var ListBestillingerComponent = (function () {
     // oppdragOversettelse : []
     function ListBestillingerComponent(service) {
@@ -23,22 +24,24 @@ var ListBestillingerComponent = (function () {
     ListBestillingerComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.service.getOppdragTilKunde(this.ID).subscribe(function (retur) {
+            console.log("RETUR  " + retur);
             _this.oppdrag = retur;
-            console.log("Success POST oppdrag : ");
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+            console.log("RETUR  " + _this.oppdrag);
+            console.log("Success GET oppdrag : ");
+        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig Get-api/bestilling"); });
     };
     ListBestillingerComponent.prototype.getOppdragOversettelse = function () {
     };
-    ListBestillingerComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/kunde/list-bestillinger.component.html',
-            providers: [oppdrag_service_1.OppdragService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService])
-    ], ListBestillingerComponent);
     return ListBestillingerComponent;
 }());
+ListBestillingerComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/kunde/list-bestillinger.component.html',
+        providers: [oppdrag_service_1.OppdragService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService])
+], ListBestillingerComponent);
 exports.ListBestillingerComponent = ListBestillingerComponent;
 //# sourceMappingURL=list-bestillinger.component.js.map

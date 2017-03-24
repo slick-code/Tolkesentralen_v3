@@ -46,17 +46,10 @@ var OppdragService = (function () {
         return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
-<<<<<<< HEAD
     OppdragService.prototype.getOppdragTilKunde = function (id) {
         return this.http.get(this.url + id)
             .map(function (response) { return response.json(); });
     };
-    OppdragService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
-    ], OppdragService);
-=======
->>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
     return OppdragService;
 }());
 OppdragService = __decorate([

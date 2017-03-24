@@ -1,13 +1,4 @@
 "use strict";
-<<<<<<< HEAD
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Login = (function () {
-    function Login() {
-=======
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -19,9 +10,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var NavbarElement = (function () {
-    function NavbarElement() {
->>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
+var Login = (function () {
+    function Login() {
     }
     return Login;
 }());
@@ -35,7 +25,7 @@ exports.Person = Person;
 var Kunde = (function (_super) {
     __extends(Kunde, _super);
     function Kunde() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return Kunde;
 }(Person));
@@ -43,7 +33,7 @@ exports.Kunde = Kunde;
 var Tolk = (function (_super) {
     __extends(Tolk, _super);
     function Tolk() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return Tolk;
 }(Person));
@@ -54,17 +44,10 @@ var Oversettelse = (function () {
     return Oversettelse;
 }());
 exports.Oversettelse = Oversettelse;
-<<<<<<< HEAD
 var OversettelseOgKunde = (function (_super) {
     __extends(OversettelseOgKunde, _super);
     function OversettelseOgKunde() {
-        _super.apply(this, arguments);
-=======
-var Kunde = (function (_super) {
-    __extends(Kunde, _super);
-    function Kunde() {
         return _super !== null && _super.apply(this, arguments) || this;
->>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
     }
     return OversettelseOgKunde;
 }(Kunde));
@@ -81,6 +64,18 @@ var OppdragOgKunde = (function () {
     return OppdragOgKunde;
 }());
 exports.OppdragOgKunde = OppdragOgKunde;
+//export class Tolk {
+//    id: number;
+//    spraak: string;
+//    email: string;
+//    tlf: string;
+//    fornavn: string;
+//    etternavn: string;
+//    adresse: string;
+//    postnr: string;
+//    poststed: string;
+//    valgt: boolean;
+//}
 var NavbarElement = (function () {
     function NavbarElement() {
     }

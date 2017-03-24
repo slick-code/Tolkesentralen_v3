@@ -67,7 +67,7 @@ export class Oppdrag {
     andreopplysninger: string;
 }
 
-<<<<<<< HEAD
+
 export class OppdragOgKunde {
     kundeID: number;
     dato: any;
@@ -79,21 +79,22 @@ export class OppdragOgKunde {
     oppdragsdato: string;
     sted: string;
     andreopplysninger: string;
-=======
-export class Tolk {
-    id: number;
-    spraak: string;
-    email: string;
-    tlf: string;
-    fornavn: string;
-    etternavn: string;
-    adresse: string;
-    postnr: string;
-    poststed: string;
-
-    valgt: boolean;
->>>>>>> 59154ed1df73281bfd747f8bd238cd8d0a801e44
 }
+
+//export class Tolk {
+//    id: number;
+//    spraak: string;
+//    email: string;
+//    tlf: string;
+//    fornavn: string;
+//    etternavn: string;
+//    adresse: string;
+//    postnr: string;
+//    poststed: string;
+
+//    valgt: boolean;
+
+//}
 
 export class NavbarElement {
     nr: number;
