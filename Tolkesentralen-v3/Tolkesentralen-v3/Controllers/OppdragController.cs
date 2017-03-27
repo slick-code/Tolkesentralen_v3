@@ -24,11 +24,11 @@ namespace Tolkesentralen_v3.Controllers
 
         [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/PostOppdragFraKunde")]
-        public HttpResponseMessage PostOppdragFraKunde([FromBody]Fremmaate_vm input)
+        public HttpResponseMessage PostOppdragFraKunde([FromBody]Tolking_vm input)
         {
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdrag_Fremmaate(input);
+                bool OK = repository.regTolkOppdrag(input, input.kundeID);
 
                 if (OK)
                 {
@@ -47,41 +47,49 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         // Person må være med i ViewModellen, siden oppdraget er fra en anonym (Ikke registert)
-        [System.Web.Mvc.HttpPost]
-        [Route("api/oppdrag/PostOppdragFraAnonym")]
-        public HttpResponseMessage PostOppdragFraAnonym([FromBody]Fremmaate_vm input)
-        {
-            if (ModelState.IsValid)
-            {
-                bool OK = repository.regOppdrag_Fremmaate(input);
+        //[System.Web.Mvc.HttpPost]
+        //[Route("api/oppdrag/PostOppdragFraAnonym")]
+        //public HttpResponseMessage PostOppdragFraAnonym([FromBody]Fremmaate_vm input)
 
-                if (OK)
-                {
-                    return new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
+        //public HttpResponseMessage Post([FromBody]Tolking_vm input)
 
-                }
-            }
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.BadRequest,
-                Content = new StringContent("Søknaden ble ikke lagret!")
-            };
-        }
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        bool OK = repository.regOppdrag_Fremmaate(input);
+
+
+        //        bool OK = repository.regTolkOppdrag(input,input.kundeID);
+
+
+        //        {
+        //            return new HttpResponseMessage()
+        //            {
+        //                StatusCode = HttpStatusCode.OK
+        //            };
+
+        //        }
+        //    }
+        //    return new HttpResponseMessage()
+        //    {
+        //        StatusCode = HttpStatusCode.BadRequest,
+        //        Content = new StringContent("Søknaden ble ikke lagret!")
+        //    };
+        //}
 
         // Admin skal hente alle forespørsler (Ubehandlede oppdrag som skal deles ut til tolk)
         [Route("api/oppdrag/GetUbehandlet")]
         public HttpResponseMessage GetUbehandlet()
         {
-            var liste = new List<Oppdrag_VM>();
-            var output = new Oppdrag_VM
+            var liste = new List<Tolking_vm>();
+            var output = new Tolking_vm
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
-                tid = "13:00",
-                type = "Fremmedmøtetolk",
+                frakl = "13:00",
+                typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };
@@ -102,8 +110,8 @@ namespace Tolkesentralen_v3.Controllers
         // Hent alle behandlede OG ubehandlede oppdrag gitt Kunde
         public HttpResponseMessage Get(int id)
         {
-            var liste = new List<Oppdrag_VM>();
-            var output = new Oppdrag_VM
+            var liste = new List<Tolking_vm>();
+            var output = new Tolking_vm
             {
                 typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
@@ -127,13 +135,14 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
+
             var liste = new List<Oppdrag_VM>();
             var output = new Oppdrag_VM
             {
                 dato = "12-12-2017",
                 //sted = "Jessheim",
-                tid = "13:00",
-                type = "Fremmedmøtetolk",
+                //tid = "13:00",
+                //typetolk = "Fremmedmøtetolk",
                 fraspraak = "Spansk",
                 tilspraak = "Norsk"
             };

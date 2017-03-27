@@ -8,6 +8,9 @@ import { KundeRoutingModule } from './kunde-routing.module';
 import { BestillOversettelseComponent } from './bestill-oversettelse.component';
 import { ListBestillingerComponent } from './list-bestillinger.component'
 
+import { KundeHistorikkComponent } from './kunde-historikk.component'
+import { ProfilComponent} from './profil.component'
+
 import { SharedModule } from '../shared/shared.module'
     
 
@@ -23,7 +26,9 @@ import { SharedModule } from '../shared/shared.module'
         KundeComponent,
         BestillTolkComponent,
         BestillOversettelseComponent,
-        ListBestillingerComponent
+        ListBestillingerComponent,
+        KundeHistorikkComponent,
+        ProfilComponent
     ],
     //bootstrap: [ AppComponent ]
 })

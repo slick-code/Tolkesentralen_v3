@@ -1,4 +1,4 @@
-﻿<h3>Mine bestilte tolke-oppdrag</h3>
+﻿<h3>Bestilte tolke-oppdrag</h3>
 
 <table class="table table-bordered table-condensed">
     <thead>
@@ -7,7 +7,7 @@
             <th>Fra språk</th>
             <th>Til språk</th>
             <th>Dato</th>
-            <th>Klokka</th>
+            <th>Tid</th>
             <th>Sted</th>
         </tr>
     </thead>
@@ -18,8 +18,30 @@
             <td>{{oppdrag.tilspraak}}</td>
             <td>{{oppdrag.oppdragsdato}}</td>
             <td>{{oppdrag.frakl}} - {{oppdrag.frakl}}</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
-<h3>Mine bestilte Oversettelser</h3>
+<hr />
+
+<h3>Bestilte oversettelser</h3>
+
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Fil</th>
+            <th>Fra språk</th>
+            <th>Til språk</th>
+            <th>Dato</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let oppdrag of oversettelser; let i = index">
+        <tr>
+            <td>{{oppdrag.typetolk}}</td>
+            <td>{{oppdrag.fraspraak}}</td>
+            <td>{{oppdrag.tilspraak}}</td>
+            <td>{{oppdrag.oppdragsdato}}</td>
+        </tr>
+    </tbody>
+</table>

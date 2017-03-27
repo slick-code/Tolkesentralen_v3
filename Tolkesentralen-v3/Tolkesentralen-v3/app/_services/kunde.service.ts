@@ -34,9 +34,9 @@ export class KundeService {
             .map((response: Response) => response.json());
     }
 
-    godkjennKunde(email: string) {
+    godkjennKunde(id: number) {
         var headers = new Headers({ "Content-Type": "application/json" });
-        return this.http.put(this.url, email, { headers: headers })
+        return this.http.put(this.url + id, { headers: headers })
             .map((response: Response) => response.json());
     }
 

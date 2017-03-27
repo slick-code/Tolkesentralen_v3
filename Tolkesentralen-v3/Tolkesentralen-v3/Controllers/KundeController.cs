@@ -24,11 +24,11 @@ namespace Tolkesentralen_v3.Controllers
 
         DbPerson repository = new DbPerson();
 
-        public HttpResponseMessage Put([FromBody]string email)
+        public HttpResponseMessage Put(int id)
         {
             if (ModelState.IsValid)
             {
-                bool OK = repository.OppdaterTilGodkjentKunde(email);
+                bool OK = repository.OppdaterTilGodkjentKunde(id);
                 if (OK)
                 {
                     return new HttpResponseMessage()

@@ -11,32 +11,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Promise Version
 var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
+var oversettelse_service_1 = require('../_services/oversettelse.service');
 var ListBestillingerComponent = (function () {
-    // oppdragOversettelse : []
-    function ListBestillingerComponent(service) {
-        this.service = service;
+    function ListBestillingerComponent(oppdragService, oversettelseService) {
+        this.oppdragService = oppdragService;
+        this.oversettelseService = oversettelseService;
     }
     ListBestillingerComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.getOppdragOversettelse();
     };
     ListBestillingerComponent.prototype.getOppdragTolk = function () {
         var _this = this;
-        this.service.getOppdragTilKunde(this.ID).subscribe(function (retur) {
+        this.oppdragService.getOppdragTilKunde(this.ID).subscribe(function (retur) {
             _this.oppdrag = retur;
-            console.log("Success POST oppdrag : ");
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+            console.log("Success -> Mine bestillinger-oppdrag  , test val:  " + _this.oppdrag);
+        }, function (error) { return console.log("Error -> Mine bestillinger feilet! ->" + error); }, function () { return console.log("ferdig: Mine bestillinger"); });
     };
     ListBestillingerComponent.prototype.getOppdragOversettelse = function () {
+        var _this = this;
+        this.oversettelseService.getOversettelserTilKunde(this.ID).subscribe(function (retur) {
+            _this.oversettelser = retur;
+            console.log("Success -> Mine bestillinger-oversettelser, test val:  " + _this.oppdrag);
+        }, function (error) { return console.log("Error -> Mine bestillinger feilet! ->" + error); }, function () { return console.log("ferdig: Mine bestillinger"); });
     };
     ListBestillingerComponent = __decorate([
         core_1.Component({
             //moduleId: module.id,
             templateUrl: './app/kunde/list-bestillinger.component.html',
-            providers: [oppdrag_service_1.OppdragService],
+            providers: [oppdrag_service_1.OppdragService, oversettelse_service_1.OversettelseService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, oversettelse_service_1.OversettelseService])
     ], ListBestillingerComponent);
     return ListBestillingerComponent;
 }());

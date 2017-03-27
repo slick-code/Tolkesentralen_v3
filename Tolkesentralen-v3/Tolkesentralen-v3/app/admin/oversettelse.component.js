@@ -21,7 +21,7 @@ var OversettelseComponent = (function () {
     OversettelseComponent.prototype.ngOnInit = function () {
         var _this = this;
         // get users from secure api end point
-        this.oppdragService.getOversettelser()
+        this.oppdragService.getUbehandleOppdrag()
             .subscribe(function (oppdrag) {
             //this.arrayOversettelse = oppdrag;
             _this.element = new models_1.NavbarElement();

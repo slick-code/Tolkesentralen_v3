@@ -28,7 +28,8 @@ var shared_module_1 = require('./shared/shared.module');
 var AppModule = (function () {
     function AppModule(router) {
         // HUSK: Fjern denne!!
-        console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+        //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
+        console.log("Hvorfor printes denne ut 2 ganger?");
     }
     AppModule = __decorate([
         core_1.NgModule({

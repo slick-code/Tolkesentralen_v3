@@ -39,7 +39,7 @@ var LoginComponent = (function () {
             localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
             _this.router.navigate(["/" + retur.rolle]);
             //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
-        }, function (error) { _this.loading = false; console.log("Beklager, en feil har oppstått - " + error); }, function () { _this.loading = false; console.log("ferdig post-api/bestilling"); });
+        }, function (error) { _this.loading = false; _this.error = "Feil brukernavn eller passord"; }, function () { _this.loading = false; });
     };
     LoginComponent = __decorate([
         core_1.Component({

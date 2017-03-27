@@ -16,6 +16,8 @@ var forms_1 = require('@angular/forms');
 var kunde_routing_module_1 = require('./kunde-routing.module');
 var bestill_oversettelse_component_1 = require('./bestill-oversettelse.component');
 var list_bestillinger_component_1 = require('./list-bestillinger.component');
+var kunde_historikk_component_1 = require('./kunde-historikk.component');
+var profil_component_1 = require('./profil.component');
 var shared_module_1 = require('../shared/shared.module');
 var AdminModule = (function () {
     function AdminModule() {
@@ -33,7 +35,9 @@ var AdminModule = (function () {
                 kunde_component_1.KundeComponent,
                 bestill_tolk_component_1.BestillTolkComponent,
                 bestill_oversettelse_component_1.BestillOversettelseComponent,
-                list_bestillinger_component_1.ListBestillingerComponent
+                list_bestillinger_component_1.ListBestillingerComponent,
+                kunde_historikk_component_1.KundeHistorikkComponent,
+                profil_component_1.ProfilComponent
             ],
         }), 
         __metadata('design:paramtypes', [])

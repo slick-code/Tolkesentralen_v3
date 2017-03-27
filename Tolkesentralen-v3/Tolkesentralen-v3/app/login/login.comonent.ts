@@ -43,8 +43,8 @@ export class LoginComponent  {
             this.router.navigate(["/"+retur.rolle]); 
             //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
         },
-        error => { this.loading = false; console.log("Beklager, en feil har oppstått - " + error) } ,
-        () => { this.loading = false; console.log("ferdig post-api/bestilling"); }
+        error => { this.loading = false; this.error = "Feil brukernavn eller passord"; } ,
+        () => { this.loading = false; }
        
     );
    

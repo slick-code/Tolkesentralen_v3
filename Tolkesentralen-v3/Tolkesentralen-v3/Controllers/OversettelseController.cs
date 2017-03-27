@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
+using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Controllers
 {
@@ -20,104 +21,76 @@ namespace Tolkesentralen_v3.Controllers
         // Slett et oversettelser med gitt ID
 
 
+        [System.Web.Mvc.HttpPost]
+        [Route("api/oversettelse/PostOppdragFraKunde")]
+        public HttpResponseMessage PostOppdragFraKunde([FromBody]Tolking_vm input)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool OK = repository.regTolkOppdrag(input, input.kundeID);
 
-        //public class KundeController : ApiController
-        //{
-        //    DbOppdrag repository = new DbOppdrag();
+                //if (OK)
+                if(true)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
 
-        //    public HttpResponseMessage Get()
-        //    {
-        //        //List<kunde> alleKunder = kundeDb.hentAlleKunder();
-
-        //        var Json = new JavaScriptSerializer();
-        //        //string JsonString = Json.Serialize(alleKunder);
-        //        string JsonString = "";
-
-        //        return new HttpResponseMessage()
-        //        {
-        //            Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
-        //            StatusCode = HttpStatusCode.OK
-        //        };
-        //    }
-
-            //// GET api/Kunde/5
-            //public HttpResponseMessage Get(int id)
-            //{
-            //    //kunde enKunde = kundeDb.hentEnKunde(id);
-
-            //    var Json = new JavaScriptSerializer();
-            //    string JsonString = Json.Serialize(enKunde);
-
-            //    return new HttpResponseMessage()
-            //    {
-            //        Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
-            //        StatusCode = HttpStatusCode.OK
-            //    };
-            //}
-
-            //// POST api/Kunde
-            //[HttpPost]
-            //public HttpResponseMessage Post([FromBody]kunde innKunde)
-            //{
-
-            //    if (ModelState.IsValid)
-            //    {
-            //        bool OK = kundeDb.lagreEnKunde(innKunde);
-            //        if (OK)
-            //        {
-            //            return new HttpResponseMessage()
-            //            {
-            //                StatusCode = HttpStatusCode.OK
-            //            };
-
-            //        }
-            //    }
-            //    return new HttpResponseMessage()
-            //    {
-            //        StatusCode = HttpStatusCode.BadRequest,
-            //        Content = new StringContent("Kunne ikke sette inn kunden i DB")
-            //    };
-            //}
-
-            //// PUT api/Kunde/5
-            //public HttpResponseMessage Put(int id, [FromBody]kunde innKunde)
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        bool OK = kundeDb.endreEnKunde(id, innKunde);
-            //        if (OK)
-            //        {
-            //            return new HttpResponseMessage()
-            //            {
-            //                StatusCode = HttpStatusCode.OK
-            //            };
-            //        }
-            //    }
-            //    return new HttpResponseMessage()
-            //    {
-            //        StatusCode = HttpStatusCode.NotFound,
-            //        Content = new StringContent("Kunne ikke endre kunden i DB")
-            //    };
-
-            //}
-
-            //// DELETE api/Kunde/5
-            //public HttpResponseMessage Delete(int id)
-            //{
-            //    bool OK = kundeDb.slettEnKunde(id);
-            //    if (!OK)
-            //    {
-            //        return new HttpResponseMessage()
-            //        {
-            //            StatusCode = HttpStatusCode.NotFound,
-            //            Content = new StringContent("Kunne ikke slette kunden i DB")
-            //        };
-            //    }
-            //    return new HttpResponseMessage()
-            //    {
-            //        StatusCode = HttpStatusCode.OK
-            //    };
-            //}
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
         }
+
+        // Hent alle behandlede OG ubehandlede oversettelser til gitt Kunde
+        public HttpResponseMessage Get(int id)
+        {
+            var liste = new[] { new { fraspraak = "spansk", tilspraak = "engelsk" } };
+
+            //List<FKunde> liste = repository.listOppdrag();
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        // Admin skal hente alle forespørsler (Ubehandlede oppdrag som skal deles ut til tolk)
+        [Route("api/oversettelse/GetUbehandlet")]
+        public HttpResponseMessage GetUbehandlet()
+        {
+            var liste = new List<Tolking_vm>();
+            var output = new Tolking_vm
+            {
+                dato = "12-12-2017",
+                //sted = "Jessheim",
+                frakl = "13:00",
+                typetolk = "Fremmedmøtetolk",
+                fraspraak = "Spansk",
+                tilspraak = "Norsk"
+            };
+            liste.Add(output);
+
+            //List<FKunde> liste = repository.listOppdrag();
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+    }
     
 }

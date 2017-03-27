@@ -5,7 +5,7 @@ export class Login {
 }
 
 export class Person {
-    id: number;
+    persId: number;
 
     email: string;
     telefon: string;

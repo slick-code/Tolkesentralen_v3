@@ -20,7 +20,6 @@ var appRoutes = [
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
         canActivate: [auth_guard_1.AuthGuard],
-        data: { preload: true }
     },
     {
         path: 'kunde',

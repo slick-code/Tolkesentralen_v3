@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var admin_component_1 = require('./admin.component');
+var auth_guard_1 = require('../_guards/auth.guard');
 var oppdrag_component_1 = require('./oppdrag.component');
 var oversettelse_component_1 = require('./oversettelse.component');
 var utdel_component_1 = require('./utdel.component');
@@ -20,6 +21,7 @@ var appRoutes = [
     {
         path: '',
         component: admin_component_1.AdminComponent,
+        canActivate: [auth_guard_1.AuthGuard],
         children: [
             {
                 path: '',

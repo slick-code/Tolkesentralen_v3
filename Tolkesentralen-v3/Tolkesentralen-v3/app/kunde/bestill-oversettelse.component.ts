@@ -1,14 +1,14 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
 import { Oversettelse } from '../_models/models';
-import { OppdragService } from '../_services/oppdrag.service';
+import { OversettelseService } from '../_services/oversettelse.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
     //moduleId: module.id,
     templateUrl: './app/kunde/bestill-oversettelse.component.html',
-    providers: [OppdragService],
+    providers: [OversettelseService],
     styles: ['.error {color:red;}']
 })
 export class BestillOversettelseComponent implements OnInit {
@@ -16,8 +16,9 @@ export class BestillOversettelseComponent implements OnInit {
     oppdrag: Oversettelse[];
     //brukerID: number;
     form: FormGroup;
+    brukerID: number;
 
-    constructor(private service: OppdragService, private fb: FormBuilder) {
+    constructor(private service: OversettelseService, private fb: FormBuilder) {
         this.form = fb.group({
 
             typedokument: [],
@@ -30,8 +31,7 @@ export class BestillOversettelseComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.brukerID = parseInt(localStorage.getItem('id'));
-        //console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+        this.brukerID = parseInt(localStorage.getItem('id'));
     }
 
     postOppdrag() {
@@ -46,7 +46,7 @@ export class BestillOversettelseComponent implements OnInit {
         //ny.sted = this.form.value.oppmptested;
         //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = 19;
+        ny.kundeID = this.brukerID;
         ny.typedokument = "Juridisk";
         ny.fraspraak = "Norsk";
         ny.tilspraak = "Pashto"
@@ -54,14 +54,14 @@ export class BestillOversettelseComponent implements OnInit {
         ny.andreopplysninger = "Jamaca MAN";
 
         var body: string = JSON.stringify(ny);
-        //this.service.postOppdrag(body).subscribe(
-        //    retur => {
-        //        this.oppdrag.push(ny);
-        //        console.log("Success POST oppdrag : " + ny.typedokument);
-        //    },
-        //    error => console.log("Beklager, en feil har oppstått - " + error),
-        //    () => console.log("ferdig post-api/bestilling")
-        //);
+        this.service.postOversettelseKunde(body).subscribe(
+            retur => {
+                this.oppdrag.push(ny);
+                console.log("Success POST oppdrag : " + ny.typedokument);
+            },
+            error => console.log("Beklager, en feil har oppstått - " + error),
+            () => console.log("ferdig post-api/bestilling")
+        );
 
     }
 

@@ -19,15 +19,19 @@ var KundeListeComponent = (function () {
         this.arrayKunder = [];
     }
     KundeListeComponent.prototype.ngOnInit = function () {
+    };
+    KundeListeComponent.prototype.getKunder = function () {
         var _this = this;
         // get users from secure api end point
         this.service.getKunder()
             .subscribe(function (kunder) {
-            _this.arrayKunder = kunder;
-            _this.element = new models_1.NavbarElement();
-            _this.element.nr = _this.arrayKunder.length;
-            _this.element.element = 'kunder';
-            _this.dataService.updateData(_this.element);
+            if (kunder != null) {
+                _this.arrayKunder = kunder;
+                _this.element = new models_1.NavbarElement();
+                _this.element.nr = _this.arrayKunder.length;
+                _this.element.element = 'kunder';
+                _this.dataService.updateData(_this.element);
+            }
         });
     };
     KundeListeComponent = __decorate([

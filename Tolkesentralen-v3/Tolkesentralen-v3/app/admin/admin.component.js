@@ -26,8 +26,12 @@ var AdminComponent = (function () {
                 case 'oversettelse':
                     _this.antallOversettelser = _this.element.nr;
                     break;
+                case 'nye-kunder':
+                    _this.antallNyeKunder = _this.element.nr;
+                    break;
                 case 'kunder':
                     _this.antallKunder = _this.element.nr;
+                    _this.antallNyeKunder--;
                     break;
             }
             _this.sum = _this.getSum();

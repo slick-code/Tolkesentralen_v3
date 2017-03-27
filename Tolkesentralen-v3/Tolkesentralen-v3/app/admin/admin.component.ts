@@ -12,6 +12,7 @@ export class AdminComponent  {
     antallOppdrag: number;
     antallOversettelser: number;
     antallKunder: number;
+    antallNyeKunder: number;
 
     element: NavbarElement;
     temp: any;
@@ -26,11 +27,17 @@ export class AdminComponent  {
         switch(this.element.element){
           case 'oppdrag': this.antallOppdrag = this.element.nr;break;
           case 'oversettelse': this.antallOversettelser = this.element.nr;break;
-          case 'kunder': this.antallKunder = this.element.nr;break;
+          case 'nye-kunder': this.antallNyeKunder = this.element.nr; break;
+          case 'kunder':
+              this.antallKunder = this.element.nr;
+              this.antallNyeKunder--;
+              break;
         }
         this.sum = this.getSum();
       })
     }
+
+
 
     getSum(){
       var sum: number = 0;

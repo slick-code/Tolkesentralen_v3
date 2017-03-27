@@ -34,7 +34,7 @@ var OppdragComponent = (function () {
         this.more = false;
         this.count = 77;
         //this.loading = true
-        this.oppdragService.getOppdrag()
+        this.oppdragService.getUbehandleOppdrag()
             .subscribe(function (oppdrag) {
             _this.arrayOppdrag = oppdrag;
             _this.element = new models_1.NavbarElement();

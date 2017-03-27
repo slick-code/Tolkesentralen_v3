@@ -18,23 +18,27 @@ export class NyeKunderComponent {
         private dataService: DataService) { }
 
     ngOnInit() {
+        this.getKunder();
+    }
 
-        // get users from secure api end point
+    getKunder() {
         this.service.getNyeKunder()
             .subscribe(kunder => {
-                this.arrayNyeKunder = kunder;
-                this.element = new NavbarElement();
-                this.element.nr = this.arrayNyeKunder.length;
-                this.element.element = 'kunder';
-                this.dataService.updateData(this.element);
+                if (kunder != null) {
+                    this.arrayNyeKunder = kunder;
+                    this.element = new NavbarElement();
+                    this.element.nr = this.arrayNyeKunder.length;
+                    this.element.element = 'nye-kunder';
+                    this.dataService.updateData(this.element);
+                }
             });
     }
 
-    godkjennKunde(email: string) {
-        var json = JSON.stringify(email)
-        this.service.godkjennKunde(json).subscribe(
+    godkjennKunde(index: any, kundeID: number) {
+        this.service.godkjennKunde(kundeID).subscribe(
             retur => {
-                console.log("Success PUT : ");
+                console.log("Success PUT : "+index);
+                this.arrayNyeKunder.splice(this.arrayNyeKunder.indexOf(index), 1);
             },
             error => console.log("Beklager PUT, en feil har oppstått - " + error),
             () => console.log("ferdig post-api/bestilling")

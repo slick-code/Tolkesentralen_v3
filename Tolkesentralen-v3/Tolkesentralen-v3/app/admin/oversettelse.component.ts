@@ -20,7 +20,7 @@ export class OversettelseComponent {
     ngOnInit() {
 
         // get users from secure api end point
-        this.oppdragService.getOversettelser()
+        this.oppdragService.getUbehandleOppdrag()
             .subscribe(oppdrag => {
                 //this.arrayOversettelse = oppdrag;
                 this.element = new NavbarElement();
