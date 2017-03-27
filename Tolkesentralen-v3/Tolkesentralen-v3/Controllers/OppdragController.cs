@@ -16,7 +16,8 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Tolking_vm input)
+        public HttpResponseMessage Post([FromBody]Tolking_vm input) //metode fot å bestille oppdrag av typen tolk
+
         {
 
             if (ModelState.IsValid)
@@ -40,7 +41,7 @@ namespace Tolkesentralen_v3.Controllers
         }
 
 
-        public HttpResponseMessage Get(int kundeID)
+        public HttpResponseMessage Get(int kundeID) //metode for å liste ut alle oppdrag_tolk som tilhører en kunde
         {
             List<Tolking_vm> utListe = repository.listTolkOppdragMedKundeId(kundeID);
 
