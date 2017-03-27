@@ -23,6 +23,7 @@ namespace Tolkesentralen_v3.Controllers
         DbOppdrag repository = new DbOppdrag();
 
         [System.Web.Mvc.HttpPost]
+
         [Route("api/oppdrag/PostOppdragFraKunde")]
         public HttpResponseMessage PostOppdragFraKunde([FromBody]Tolking_vm input)
         {
@@ -62,7 +63,11 @@ namespace Tolkesentralen_v3.Controllers
 
 
         //        bool OK = repository.regTolkOppdrag(input,input.kundeID);
+<<<<<<< HEAD
 
+=======
+               
+>>>>>>> 7b24c1909783e8ff7258e3e795d8140d715f4513
 
         //        {
         //            return new HttpResponseMessage()
