@@ -22,7 +22,7 @@
                     
                     <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:orangered;"><b> {{antallOversettelser}}</b></span></a></li>
                     
-                    <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{antallKunder}}</b></span></a></li>
+                    <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{antallNyeKunder}}</b></span></a></li>
                 </ul>
             </li>
 
@@ -32,8 +32,8 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a routerLink="/info-om-oss" routerLinkActive="active">Tolk (Ansatte)</a></li>
-                    <li><a routerLink="./kunder" routerLinkActive="active">Kunder</a></li>
+                    <li><a routerLink="/info-om-oss" routerLinkActive="active">Ansatte</a></li>
+                    <li><a routerLink="./kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{antallKunder}}</b></span></a></li>
                 </ul>
             </li>
 

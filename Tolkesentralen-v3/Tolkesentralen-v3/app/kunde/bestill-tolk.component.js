@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var forms_1 = require('@angular/forms');
 var BestillTolkComponent = (function () {
     function BestillTolkComponent(service, fb) {
         this.service = service;
@@ -55,7 +54,7 @@ var BestillTolkComponent = (function () {
         //ny.sted = this.form.value.oppmptested;
         //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = 1;
+        ny.kundeID = 19;
         ny.typetolk = "Fremmedmøte";
         ny.fraspraak = "spansk";
         ny.tilspraak = "tysk";
@@ -72,16 +71,16 @@ var BestillTolkComponent = (function () {
             console.log("Success POST oppdrag : " + ny.typetolk);
         }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+    BestillTolkComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/kunde/bestill-tolk.component.html',
+            providers: [oppdrag_service_1.OppdragService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+    ], BestillTolkComponent);
     return BestillTolkComponent;
 }());
-BestillTolkComponent = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        templateUrl: './app/kunde/bestill-tolk.component.html',
-        providers: [oppdrag_service_1.OppdragService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
-], BestillTolkComponent);
 exports.BestillTolkComponent = BestillTolkComponent;
 //# sourceMappingURL=bestill-tolk.component.js.map

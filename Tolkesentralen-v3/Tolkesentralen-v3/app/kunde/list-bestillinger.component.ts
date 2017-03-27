@@ -1,43 +1,50 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag } from '../_models/models';
+import { Oppdrag, Oversettelse } from '../_models/models';
 import { OppdragService } from '../_services/oppdrag.service';
+import { OversettelseService } from '../_services/oversettelse.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
     //moduleId: module.id,
     templateUrl: './app/kunde/list-bestillinger.component.html',
-    providers: [OppdragService],
+    providers: [OppdragService, OversettelseService],
     styles: ['.error {color:red;}']
 })
 export class ListBestillingerComponent implements OnInit {
     ID: number;
     oppdrag: Oppdrag[];
-    // oppdragOversettelse : []
+    oversettelser: Oversettelse[];
 
-    constructor(private service: OppdragService){}
+    constructor(private oppdragService: OppdragService, private oversettelseService: OversettelseService){}
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.getOppdragOversettelse();
     }
 
     getOppdragTolk() {
-        this.service.getOppdragTilKunde(this.ID).subscribe(
+        this.oppdragService.getOppdragTilKunde(this.ID).subscribe(
             retur => {
-                console.log("RETUR  "+retur)
                 this.oppdrag = retur;
-                console.log("RETUR  " + this.oppdrag)
-                console.log("Success GET oppdrag : ");
+                console.log("Success -> Mine bestillinger-oppdrag  , test val:  " + this.oppdrag);
             },
-            error => console.log("Beklager, en feil har oppstått - " + error),
-            () => console.log("ferdig Get-api/bestilling")
+            error => console.log("Error -> Mine bestillinger feilet! ->" + error),
+            () => console.log("ferdig: Mine bestillinger")
         );
     }
 
     getOppdragOversettelse() {
-
+        this.oversettelseService.getOversettelserTilKunde(this.ID).subscribe(
+            retur => {
+                this.oversettelser = retur;
+                console.log("Success -> Mine bestillinger-oversettelser, test val:  " + this.oppdrag);
+            },
+            error => console.log("Error -> Mine bestillinger feilet! ->" + error),
+            () => console.log("ferdig: Mine bestillinger")
+        );
     }
 
 }

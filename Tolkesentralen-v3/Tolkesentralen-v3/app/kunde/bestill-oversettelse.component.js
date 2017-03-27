@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var oversettelse_service_1 = require('../_services/oversettelse.service');
+var forms_1 = require('@angular/forms');
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -27,10 +26,10 @@ var BestillOversettelseComponent = (function () {
         });
     }
     BestillOversettelseComponent.prototype.ngOnInit = function () {
-        //this.brukerID = parseInt(localStorage.getItem('id'));
-        //console.log("ID ---->  " + this.brukerID); // TODO: fjern når ferdig testet
+        this.brukerID = parseInt(localStorage.getItem('id'));
     };
     BestillOversettelseComponent.prototype.postOppdrag = function () {
+        var _this = this;
         var ny = new models_1.Oversettelse();
         //ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
@@ -42,32 +41,28 @@ var BestillOversettelseComponent = (function () {
         //ny.sted = this.form.value.oppmptested;
         //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = 19;
+        ny.kundeID = this.brukerID;
         ny.typedokument = "Juridisk";
         ny.fraspraak = "Norsk";
         ny.tilspraak = "Pashto";
         ny.ferdiggjoresdato = "12-12-12";
         ny.andreopplysninger = "Jamaca MAN";
         var body = JSON.stringify(ny);
-        //this.service.postOppdrag(body).subscribe(
-        //    retur => {
-        //        this.oppdrag.push(ny);
-        //        console.log("Success POST oppdrag : " + ny.typedokument);
-        //    },
-        //    error => console.log("Beklager, en feil har oppstått - " + error),
-        //    () => console.log("ferdig post-api/bestilling")
-        //);
+        this.service.postOversettelseKunde(body).subscribe(function (retur) {
+            _this.oppdrag.push(ny);
+            console.log("Success POST oppdrag : " + ny.typedokument);
+        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+    BestillOversettelseComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/kunde/bestill-oversettelse.component.html',
+            providers: [oversettelse_service_1.OversettelseService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
+    ], BestillOversettelseComponent);
     return BestillOversettelseComponent;
 }());
-BestillOversettelseComponent = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        templateUrl: './app/kunde/bestill-oversettelse.component.html',
-        providers: [oppdrag_service_1.OppdragService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
-], BestillOversettelseComponent);
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
 //# sourceMappingURL=bestill-oversettelse.component.js.map

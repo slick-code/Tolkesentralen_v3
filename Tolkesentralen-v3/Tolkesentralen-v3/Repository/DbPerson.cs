@@ -29,14 +29,15 @@ namespace Tolkesentralen_v3.Models
                     {
                         var kunde = new Kunde_VM()
                         {
+                            persId = row.persId,
                             firma = row.firma,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
                             tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            postnr = row.poststed.postNr,
-                            poststed = row.poststed.postSted,
+                            //postnr = row.poststed.postNr,
+                            //poststed = row.poststed.postSted,
                             email = row.email
                         };
                         vm_liste.Add(kunde);
@@ -50,34 +51,15 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
-
-        // NB: Denne er under produksjon..
-        public bool OppdaterTilGodkjentKunde(string email)
+        public bool OppdaterTilGodkjentKunde(int id)
         {
             try
             {
-                var db1 = new DbNetcont();
-                var eksistererPostnr = db1.Personer.Find(email);
                 var db = new DbNetcont();
-                {
-                    Person kunde;
-                    foreach (var row in db.Personer.OfType<Kunde>())
-                    {
-                        if (row.email != null)
-                        {
-                            if (row.email.Equals(email))
-                            {
-                                kunde = row;
-                                break;
-                            }
-                        }
-                    }
-                    //kunde.godkjent = 1;
-                    db.SaveChanges();
-                    return true;
-
-                }
-               // return false;
+                var kunde = db.Personer.Find(id);
+                kunde.godkjent = 1;
+                db.SaveChanges();
+                return true;
             }
             catch (Exception feil)
             {
@@ -526,21 +508,21 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragsID == oppdragsID);
         }
-        /// <summary>
-        /// Method that lists frammaate
-        /// </summary>
-        /// <return>
-        /// It returns the values in foem of a list 
-        /// </returns>
-        public List<Tolking> ListeAllefremmaate()
-        {
-            var db = new DbNetcont();
+        ///// <summary>
+        ///// Method that lists frammaate
+        ///// </summary>
+        ///// <return>
+        ///// It returns the values in foem of a list 
+        ///// </returns>
+        //public List<Fremmaate> ListeAllefremmaate()
+        //{
+        //    var db = new DbNetcont();
 
-            List<Tolking> allefremmaate = db.Oppdrag.OfType<Tolking>().ToList();
+        //    List<Fremmaate> allefremmaate = db.Oppdrag.OfType<Fremmaate>().ToList();
 
-            return allefremmaate;
-           // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
-        }
+        //    return allefremmaate;
+        //   // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+        //}
 
 
         /********************** Sikkerhets hjelp ***********************/

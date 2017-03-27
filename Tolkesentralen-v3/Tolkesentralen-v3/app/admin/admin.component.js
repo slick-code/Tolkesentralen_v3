@@ -8,9 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var data_service_1 = require("../_services/data.service");
+var core_1 = require('@angular/core');
+var data_service_1 = require('../_services/data.service');
 var AdminComponent = (function () {
     function AdminComponent(dataService) {
         this.dataService = dataService;
@@ -27,8 +26,12 @@ var AdminComponent = (function () {
                 case 'oversettelse':
                     _this.antallOversettelser = _this.element.nr;
                     break;
+                case 'nye-kunder':
+                    _this.antallNyeKunder = _this.element.nr;
+                    break;
                 case 'kunder':
                     _this.antallKunder = _this.element.nr;
+                    _this.antallNyeKunder--;
                     break;
             }
             _this.sum = _this.getSum();
@@ -41,14 +44,14 @@ var AdminComponent = (function () {
         sum += this.antallOversettelser == null ? 0 : this.antallOversettelser;
         return sum == 0 ? "" : "" + sum;
     };
+    AdminComponent = __decorate([
+        core_1.Component({
+            selector: 'admin',
+            templateUrl: "./app/admin/admin.component.html"
+        }), 
+        __metadata('design:paramtypes', [data_service_1.DataService])
+    ], AdminComponent);
     return AdminComponent;
 }());
-AdminComponent = __decorate([
-    core_1.Component({
-        selector: 'admin',
-        templateUrl: "./app/admin/admin.component.html"
-    }),
-    __metadata("design:paramtypes", [data_service_1.DataService])
-], AdminComponent);
 exports.AdminComponent = AdminComponent;
 //# sourceMappingURL=admin.component.js.map

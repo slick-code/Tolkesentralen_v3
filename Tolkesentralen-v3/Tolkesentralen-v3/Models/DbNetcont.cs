@@ -12,8 +12,8 @@ namespace Tolkesentralen_v3.Models
 
         public DbNetcont() : base("TolkesentralenDb")
         {
-
-            Database.CreateIfNotExists();
+            // Database.CreateIfNotExists();
+            Database.SetInitializer(new DBContextInitializer());
         }
 
         // public DbSet<Oppdrag> Oppdrager { get; set; }
@@ -27,7 +27,6 @@ namespace Tolkesentralen_v3.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 

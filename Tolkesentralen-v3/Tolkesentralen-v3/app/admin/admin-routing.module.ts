@@ -12,6 +12,7 @@
       {
         path: '',
         component: AdminComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',

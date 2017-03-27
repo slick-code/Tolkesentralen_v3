@@ -47,7 +47,7 @@ export class OppdragComponent {
         this.count = 77;
 
         //this.loading = true
-        this.oppdragService.getOppdrag()
+        this.oppdragService.getUbehandleOppdrag()
             .subscribe(oppdrag => {
                 this.arrayOppdrag = oppdrag;
                 this.element = new NavbarElement();

@@ -56,7 +56,32 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
-      
+        //public bool regOppdragF(Oppdrag_VM input, int kundeId)
+        //{
+        //    var kunde = new Fremmaate()
+        //    {
+
+        //    };
+        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+        //    if (oppdrag != null)
+        //    {
+
+        //        if (Bestiller != null)
+        //        {
+        //            Bestiller.oppdrag.Add(oppdrag);
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //        db.Oppdrag.Add(input);
+        //        db.SaveChanges();
+
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
 
         public bool regOppdragO(Oversettelse oppdrag, int kundeID)
         {
@@ -171,10 +196,10 @@ namespace Tolkesentralen_v3.Models
         }
 
 
-       // Lister Tolkinger som tilhører en kunde
+        // Lister Tolkinger som tilhører en kunde
         public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
         {
-          
+
             List<Tolking> alleTolkingAvKunde = db.Oppdrag.OfType<Tolking>().ToList();
             // var lb = alleFramaate.OfType<Oppdrag>().FirstOrDefault(Opd => Opd.kunde.persId == kundeId);
             try
@@ -191,7 +216,7 @@ namespace Tolkesentralen_v3.Models
                         var Tolking_vm = new Tolking_vm()
                         {
                             kundeID = rowf.kunde.persId,
-                           oppdragID = rowf.oppdragsID,
+                            oppdragID = rowf.oppdragsID,
                             typetolk = rowf.oppdragType,
                             fraspraak = rowf.spraakFra,
                             tilspraak = rowf.spraakTil,
@@ -209,6 +234,7 @@ namespace Tolkesentralen_v3.Models
 
                     }
 
+
                 }
 
                 return utListe;
@@ -221,21 +247,6 @@ namespace Tolkesentralen_v3.Models
 
         }
 
-        //public bool regOversettelse(Oversettelse_vm nyOppdrag, int kundeId)
-        //{
-        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-        //    if(Bestiller != null)
-        //    {
-        //        var oppdragDb = new Oversettelse()
-        //        {
-        //            frist = nyOppdrag.frist,
-        //            spraakFra = nyOppdrag.fraspraak,
-        //            spraakTil = nyOppdrag.tilspraak,
-        //            andreOpplisning = nyOppdrag.andreopplysninger,
-        //            fil = nyOppdrag.
-        //        };
-        //    }
-        //}
 
 
 

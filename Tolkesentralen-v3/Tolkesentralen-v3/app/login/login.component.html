@@ -1,35 +1,40 @@
-<div class="col-md-offset-1">
-	<a routerLink="/admin" routerLinkActive="active">Admin</a>
-	<a routerLink="/tolk" routerLinkActive="active">Tolk</a>
-	<a routerLink="/kunde" routerLinkActive="active">Kunde</a>
+<div align="center">
+    <br />
+    <p>Brukernavn:</p>
+    <p><b>admin@admin.no</b></p>
+    <p><b>kunde@kunde.no</b></p>
+    <p><b>tolk@tolk.no</b></p>
+    <p>Passord: </p>
+    <p><b>1234</b></p>
 </div>
 
 
 <div class="login-panel container">
 
-	<p>Brukernavn: <b>mail@mail.no</b></p>
-	<p>Passord: <b>1234</b></p>
+    
 
 			<div class="col-md-4 col-md-offset-4 panel panel-default">
 
 				<h1 align="center" class="gap margin-base-vertical">Login</h1>
-		<h4 align="center" class="ubuntu-text">{{error}}</h4>
+        <h4 align="center" class="ubuntu-text">{{error}}</h4>
 
 				<form [formGroup]="skjema" class="gap margin-base-vertical">
 				<p class="input-group ">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						<input autofocus  type="email" required class="form-control input-lg"
-							   formControlName="brukernavn" placeholder="e-post adresse" />
+						       formControlName="brukernavn" placeholder="e-post adresse" />
 					</p>
 
-		  <p class="input-group ">
+          <p class="input-group ">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 						<input  type="password" required class="form-control input-lg"
-							   formControlName="passord" placeholder="passord" />
+						       formControlName="passord" placeholder="passord" />
 					</p>
 
 
-		  <br/>	
+          <br/>
+
+					
 
 					<p *ngIf="!loading" class="text-center">
 						<button (click)="onLogin()" class="btn btn-success btn-lg">Get In</button>
@@ -39,7 +44,7 @@
 					<p class="text-center" *ngIf="loading">
 					<!--<img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
 					<loading></loading>
-					</p>
+                    </p>
 				</form>
 
 

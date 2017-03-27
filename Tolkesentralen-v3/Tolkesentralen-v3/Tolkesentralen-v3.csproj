@@ -131,8 +131,10 @@
     <Content Include="app\home\registrer.component.html" />
     <Content Include="app\kunde\bestill-oversettelse.component.html" />
     <Content Include="app\kunde\bestill-tolk.component.html" />
+    <Content Include="app\kunde\kunde-historikk.component.html" />
     <Content Include="app\kunde\kunde.component.html" />
     <Content Include="app\kunde\list-bestillinger.component.html" />
+    <Content Include="app\kunde\profil.component.html" />
     <Content Include="app\login\login.component.html" />
     <Content Include="app\tolk\tolk.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -172,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\DbContextInitializer.cs" />
     <Compile Include="Models\DbNetcont.cs" />
     <Compile Include="Models\Fil.cs" />
     <Compile Include="Models\Oppdrag.cs" />
@@ -225,10 +228,12 @@
     <TypeScriptCompile Include="app\home\registrer.component.ts" />
     <TypeScriptCompile Include="app\kunde\bestill-oversettelse.component.ts" />
     <TypeScriptCompile Include="app\kunde\bestill-tolk.component.ts" />
+    <TypeScriptCompile Include="app\kunde\kunde-historikk.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde-routing.module.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.component.ts" />
     <TypeScriptCompile Include="app\kunde\kunde.module.ts" />
     <TypeScriptCompile Include="app\kunde\list-bestillinger.component.ts" />
+    <TypeScriptCompile Include="app\kunde\profil.component.ts" />
     <TypeScriptCompile Include="app\login\login.comonent.ts" />
     <TypeScriptCompile Include="app\shared\loading.component.ts" />
     <TypeScriptCompile Include="app\shared\not-found.component.ts" />
@@ -243,6 +248,7 @@
     <TypeScriptCompile Include="app\_services\data.service.ts" />
     <TypeScriptCompile Include="app\_services\kunde.service.ts" />
     <TypeScriptCompile Include="app\_services\oppdrag.service.ts" />
+    <TypeScriptCompile Include="app\_services\oversettelse.service.ts" />
     <TypeScriptCompile Include="app\_services\selective-preloading-strategy.ts" />
     <TypeScriptCompile Include="app\_services\temp.service.ts" />
     <TypeScriptCompile Include="main.ts" />

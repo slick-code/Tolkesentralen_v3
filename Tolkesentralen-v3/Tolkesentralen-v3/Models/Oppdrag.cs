@@ -13,7 +13,7 @@ namespace Tolkesentralen_v3.Models
         [Key]
         public int oppdragsID { get; set; }
 
-        public DateTime  regDato { get; set; }
+        public DateTime regDato { get; set; }
         public string spraakFra { get; set; }
 
         public string spraakTil { get; set; }
@@ -24,7 +24,7 @@ namespace Tolkesentralen_v3.Models
     }
 
 
-   // [Table("Fremmaate")]
+    // [Table("Fremmaate")]
     public class Tolking : Oppdrag
     {
 
@@ -36,7 +36,7 @@ namespace Tolkesentralen_v3.Models
         public string tidTil { get; set; }
     }
 
-   // [Table("Oversettelse")]
+    // [Table("Oversettelse")]
     public class Oversettelse : Oppdrag
     {
 

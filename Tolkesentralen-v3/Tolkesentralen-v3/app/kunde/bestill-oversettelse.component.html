@@ -42,12 +42,6 @@
             </div>
         </div>
 
-        <button (click)="postKunde()" type="submit" class="btn btn-success">Send bestilling</button>
+        <button (click)="postOppdrag()" type="submit" class="btn btn-success">Send bestilling</button>
     </form>
 </div>
-<h1>Send bestilling</h1>
-<h3>Kunder:</h3>
-<ul>
-    <li *ngFor="let kunde of kunder">{{kunde.typetolk}}</li>
-</ul>
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
