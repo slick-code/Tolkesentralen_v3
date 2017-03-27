@@ -1,15 +1,9 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var Login = (function () {
     function Login() {
     }
@@ -25,7 +19,7 @@ exports.Person = Person;
 var Kunde = (function (_super) {
     __extends(Kunde, _super);
     function Kunde() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     return Kunde;
 }(Person));
@@ -33,7 +27,7 @@ exports.Kunde = Kunde;
 var Tolk = (function (_super) {
     __extends(Tolk, _super);
     function Tolk() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     return Tolk;
 }(Person));
@@ -47,7 +41,7 @@ exports.Oversettelse = Oversettelse;
 var OversettelseOgKunde = (function (_super) {
     __extends(OversettelseOgKunde, _super);
     function OversettelseOgKunde() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     return OversettelseOgKunde;
 }(Kunde));
@@ -64,18 +58,6 @@ var OppdragOgKunde = (function () {
     return OppdragOgKunde;
 }());
 exports.OppdragOgKunde = OppdragOgKunde;
-//export class Tolk {
-//    id: number;
-//    spraak: string;
-//    email: string;
-//    tlf: string;
-//    fornavn: string;
-//    etternavn: string;
-//    adresse: string;
-//    postnr: string;
-//    poststed: string;
-//    valgt: boolean;
-//}
 var NavbarElement = (function () {
     function NavbarElement() {
     }

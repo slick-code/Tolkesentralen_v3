@@ -13,11 +13,7 @@ namespace Tolkesentralen_v3.Models
         [Key]
         public int oppdragsID { get; set; }
 
-<<<<<<< HEAD
         public DateTime regDato { get; set; }
-=======
-        public DateTime  regDato { get; set; }
->>>>>>> 7b24c1909783e8ff7258e3e795d8140d715f4513
         public string spraakFra { get; set; }
 
         public string spraakTil { get; set; }
@@ -28,11 +24,7 @@ namespace Tolkesentralen_v3.Models
     }
 
 
-<<<<<<< HEAD
     // [Table("Fremmaate")]
-=======
-   // [Table("Fremmaate")]
->>>>>>> 7b24c1909783e8ff7258e3e795d8140d715f4513
     public class Tolking : Oppdrag
     {
 
@@ -44,11 +36,7 @@ namespace Tolkesentralen_v3.Models
         public string tidTil { get; set; }
     }
 
-<<<<<<< HEAD
     // [Table("Oversettelse")]
-=======
-   // [Table("Oversettelse")]
->>>>>>> 7b24c1909783e8ff7258e3e795d8140d715f4513
     public class Oversettelse : Oppdrag
     {
 

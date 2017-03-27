@@ -64,7 +64,7 @@ export class BestillTolkComponent implements OnInit {
         //ny.sted = this.form.value.oppmptested;
         //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = 1;
+        ny.kundeID = 19;
         ny.typetolk = "Fremmedmøte";
         ny.fraspraak = "spansk";
         ny.tilspraak = "tysk"
