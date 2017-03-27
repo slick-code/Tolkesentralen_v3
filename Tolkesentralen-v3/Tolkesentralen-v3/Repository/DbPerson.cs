@@ -508,6 +508,7 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragsID == oppdragsID);
         }
+<<<<<<< HEAD
         ///// <summary>
         ///// Method that lists frammaate
         ///// </summary>
@@ -519,6 +520,19 @@ namespace Tolkesentralen_v3.Models
         //    var db = new DbNetcont();
 
         //    List<Fremmaate> allefremmaate = db.Oppdrag.OfType<Fremmaate>().ToList();
+=======
+        /// <summary>
+        /// Method that lists frammaate
+        /// </summary>
+        /// <return>
+        /// It returns the values in foem of a list 
+        /// </returns>
+        public List<Tolking> ListeAllefremmaate()
+        {
+            var db = new DbNetcont();
+
+            List<Tolking> allefremmaate = db.Oppdrag.OfType<Tolking>().ToList();
+>>>>>>> 7b24c1909783e8ff7258e3e795d8140d715f4513
 
         //    return allefremmaate;
         //   // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
