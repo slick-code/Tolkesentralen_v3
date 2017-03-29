@@ -37,7 +37,7 @@ export class KundeService {
     godkjennKunde(id: number) {
         var headers = new Headers({ "Content-Type": "application/json" });
         return this.http.put(this.url + id, { headers: headers })
-            .map((response: Response) => response.json());
+            .map(returData => returData.toString())
     }
 
     /*

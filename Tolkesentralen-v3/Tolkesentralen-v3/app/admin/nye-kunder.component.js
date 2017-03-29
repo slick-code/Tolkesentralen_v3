@@ -35,10 +35,9 @@ var NyeKunderComponent = (function () {
         });
     };
     NyeKunderComponent.prototype.godkjennKunde = function (index, kundeID) {
-        var _this = this;
         this.service.godkjennKunde(kundeID).subscribe(function (retur) {
-            console.log("Success PUT : " + index);
-            _this.arrayNyeKunder.splice(_this.arrayNyeKunder.indexOf(index), 1);
+            //console.log("Success PUT : "+index);
+            //this.arrayNyeKunder.splice(this.arrayNyeKunder.indexOf(index), 1);
         }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
         ;
     };

@@ -35,7 +35,7 @@ var KundeService = (function () {
     KundeService.prototype.godkjennKunde = function (id) {
         var headers = new http_2.Headers({ "Content-Type": "application/json" });
         return this.http.put(this.url + id, { headers: headers })
-            .map(function (response) { return response.json(); });
+            .map(function (returData) { return returData.toString(); });
     };
     KundeService = __decorate([
         core_1.Injectable(), 
