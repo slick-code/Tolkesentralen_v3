@@ -169,6 +169,7 @@
     <Compile Include="Controllers\OppdragController.cs" />
     <Compile Include="Controllers\OversettelseController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\SpraakController.cs" />
     <Compile Include="Controllers\TolkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -183,6 +184,7 @@
     <Compile Include="Models\Tolk.cs" />
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbPerson.cs" />
+    <Compile Include="Repository\Dbspraak.cs" />
     <Compile Include="Repository\OppdragRepository.cs" />
     <Compile Include="ViewModels\FKunde.cs" />
     <Compile Include="Models\Kunde.cs" />
