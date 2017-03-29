@@ -1,0 +1,35 @@
+﻿
+
+
+<h3>Bestilte oversettelser</h3>
+<hr />
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>OppdragsNr</th>
+            <th>Bestillingsdato</th>
+            <th>Typedokument</th>
+            <th>TolkId</th>
+            <th>Fra språk</th>
+            <th>Til språk</th>
+            <th>FerdiggjøresDato</th>
+            <th>Opplysninger</th>
+            <th>Fil</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let oppdrag of oversettelser; let i = index">
+        <tr>
+            <td>{{oppdrag.oppdragsNr}}</td>
+            <td>{{oppdrag.bestillingsdato}}</td>
+            <td>{{oppdrag.typedokument}}</td>
+            <td>{{oppdrag.tolkId}}</td>
+            <td>{{oppdrag.fraspraak}}</td>
+            <td>{{oppdrag.tilspraak}}</td>
+            <td>{{oppdrag.ferdigjoresdato}}</td>
+            <td>{{oppdrag.andreopplysninger}}</td>
+            <td>{{oppdrag.fil}}</td>
+            <td><button>Avbestill</button> <button>Endre</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default">
+    <div class="container body-content">
+    <div class="container-fluid">
+
+        <ul class="nav navbar-nav">
+            <li><a routerLink="./kunde-bestill-tolk" routerLinkActive="active">Bestill Tolk</a></li>
+            <li><a routerLink="./kunde-bestill-oversettelse" routerLinkActive="active">Bestill Oversettelse</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
+                 Mine Bestillinger
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="./kunde-list-alle-tolke-bestillinger" routerLinkActive="active">Tolkeoppdrag</a></li>
+                    <li><a routerLink="./kunde-list-alle-oversettelse-bestillinger" routerLinkActive="active">Oversettelseoppdrag</a></li>
+                </ul>
+            </li>
+
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
+                    Mine Historikk
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="./kunde-tolke-historikk" routerLinkActive="active">TolkeHistorikk</a></li>
+                    <li><a routerLink="./kunde-oversettelse-historikk" routerLinkActive="active">OversettelseHistorikk</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <ul class="nav navbar-nav "></ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-user"></span> Innstillinger
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="./kunde-endre-opplysninger" routerLinkActive="active"> <span class="glyphicon glyphicon-user"></span> Endre opplysninger</a></li>
+                    <li><a routerLink="./kunde-endre-passord" routerLinkActive="active"><span class="glyphicon glyphicon-lock"></span> Endre passord</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logg ut</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<div class="container body-content">
+<router-outlet ></router-outlet>
+</div>

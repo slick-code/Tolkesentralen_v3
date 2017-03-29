@@ -1,0 +1,125 @@
+﻿<div>
+    <h3>BESTILL TOLK</h3>
+
+    <form [formGroup]='form'>
+
+
+        <div class="form-group">
+            <label for="typetolk">Type Tolk</label>
+            <div class="inner-addon left-addon">
+
+                <input type="text" name="typetolk" id="typetolkid" class="form-control" ng-model="typetolk" autocomplete="off" placeholder="Typetolk" required />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="fraspraak">Fra Språk</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="fraspraakid" formControlName="fraspraak" autocomplete="off" placeholder="Fra Språk" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tilspraak">Til Språk</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="tilspraakid" formControlName="tilspraak" autocomplete="off" placeholder="Til Språk" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="oppdragsdato">Oppdragsdato</label>
+            <div class="inner-addon left-addon">
+                <input type="date" class="form-control" id="oppdragsdatoid" FormControlName="oppdragsdato" autocomplete="off" placeholder="Oppdragsdato" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="frakl">Fra kl</label>
+            <div class="inner-addon left-addon">
+                <input type="time" min="00:00" max="23:59" class="form-control" id="fraklid" formControlName="frakl" autocomplete="off" placeholder="Fra kl" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tilkl">Til kl</label>
+            <div class="inner-addon left-addon">
+                <input type="time" min="00:00" max="23:59" class="form-control" id="tilklid" formControlName="tilkl" autocomplete="off" placeholder="Til kl" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="oppmotested">Oppmøtested</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="oppmotestedid" formControlName="oppmotested" autocomplete="off" placeholder="Oppmøtested" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="firma">Firma</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="kontaktperson">Kontaktperson</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />  <br />
+                <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
+            </div>
+        </div><div class="form-group">
+            <label for="epost">Epost</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="epostid" class="form-control" formControlName="epost" placeholder="Epostadresse" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefon">Telefon</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="8" name="telefon" formControlName="telefon" placeholder="Telefon" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefax">Telefax</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fakturaadresse">FakturaAdresse</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="postnr">Postnr</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="poststed">Poststed</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="andreopplysninger">Andre opplysninger</label>
+            <div class="inner-addon left-addon">
+                <textarea ng-model="andreopplysninger" style="height: 100px" class="form-control" id="andreopplysningerid"
+                          formControlName="andreopplysninger" autocomplete="off" placeholder="Andre opplysninger"></textarea>
+            </div>
+        </div>
+
+        <button (click)="postKunde()" type="submit" class="btn btn-success" [disabled]="!form.valid">Send bestilling</button>
+    </form>
+</div>
+<h1>Send bestilling</h1>
+<h3>Kunder:</h3>
+<ul>
+    <li *ngFor="let kunde of kunder">{{kunde.typetolk}}</li>
+</ul>
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
