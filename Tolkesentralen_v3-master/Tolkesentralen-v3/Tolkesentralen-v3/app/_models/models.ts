@@ -85,6 +85,19 @@ export class NavbarElement {
     element: string;
 }
 
+export class Counter {
+    nyeoppdrag: number = 0;
+    nyeoversettelser: number;
+    nyekunder: number = 0;
+    oppdrag: number;
+    oversettelser: number;
+    kunder: number;
+    avbestillinger: number;
+
+}
+
+
+
 //export class Oversettelse {
 //    id: number;
 

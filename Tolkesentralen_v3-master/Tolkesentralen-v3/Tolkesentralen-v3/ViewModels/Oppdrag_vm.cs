@@ -8,7 +8,6 @@ namespace Tolkesentralen_v3.ViewModels
 {
     public class Oppdrag_VM
     {
-
         public int kundeID { get; set; }
         public int oppdragID { get; set; }
         public string dato { get; set; }
@@ -19,8 +18,6 @@ namespace Tolkesentralen_v3.ViewModels
 
     public class Tolking_vm : Oppdrag_VM
     {
-
-
         public string typetolk { get; set; }
         public string sted { get; set; }
         public string oppdragsdato { get; set; }

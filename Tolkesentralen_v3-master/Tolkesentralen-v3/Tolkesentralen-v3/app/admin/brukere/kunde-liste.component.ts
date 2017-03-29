@@ -18,7 +18,7 @@ export class KundeListeComponent {
         private dataService: DataService) { }
 
     ngOnInit() {
-
+        this.getKunder();
         
     }
 

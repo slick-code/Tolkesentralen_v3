@@ -8,15 +8,26 @@
         <thead>
             <tr>
                 <th>Firma</th>
-                <th>TLF</th>
+                <th>Kontakt-person</th>
+                <th>Telefon</th>
+                <th>Telefax</th>
+                <th>Faktura-adresse</th>
+                <th>Poststed</th>
+                <th>Brukernavn</th>
             </tr>
         </thead>
         <tbody *ngFor="let kunde of arrayKunder; let i = index">
             <tr>
                 <td>{{kunde.firma}}</td>
+                <td>{{kunde.fornavn}} {{kunde.etternavn}}</td>
                 <td>{{kunde.tlf}}</td>
+                <td>{{kunde.telefax}}</td>
+                <td>{{kunde.fakturaadresse}}</td>
+                <td>{{kunde.postnr}} {{kunde.poststed}}</td>
+                <td>{{kunde.email}}</td>
                 <td width="190">
                     <button class="btn btn-danger">Slett</button>
+
                 </td>
             </tr>
         </tbody>

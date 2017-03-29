@@ -18,11 +18,11 @@
                     
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:orangered;"><b> {{antallOppdrag}}</b></span></a></li>
+                    <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:orangered;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
                     
-                    <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:orangered;"><b> {{antallOversettelser}}</b></span></a></li>
+                    <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:orangered;"><b> {{antallOversettelser }}</b></span></a></li>
                     
-                    <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{antallNyeKunder}}</b></span></a></li>
+                    <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
                 </ul>
             </li>
 

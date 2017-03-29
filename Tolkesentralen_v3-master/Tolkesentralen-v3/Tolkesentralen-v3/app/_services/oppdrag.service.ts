@@ -27,6 +27,11 @@ export class OppdragService {
             .map((response: Response) => response.json());
     }
 
+    getBehandleOppdrag(): Observable<Oppdrag[]> {
+        return this.http.get(this.url + "GetBehandlet")
+            .map((response: Response) => response.json());
+    }
+
     getOppdragTilKunde(id: number): Observable<Oppdrag[]> {
         return this.http.get(this.url+id)
             .map((response: Response) => response.json());
