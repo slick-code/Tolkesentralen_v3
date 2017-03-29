@@ -40,7 +40,8 @@ var NyeKunderComponent = (function () {
     NyeKunderComponent.prototype.godkjennKunde = function (index, kundeID) {
         var _this = this;
         this.service.godkjennKunde(kundeID).subscribe(function (retur) {
-            _this.arrayNyeKunder.splice(_this.arrayNyeKunder.indexOf(index), 1);
+            console.log("Index: " + index);
+            _this.arrayNyeKunder.splice(index, 1);
             _this.updateNavBar();
         }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };

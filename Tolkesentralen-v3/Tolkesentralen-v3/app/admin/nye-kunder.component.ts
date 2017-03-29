@@ -41,7 +41,8 @@ export class NyeKunderComponent {
     godkjennKunde(index: any, kundeID: number) {
         this.service.godkjennKunde(kundeID).subscribe(
             retur => {
-                this.arrayNyeKunder.splice(this.arrayNyeKunder.indexOf(index), 1);
+                console.log("Index: "+index);
+                this.arrayNyeKunder.splice(index, 1);
                 this.updateNavBar();
             },
             error => console.log("Beklager PUT, en feil har oppstått - " + error),

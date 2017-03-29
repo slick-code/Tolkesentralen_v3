@@ -22,10 +22,10 @@ var kunde_oversettelse_historikk_component_1 = require('./kunde-oversettelse-his
 var kunde_endre_opplysninger_component_1 = require('./kunde-endre-opplysninger.component');
 var kunde_endre_passord_component_1 = require('./kunde-endre-passord.component');
 var shared_module_1 = require('../shared/shared.module');
-var AdminModule = (function () {
-    function AdminModule() {
+var KundeModule = (function () {
+    function KundeModule() {
     }
-    AdminModule = __decorate([
+    KundeModule = __decorate([
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
@@ -47,8 +47,8 @@ var AdminModule = (function () {
             ],
         }), 
         __metadata('design:paramtypes', [])
-    ], AdminModule);
-    return AdminModule;
+    ], KundeModule);
+    return KundeModule;
 }());
-exports.AdminModule = AdminModule;
+exports.KundeModule = KundeModule;
 //# sourceMappingURL=kunde.module.js.map
