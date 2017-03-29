@@ -85,19 +85,8 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetUbehandlet")]
         public HttpResponseMessage GetUbehandlet()
         {
-            //var liste = new List<Tolking_vm>();
-            //var output = new Tolking_vm
-            //{
-            //    dato = "12-12-2017",
-            //    //sted = "Jessheim",
-            //    frakl = "13:00",
-            //    typetolk = "Fremmedmøtetolk",
-            //    fraspraak = "Spansk",
-            //    tilspraak = "Norsk"
-            //};
-            //liste.Add(output);
 
-            List<Tolking_vm> liste = funk.hentAlleUbehandledeOppdrag();
+            List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -137,20 +126,7 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
-
-            var liste = new List<Oppdrag_VM>();
-            var output = new Oppdrag_VM
-            {
-                dato = "12-12-2017",
-                //sted = "Jessheim",
-                //tid = "13:00",
-                //typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
-            };
-            liste.Add(output);
-
-            //List<FKunde> liste = repository.listOppdrag();
+            List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
