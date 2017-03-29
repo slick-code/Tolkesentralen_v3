@@ -9,6 +9,28 @@ namespace Tolkesentralen_v3.Repository
 {
     public class OppdragRepository
     {
+
+
+        public Counter getCount()
+        {
+            try
+            {
+                var db = new DbNetcont();
+                var counter = new Counter()
+                {
+                    nyeoppdrag = db.Oppdrag.OfType<Tolking>().Count(),
+                    nyekunder = db.Personer.Where(r => r is Kunde && r.godkjent == 0).Count()
+                };
+
+                return counter;
+            }
+            catch (Exception e)
+            {
+                var breakpoint = e;
+                return null;
+            }
+        }
+
         public List<Tolking_vm> hentAlleUbehandledeOppdrag()
         {
             try

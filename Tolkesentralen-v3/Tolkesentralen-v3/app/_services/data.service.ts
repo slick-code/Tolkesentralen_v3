@@ -16,4 +16,6 @@ export class DataService {
         console.log("serv -> update");
         this.dataObs$.next(data);
     }
+
+
 }

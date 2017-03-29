@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OppdragController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbPerson.cs" />
     <Compile Include="Repository\OppdragRepository.cs" />
+    <Compile Include="ViewModels\Counter.cs" />
     <Compile Include="ViewModels\FKunde.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\Person.cs" />
@@ -245,6 +247,7 @@
     <TypeScriptCompile Include="app\_guards\auth.guard.ts" />
     <TypeScriptCompile Include="app\_models\login.ts" />
     <TypeScriptCompile Include="app\_models\models.ts" />
+    <TypeScriptCompile Include="app\_services\admin.service.ts" />
     <TypeScriptCompile Include="app\_services\auth.service.ts" />
     <TypeScriptCompile Include="app\_services\data.service.ts" />
     <TypeScriptCompile Include="app\_services\kunde.service.ts" />
