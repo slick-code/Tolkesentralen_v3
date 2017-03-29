@@ -1,0 +1,47 @@
+﻿<div>
+    <h3>BESTILL OVERSETTELSE</h3>
+
+    <form [formGroup]='form'>
+
+
+        <div class="form-group">
+            <label for="typetolk">Type Dokument</label>
+            <div class="inner-addon left-addon">
+
+                <input type="text" name="typedokument" class="form-control" id="typedokumentid" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="frasprak">Fra Språk</label>
+            <div class="inner-addon left-addon">
+                <input type="text" name="fraspraak" class="form-control" id="fraspraakid" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tilsprak">Til Språk</label>
+            <div class="inner-addon left-addon">
+                <input type="text" name="fraspraak" class="form-control" id="tilspraakid" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ferdiggjoresdato">Ferdiggjøresdato</label>
+            <div class="inner-addon left-addon">
+                <input type="text" name="ferdiggjoresdato" class="form-control" id="ferdiggjoresdatoid" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="andreopplysninger">Andre opplysninger</label>
+            <div class="inner-addon left-addon">
+                <textarea style="height: 100px" class="form-control" id="andreopplysningerid"
+                          autocomplete="off" placeholder="Andre opplysninger"></textarea>
+            </div>
+        </div>
+
+        <button (click)="postOppdrag()" type="submit" class="btn btn-success">Send bestilling</button>
+    </form>
+</div>

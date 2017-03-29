@@ -1,0 +1,112 @@
+﻿
+<div *ngIf="showForm">
+    <h1>Registreringsskjema</h1>
+    <form [formGroup]='form'>
+
+        <div class="form-group">
+            <label for="firma">Firma</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon"  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="kontaktperson">Kontaktperson</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="kontaktpersonid" class="form-control" formControlName="fornavn" placeholder="Fornavn"  />
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <input type="text" id="kontaktpersonid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefon">Telefon</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="telefonid" class="form-control"  minlength="5" maxlength="8" name="telefon"formControlName="telefon" placeholder="Telefon" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefax">Telefax</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="fakturaadresse">FakturaAdresse</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse"  />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="postnr">Postnr</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr"  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="poststed">Poststed</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed"  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <hr />
+            <label for="epost">Brukernavn</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <input type="text" class="form-control" id="url" formControlName="epost" placeholder="Epostadresse"  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="passord">Passord</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                <input type="password" class="form-control" id="url" formControlName="passord" placeholder="Passord"  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bekreftpassord">Bekreft passord</label>
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                <input type="password" class="form-control" id="url"  placeholder="Bekreft passord"  />
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button  (click)="postKunde()" class="btn btn-success">Send</button>
+            
+        </div>
+    </form>
+    
+</div>
+  
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
+    
+
+</div>
+  
+<div *ngIf="!Success && !showForm && !loading">
+    <p class="error">{{errorMessage}}</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>
+
+<div *ngIf="Success && !showForm  && !loading">
+    <h3 style="color:forestgreen">Takk for din registrering! </h3>
+    <p>Du vil bli tilsendt en bekreftelse så fort søknaden er behandlet.</p>
+
+</div>
