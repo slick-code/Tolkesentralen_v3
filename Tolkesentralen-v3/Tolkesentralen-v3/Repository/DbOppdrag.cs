@@ -15,7 +15,6 @@ namespace Tolkesentralen_v3.Models
         public DbOppdrag()
         {
             db = new DbNetcont();
-
         }
 
         public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)

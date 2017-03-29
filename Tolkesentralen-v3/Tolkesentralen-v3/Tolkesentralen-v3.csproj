@@ -183,6 +183,7 @@
     <Compile Include="Models\Tolk.cs" />
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbPerson.cs" />
+    <Compile Include="Repository\OppdragRepository.cs" />
     <Compile Include="ViewModels\FKunde.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\Person.cs" />

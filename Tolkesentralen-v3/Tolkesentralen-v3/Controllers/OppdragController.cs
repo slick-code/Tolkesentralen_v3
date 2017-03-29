@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
+using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Controllers
@@ -21,6 +22,7 @@ namespace Tolkesentralen_v3.Controllers
         // Slett et oppdrag med gitt ID
 
         DbOppdrag repository = new DbOppdrag();
+        OppdragRepository funk = new OppdragRepository();
 
         [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/PostOppdragFraKunde")]
@@ -83,19 +85,19 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetUbehandlet")]
         public HttpResponseMessage GetUbehandlet()
         {
-            var liste = new List<Tolking_vm>();
-            var output = new Tolking_vm
-            {
-                dato = "12-12-2017",
-                //sted = "Jessheim",
-                frakl = "13:00",
-                typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
-            };
-            liste.Add(output);
+            //var liste = new List<Tolking_vm>();
+            //var output = new Tolking_vm
+            //{
+            //    dato = "12-12-2017",
+            //    //sted = "Jessheim",
+            //    frakl = "13:00",
+            //    typetolk = "Fremmedmøtetolk",
+            //    fraspraak = "Spansk",
+            //    tilspraak = "Norsk"
+            //};
+            //liste.Add(output);
 
-            //List<FKunde> liste = repository.listOppdrag();
+            List<Tolking_vm> liste = funk.hentAlleUbehandledeOppdrag();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
