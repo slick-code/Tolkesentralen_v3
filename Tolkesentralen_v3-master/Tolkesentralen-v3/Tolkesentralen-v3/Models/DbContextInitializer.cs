@@ -102,7 +102,7 @@ namespace Tolkesentralen_v3.Models
                 var kunde5 = new Kunde()
                 {
                     fornavn = "Rassmus",
-                    etternavn = "Bothholes",
+                    etternavn = "M",
                     tlf = 9595995,
                     email = "rassmus@kunde.no",
                     adresse = "addresse1",
