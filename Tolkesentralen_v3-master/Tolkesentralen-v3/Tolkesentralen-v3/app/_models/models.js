@@ -70,6 +70,14 @@ var NavbarElement = (function () {
     return NavbarElement;
 }());
 exports.NavbarElement = NavbarElement;
+var Counter = (function () {
+    function Counter() {
+        this.nyeoppdrag = 0;
+        this.nyekunder = 0;
+    }
+    return Counter;
+}());
+exports.Counter = Counter;
 //export class Oversettelse {
 //    id: number;
 //    spraak: string;

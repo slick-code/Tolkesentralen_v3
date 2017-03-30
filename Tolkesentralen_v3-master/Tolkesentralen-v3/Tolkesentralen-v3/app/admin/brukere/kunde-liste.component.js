@@ -20,6 +20,7 @@ var KundeListeComponent = (function () {
         this.arrayKunder = [];
     }
     KundeListeComponent.prototype.ngOnInit = function () {
+        this.getKunder();
     };
     KundeListeComponent.prototype.getKunder = function () {
         var _this = this;

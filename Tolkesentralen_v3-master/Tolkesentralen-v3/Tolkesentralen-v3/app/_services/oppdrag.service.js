@@ -28,6 +28,10 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetUbehandlet")
             .map(function (response) { return response.json(); });
     };
+    OppdragService.prototype.getBehandleOppdrag = function () {
+        return this.http.get(this.url + "GetBehandlet")
+            .map(function (response) { return response.json(); });
+    };
     OppdragService.prototype.getOppdragTilKunde = function (id) {
         return this.http.get(this.url + id)
             .map(function (response) { return response.json(); });

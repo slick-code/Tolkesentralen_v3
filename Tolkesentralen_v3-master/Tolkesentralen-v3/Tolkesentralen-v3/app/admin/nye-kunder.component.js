@@ -28,20 +28,22 @@ var NyeKunderComponent = (function () {
             .subscribe(function (kunder) {
             if (kunder != null) {
                 _this.arrayNyeKunder = kunder;
-                _this.element = new models_1.NavbarElement();
-                _this.element.nr = _this.arrayNyeKunder.length;
-                _this.element.element = 'nye-kunder';
-                _this.dataService.updateData(_this.element);
+                _this.updateNavBar();
             }
         });
+    };
+    NyeKunderComponent.prototype.updateNavBar = function () {
+        this.element = new models_1.NavbarElement();
+        this.element.nr = this.arrayNyeKunder.length;
+        this.element.element = 'nye-kunder';
+        this.dataService.updateData(this.element);
     };
     NyeKunderComponent.prototype.godkjennKunde = function (index, kundeID) {
         var _this = this;
         this.service.godkjennKunde(kundeID).subscribe(function (retur) {
-            console.log("Success PUT : " + index);
             _this.arrayNyeKunder.splice(_this.arrayNyeKunder.indexOf(index), 1);
+            _this.updateNavBar();
         }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
-        ;
     };
     return NyeKunderComponent;
 }());
