@@ -1,0 +1,68 @@
+﻿<div>
+    <h3>Endre Opplysninger</h3>
+    <form [formGroup]='form'>
+        <div class="form-group">
+            <label for="fornavn">Fornavn</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="fornavnid" formControlName="fornavn" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="etternavn">Etternavn</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="epost">Epost</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="epostid" formControlName="epost"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefon">Telefon</label>
+            <div class="inner-addon left-addon">
+                <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="8" name="telefon" formControlName="telefon"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobil">Mobil</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="mobilid" formControlName="mobil"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="adresseid" formControlName="adresse"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adresse2">Adresse 2</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="adresse2" formControlName="adresse2"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="postnr">Postnr</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="url" formControlName="postnr"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="poststed">Poststed</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="poststedid" formControlName="poststed"/>
+            </div>
+        </div>
+
+        <button (click)="postKunde()" class="btn btn-success">Lagre</button>
+    </form>
+</div>
+<br />
+<br />
