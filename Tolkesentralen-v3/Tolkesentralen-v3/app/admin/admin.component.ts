@@ -38,8 +38,8 @@ export class AdminComponent  {
                 case 'oversettelse': this.antallOversettelser = this.element.nr; break;
                 case 'nye-kunder': this.counter.nyekunder = this.element.nr; break;
                 case 'kunder':
-                    this.antallKunder = this.element.nr;
-                    this.antallNyeKunder--;
+                    this.counter.kunder = this.element.nr;
+                    this.counter.nyekunder--;
                     break;
             }
             this.sum = this.getSum();

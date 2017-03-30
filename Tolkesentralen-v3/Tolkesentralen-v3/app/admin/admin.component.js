@@ -35,8 +35,8 @@ var AdminComponent = (function () {
                     _this.counter.nyekunder = _this.element.nr;
                     break;
                 case 'kunder':
-                    _this.antallKunder = _this.element.nr;
-                    _this.antallNyeKunder--;
+                    _this.counter.kunder = _this.element.nr;
+                    _this.counter.nyekunder--;
                     break;
             }
             _this.sum = _this.getSum();
