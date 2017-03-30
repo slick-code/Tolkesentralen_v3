@@ -7,9 +7,10 @@
 }
 
 html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
 }
 
 .login-panel{
@@ -26,19 +27,19 @@ html {
 /* Checkbox*/
 
 input[type='checkbox'] {
-    -webkit-appearance:none;
-    width:35px;
-    height:35px;
-    background:white;
-    border-radius:5px;
-    /*border:2px solid #555;*/
-    border:2px solid gainsboro;
+	-webkit-appearance:none;
+	width:35px;
+	height:35px;
+	background:white;
+	border-radius:5px;
+	/*border:2px solid #555;*/
+	border:2px solid gainsboro;
 }
 
 input[type='checkbox']:checked {
-    background:url(icons/check-mark.png);
-    background-size:contain;
-    background-repeat: no-repeat;
+	background:url(icons/check-mark.png);
+	background-size:contain;
+	background-repeat: no-repeat;
 }
 
 .big-checkbox {width: 30px; height: 30px;}
@@ -82,42 +83,42 @@ th{ background-color: #F6FCFC}
   
 }
 .navbar-default {
-    /*background-color: #F6FCFC;*/
-    
-    /*border-color: red;*/
+	/*background-color: #F6FCFC;*/
+	
+	/*border-color: red;*/
 }
 
 .active {
-    /*background-color: lightcyan;
-    color: #FFF;
-    background-color: #252525;
-    text-decoration: none;
-    border-bottom: transparent solid 1px;
-    padding-bottom: 5px;
-    */
-    /*background-color: #F1F1F1;
-    color: #fff*/
+	/*background-color: lightcyan;
+	color: #FFF;
+	background-color: #252525;
+	text-decoration: none;
+	border-bottom: transparent solid 1px;
+	padding-bottom: 5px;
+	*/
+	/*background-color: #F1F1F1;
+	color: #fff*/
 }
 
 .test{
-    font-size: 40px;
-    color: red;
+	font-size: 40px;
+	color: red;
 }
 
 .sidebar-nav {
-    padding: 9px 0;
+	padding: 9px 0;
 }
 
 .dropdown-menu .sub-menu {
-    left: 100%;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    margin-top: -1px;
+	left: 100%;
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+	margin-top: -1px;
 }
 
 .dropdown-menu li:hover .sub-menu {
-    visibility: visible;
+	visibility: visible;
 }
 
  ul li div 
@@ -127,56 +128,56 @@ th{ background-color: #F6FCFC}
 
 
 .dropdown:hover .dropdown-menu {
-    display: block; 
-    
-    /* border-top: 3px solid lightblue; */
+	display: block; 
+	
+	/* border-top: 3px solid lightblue; */
 }
 
 
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
-    margin-top: 0;
-    
+	margin-top: 0;
+	
 }
 
 .navbar .sub-menu:before {
-    border-bottom: 7px solid transparent;
-    border-left: none;
-    border-right: 7px solid rgba(0, 0, 0, 0.2);
-    border-top: 7px solid transparent;
-    left: -7px;
-    top: 10px;
+	border-bottom: 7px solid transparent;
+	border-left: none;
+	border-right: 7px solid rgba(0, 0, 0, 0.2);
+	border-top: 7px solid transparent;
+	left: -7px;
+	top: 10px;
 }
 .navbar .sub-menu:after {
-    border-top: 6px solid transparent;
-    border-left: none;
-    border-right: 6px solid #fff;
-    border-bottom: 6px solid transparent;
-    left: 10px;
-    top: 11px;
-    left: -6px;
+	border-top: 6px solid transparent;
+	border-left: none;
+	border-right: 6px solid #fff;
+	border-bottom: 6px solid transparent;
+	left: 10px;
+	top: 11px;
+	left: -6px;
 }
 
 /* Text */
 
 p {
-    font-size: 17px;
+	font-size: 17px;
 }
 
 .cli {
-    font-size: 18px;
-    font-weight: bold;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /* table */
 
 .table1 {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: white;
+	border-style: solid;
+	border-width: 3px;
+	
 }
 
 .btn {
