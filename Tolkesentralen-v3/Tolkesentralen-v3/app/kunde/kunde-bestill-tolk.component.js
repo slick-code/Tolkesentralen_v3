@@ -67,7 +67,6 @@ var KundeBestillTolkComponent = (function () {
         this.service.postOppdragFraKunde(body).subscribe(function (retur) {
             _this.Success = true;
             _this.loading = false;
-            _this.oppdrag.push(ny);
             console.log("Success POST oppdrag : " + ny.typetolk);
         }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };

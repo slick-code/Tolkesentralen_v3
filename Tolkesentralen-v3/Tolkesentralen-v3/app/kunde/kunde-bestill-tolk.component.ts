@@ -79,7 +79,6 @@ export class KundeBestillTolkComponent implements OnInit {
             retur => {
                 this.Success = true;
                 this.loading = false;
-                this.oppdrag.push(ny);
                 console.log("Success POST oppdrag : " + ny.typetolk);
             },
             error => { console.log("Beklager, en feil har oppstått - " + error); this.loading = false; },
