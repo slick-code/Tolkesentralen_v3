@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../_services/oppdrag.service");
+var forms_1 = require("@angular/forms");
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -35,15 +36,15 @@ var BestillOversettelseComponent = (function () {
     BestillOversettelseComponent.prototype.ngOnInit = function () {
         //this.getOversettelser();
     };
-    BestillOversettelseComponent = __decorate([
-        core_1.Component({
-            templateUrl: './app/home/bestill-oversettelse.component.html',
-            providers: [oppdrag_service_1.OppdragService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
-    ], BestillOversettelseComponent);
     return BestillOversettelseComponent;
 }());
+BestillOversettelseComponent = __decorate([
+    core_1.Component({
+        templateUrl: './app/home/bestill-oversettelse.component.html',
+        providers: [oppdrag_service_1.OppdragService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+], BestillOversettelseComponent);
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
 //# sourceMappingURL=bestill-oversettelse.component.js.map
