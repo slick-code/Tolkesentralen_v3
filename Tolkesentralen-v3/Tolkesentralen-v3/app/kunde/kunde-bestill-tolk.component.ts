@@ -54,7 +54,7 @@ export class KundeBestillTolkComponent implements OnInit {
         this.showForm = false;
 
         var ny = new Oppdrag();
-        //ny.kundeID = parseInt(localStorage.getItem('id'));
+        ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
         //ny.fraspraak = this.form.value.fraspraak;
         //ny.tilspraak = this.form.value.tilspraak;
@@ -64,7 +64,7 @@ export class KundeBestillTolkComponent implements OnInit {
         //ny.sted = this.form.value.oppmptested;
         //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = 19;
+        //ny.kundeID = 19;
         ny.typetolk = "Fremmedmøte";
         ny.fraspraak = "spansk";
         ny.tilspraak = "tysk"

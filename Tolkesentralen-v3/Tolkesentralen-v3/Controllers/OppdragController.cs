@@ -101,14 +101,15 @@ namespace Tolkesentralen_v3.Controllers
         // Hent alle behandlede OG ubehandlede oppdrag gitt Kunde
         public HttpResponseMessage Get(int id)
         {
-            var liste = new List<Tolking_vm>();
-            var output = new Tolking_vm
-            {
-                typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
-            };
-            liste.Add(output);
+            //var liste = new List<Tolking_vm>();
+            //var output = new Tolking_vm
+            //{
+            //    typetolk = "Fremmedmøtetolk",
+            //    fraspraak = "Spansk",
+            //    tilspraak = "Norsk"
+            //};
+            //liste.Add(output);
+            var liste = repository.listOppdragMedKundeId(id);
 
             //List<FKunde> liste = repository.listOppdrag();
 

@@ -28,8 +28,6 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
-
-
     public class Oversettelse_vm : Oppdrag_VM
     {
 
