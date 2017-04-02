@@ -12,11 +12,11 @@ namespace Tolkesentralen_v3.Controllers
 {
     public class AdminController : ApiController
     {
-        OppdragRepository funk = new OppdragRepository();
+        OppdragRepository repository = new OppdragRepository();
 
         public HttpResponseMessage Get()
         {
-            var counter = funk.getCount();
+            var counter = repository.getCount();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(counter);

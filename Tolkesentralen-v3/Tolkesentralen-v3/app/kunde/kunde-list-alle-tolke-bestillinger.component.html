@@ -1,11 +1,11 @@
 ﻿<h3>Bestilte tolke-oppdrag</h3>
 <hr />
+
 <table class="table table-bordered table-condensed">
     <thead>
         <tr>
-            <th>Bestillingsdato</th>
             <th>OppdragsNr</th>
-            <th>TolkId</th>
+            <th>Tolk Navn</th>
             <th>Type tolk</th>
             <th>Fra språk</th>
             <th>Til språk</th>
@@ -18,16 +18,16 @@
     </thead>
     <tbody *ngFor="let oppdrag of oppdrag; let i = index">
         <tr>
-            <td>{{oppdrag.bestillingsdato}}</td>
-            <td>{{oppdrag.oppdragsNr}}</td>
-            <td>{{oppdrag.tolkId}}</td>
+            <td>#{{oppdrag.oppdragID}}</td>
+            <td>Ingen tildelt</td>
             <td>{{oppdrag.typetolk}}</td>
             <td>{{oppdrag.fraspraak}}</td>
             <td>{{oppdrag.tilspraak}}</td>
             <td>{{oppdrag.oppdragsdato}}</td>
             <td>{{oppdrag.frakl}}</td>
             <td>{{oppdrag.tilkl}}</td>
-            <td>{{oppdrag.adresse}} - {{oppdrag.postnr}} - {{oppdrag.poststed}}</td>
+            <!--<td>{{oppdrag.adresse}} - {{oppdrag.postnr}} - {{oppdrag.poststed}}</td>-->
+            <td>{{oppdrag.sted}}</td>
             <td><button>Avbestill</button> <button>Endre</button></td>
         </tr>
     </tbody>

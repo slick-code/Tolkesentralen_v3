@@ -16,7 +16,9 @@ export class OversettelseService {
     }
 
     postOversettelseAnonym(body: any) {
-        var headers = new Headers({ "Content-Type": "application/json" });
+        let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
 
         return this.http.post(this.url, body, { headers: headers })
             .map(returData => returData.toString())

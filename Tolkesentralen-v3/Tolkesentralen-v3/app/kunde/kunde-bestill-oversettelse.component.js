@@ -25,11 +25,28 @@ var KundeBestillOversettelseComponent = (function () {
             andreopplysninger: []
         });
     }
+    KundeBestillOversettelseComponent.prototype.fileChange = function (event) {
+        var fileList = event.target.files;
+        if (fileList.length > 0) {
+            this.fil = fileList[0];
+        }
+    };
+    KundeBestillOversettelseComponent.prototype.tilbake = function () {
+        this.showForm = true;
+    };
     KundeBestillOversettelseComponent.prototype.ngOnInit = function () {
+        this.showForm = true;
         this.brukerID = parseInt(localStorage.getItem('id'));
+    };
+    KundeBestillOversettelseComponent.prototype.showLoadingScreen = function () {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     };
     KundeBestillOversettelseComponent.prototype.postOppdrag = function () {
         var _this = this;
+        this.loading = true;
+        this.showForm = false;
         var ny = new models_1.Oversettelse();
         //ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
@@ -47,11 +64,12 @@ var KundeBestillOversettelseComponent = (function () {
         ny.tilspraak = "Pashto";
         ny.ferdiggjoresdato = "12-12-12";
         ny.andreopplysninger = "Jamaca MAN";
+        ny.fil = this.fil;
         var body = JSON.stringify(ny);
         this.service.postOversettelseKunde(body).subscribe(function (retur) {
-            _this.oppdrag.push(ny);
-            console.log("Success POST oppdrag : " + ny.typedokument);
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+            _this.Success = true;
+            _this.loading = false;
+        }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
     KundeBestillOversettelseComponent = __decorate([
         core_1.Component({

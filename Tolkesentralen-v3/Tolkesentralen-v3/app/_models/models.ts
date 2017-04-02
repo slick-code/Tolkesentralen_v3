@@ -41,6 +41,7 @@ export class Oversettelse {
     tilspraak: string;
     ferdiggjoresdato: string;
     andreopplysninger: string;
+    fil: File;
 }
 
 export class OversettelseOgKunde extends Kunde {
@@ -51,6 +52,7 @@ export class OversettelseOgKunde extends Kunde {
     tilspraak: string;
     ferdiggjoresdato: string;
     andreopplysninger: string;
+    fil: File;
 }
 
 export class Oppdrag {

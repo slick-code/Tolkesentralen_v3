@@ -24,7 +24,8 @@ const appRoutes: Routes = [
             { path: 'kunde-tolke-historikk', component: KundeTolkeHistorikkComponent },
             { path: 'kunde-oversettelse-historikk', component: KundeOversettelseHistorikkComponent },
             { path: 'kunde-endre-opplysninger', component: KundeEndreOpplysningerComponent },
-            { path: 'kunde-endre-passord', component: KundeEndrePassordComponent }
+            { path: 'kunde-endre-passord', component: KundeEndrePassordComponent },
+            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-oversettelse'}
 
         ]
     }

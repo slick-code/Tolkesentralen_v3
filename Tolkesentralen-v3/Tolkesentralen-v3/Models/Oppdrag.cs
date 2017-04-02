@@ -40,8 +40,8 @@ namespace Tolkesentralen_v3.Models
     public class Oversettelse : Oppdrag
     {
 
-        public string frist { get; set; }
-        public List<Fil> fil { get; set; }
+        public string ferdiggjoresdato { get; set; }
+        public string typedokument { get; set; }
 
     }
 }

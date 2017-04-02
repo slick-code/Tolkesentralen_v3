@@ -33,7 +33,8 @@ var appRoutes = [
             { path: 'kunde-tolke-historikk', component: kunde_tolke_historikk_component_1.KundeTolkeHistorikkComponent },
             { path: 'kunde-oversettelse-historikk', component: kunde_oversettelse_historikk_component_1.KundeOversettelseHistorikkComponent },
             { path: 'kunde-endre-opplysninger', component: kunde_endre_opplysninger_component_1.KundeEndreOpplysningerComponent },
-            { path: 'kunde-endre-passord', component: kunde_endre_passord_component_1.KundeEndrePassordComponent }
+            { path: 'kunde-endre-passord', component: kunde_endre_passord_component_1.KundeEndrePassordComponent },
+            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-oversettelse' }
         ]
     }
 ];

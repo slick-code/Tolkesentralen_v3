@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
+using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Controllers
@@ -20,16 +21,16 @@ namespace Tolkesentralen_v3.Controllers
         // Lagre et oversettelser fra Anonym
         // Slett et oversettelser med gitt ID
 
+        DbOversettelse repository = new DbOversettelse();
 
         [System.Web.Mvc.HttpPost]
         [Route("api/oversettelse/PostOppdragFraKunde")]
-        public HttpResponseMessage PostOppdragFraKunde([FromBody]Tolking_vm input)
+        public HttpResponseMessage PostOppdragFraKunde([FromBody]Oversettelse_VM input)
         {
             if (ModelState.IsValid)
             {
-                //bool OK = repository.regTolkOppdrag(input, input.kundeID);
+                bool OK = repository.LagreOppdragAvTypeOversettelse(input);
 
-                //if (OK)
                 if(true)
                 {
                     return new HttpResponseMessage()

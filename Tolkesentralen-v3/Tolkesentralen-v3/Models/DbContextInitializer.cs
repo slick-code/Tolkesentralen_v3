@@ -187,33 +187,51 @@ namespace Tolkesentralen_v3.Models
 
 
 
-                DateTime localDate = DateTime.Now;
-                // Kunde oppdragB = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == 3);
+                //DateTime localDate = DateTime.Now;
 
-                //var oppdrag1 = new Tolking_vm()
-                //{
-                //    oppdragsDato = "12-12-2016",
-                //    oppdragType = "Telefontolk",
-                //    spraakFra = "Spansk",
-                //    spraakTil = "Norsk",
-                //    tidFra = "12:45",
-                //    tidTil = "13:45"
-                //    //kunde = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == 1),
-
-                //};
 
                 var oppdrag1 = new Tolking_vm()
                 {
+                    oppdragsdato = "11-05-2017",
+                    dato = "12-07-2017",
                     fraspraak = "Spansk",
-                    tilspraak = "Norsk"
-                    //kunde = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == 1),
-
+                    tilspraak = "Norsk",
+                    andreopplysninger = "Dette er andre opplysninger",
+                    typetolk = "Telefontolk",
+                    sted = "HIOA pilestredet 35",
+                    frakl = "13:15",
+                    tilkl = "14:15"
                 };
 
+                var oppdrag2 = new Tolking_vm()
+                {
+                    oppdragsdato = "12-05-2017",
+                    dato = "12-07-2017",
+                    fraspraak = "Italiensk",
+                    tilspraak = "Norsk",
+                    andreopplysninger = "Dette er andre opplysninger",
+                    typetolk = "Fremmedmøte",
+                    sted = "HIOA pilestredet 35",
+                    frakl = "10:15",
+                    tilkl = "12:15"
+                };
+
+                var oppdrag3 = new Tolking_vm()
+                {
+                    oppdragsdato = "07-05-2017",
+                    dato = "12-07-2017",
+                    fraspraak = "Fransk",
+                    tilspraak = "Norsk",
+                    andreopplysninger = "Dette er andre opplysninger",
+                    typetolk = "Telefontolk",
+                    sted = "HIOA pilestredet 35",
+                    frakl = "11:15",
+                    tilkl = "13:15"
+                };
                 var o = new DbOppdrag();
                 o.regTolkOppdrag(oppdrag1, 1);
-                o.regTolkOppdrag(oppdrag1, 1);
-                o.regTolkOppdrag(oppdrag1, 1);
+                o.regTolkOppdrag(oppdrag2, 1);
+                o.regTolkOppdrag(oppdrag3, 1);
 
 
 
