@@ -11,14 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
 var temp_service_1 = require('../_services/temp.service');
+var tolk_service_1 = require('../_services/tolk.service');
 var UtdelComponent = (function () {
-    function UtdelComponent(oppdragService, tempService) {
+    function UtdelComponent(oppdragService, tempService, tolkService) {
         this.oppdragService = oppdragService;
         this.tempService = tempService;
+        this.tolkService = tolkService;
         this.arrayTolk = [];
     }
     UtdelComponent.prototype.ngOnInit = function () {
         this.oppdrag = this.tempService.getObject();
+        this.hentTolkmedGittSpraak();
         // get users from secure api end point
         //this.oppdragService.getListeTolk()
         //    .subscribe(listeTolk => {
@@ -41,11 +44,19 @@ var UtdelComponent = (function () {
             }
         }
     };
+    UtdelComponent.prototype.hentTolkmedGittSpraak = function () {
+        var _this = this;
+        var body = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
+        this.tolkService.getTolkMedGittSpraak(body).subscribe(function (retur) {
+            _this.arrayTolk = retur;
+        }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+    };
     UtdelComponent = __decorate([
         core_1.Component({
-            templateUrl: "./app/admin/utdel.component.html"
+            templateUrl: "./app/admin/utdel.component.html",
+            providers: [tolk_service_1.TolkService],
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService])
     ], UtdelComponent);
     return UtdelComponent;
 }());

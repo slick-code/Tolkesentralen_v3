@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Tolk, Oppdrag } from '../_models/models'
 import { OppdragService } from '../_services/oppdrag.service'
 import { TempService } from '../_services/temp.service'
+import { TolkService } from '../_services/tolk.service'
 
 
 @Component({
-    templateUrl: "./app/admin/utdel.component.html"
+    templateUrl: "./app/admin/utdel.component.html",
+    providers: [TolkService],
 })
 export class UtdelComponent {
    arrayTolk: Tolk[] = [];
@@ -15,10 +17,12 @@ export class UtdelComponent {
 
     constructor(
         private oppdragService: OppdragService,
-        private tempService: TempService) { }
+        private tempService: TempService,
+        private tolkService: TolkService) { }
 
     ngOnInit() {
         this.oppdrag = this.tempService.getObject();
+        this.hentTolkmedGittSpraak();
         // get users from secure api end point
         //this.oppdragService.getListeTolk()
         //    .subscribe(listeTolk => {
@@ -41,6 +45,17 @@ export class UtdelComponent {
                 object.valgt = this.allChecked;
             }
         }
+    }
+
+    hentTolkmedGittSpraak() {
+        var body: string = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
+        this.tolkService.getTolkMedGittSpraak(body).subscribe(
+            retur => {
+                this.arrayTolk = retur;
+            },
+            error => console.log("Beklager PUT, en feil har oppstått - " + error),
+            () => console.log("ferdig post-api/bestilling")
+        );
     }
     
 }

@@ -23,7 +23,6 @@ var OppdragComponent = (function () {
         this.route = route;
         this.tempService = tempService;
         this.router = router;
-        this.arrayOppdrag = [];
         this.modules = preloadStrategy.preloadedModules;
     }
     OppdragComponent.prototype.ngOnInit = function () {

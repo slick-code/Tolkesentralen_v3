@@ -14,6 +14,24 @@ namespace Tolkesentralen_v3.Models
     {
        // DbNetcont db = new DbNetcont();
 
+        public Kunde_VM HentKunde(int id)
+        {
+            try
+            {
+                var db = new DbNetcont();
+
+                Person kunde = db.Personer.Find(id);
+                var a = kunde;
+                
+            }
+            catch
+            {
+
+            }
+            return null;
+            
+        }
+
 
         // List alle kunder. Enten godkjente (1) eller til godkjenning (0)
         public List<Kunde_VM> ListeAlleKunder(int godkjent)

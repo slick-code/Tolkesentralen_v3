@@ -274,6 +274,7 @@
     <TypeScriptCompile Include="app\_services\oversettelse.service.ts" />
     <TypeScriptCompile Include="app\_services\selective-preloading-strategy.ts" />
     <TypeScriptCompile Include="app\_services\temp.service.ts" />
+    <TypeScriptCompile Include="app\_services\tolk.service.ts" />
     <TypeScriptCompile Include="main.ts" />
   </ItemGroup>
   <ItemGroup>

@@ -87,7 +87,7 @@ namespace Tolkesentralen_v3.Models
                     fornavn = "Bob",
                     etternavn = "Marley",
                     tlf = 9595995,
-                    email = "kunde@kunde.no",
+                    email = "bob@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,
@@ -150,6 +150,20 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(kunde5);
                 db.Personer.Add(kunde6);
                 db.SaveChanges();
+
+                var tolk1 = new Tolk()
+                {
+                    fornavn = "Rambo",
+                    etternavn = "Ammok",
+                    tlf = 9595995,
+                    email = "rambo@kunde.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    //spraak = {}
+                };
 
                 var admin = new Admin()
                 {
