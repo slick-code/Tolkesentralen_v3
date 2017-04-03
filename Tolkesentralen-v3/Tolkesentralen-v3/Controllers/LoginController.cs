@@ -19,6 +19,7 @@ namespace Tolkesentralen_v3.Controllers
         {
             if (1 == 1)//(ModelState.IsValid)
             {
+                repository.HentKunde(1);
                 Get_Login_VM output = repository.AutoriserOgReturnerBruker(input.brukernavn, input.passord);
                 if (output != null)
                 {

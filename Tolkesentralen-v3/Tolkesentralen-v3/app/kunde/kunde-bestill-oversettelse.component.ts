@@ -18,6 +18,12 @@ export class KundeBestillOversettelseComponent implements OnInit {
     form: FormGroup;
     brukerID: number;
 
+    Success: boolean;
+    loading: boolean;
+    showForm: boolean;
+
+    fil: File;
+
     constructor(private service: OversettelseService, private fb: FormBuilder) {
         this.form = fb.group({
 
@@ -30,11 +36,46 @@ export class KundeBestillOversettelseComponent implements OnInit {
 
     }
 
+    fileChange(event: any) {
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            this.fil = fileList[0];
+            //let file: File = fileList[0];
+            //let formData: FormData = new FormData();
+            //formData.append('uploadFile', file, file.name);
+            //let headers = new Headers();
+            //headers.append('Content-Type', 'multipart/form-data');
+            //headers.append('Accept', 'application/json');
+            //let options = new RequestOptions({ headers: headers });
+            //this.http.post(`${this.apiEndPoint}`, formData, options)
+            //    .map(res => res.json())
+            //    .catch(error => Observable.throw(error))
+            //    .subscribe(
+            //    data => console.log('success'),
+            //    error => console.log(error)
+            //    )
+        }
+    }
+
+    tilbake() {
+        this.showForm = true;
+    }
+
     ngOnInit() {
+        this.showForm = true;
         this.brukerID = parseInt(localStorage.getItem('id'));
+
+    }
+
+    showLoadingScreen() {
+        this.showForm = false;
+        this.Success = null;
+        this.loading = true;
     }
 
     postOppdrag() {
+        this.loading = true;
+        this.showForm = false;
         var ny = new Oversettelse();
         //ny.kundeID = parseInt(localStorage.getItem('id'));
         //ny.typetolk = this.form.value.typetolk;
@@ -52,14 +93,15 @@ export class KundeBestillOversettelseComponent implements OnInit {
         ny.tilspraak = "Pashto"
         ny.ferdiggjoresdato = "12-12-12";
         ny.andreopplysninger = "Jamaca MAN";
+        ny.fil = this.fil;
 
         var body: string = JSON.stringify(ny);
         this.service.postOversettelseKunde(body).subscribe(
             retur => {
-                this.oppdrag.push(ny);
-                console.log("Success POST oppdrag : " + ny.typedokument);
+                this.Success = true;
+                this.loading = false;
             },
-            error => console.log("Beklager, en feil har oppstått - " + error),
+            error => { console.log("Beklager, en feil har oppstått - " + error); this.loading = false; },
             () => console.log("ferdig post-api/bestilling")
         );
 

@@ -1,101 +1,108 @@
 ﻿<div>
     <h3>BESTILL OVERSETTELSE</h3>
-
+    <hr />
     <form [formGroup]='form'>
 
+        <div class="col-md-3 col-md-offset-0">
+            <div class="form-group">
+                <label for="firma">Firma</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="kontaktperson">Kontaktperson</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />  <br />
+                    <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
+                </div>
+            </div><div class="form-group">
+                <label for="epost">Epost</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" id="epostid" class="form-control" formControlName="epost" placeholder="Epostadresse" />
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="typetolk">Type Dokuement</label>
-            <div class="inner-addon left-addon">
-
-                <input type="text" formControlName="typedokument" class="form-control" />
-
+            <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="8" name="telefon" formControlName="telefon" placeholder="Telefon" />
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="frasprak">Fra Språk</label>
-            <div class="inner-addon left-addon">
-                <input type="text" formControlName="fraspraak" class="form-control" id="fraspraakid" />
+            <div class="form-group">
+                <label for="telefax">Telefax</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="telefaxid" formControlName="telefax" placeholder="Telefax" />
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="tilsprak">Til Språk</label>
-            <div class="inner-addon left-addon">
-                <input type="text" formControlName="tilspraak" class="form-control" id="tilspraakid" />
+            <div class="form-group">
+                <label for="fakturaadresse">FakturaAdresse</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="fakturaadresseid" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="ferdiggjoresdato">Ferdiggjoresdato</label>
-            <div class="inner-addon left-addon">
-                <input type="text" formControlName="ferdiggjoresdato" class="form-control" id="ferdiggjoresdatoid" />
+            <div class="form-group">
+                <label for="postnr">Postnr</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="postnrid" formControlName="postnr" placeholder="Postnr" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="firma">Firma</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
+            <div class="form-group">
+                <label for="poststed">Poststed</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="poststedid" formControlName="poststed" placeholder="Poststed" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="kontaktperson">Kontaktperson</label>
-            <div class="inner-addon left-addon">
-                <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />  <br />
-                <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
-            </div>
-        </div><div class="form-group">
-            <label for="epost">Epost</label>
-            <div class="inner-addon left-addon">
-                <input type="text" id="epostid" class="form-control" formControlName="epost" placeholder="Epostadresse" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="telefon">Telefon</label>
-            <div class="inner-addon left-addon">
-                <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="8" name="telefon" formControlName="telefon" placeholder="Telefon" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="telefax">Telefax</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="telefaxid" formControlName="telefax" placeholder="Telefax" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="fakturaadresse">FakturaAdresse</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="fakturaadresseid" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="postnr">Postnr</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="postnrid" formControlName="postnr" placeholder="Postnr" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="poststed">Poststed</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="poststedid" formControlName="poststed" placeholder="Poststed" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="andreopplysninger">Andre opplysninger</label>
-            <div class="inner-addon left-addon">
-                <textarea formControlName="andreopplysninger" style="height: 100px" class="form-control" id="andreopplysningerid"
-                          autocomplete="off" placeholder="Andre opplysninger"></textarea>
-            </div>
+  
         </div>
 
-        <button (click)="postKunde()" type="submit" class="btn btn-success">Send bestilling</button>
+
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <label for="typetolk">Type Dokuement</label>
+                <div class="inner-addon left-addon">
+
+                    <input type="text" formControlName="typedokument" class="form-control" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="frasprak">Fra Språk</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" formControlName="fraspraak" class="form-control" id="fraspraakid" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tilsprak">Til Språk</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" formControlName="tilspraak" class="form-control" id="tilspraakid" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ferdiggjoresdato">Ferdiggjoresdato</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" formControlName="ferdiggjoresdato" class="form-control" id="ferdiggjoresdatoid" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="andreopplysninger">Andre opplysninger</label>
+                <div class="inner-addon left-addon">
+                    <textarea formControlName="andreopplysninger" style="height: 100px" class="form-control" id="andreopplysningerid"
+                              autocomplete="off" placeholder="Andre opplysninger"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        
     </form>
 </div>
-<h1>Send bestilling</h1>
-<h3>Kunder:</h3>
-<ul>
-    <li *ngFor="let kunde of kunder">{{kunde.typetolk}}</li>
-</ul>
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+
+<div style="clear:both">
+    <hr />
+
+    <button (click)="postKunde()" type="submit" class="btn btn-success" [disabled]="!form.valid">Send bestilling</button>
+</div>

@@ -3,6 +3,7 @@
     <hr />
     <form [formGroup]='form'>
 
+        
 
         <div class="form-group">
             <label for="typetolk">Type Tolk</label>
@@ -195,31 +196,31 @@
         </div>
 
         <div class="form-group">
+            <label for="oppmotested">Oppmøtested</label>
+            <div class="inner-addon left-addon">
+                <input type="text" class="form-control" id="oppmotestedid" formControlName="oppmotested" autocomplete="off" placeholder="Oppmøtested" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="oppdragsdato">Oppdragsdato</label>
             <div class="inner-addon left-addon">
                 <input type="date" class="form-control" id="oppdragsdatoid" FormControlName="oppdragsdato" autocomplete="off" placeholder="Oppdragsdato" />
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"  style="display:inline-block; width:112px">
             <label for="frakl">Fra kl</label>
-            <div class="inner-addon left-addon">
+            <div>
                 <input type="time" min="00:00" max="23:59" class="form-control" id="fraklid" formControlName="frakl" autocomplete="off" placeholder="Fra kl" />
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="display:inline-block; width:118px; padding-left:10px">
             <label for="tilkl">Til kl</label>
-            <div class="inner-addon left-addon">
+            <div>
                 <input type="time" min="00:00" max="23:59" class="form-control" id="tilklid" formControlName="tilkl" autocomplete="off" placeholder="Til kl" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="oppmotested">Oppmøtested</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="oppmotestedid" formControlName="oppmotested" autocomplete="off" placeholder="Oppmøtested" />
-
             </div>
         </div>
 

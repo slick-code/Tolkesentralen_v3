@@ -168,6 +168,7 @@ namespace Tolkesentralen_v3.Models
                     var framaater = new Tolking_vm()
                     {
                         kundeID = rowf.kunde.persId,
+                        dato = rowf.regDato.ToString("yyyyMMdd"),
                         oppdragID = rowf.oppdragsID,
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
@@ -176,6 +177,7 @@ namespace Tolkesentralen_v3.Models
                         oppdragsdato = rowf.oppdragsDato,
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
+                     
 
                         andreopplysninger = rowf.andreOpplisning,
 

@@ -12,7 +12,7 @@ import { SelectivePreloadingStrategy } from '../_services/selective-preloading-s
     templateUrl: "./app/admin/oppdrag.component.html"
 })
 export class OppdragComponent {
-   arrayOppdrag: Oppdrag[] = [];
+   arrayOppdrag: Oppdrag[];
    index: number; // valgt index i array
    detaljer: boolean;
    more: boolean;

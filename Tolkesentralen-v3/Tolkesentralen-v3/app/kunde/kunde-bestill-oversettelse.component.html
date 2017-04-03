@@ -1,7 +1,15 @@
-﻿<div>
+﻿<div *ngIf="showForm">
     <h3>Bestill oversettelse</h3>
     <hr />
     <form [formGroup]='form'>
+
+        
+        <div class="form-group">
+            <label for="frasprak">Velg fil</label>
+            <div class="inner-addon left-addon">
+                <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.txt">
+            </div>
+        </div>
 
 
         <div class="form-group">
@@ -51,4 +59,21 @@
 
         <button (click)="postOppdrag()" type="submit" class="btn btn-success">Send bestilling</button>
     </form>
+</div>
+
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
+</div>
+
+<div *ngIf="!Success && !showForm && !loading">
+    <p class="error">Ooops, bestillingen ble ikke sendt!</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>
+
+<div *ngIf="Success && !showForm  && !loading">
+    <h3 style="color:forestgreen">Bestillingen er sendt! </h3>
+    <p>Vi vil behandle din søknad så fort som mulig</p>
+
 </div>
