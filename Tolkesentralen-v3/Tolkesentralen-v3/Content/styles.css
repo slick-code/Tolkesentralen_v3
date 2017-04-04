@@ -43,9 +43,15 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:checked {
+<<<<<<< HEAD
 	background:url(icons/check-mark.png);
 	background-size:contain;
 	background-repeat: no-repeat;
+=======
+    background:url(../bilder/check-mark.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+>>>>>>> 1f477a7c1b2e6a452b542f7abdb92a0a075cf15c
 }
 
 .big-checkbox {width: 30px; height: 30px;}

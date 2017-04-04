@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Tolk, Oppdrag } from '../_models/models'
 import { OppdragService } from '../_services/oppdrag.service'
 import { TempService } from '../_services/temp.service'
@@ -10,15 +11,21 @@ import { TolkService } from '../_services/tolk.service'
     providers: [TolkService],
 })
 export class UtdelComponent {
-   arrayTolk: Tolk[] = [];
+   arrayTolk: Tolk[];
    oppdrag: Oppdrag;
    allChecked: boolean;
+
+   Error: boolean;
+   Success: boolean;
+   loading: boolean;
+   showForm: boolean;
 
 
     constructor(
         private oppdragService: OppdragService,
         private tempService: TempService,
-        private tolkService: TolkService) { }
+        private tolkService: TolkService,
+        private router: Router) { }
 
     ngOnInit() {
         this.oppdrag = this.tempService.getObject();
@@ -39,6 +46,7 @@ export class UtdelComponent {
     }
 
     setAllChecked() {
+        console.log("SetAllChecked");
         this.allChecked = !this.allChecked;
         if (this.arrayTolk) {
             for (let object of this.arrayTolk) {
@@ -48,13 +56,40 @@ export class UtdelComponent {
     }
 
     hentTolkmedGittSpraak() {
+        this.loading = true;
         var body: string = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
-        this.tolkService.getTolkMedGittSpraak(body).subscribe(
+        this.tolkService.getTolkMedSpraak(body).subscribe(
             retur => {
+                this.showForm = true;
                 this.arrayTolk = retur;
             },
-            error => console.log("Beklager PUT, en feil har oppstått - " + error),
-            () => console.log("ferdig post-api/bestilling")
+            error => { this.Error = true;},
+            () => { this.loading = false;}
+        );
+    }
+
+    tilbake() {
+        this.router.navigate(['./admin/oppdrag']);
+    }
+
+    postForesporsler() {
+        this.loading = true;
+        this.showForm = false;
+        var tempArreyTolkID: number[] = [];
+        if (this.arrayTolk) {
+            for (let object of this.arrayTolk) {
+                if (object.valgt) {
+                    tempArreyTolkID.push(object.persId);
+                }
+            }
+        }
+        this.tolkService.postForesposler(tempArreyTolkID).subscribe(
+            retur => {
+                this.Success = true;
+                //this.arrayTolk = retur;
+            },
+            error => { this.Error = true;},
+            () => { this.loading = false;}
         );
     }
     

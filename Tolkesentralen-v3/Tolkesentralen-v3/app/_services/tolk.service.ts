@@ -15,10 +15,17 @@ export class TolkService {
         private authenticationService: AuthenticationService) {
     }
 
-    getTolkMedGittSpraak(body: any): Observable<Tolk[]> {
+    getTolkMedSpraak(body: any): Observable<Tolk[]> {
         var headers = new Headers({ "Content-Type": "application/json" });
         
         return this.http.post(this.url + "returnTolk", body, { headers: headers })
             .map((response: Response) => response.json());
+    }
+
+    postForesposler(body: any) {
+        var headers = new Headers({ "Content-Type": "application/json" });
+
+        return this.http.post(this.url + "PostForesposler", body, { headers: headers })
+            .map(returData => returData.toString())
     }
 }

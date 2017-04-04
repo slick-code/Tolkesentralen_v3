@@ -19,11 +19,23 @@ var TolkService = (function () {
         this.authenticationService = authenticationService;
         this.url = 'api/tolk/'; // URL to web API
     }
-    TolkService.prototype.getTolkMedGittSpraak = function (body) {
+    TolkService.prototype.getTolkMedSpraak = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url + "returnTolk", body, { headers: headers })
             .map(function (response) { return response.json(); });
     };
+<<<<<<< HEAD
+=======
+    TolkService.prototype.postForesposler = function (body) {
+        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        return this.http.post(this.url + "PostForesposler", body, { headers: headers })
+            .map(function (returData) { return returData.toString(); });
+    };
+    TolkService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+    ], TolkService);
+>>>>>>> 1f477a7c1b2e6a452b542f7abdb92a0a075cf15c
     return TolkService;
 }());
 TolkService = __decorate([

@@ -1,7 +1,7 @@
 
 
 
-<div>
+<div *ngIf="showForm">
     <br />
     <div>
     <h3 >Utvalg tolker </h3>
@@ -39,8 +39,27 @@
 
         </table>
 
-        <button style="width:100%; float:right; " class="btn btn-success" (click)="checker()">Send forespørsel</button>
+        <button style="width:100%; float:right; " class="btn btn-success" (click)="postForesporsler()">Send forespørsel</button>
     </div>
 
 
+</div>
+
+
+
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
+</div>
+
+<div *ngIf="Error">
+    <p class="error">Ooops, beklager men en feil oppsto og handlingen ble avbrutt!</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>
+
+<div *ngIf="Success">
+    <h3 style="color:forestgreen">Success! </h3>
+    <p>Forespørselen er sendt! Gå til Bestillinger for å se detaljer. </p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
 </div>

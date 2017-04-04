@@ -9,12 +9,14 @@
     import { KundeListeComponent } from './brukere/kunde-liste.component';
     
     import { AdminRoutingModule } from './admin-routing.module';
+    import { SharedModule } from '../shared/shared.module';
     
 
     @NgModule({
       imports: [
         CommonModule,
-          AdminRoutingModule
+          AdminRoutingModule,
+          SharedModule
       ],
       declarations: [
         AdminComponent,
