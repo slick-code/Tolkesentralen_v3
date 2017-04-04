@@ -139,6 +139,7 @@
     <Content Include="app\kunde\kunde-tolke-historikk.component.html" />
     <Content Include="app\kunde\kunde.component.html" />
     <Content Include="app\login\login.component.html" />
+    <Content Include="app\shared\resulatat.component.html" />
     <Content Include="app\tolk\tolk-endre-passord.component.html" />
     <Content Include="app\tolk\tolk-foresporsel.component.html" />
     <Content Include="app\tolk\tolk-mine-oppdrag.component.html" />
@@ -146,6 +147,10 @@
     <Content Include="app\tolk\tolk-redigjer-persondetaljer.component.html" />
     <Content Include="app\tolk\tolk-sett-tilgjenglighet.component.html" />
     <Content Include="app\tolk\tolk.component.html" />
+    <Content Include="bilder\check-mark.png" />
+    <Content Include="bilder\dame.jpg" />
+    <Content Include="bilder\oversettelse.jpg" />
+    <Content Include="bilder\tastatur.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -253,6 +258,7 @@
     <TypeScriptCompile Include="app\login\login.comonent.ts" />
     <TypeScriptCompile Include="app\shared\loading.component.ts" />
     <TypeScriptCompile Include="app\shared\not-found.component.ts" />
+    <TypeScriptCompile Include="app\shared\resultat.component.ts" />
     <TypeScriptCompile Include="app\shared\shared.module.ts" />
     <TypeScriptCompile Include="app\tolk\tolk-endre-passord.component.ts" />
     <TypeScriptCompile Include="app\tolk\tolk-foresporsel.component.ts" />

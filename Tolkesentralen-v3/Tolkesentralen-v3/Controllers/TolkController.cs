@@ -26,6 +26,7 @@ namespace Tolkesentralen_v3.Controllers
         {
             var tolk1 = new Tolk_VM()
             {
+                persId = 123,
                 fornavn = "Rambo",
                 etternavn = "Ammok",
                 tlf = 9595995,
@@ -37,6 +38,7 @@ namespace Tolkesentralen_v3.Controllers
 
             var tolk2 = new Tolk_VM()
             {
+                persId = 124,
                 fornavn = "Alex",
                 etternavn = "Brettum",
                 tlf = 7775995,
@@ -48,6 +50,7 @@ namespace Tolkesentralen_v3.Controllers
 
             var tolk3 = new Tolk_VM()
             {
+                persId = 125,
                 fornavn = "Billy",
                 etternavn = "Blanko",
                 tlf = 1595777,
@@ -66,6 +69,16 @@ namespace Tolkesentralen_v3.Controllers
             return new HttpResponseMessage()
             {
                 Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        [Route("api/tolk/PostForesposler")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage PostForesposler([FromBody]int[] tolkIDs)
+        {
+            return new HttpResponseMessage()
+            {
                 StatusCode = HttpStatusCode.OK
             };
         }

@@ -17,6 +17,7 @@ var utdel_component_1 = require('./utdel.component');
 var nye_kunder_component_1 = require('./nye-kunder.component');
 var kunde_liste_component_1 = require('./brukere/kunde-liste.component');
 var admin_routing_module_1 = require('./admin-routing.module');
+var shared_module_1 = require('../shared/shared.module');
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -24,7 +25,8 @@ var AdminModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                admin_routing_module_1.AdminRoutingModule
+                admin_routing_module_1.AdminRoutingModule,
+                shared_module_1.SharedModule
             ],
             declarations: [
                 admin_component_1.AdminComponent,
