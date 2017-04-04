@@ -138,10 +138,10 @@ namespace Tolkesentralen_v3.Models
                 var lillehammer = db.Poststeder.Find(2061);
                 kunde.poststed = jessheim;
                 kunde2.poststed = gardermoden;
-                kunde3.poststed = lillehammer;
+                kunde3.poststed = jessheim;
                 kunde4.poststed = jessheim;
                 kunde5.poststed = gardermoden;
-                kunde6.poststed = lillehammer;
+                kunde6.poststed = jessheim;
 
                 db.Personer.Add(kunde);
                 db.Personer.Add(kunde2);
@@ -151,19 +151,7 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(kunde6);
                 db.SaveChanges();
 
-                var tolk1 = new Tolk()
-                {
-                    fornavn = "Rambo",
-                    etternavn = "Ammok",
-                    tlf = 9595995,
-                    email = "rambo@kunde.no",
-                    adresse = "addresse1",
-                    regDato = DateTime.Now,
-                    godkjent = 0,
-                    password = res.lagHash("1234" + saltKunde),
-                    Salt = saltKunde,
-                    //spraak = {}
-                };
+                
 
                 var admin = new Admin()
                 {
@@ -177,9 +165,48 @@ namespace Tolkesentralen_v3.Models
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde
                 };
-                
+                admin.poststed = jessheim;
+                db.Personer.Add(admin);
+                db.SaveChanges();
 
-                var tolk = new Tolk()
+                var spraak1 = new Spraak()
+                {
+
+                    navn = "Norsk",
+                    nivaa = "F"
+                    
+                };
+                var spraak2 = new Spraak()
+                {
+
+                    navn = "Somalisk",
+                    nivaa = "F"
+
+                };
+                var spraak3 = new Spraak()
+                {
+
+                    navn = "Lugandisk",
+                    nivaa = "F"
+
+                };
+
+                var spraak4 = new Spraak()
+                {
+
+                    navn = "Afganisk",
+                    nivaa = "F"
+
+                };
+
+                //db.Spraak.Add(spraak1);
+                //db.Spraak.Add(spraak2);
+                //db.Spraak.Add(spraak3);
+                //db.Spraak.Add(spraak4);
+                //db.SaveChanges();
+
+
+                var tolk1 = new Tolk()
                 {
                     fornavn = "TolkFornavn",
                     etternavn = "TolkEtternavn",
@@ -192,9 +219,39 @@ namespace Tolkesentralen_v3.Models
                     Salt = saltKunde
                 };
 
-                
-                db.Personer.Add(admin);
-                db.Personer.Add(tolk);
+                var tolk2 = new Tolk()
+                {
+                    fornavn = "Rambo",
+                    etternavn = "Ammok", 
+                    tlf = 9595995,
+                    email = "rambo@kunde.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    //spraak = {}
+                };
+
+                tolk1.poststed = jessheim;
+                tolk2.poststed = jessheim;
+                tolk2.poststed = jessheim;
+                //db.SaveChanges();
+
+                tolk1.spraak = new List<Spraak>();
+                tolk2.spraak = new List<Spraak>();
+               
+
+                tolk1.spraak.Add(spraak2);
+                tolk1.spraak.Add(spraak3);
+                tolk1.spraak.Add(spraak4);
+                tolk2.spraak.Add(spraak1);
+                tolk2.spraak.Add(spraak2);
+                db.SaveChanges();
+
+
+                db.Personer.Add(tolk1);
+                db.Personer.Add(tolk2);
 
                 db.SaveChanges();
 
@@ -248,6 +305,7 @@ namespace Tolkesentralen_v3.Models
                 o.regTolkOppdrag(oppdrag3, 1);
 
 
+                db.SaveChanges();
 
 
             }
