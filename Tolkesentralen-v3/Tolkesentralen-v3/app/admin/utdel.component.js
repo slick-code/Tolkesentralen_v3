@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
-var temp_service_1 = require("../_services/temp.service");
-var tolk_service_1 = require("../_services/tolk.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var temp_service_1 = require('../_services/temp.service');
+var tolk_service_1 = require('../_services/tolk.service');
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService, tolkService, router) {
         this.oppdragService = oppdragService;
@@ -77,17 +76,14 @@ var UtdelComponent = (function () {
             //this.arrayTolk = retur;
         }, function (error) { _this.Error = true; }, function () { _this.loading = false; });
     };
+    UtdelComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/utdel.component.html",
+            providers: [tolk_service_1.TolkService],
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService, router_1.Router])
+    ], UtdelComponent);
     return UtdelComponent;
 }());
-UtdelComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./app/admin/utdel.component.html",
-        providers: [tolk_service_1.TolkService],
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
-        temp_service_1.TempService,
-        tolk_service_1.TolkService,
-        router_1.Router])
-], UtdelComponent);
 exports.UtdelComponent = UtdelComponent;
 //# sourceMappingURL=utdel.component.js.map

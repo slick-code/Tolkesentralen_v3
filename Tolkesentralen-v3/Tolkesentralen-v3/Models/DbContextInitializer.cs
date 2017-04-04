@@ -211,7 +211,7 @@ namespace Tolkesentralen_v3.Models
                     fornavn = "TolkFornavn",
                     etternavn = "TolkEtternavn",
                     tlf = 9595995,
-                    email = "tolk@tolk.no",
+                    email = "tolk1@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,
@@ -221,10 +221,36 @@ namespace Tolkesentralen_v3.Models
 
                 var tolk2 = new Tolk()
                 {
+                    fornavn = "Lars",
+                    etternavn = "Flexnes",
+                    tlf = 9595995,
+                    email = "tolk2@tolk.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde
+                };
+
+                var tolk3 = new Tolk()
+                {
+                    fornavn = "Bjarne",
+                    etternavn = "Tolk",
+                    tlf = 9595995,
+                    email = "tolk3@tolk.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde
+                };
+
+                var tolk4 = new Tolk()
+                {
                     fornavn = "Rambo",
                     etternavn = "Ammok", 
                     tlf = 9595995,
-                    email = "rambo@kunde.no",
+                    email = "rambo1@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,
@@ -235,23 +261,41 @@ namespace Tolkesentralen_v3.Models
 
                 tolk1.poststed = jessheim;
                 tolk2.poststed = jessheim;
-                tolk2.poststed = jessheim;
+                tolk3.poststed = jessheim;
+                tolk4.poststed = jessheim;
                 //db.SaveChanges();
 
                 tolk1.spraak = new List<Spraak>();
                 tolk2.spraak = new List<Spraak>();
-               
+                tolk3.spraak = new List<Spraak>();
+                tolk4.spraak = new List<Spraak>();
+
 
                 tolk1.spraak.Add(spraak2);
                 tolk1.spraak.Add(spraak3);
                 tolk1.spraak.Add(spraak4);
-                tolk2.spraak.Add(spraak1);
+
                 tolk2.spraak.Add(spraak2);
+                tolk2.spraak.Add(spraak3);
+                tolk2.spraak.Add(spraak4);
+
+                //tolk2.spraak.Add(spraak1);
+                //tolk2.spraak.Add(spraak2);
+
+                tolk3.spraak.Add(spraak2);
+                tolk3.spraak.Add(spraak3);
+                tolk3.spraak.Add(spraak4);
+
+                tolk4.spraak.Add(spraak1);
+                tolk4.spraak.Add(spraak2);
+
                 db.SaveChanges();
 
 
                 db.Personer.Add(tolk1);
                 db.Personer.Add(tolk2);
+                db.Personer.Add(tolk3);
+                db.Personer.Add(tolk4);
 
                 db.SaveChanges();
 
