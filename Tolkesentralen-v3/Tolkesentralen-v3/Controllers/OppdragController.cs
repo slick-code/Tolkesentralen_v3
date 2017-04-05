@@ -48,6 +48,36 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        
+        [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
+        public HttpResponseMessage GetForesposlerTilTolk(int id)
+        {
+            //List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
+            List<Tolking_vm> liste = new List<Tolking_vm>();
+
+            var output = new Tolking_vm
+            {
+                kundeID = 1,
+                oppdragID = 1,
+                frakl = "12:15",
+                tilkl = "13:15",
+                oppdragsdato = "12-07-2017",
+                typetolk = "Fremmedmøtetolk",
+                fraspraak = "Spansk",
+                tilspraak = "Norsk"
+            };
+            liste.Add(output);
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         // Person må være med i ViewModellen, siden oppdraget er fra en anonym (Ikke registert)
         //[System.Web.Mvc.HttpPost]
         //[Route("api/oppdrag/PostOppdragFraAnonym")]

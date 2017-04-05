@@ -36,4 +36,9 @@ export class OppdragService {
         return this.http.get(this.url+id)
             .map((response: Response) => response.json());
     }
+
+    getForesposelTilTolk(id: number): Observable<Oppdrag[]> {
+        return this.http.get(this.url + "GetForesposlerTilTolk/" + id)
+            .map((response: Response) => response.json());
+    }
 }

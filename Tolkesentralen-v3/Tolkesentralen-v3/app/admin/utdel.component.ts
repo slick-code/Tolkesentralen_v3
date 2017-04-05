@@ -83,7 +83,8 @@ export class UtdelComponent {
                 }
             }
         }
-        this.tolkService.postForesposler(tempArreyTolkID).subscribe(
+        var body: string = JSON.stringify({ tolkArrey: tempArreyTolkID, oppdragId: this.oppdrag.oppdragID });
+        this.tolkService.postForesposler(body).subscribe(
             retur => {
                 this.Success = true;
                 //this.arrayTolk = retur;
