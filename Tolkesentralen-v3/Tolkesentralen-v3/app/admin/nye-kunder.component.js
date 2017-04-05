@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var kunde_service_1 = require('../_services/kunde.service');
-var models_1 = require('../_models/models');
-var data_service_1 = require('../_services/data.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var kunde_service_1 = require("../_services/kunde.service");
+var models_1 = require("../_models/models");
+var data_service_1 = require("../_services/data.service");
 var NyeKunderComponent = (function () {
     function NyeKunderComponent(service, dataService) {
         this.service = service;
@@ -45,13 +46,14 @@ var NyeKunderComponent = (function () {
             _this.updateNavBar();
         }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
-    NyeKunderComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/nye-kunder.component.html"
-        }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
-    ], NyeKunderComponent);
     return NyeKunderComponent;
 }());
+NyeKunderComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/nye-kunder.component.html"
+    }),
+    __metadata("design:paramtypes", [kunde_service_1.KundeService,
+        data_service_1.DataService])
+], NyeKunderComponent);
 exports.NyeKunderComponent = NyeKunderComponent;
 //# sourceMappingURL=nye-kunder.component.js.map

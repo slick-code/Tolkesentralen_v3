@@ -10,6 +10,8 @@ namespace Tolkesentralen_v3.Models
     {
         public virtual List<Spraak> spraak { get; set; }
         public virtual List<Oppdrag> oppdrag { get; set; }
+
+        public virtual List<Foresporsler> foresporsler { get; set; }
         //public virtual ICollection<SpraakTolk> SpraakTolk { get; set; }
 
     }

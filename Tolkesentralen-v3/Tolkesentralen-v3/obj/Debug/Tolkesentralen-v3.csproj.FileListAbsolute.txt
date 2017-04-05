@@ -132,3 +132,4 @@ C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\Sys
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.WebHost.xml
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.dll
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.pdb
+C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.csprojResolveAssemblyReference.cache
