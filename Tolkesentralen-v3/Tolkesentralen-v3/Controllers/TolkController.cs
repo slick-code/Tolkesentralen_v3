@@ -81,7 +81,7 @@ namespace Tolkesentralen_v3.Controllers
 
         [Route("api/tolk/PostForesposler")]
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage PostForesposler([FromBody]int[] tolkIDs)
+        public HttpResponseMessage PostForesposler([FromBody]Utdel tolkIDs)
         {
             return new HttpResponseMessage()
             {

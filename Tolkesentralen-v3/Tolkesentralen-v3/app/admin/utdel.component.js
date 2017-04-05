@@ -71,7 +71,8 @@ var UtdelComponent = (function () {
                 }
             }
         }
-        this.tolkService.postForesposler(tempArreyTolkID).subscribe(function (retur) {
+        var body = JSON.stringify({ tolkArrey: tempArreyTolkID, oppdragId: this.oppdrag.oppdragID });
+        this.tolkService.postForesposler(body).subscribe(function (retur) {
             _this.Success = true;
             //this.arrayTolk = retur;
         }, function (error) { _this.Error = true; }, function () { _this.loading = false; });

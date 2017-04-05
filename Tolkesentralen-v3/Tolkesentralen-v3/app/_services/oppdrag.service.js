@@ -35,6 +35,10 @@ var OppdragService = (function () {
         return this.http.get(this.url + id)
             .map(function (response) { return response.json(); });
     };
+    OppdragService.prototype.getForesposelTilTolk = function (id) {
+        return this.http.get(this.url + "GetForesposlerTilTolk/" + id)
+            .map(function (response) { return response.json(); });
+    };
     OppdragService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])

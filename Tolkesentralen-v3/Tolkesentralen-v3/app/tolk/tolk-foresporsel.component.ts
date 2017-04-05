@@ -19,19 +19,19 @@ export class TolkForesporselComponent implements OnInit {
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
-        // this.getOppdragTolk();
+        this.getOppdragTolk();
         
     }
 
-    //getOppdragTolk() {
-    //    this.oppdragService.getOppdragTilTolk(this.ID).subscribe(
-    //        retur => {
-    //            this.oppdrag = retur;
-    //            console.log("Success -> Mine-oppdrag  , test val:  " + this.oppdrag);
-    //        },
-    //        error => console.log("Error -> Mine oppdrag feilet! ->" + error),
-    //        () => console.log("ferdig: Mine oppdrag")
-    //    );
-    //}
+    getOppdragTolk() {
+        this.oppdragService.getForesposelTilTolk(this.ID).subscribe(
+            retur => {
+                this.oppdrag = retur;
+                console.log("Success -> Mine-oppdrag  , test val:  " + this.oppdrag);
+            },
+            error => console.log("Error -> Mine oppdrag feilet! ->" + error),
+            () => console.log("ferdig: Mine oppdrag")
+        );
+    }
 
 }

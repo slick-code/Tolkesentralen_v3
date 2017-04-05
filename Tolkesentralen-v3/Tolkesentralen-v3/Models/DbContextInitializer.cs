@@ -211,7 +211,7 @@ namespace Tolkesentralen_v3.Models
                     fornavn = "TolkFornavn",
                     etternavn = "TolkEtternavn",
                     tlf = 9595995,
-                    email = "tolk1@tolk.no",
+                    email = "tolk@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,

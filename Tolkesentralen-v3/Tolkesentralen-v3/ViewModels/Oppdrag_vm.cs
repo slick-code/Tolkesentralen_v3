@@ -47,6 +47,11 @@ namespace Tolkesentralen_v3.ViewModels
         public string tilspraak { get; set; }
     }
 
+    public class Utdel
+    {
+        public int[] tolkArrey { get; set; }
+        public int oppdragId { get; set; }
+    }
 
 
 
