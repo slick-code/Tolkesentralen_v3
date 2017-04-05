@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
+using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Controllers
@@ -83,7 +84,7 @@ namespace Tolkesentralen_v3.Controllers
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage PostForesposler([FromBody]Utdel tolkIDs)
         {
-            var db = new DbOppdrag();
+            var db = new DbForessporsel();
             bool ok = db.regEnForesporselPåEnEllerFlereTolk(tolkIDs.tolkArrey, tolkIDs.oppdragId);
             if (ok)
             {
