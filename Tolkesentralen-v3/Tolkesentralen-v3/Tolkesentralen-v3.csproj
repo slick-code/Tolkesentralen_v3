@@ -120,11 +120,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\admin\admin.component.html" />
+    <Content Include="app\admin\bestillinger\admin-oversettelse-bestilling-oversikt.component.html" />
+    <Content Include="app\admin\bestillinger\admin-tolk-bestilling-oversikt.component.html" />
     <Content Include="app\admin\brukere\kunde-liste.component.html" />
-    <Content Include="app\admin\nye-kunder.component.html" />
-    <Content Include="app\admin\oppdrag.component.html" />
-    <Content Include="app\admin\oversettelse.component.html" />
-    <Content Include="app\admin\utdel.component.html" />
+    <Content Include="app\admin\brukere\tolk-liste.component.html" />
+    <Content Include="app\admin\foresporsler\nye-kunder.component.html" />
+    <Content Include="app\admin\foresporsler\oppdrag.component.html" />
+    <Content Include="app\admin\foresporsler\oversettelse.component.html" />
+    <Content Include="app\admin\foresporsler\utdel.component.html" />
+    <Content Include="app\admin\opprett\opprett-tolk.component.html" />
+    <Content Include="app\admin\oversettelsehistorikk\admin-avbestilte-oversettelse-oppdrag.component.html" />
+    <Content Include="app\admin\oversettelsehistorikk\admin-utforte-oversettelse-oppdrag.component.html" />
+    <Content Include="app\admin\tolkehistorikk\admin-tolk-avbestillinger-oversikt.component.html" />
+    <Content Include="app\admin\tolkehistorikk\admin-tolk-utforte-oppdrag.component.html" />
     <Content Include="app\home\bestill-oversettelse.component.html" />
     <Content Include="app\home\bestill-tolk.component.html" />
     <Content Include="app\home\home.component.html" />
@@ -225,6 +233,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\admin\innstillinger\" />
     <Folder Include="App_Data\" />
     <Folder Include="quickstart-master\src\" />
   </ItemGroup>
@@ -232,11 +241,19 @@
     <TypeScriptCompile Include="app\admin\admin-routing.module.ts" />
     <TypeScriptCompile Include="app\admin\admin.component.ts" />
     <TypeScriptCompile Include="app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="app\admin\bestillinger\admin-oversettelse-bestilling-oversikt.component.ts" />
+    <TypeScriptCompile Include="app\admin\bestillinger\admin-tolk-bestilling-oversikt.component.ts" />
     <TypeScriptCompile Include="app\admin\brukere\kunde-liste.component.ts" />
-    <TypeScriptCompile Include="app\admin\nye-kunder.component.ts" />
-    <TypeScriptCompile Include="app\admin\oppdrag.component.ts" />
-    <TypeScriptCompile Include="app\admin\oversettelse.component.ts" />
-    <TypeScriptCompile Include="app\admin\utdel.component.ts" />
+    <TypeScriptCompile Include="app\admin\brukere\tolk-liste.component.ts" />
+    <TypeScriptCompile Include="app\admin\foresporsler\nye-kunder.component.ts" />
+    <TypeScriptCompile Include="app\admin\foresporsler\oppdrag.component.ts" />
+    <TypeScriptCompile Include="app\admin\foresporsler\oversettelse.component.ts" />
+    <TypeScriptCompile Include="app\admin\foresporsler\utdel.component.ts" />
+    <TypeScriptCompile Include="app\admin\opprett\opprett-tolk.component.ts" />
+    <TypeScriptCompile Include="app\admin\oversettelsehistorikk\admin-avbestilte-oversettelse-oppdrag.component.ts" />
+    <TypeScriptCompile Include="app\admin\oversettelsehistorikk\admin-utforte-oversettelse-oppdrag.component.ts" />
+    <TypeScriptCompile Include="app\admin\tolkehistorikk\admin-tolk-avbestillinger-oversikt.component.ts" />
+    <TypeScriptCompile Include="app\admin\tolkehistorikk\admin-tolk-utforte-oppdrag.component.ts" />
     <TypeScriptCompile Include="app\app-routing.module.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />

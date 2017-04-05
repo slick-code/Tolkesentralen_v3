@@ -1,0 +1,58 @@
+﻿
+<div>
+    <p><span class="glyphicon glyphicon-info-sign"></span> Oversettelse-bestilling som skal utføres</p>
+    <hr />
+    <br />
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>OppdragsNr</th>
+                <th>Bestillingsdato</th>
+                <th>Tolk navn</th>
+                <th>Type dokument</th>
+                <th>Fra til Språk</th>
+                <th>Tidspunkt</th>
+                <th>Ferdiggjoresdato</th>
+                <th>kundeNr</th>
+                <th>Firma/Kunde</th>
+                <th>Kontakt person</th>
+                <th>Telefon</th>
+                <th>Telefax</th>
+                <th>E-post</th>
+                <th>Faktura adresse</th>
+                <th>Postnr</th>
+                <th>Poststed</th>
+                <th>Melding</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let oppdrag of arrayOversettelse; let i = index">
+            <tr>
+                <td>{{oppdrag.oppdragsNr}}</td>
+                <td>{{oversettelse.bestillingsdato}}</td>
+                <td>{{tolk.navn}}</td>
+                <td>{{oppdrag.typedokument}}</td>
+                <td>{{oppdrag.fraspraak}} => {{oppdrag.tilspraak}} </td>
+                <td>{{oppdrag.oppdragsdato}} - {{oppdrag.frakl}} - {{oppdrag.tilkl}}</td>
+                <td>{{oppdrag.ferdiggjoresdato}}</td>
+                <td>{{kunde.kundeNr}}</td>
+                <td>{{oppdrag.firma}}</td>
+                <td>{{oppdrag.fornavn}} {{oppdrag.etternavn}}</td>
+                <td>{{oppdrag.telefon}}</td>
+                <td>{{oppdrag.telefax}}</td>
+                <td>{{oppdrag.epost}}</td>
+                <td>{{oppdrag.fakturaadresse}}</td>
+                <td>{{oppdrag.postnr}}</td>
+                <td>{{oppdrag.poststed}}</td>
+                <td>{{oppdrag.andreopplysninger}}</td>
+
+                <td width="230">
+                    <button style="width:70px" class="btn btn-success" (click)="visUtdel()">Utdel</button>
+                    <button style="width:70px" class="btn btn-danger">Slett</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

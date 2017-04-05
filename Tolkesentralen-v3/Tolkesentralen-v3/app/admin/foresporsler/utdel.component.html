@@ -1,0 +1,65 @@
+
+
+
+<div *ngIf="showForm">
+    <br />
+    <div>
+    <h3 >Utvalg tolker </h3>
+    <p><span class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.fraspraak}} og {{oppdrag.tilspraak}} </p> 
+    </div>
+    <br />
+
+    
+    <div style="width:440px;">
+
+
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th><p style="display: inline-block;">Velg Alle</p> </th>
+                    <td align="center"><input style="width: 35px" (click)="setAllChecked()"   type="checkbox" name="mon" id="mon" value="1" class="form-control big-checkbox" /></td>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let tolk of arrayTolk; let i = index  ">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.tlf}}</p></td>
+              
+                        </table>
+                    </td>
+                    <td align="center"><input [checked]="arrayTolk[i].valgt"  (change)="arrayTolk[i].valgt = !arrayTolk[i].valgt"  style="width: 35px" type="checkbox" name="checkbox" id="" value="{{tolk}}" class="form-control" /></td>
+                </tr>
+                
+
+            </tbody>
+
+
+        </table>
+
+        <button style="width:100%; float:right; " class="btn btn-success" (click)="postForesporsler()">Send forespørsel</button>
+    </div>
+
+
+</div>
+
+
+
+<div *ngIf="loading">
+    <div>
+        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+    </div>
+</div>
+
+<div *ngIf="Error">
+    <p class="error">Ooops, beklager men en feil oppsto og handlingen ble avbrutt!</p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>
+
+<div *ngIf="Success">
+    <h3 style="color:forestgreen">Success! </h3>
+    <p>Forespørselen er sendt! Gå til Bestillinger for å se detaljer. </p>
+    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+</div>

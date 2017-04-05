@@ -12,11 +12,19 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var admin_component_1 = require('./admin.component');
 var auth_guard_1 = require('../_guards/auth.guard');
-var oppdrag_component_1 = require('./oppdrag.component');
-var oversettelse_component_1 = require('./oversettelse.component');
-var utdel_component_1 = require('./utdel.component');
-var nye_kunder_component_1 = require('./nye-kunder.component');
+var oppdrag_component_1 = require('./foresporsler/oppdrag.component');
+var oversettelse_component_1 = require('./foresporsler/oversettelse.component');
+var utdel_component_1 = require('./foresporsler/utdel.component');
+var nye_kunder_component_1 = require('./foresporsler/nye-kunder.component');
 var kunde_liste_component_1 = require('./brukere/kunde-liste.component');
+var tolk_liste_component_1 = require('./brukere/tolk-liste.component');
+var opprett_tolk_component_1 = require('./opprett/opprett-tolk.component');
+var admin_tolk_bestilling_oversikt_component_1 = require('./bestillinger/admin-tolk-bestilling-oversikt.component');
+var admin_oversettelse_bestilling_oversikt_component_1 = require('./bestillinger/admin-oversettelse-bestilling-oversikt.component');
+var admin_tolk_avbestillinger_oversikt_component_1 = require('./tolkehistorikk/admin-tolk-avbestillinger-oversikt.component');
+var admin_tolk_utforte_oppdrag_component_1 = require('./tolkehistorikk/admin-tolk-utforte-oppdrag.component');
+var admin_utforte_oversettelse_oppdrag_component_1 = require('./oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component');
+var admin_avbestilte_oversettelse_oppdrag_component_1 = require('./oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component');
 var appRoutes = [
     {
         path: '',
@@ -31,6 +39,14 @@ var appRoutes = [
                     { path: 'oppdrag', component: oppdrag_component_1.OppdragComponent },
                     { path: 'nye_kunder', component: nye_kunder_component_1.NyeKunderComponent },
                     { path: 'kunder', component: kunde_liste_component_1.KundeListeComponent },
+                    { path: 'tolk-liste', component: tolk_liste_component_1.TolkListeComponent },
+                    { path: 'opprett-tolk', component: opprett_tolk_component_1.OpprettTolkComponent },
+                    { path: 'admin-tolk-bestilling-oversikt', component: admin_tolk_bestilling_oversikt_component_1.AdminTolkBestillingOversiktComponent },
+                    { path: 'admin-oversettelse-bestilling-oversikt', component: admin_oversettelse_bestilling_oversikt_component_1.AdminOversettelseBestillingOversiktComponent },
+                    { path: 'admin-tolk-avbestillinger-oversikt', component: admin_tolk_avbestillinger_oversikt_component_1.AdminTolkAvbestillingerOversiktComponent },
+                    { path: 'admin-tolk-utforte-oppdrag', component: admin_tolk_utforte_oppdrag_component_1.AdminTolkUtforteOppdragComponent },
+                    { path: 'admin-utforte-oversettelse-oppdrag', component: admin_utforte_oversettelse_oppdrag_component_1.AdminUtforteOversettelseOppdragComponent },
+                    { path: 'admin-avbestilte-oversettelse-oppdrag', component: admin_avbestilte_oversettelse_oppdrag_component_1.AdminAvbestilteOversettelseOppdragComponent },
                     { path: '', component: oppdrag_component_1.OppdragComponent }
                 ]
             }
