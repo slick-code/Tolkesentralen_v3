@@ -10,7 +10,7 @@ namespace Tolkesentralen_v3.Models
         [Key]
         public int spraakId { get; set; }
         public string navn { get; set; }
-       public string nivaa { get; set; }
+       
 
        public virtual List<Tolk> tolk { get; set; }
         //public virtual ICollection<SpraakTolk> SpraakTolk { get; set; }

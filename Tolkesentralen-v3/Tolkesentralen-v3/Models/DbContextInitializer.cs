@@ -172,30 +172,26 @@ namespace Tolkesentralen_v3.Models
                 var spraak1 = new Spraak()
                 {
 
-                    navn = "Norsk",
-                    nivaa = "F"
+                    navn = "Norsk"
                     
                 };
                 var spraak2 = new Spraak()
                 {
 
-                    navn = "Somalisk",
-                    nivaa = "F"
+                    navn = "Somalisk"
 
                 };
                 var spraak3 = new Spraak()
                 {
 
-                    navn = "Lugandisk",
-                    nivaa = "F"
+                    navn = "Lugandisk"
 
                 };
 
                 var spraak4 = new Spraak()
                 {
 
-                    navn = "Afganisk",
-                    nivaa = "F"
+                    navn = "Afganisk"
 
                 };
 
@@ -347,6 +343,12 @@ namespace Tolkesentralen_v3.Models
                 o.regTolkOppdrag(oppdrag1, 1);
                 o.regTolkOppdrag(oppdrag2, 1);
                 o.regTolkOppdrag(oppdrag3, 1);
+
+                /***************************THis runs the method to register a foresler to a tolk**************************************/
+                //int[] tolkId = new int[2];
+                //tolkId[0] = 8;
+                //tolkId[1] = 9;
+                //var ok = o.regEnForesporselPåEnEllerFlereTolk(tolkId, 1);
 
 
                 db.SaveChanges();

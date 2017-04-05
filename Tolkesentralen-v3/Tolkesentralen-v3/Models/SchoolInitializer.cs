@@ -12,8 +12,7 @@ namespace Tolkesentralen_v3.Models
         {
             var sp1 = new Spraak
             {
-                navn = "norsk",
-                nivaa = "Top"
+                navn = "norsk"
             };
             var admin = new Admin
             {
@@ -40,8 +39,7 @@ namespace Tolkesentralen_v3.Models
                 {
                     new Spraak()
                     {
-                        navn = "norsk",
-                        nivaa = "Top"
+                        navn = "norsk"
 
                     }
                 }
