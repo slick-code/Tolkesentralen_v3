@@ -157,7 +157,7 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
-            List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
+            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using Tolkesentralen_v3.Models;
 using Tolkesentralen_v3.ViewModels;
 
@@ -12,7 +11,7 @@ namespace Tolkesentralen_v3.Repository
     {
 
         private DbNetcont db;
-
+        
         public DbForessporsel()
         {
             db = new DbNetcont();
@@ -55,6 +54,8 @@ namespace Tolkesentralen_v3.Repository
 
 
                         tolk.foresporsler.Add(foresp);
+                        oppdrag.sendt = true;
+
                         db.SaveChanges();
 
 
