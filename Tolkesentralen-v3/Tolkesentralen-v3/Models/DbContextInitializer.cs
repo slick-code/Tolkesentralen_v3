@@ -348,6 +348,12 @@ namespace Tolkesentralen_v3.Models
                 o.regTolkOppdrag(oppdrag2, 1);
                 o.regTolkOppdrag(oppdrag3, 1);
 
+                /***************************THis runs the method to register a foresler to a tolk**************************************/
+                //int[] tolkId = new int[2];
+                //tolkId[0] = 8;
+                //tolkId[1] = 9;
+                //var ok = o.regEnForesporselPåEnEllerFlereTolk(tolkId, 1);
+
 
                 db.SaveChanges();
 
