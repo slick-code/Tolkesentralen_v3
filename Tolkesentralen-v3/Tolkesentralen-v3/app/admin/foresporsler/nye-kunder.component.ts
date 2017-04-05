@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Kunde } from '../_models/models'
-import { KundeService } from '../_services/kunde.service'
-import { NavbarElement } from '../_models/models'
-import { DataService } from '../_services/data.service'
+import { Kunde } from '../../_models/models'
+import { KundeService } from '../../_services/kunde.service'
+import { NavbarElement } from '../../_models/models'
+import { DataService } from '../../_services/data.service'
 
 
 
 @Component({
-    templateUrl: "./app/admin/nye-kunder.component.html"
+    templateUrl: "./app/admin/foresporsler/nye-kunder.component.html"
 })
 export class NyeKunderComponent {
    arrayNyeKunder: Kunde[] = [];

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag } from '../_models/models'
-import { OppdragService } from '../_services/oppdrag.service'
-import { NavbarElement } from '../_models/models'
-import { DataService } from '../_services/data.service'
+import { Oppdrag } from '../../_models/models'
+import { OppdragService } from '../../_services/oppdrag.service'
+import { NavbarElement } from '../../_models/models'
+import { DataService } from '../../_services/data.service'
 
 
 
 @Component({
-    templateUrl: "./app/admin/oversettelse.component.html"
+    templateUrl: "./app/admin/foresporsler/oversettelse.component.html"
 })
 export class OversettelseComponent {
    arrayOversettelse: Oppdrag[] = [];

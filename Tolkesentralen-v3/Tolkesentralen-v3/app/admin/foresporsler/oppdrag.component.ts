@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag } from '../_models/models'
-import { OppdragService } from '../_services/oppdrag.service'
+import { Oppdrag } from '../../_models/models'
+import { OppdragService } from '../../_services/oppdrag.service'
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { TempService} from '../_services/temp.service'
-import { DataService } from '../_services/data.service'
-import { NavbarElement } from '../_models/models'
-import { SelectivePreloadingStrategy } from '../_services/selective-preloading-strategy';
+import { TempService } from '../../_services/temp.service'
+import { DataService } from '../../_services/data.service'
+import { NavbarElement } from '../../_models/models'
+import { SelectivePreloadingStrategy } from '../../_services/selective-preloading-strategy';
 
 
 @Component({
-    templateUrl: "./app/admin/oppdrag.component.html"
+    templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
 })
 export class OppdragComponent {
    arrayOppdrag: Oppdrag[];

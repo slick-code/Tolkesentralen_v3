@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Tolk, Oppdrag } from '../_models/models'
-import { OppdragService } from '../_services/oppdrag.service'
-import { TempService } from '../_services/temp.service'
-import { TolkService } from '../_services/tolk.service'
+import { Tolk, Oppdrag } from '../../_models/models'
+import { OppdragService } from '../../_services/oppdrag.service'
+import { TempService } from '../../_services/temp.service'
+import { TolkService } from '../../_services/tolk.service'
 
 
 @Component({
-    templateUrl: "./app/admin/utdel.component.html",
+    templateUrl: "./app/admin/foresporsler/utdel.component.html",
     providers: [TolkService],
 })
 export class UtdelComponent {
