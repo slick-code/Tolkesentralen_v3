@@ -225,6 +225,46 @@ namespace Tolkesentralen_v3.Models
 
         }
 
+        public List<Tolking_vm> listOppdragTolkUbehandlett()
+        {
+            // return db.Oppdrag.ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == false).ToList();
+
+            try
+            {
+
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
+                foreach (var rowf in alleFramaate)
+                {
+
+                    var framaater = new Tolking_vm()
+                    {
+                        kundeID = rowf.kunde.persId,
+                        oppdragID = rowf.oppdragsID,
+                        typetolk = rowf.oppdragType,
+                        fraspraak = rowf.spraakFra,
+                        tilspraak = rowf.spraakTil,
+                        sted = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
+                        frakl = rowf.tidFra,
+                        tilkl = rowf.tidTil,
+
+                        andreopplysninger = rowf.andreOpplisning,
+
+
+                    };
+                    vm_listeframmate.Add(framaater);
+                }
+
+                return vm_listeframmate;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
 
         // Lister Tolkinger som tilhører en kunde
         public List<Tolking_vm> listOppdragMedKundeId(int kundeId)

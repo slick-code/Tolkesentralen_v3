@@ -21,6 +21,8 @@ namespace Tolkesentralen_v3.Models
 
         public virtual Kunde kunde { get; set; }
         public virtual Tolk Tolk { get; set; }
+
+        public bool sendt { get; set; }
     }
 
 
