@@ -197,6 +197,7 @@
     <Compile Include="Models\SchoolInitializer.cs" />
     <Compile Include="Models\Spraak.cs" />
     <Compile Include="Models\Tolk.cs" />
+    <Compile Include="Repository\DbForessporsel.cs" />
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbOversettelse.cs" />
     <Compile Include="Repository\DbPerson.cs" />
