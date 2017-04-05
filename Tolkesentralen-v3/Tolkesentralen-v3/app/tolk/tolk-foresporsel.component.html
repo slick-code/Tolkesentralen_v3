@@ -21,7 +21,7 @@
             <td>{{oppdrag.fraspraak}}</td>
             <td>{{oppdrag.tilspraak}}</td>
             <td>Dato: {{oppdrag.oppdragsdato}} &nbsp; Fra kl: {{oppdrag.frakl}} &nbsp; Til kl: {{oppdrag.tilkl}}</td>
-            <td><button class="btn btn-danger">Nei</button> &nbsp; <button class="btn btn-success">Ja</button></td>
+            <td><button (click)="postSvarOpprag(i, oppdrag.oppdragID, 0)" class="btn btn-danger">Nei</button> &nbsp; <button (click)="postSvarOpprag(i, oppdrag.oppdragID, 1)" class="btn btn-success">Ja</button></td>
         </tr>
     </tbody>
 </table>

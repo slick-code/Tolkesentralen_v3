@@ -99,6 +99,29 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
+
+        [Route("api/tolk/PostSvar")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage PostSvar([FromBody]Svar input)
+        {
+            var db = new DbOppdrag();
+            //bool ok = db.regEnForesporselPåEnEllerFlereTolk(tolkIDs.tolkArrey, tolkIDs.oppdragId);
+            bool ok = true;
+            if (ok)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
     }
 
 

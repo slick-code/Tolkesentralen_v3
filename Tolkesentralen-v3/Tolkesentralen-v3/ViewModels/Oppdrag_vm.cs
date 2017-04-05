@@ -53,6 +53,13 @@ namespace Tolkesentralen_v3.ViewModels
         public int oppdragId { get; set; }
     }
 
+    public class Svar
+    {
+        public int tolkID { get; set; }
+        public int oppdragId { get; set; }
+        public int svar { get; set; }
+    }
+
 
 
 

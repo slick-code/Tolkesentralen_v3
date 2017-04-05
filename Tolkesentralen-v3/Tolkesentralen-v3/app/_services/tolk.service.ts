@@ -28,4 +28,11 @@ export class TolkService {
         return this.http.post(this.url + "PostForesposler", body, { headers: headers })
             .map(returData => returData.toString())
     }
+
+    postSvar(body: any) {
+        var headers = new Headers({ "Content-Type": "application/json" });
+
+        return this.http.post(this.url + "PostSvar", body, { headers: headers })
+            .map(returData => returData.toString())
+    }
 }
