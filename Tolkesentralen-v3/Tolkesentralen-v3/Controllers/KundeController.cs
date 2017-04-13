@@ -76,7 +76,7 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Kunde_VM ny)
+        public HttpResponseMessage Post([FromBody]Kunde_VM ny,int id)
         {
             var test = ny;
             if (ModelState.IsValid)
