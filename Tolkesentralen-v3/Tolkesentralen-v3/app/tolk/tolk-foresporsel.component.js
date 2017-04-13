@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var tolk_service_1 = require('../_services/tolk.service');
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../_services/oppdrag.service");
+var tolk_service_1 = require("../_services/tolk.service");
 var TolkForesporselComponent = (function () {
     function TolkForesporselComponent(oppdragService, tolkService) {
         this.oppdragService = oppdragService;
@@ -35,16 +36,16 @@ var TolkForesporselComponent = (function () {
             _this.oppdrag.splice(index, 1);
         }, function (error) { console.log("EROOR: postSvarOpprag - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
-    TolkForesporselComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/tolk/tolk-foresporsel.component.html',
-            providers: [oppdrag_service_1.OppdragService, tolk_service_1.TolkService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, tolk_service_1.TolkService])
-    ], TolkForesporselComponent);
     return TolkForesporselComponent;
 }());
+TolkForesporselComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/tolk/tolk-foresporsel.component.html',
+        providers: [oppdrag_service_1.OppdragService, tolk_service_1.TolkService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, tolk_service_1.TolkService])
+], TolkForesporselComponent);
 exports.TolkForesporselComponent = TolkForesporselComponent;
 //# sourceMappingURL=tolk-foresporsel.component.js.map

@@ -25,13 +25,8 @@ namespace Tolkesentralen_v3.Controllers
         OppdragRepository funk = new OppdragRepository();
 
         [System.Web.Mvc.HttpPost]
-<<<<<<< HEAD
-        public HttpResponseMessage Post([FromBody]Tolking_vm input) //metode fot å bestille oppdrag av typen tolk
-
-=======
         [Route("api/oppdrag/PostOppdragFraKunde")]
         public HttpResponseMessage PostOppdragFraKunde([FromBody]Tolking_vm input)
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
         {
             if (ModelState.IsValid)
             {
@@ -52,13 +47,6 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
-
-<<<<<<< HEAD
-
-        public HttpResponseMessage Get(int kundeID) //metode for å liste ut alle oppdrag_tolk som tilhører en kunde
-        {
-            List<Tolking_vm> utListe = repository.listTolkOppdragMedKundeId(kundeID);
-=======
         
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
@@ -153,10 +141,10 @@ namespace Tolkesentralen_v3.Controllers
             var liste = repository.listOppdragMedKundeId(id);
 
             //List<FKunde> liste = repository.listOppdrag();
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
+
 
             var Json = new JavaScriptSerializer();
-            string JsonString = Json.Serialize(utListe);
+            string JsonString = Json.Serialize(liste);
 
             return new HttpResponseMessage()
             {
@@ -164,8 +152,6 @@ namespace Tolkesentralen_v3.Controllers
                 StatusCode = HttpStatusCode.OK
             };
         }
-<<<<<<< HEAD
-=======
 
         // Denne er litt tricky siden vi må liste ut alle tolker som har mottat forespørsel
         [Route("api/oppdrag/GetBehandlet")]
@@ -205,6 +191,5 @@ namespace Tolkesentralen_v3.Controllers
         //        Content = new StringContent("Søknaden ble ikke lagret!")
         //    };
         //}
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
     }
 }

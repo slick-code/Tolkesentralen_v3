@@ -86,7 +86,7 @@ namespace Tolkesentralen_v3.Models
         }
 
 
-        public bool regOppdragOverssettelse(Oversettelse_vm nyOppdrag, int kundeId)
+        public bool regOppdragOverssettelse(Oversettelse_VM nyOppdrag, int kundeId)
         {
 
             Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
@@ -98,20 +98,20 @@ namespace Tolkesentralen_v3.Models
                     spraakFra = nyOppdrag.fraspraak,
                     spraakTil = nyOppdrag.tilspraak,
                     regDato = DateTime.Now,
-                    frist = nyOppdrag.frist,
-                    andreOpplisning = nyOppdrag.andreopplysninger,
+                     ferdiggjoresdato= nyOppdrag.ferdiggjoresdato,
+                    andreOpplisning = nyOppdrag.andreopplysninger
 
                 };
 
-                foreach(var f in nyOppdrag.fil)
+                foreach(var f in nyOppdrag.ferdiggjoresdato)
                 {
                     var nyFil = new Fil()
                     {
-                        type = f.type,
-                        size = f.size,
+                        //type = f.type,
+                        //size = f.size,
                     };
 
-                    oppdragDb.fil.Add(nyFil);
+                    //oppdragDb.fil.Add(nyFil);
                 }
 
                  
@@ -248,11 +248,6 @@ namespace Tolkesentralen_v3.Models
 
                         andreopplysninger = rowf.andreOpplisning,
 
-
-<<<<<<< HEAD
-       // Lister Tolkinger som tilhører en kunde
-        public List<Tolking_vm> listTolkOppdragMedKundeId(int kundeId)
-=======
                     };
                     vm_listeframmate.Add(framaater);
                 }
@@ -269,7 +264,6 @@ namespace Tolkesentralen_v3.Models
 
         // Lister Tolkinger som tilhører en kunde
         public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
         {
 
             List<Tolking> alleTolkingAvKunde = db.Oppdrag.OfType<Tolking>().ToList();

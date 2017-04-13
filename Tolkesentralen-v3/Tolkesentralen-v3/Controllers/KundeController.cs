@@ -21,16 +21,10 @@ namespace Tolkesentralen_v3.Controllers
         // Get    -> Det skal kunne hentes ut all informasjon til spesifisert kunde-med-ID
         // Get    -> Hent alle kunder som IKKE er behandlet/godkjent
         // Get    -> Hent alle kunder som ER behandlet/godkjent
-
-<<<<<<< HEAD
-        [Route("api/kunde/Put")]
-        [HttpPut]
-        public HttpResponseMessage Put([FromBody]string email)
-=======
+      
         DbPerson repository = new DbPerson();
 
         public HttpResponseMessage Put(int id)
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
         {
             if (ModelState.IsValid)
             {

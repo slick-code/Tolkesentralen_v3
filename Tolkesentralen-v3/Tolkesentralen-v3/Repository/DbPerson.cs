@@ -221,13 +221,8 @@ namespace Tolkesentralen_v3.Models
                 email = nyTolk.email,
                 adresse = nyTolk.adresse,
                 regDato = DateTime.Now,
-<<<<<<< HEAD
-                //tolkNr = "29292992",
-                password = lagHash(inntolk.password)
-=======
                 password = dbPassword,
                 Salt = salt
->>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
 
             };
             var db = new DbNetcont();
