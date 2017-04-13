@@ -8,41 +8,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var forms_1 = require('@angular/forms');
 var BestillTolkComponent = (function () {
-    function BestillTolkComponent(service) {
+    function BestillTolkComponent(service, fb) {
         this.service = service;
-    }
-    BestillTolkComponent.prototype.ngOnInit = function () { this.getOppdrag; };
-    BestillTolkComponent.prototype.getOppdrag = function () {
-        var _this = this;
-        this.service.getOppdrag()
-            .subscribe(function (db_liste) {
-            _this.liste = db_liste;
+        this.fb = fb;
+        this.form = fb.group({
+            typetolk: [],
+            fraspraak: [],
+            tilspraak: [],
+            oppdragsdato: [],
+            frakl: [],
+            tilkl: [],
+            oppmotested: [],
+            firma: [],
+            fornavn: [],
+            etternavn: [],
+            telefon: [],
+            telefax: [],
+            epost: [],
+            fakturaadresse: [],
+            postnr: [],
+            poststed: [],
+            andreopplysninger: [],
         });
+    }
+    BestillTolkComponent.prototype.ngOnInit = function () {
+        //this.getOppdrag;
     };
-    BestillTolkComponent.prototype.postKunde = function (navn) {
-        var _this = this;
-        var ny = new models_1.Oppdrag();
-        ny.fornavn = navn;
-        var body = JSON.stringify(ny);
-        this.service.postOversettelse(body).subscribe(function (retur) {
-            _this.liste.push(ny);
-            console.log("Success POST : " + ny.fornavn);
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
-    };
+    BestillTolkComponent = __decorate([
+        core_1.Component({
+            templateUrl: './app/home/bestill-tolk.component.html',
+            providers: [oppdrag_service_1.OppdragService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+    ], BestillTolkComponent);
     return BestillTolkComponent;
 }());
-BestillTolkComponent = __decorate([
-    core_1.Component({
-        templateUrl: './app/home/bestill-tolk.component.html',
-        providers: [oppdrag_service_1.OppdragService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService])
-], BestillTolkComponent);
 exports.BestillTolkComponent = BestillTolkComponent;
 //# sourceMappingURL=bestill-tolk.component.js.map

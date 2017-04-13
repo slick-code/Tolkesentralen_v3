@@ -18,15 +18,21 @@ export class KundeListeComponent {
         private dataService: DataService) { }
 
     ngOnInit() {
+        this.getKunder();
+        
+    }
 
+    getKunder() {
         // get users from secure api end point
         this.service.getKunder()
             .subscribe(kunder => {
-                this.arrayKunder = kunder;
-                this.element = new NavbarElement();
-                this.element.nr = this.arrayKunder.length;
-                this.element.element = 'kunder';
-                this.dataService.updateData(this.element);
+                if (kunder != null) {
+                    this.arrayKunder = kunder;
+                    this.element = new NavbarElement();
+                    this.element.nr = this.arrayKunder.length;
+                    this.element.element = 'kunder';
+                    this.dataService.updateData(this.element);
+                }
             });
     }
 

@@ -1,0 +1,29 @@
+﻿<div>
+    <h3>Endre passord</h3>
+    <form [formGroup]='form'>
+
+            <div class="form-group">
+                <label for="gammeltpassord">Gammelt passord</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="gammeltpassord" formControlName="gammeltpassord" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nyttpassord">Nytt passord</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="nyttpassordid" formControlName="nyttpassord" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bekreftpassord">Bekreft passord</label>
+                <div class="inner-addon left-addon">
+                    <input type="text" class="form-control" id="bekreftpassordid" formControlName="bekreftpassord" />
+                </div>
+            </div>
+
+
+        <button (click)="postKunde()" class="btn btn-success">Lagre</button>
+    </form>
+</div>
+

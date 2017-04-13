@@ -4,17 +4,26 @@
 
 
         <ul class="nav navbar-nav">
-            <li><a routerLink="/not-found" routerLinkActive="active">Mine oppdrag</a></li>
-            <li><a routerLink="/not-found" routerLinkActive="active">Forespørsel</a></li>
-            <li><a routerLink="/not-found" routerLinkActive="active">Sett tilgjengelighet</a></li>
-            <li><a routerLink="/not-found" routerLinkActive="active">Se innsendte timer</a></li>
-            <li><a routerLink="/not-found" routerLinkActive="active">Oppdrag Historikk</a></li>
+            <li><a routerLink="./tolk-mine-oppdrag" routerLinkActive="active">Mine oppdrag</a></li>
+            <li><a routerLink="./tolk-foresporsel" routerLinkActive="active">Forespørsel</a></li>
+            <li><a routerLink="./tolk-sett-tilgjenglighet" routerLinkActive="active">Sett tilgjengelighet</a></li>
+            <li><a routerLink="./tolk-oppdrag-historikk" routerLinkActive="active">Oppdrag Historikk</a></li>
         </ul>
         <ul class="nav navbar-nav "></ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a routerLink="/not-found" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-            <li><a routerLink="/index" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> Logg ut</a></li>
-        </ul>
+       
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
+                    <span class="glyphicon glyphicon-user"></span> Innstillinger
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="./tolk-redigjer-persondetaljer" routerLinkActive="active"> <span class="glyphicon glyphicon-user"></span> Redigjer persondetaljer</a></li>
+                    <li><a routerLink="./tolk-endre-passord" routerLinkActive="active"><span class="glyphicon glyphicon-lock"></span> Endre passord</a></li>
+                </ul>
+            </li>
+            <li><a href="#" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> Logg ut</a></li>
+         </ul>
 
     </div>
     </div>

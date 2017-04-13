@@ -12,8 +12,7 @@ namespace Tolkesentralen_v3.Models
         {
             var sp1 = new Spraak
             {
-                spraak = "norsk",
-                nivaa = "Top"
+                navn = "norsk"
             };
             var admin = new Admin
             {
@@ -35,13 +34,16 @@ namespace Tolkesentralen_v3.Models
                 adresse = "tøyen",
                 regDato = DateTime.Parse("2005-09-01"),
                // password = "1111",
+<<<<<<< HEAD
                 //tolkNr = "t1",
+=======
+                
+>>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
                 spraak = new List<Spraak>()
                 {
                     new Spraak()
                     {
-                        spraak = "norsk",
-                        nivaa = "Top"
+                        navn = "norsk"
 
                     }
                 }

@@ -15,9 +15,37 @@ namespace Tolkesentralen_v3.Models
         public DbOppdrag()
         {
             db = new DbNetcont();
-
         }
+        public bool regEnForesporselPåEnEllerFlereTolk(int[] tolkId, int opprdragId)
+        {
 
+            Oppdrag oppdrag = db.Oppdrag.Find(opprdragId);
+            if (oppdrag != null)
+            {
+
+                foreach (int tolk_ID in tolkId)
+                {
+                    var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolk_ID);
+
+                    if (tolk != null)
+                    {
+
+                        tolk.oppdrag.Add(oppdrag);
+                        db.SaveChanges();
+
+                    }
+
+
+                }
+
+                return true;
+
+
+            }
+
+
+            return false;
+        }
         public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
         {
 
@@ -166,6 +194,7 @@ namespace Tolkesentralen_v3.Models
                     var framaater = new Tolking_vm()
                     {
                         kundeID = rowf.kunde.persId,
+                        dato = rowf.regDato.ToString("yyyyMMdd"),
                         oppdragID = rowf.oppdragsID,
                         typetolk = rowf.oppdragType,
                         fraspraak = rowf.spraakFra,
@@ -174,6 +203,7 @@ namespace Tolkesentralen_v3.Models
                         oppdragsdato = rowf.oppdragsDato,
                         frakl = rowf.tidFra,
                         tilkl = rowf.tidTil,
+                     
 
                         andreopplysninger = rowf.andreOpplisning,
 
@@ -192,11 +222,56 @@ namespace Tolkesentralen_v3.Models
 
         }
 
+        public List<Tolking_vm> listOppdragTolkUbehandlett()
+        {
+            // return db.Oppdrag.ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == false).ToList();
 
+            try
+            {
+
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
+                foreach (var rowf in alleFramaate)
+                {
+
+                    var framaater = new Tolking_vm()
+                    {
+                        kundeID = rowf.kunde.persId,
+                        oppdragID = rowf.oppdragsID,
+                        typetolk = rowf.oppdragType,
+                        fraspraak = rowf.spraakFra,
+                        tilspraak = rowf.spraakTil,
+                        sted = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
+                        frakl = rowf.tidFra,
+                        tilkl = rowf.tidTil,
+
+                        andreopplysninger = rowf.andreOpplisning,
+
+
+<<<<<<< HEAD
        // Lister Tolkinger som tilhører en kunde
         public List<Tolking_vm> listTolkOppdragMedKundeId(int kundeId)
+=======
+                    };
+                    vm_listeframmate.Add(framaater);
+                }
+
+                return vm_listeframmate;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
+
+        // Lister Tolkinger som tilhører en kunde
+        public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
+>>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
         {
-          
+
             List<Tolking> alleTolkingAvKunde = db.Oppdrag.OfType<Tolking>().ToList();
             // var lb = alleFramaate.OfType<Oppdrag>().FirstOrDefault(Opd => Opd.kunde.persId == kundeId);
             try
@@ -213,7 +288,7 @@ namespace Tolkesentralen_v3.Models
                         var Tolking_vm = new Tolking_vm()
                         {
                             kundeID = rowf.kunde.persId,
-                           oppdragID = rowf.oppdragsID,
+                            oppdragID = rowf.oppdragsID,
                             typetolk = rowf.oppdragType,
                             fraspraak = rowf.spraakFra,
                             tilspraak = rowf.spraakTil,

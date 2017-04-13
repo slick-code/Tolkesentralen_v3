@@ -11,15 +11,15 @@ const appRoutes: Routes = [
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
         canActivate: [AuthGuard],
-        data: { preload: true }
+       // data: { preload: true }
     },
     {
         path: 'kunde',
-        loadChildren: 'app/kunde/kunde.module#AdminModule'
+        loadChildren: 'app/kunde/kunde.module#KundeModule'
     },
     {
         path: 'tolk',
-        loadChildren: 'app/tolk/tolk.module#AdminModule'
+        loadChildren: 'app/tolk/tolk.module#TolkModule'
     },
     {
         path: 'home', redirectTo: ''

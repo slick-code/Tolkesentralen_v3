@@ -88,7 +88,6 @@ C:\Users\Patrick\Documents\Visual Studio 2015\Projects\gitja\Tolkesentralen-v3\T
 C:\Users\Patrick\Documents\Visual Studio 2015\Projects\gitja\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.csprojResolveAssemblyReference.cache
 C:\Users\Patrick\Documents\Visual Studio 2015\Projects\gitja\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.dll
 C:\Users\Patrick\Documents\Visual Studio 2015\Projects\gitja\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.pdb
-<<<<<<< HEAD
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\csc.exe
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -134,50 +133,3 @@ C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\bin\Sys
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.dll
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.pdb
 C:\Users\Mojola\Documents\PatrickBBB\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.csprojResolveAssemblyReference.cache
-=======
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\csc.exe
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\vbc.exe
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\VBCSCompiler.exe
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Tolkesentralen-v3.dll.config
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Tolkesentralen-v3.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Tolkesentralen-v3.pdb
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\EntityFramework.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\EntityFramework.SqlServer.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Newtonsoft.Json.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Net.Http.Formatting.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Helpers.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.WebHost.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Mvc.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Razor.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.Deployment.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.Razor.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\EntityFramework.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\EntityFramework.SqlServer.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Helpers.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Mvc.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Razor.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.Deployment.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.WebPages.Razor.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\Newtonsoft.Json.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Net.Http.Formatting.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\bin\System.Web.Http.WebHost.xml
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.dll
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.pdb
-C:\Users\husse_000\Documents\Visual Studio 2015\Projects\TolkesentralenHR\Tolkesentralen-v3\Tolkesentralen-v3\obj\Debug\Tolkesentralen-v3.csprojResolveAssemblyReference.cache
->>>>>>> 387bfbba9463ee0dabdfcae3efd7a43ddf9200a3

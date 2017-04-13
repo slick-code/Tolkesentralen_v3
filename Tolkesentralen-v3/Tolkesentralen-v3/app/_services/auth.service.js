@@ -8,10 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
@@ -23,7 +22,7 @@ var AuthenticationService = (function () {
         console.log("BOOODY " + JSON.parse(body));
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         console.log("ServiceLogin");
-        return this.http.post('/api/kunde/login', body, { headers: headers })
+        return this.http.post('/api/login', body, { headers: headers })
             .map(function (response) { return response.json(); });
         //console.log("servieceLoginn respoinde");
         //// login successful if there's a jwt token in the response
@@ -47,11 +46,11 @@ var AuthenticationService = (function () {
         this.token = null;
         localStorage.removeItem('currentUser');
     };
+    AuthenticationService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], AuthenticationService);
     return AuthenticationService;
 }());
-AuthenticationService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
 //# sourceMappingURL=auth.service.js.map

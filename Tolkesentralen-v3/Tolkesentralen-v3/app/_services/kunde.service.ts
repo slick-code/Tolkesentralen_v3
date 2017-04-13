@@ -11,7 +11,7 @@ import { Kunde } from '../_models/models';
 
 @Injectable()
 export class KundeService {
-    private url = 'api/kunde';  // URL to web API
+    private url = 'api/kunde/';  // URL to web API
 
     constructor(private http: Http) { }
     
@@ -34,10 +34,10 @@ export class KundeService {
             .map((response: Response) => response.json());
     }
 
-    godkjennKunde(email: string) {
+    godkjennKunde(id: number) {
         var headers = new Headers({ "Content-Type": "application/json" });
-        return this.http.put(this.url, email, { headers: headers })
-            .map((response: Response) => response.json());
+        return this.http.put(this.url + id, { headers: headers })
+            .map(returData => returData.toString())
     }
 
     /*

@@ -19,11 +19,11 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './login/login.comonent';
 import { PageNotFoundComponent } from './shared/not-found.component';
 
-import { LoadingComponent } from './shared/loading.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-    imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
-    declarations: [AppComponent, LoginComponent, PageNotFoundComponent, LoadingComponent],
+    imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule, SharedModule],
+    declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         AuthGuard,
@@ -36,9 +36,10 @@ import { LoadingComponent } from './shared/loading.component';
     bootstrap: [AppComponent]
 })
 export class AppModule {
-
     constructor(router: Router) {
+        
         // HUSK: Fjern denne!!
-        console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+        //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
+        console.log("Hvorfor printes denne ut 2 ganger?");
     }
 }

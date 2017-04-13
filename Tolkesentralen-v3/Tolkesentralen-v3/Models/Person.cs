@@ -22,5 +22,6 @@ namespace Tolkesentralen_v3.Models
         public int godkjent { get; set; }
         public string Salt { get; set; }
         public virtual Poststed poststed { get; set; }
+
     }
 }

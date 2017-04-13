@@ -41,5 +41,16 @@ namespace Tolkesentralen_v3.ViewModels
         public string brukernavn { get; set; }
     }
 
+    public class SpraakID
+    {
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
+    }
+
+    public class Tolk_VM: Person_VM
+    {
+
+    }
+
 
 }

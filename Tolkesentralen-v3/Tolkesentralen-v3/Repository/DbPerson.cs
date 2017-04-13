@@ -12,7 +12,25 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbPerson
     {
-       // DbNetcont db = new DbNetcont();
+        DbNetcont db = new DbNetcont();
+
+        public Kunde_VM HentKunde(int id)
+        {
+            try
+            {
+                var db = new DbNetcont();
+
+                Person kunde = db.Personer.Find(id);
+                var a = kunde;
+                
+            }
+            catch
+            {
+
+            }
+            return null;
+            
+        }
 
 
         // List alle kunder. Enten godkjente (1) eller til godkjenning (0)
@@ -29,14 +47,15 @@ namespace Tolkesentralen_v3.Models
                     {
                         var kunde = new Kunde_VM()
                         {
+                            persId = row.persId,
                             firma = row.firma,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
                             tlf = row.tlf,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            postnr = row.poststed.postNr,
-                            poststed = row.poststed.postSted,
+                            //postnr = row.poststed.postNr,
+                            //poststed = row.poststed.postSted,
                             email = row.email
                         };
                         vm_liste.Add(kunde);
@@ -50,34 +69,15 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
-
-        // NB: Denne er under produksjon..
-        public bool OppdaterTilGodkjentKunde(string email)
+        public bool OppdaterTilGodkjentKunde(int id)
         {
             try
             {
-                var db1 = new DbNetcont();
-                var eksistererPostnr = db1.Personer.Find(email);
                 var db = new DbNetcont();
-                {
-                    Person kunde;
-                    foreach (var row in db.Personer.OfType<Kunde>())
-                    {
-                        if (row.email != null)
-                        {
-                            if (row.email.Equals(email))
-                            {
-                                kunde = row;
-                                break;
-                            }
-                        }
-                    }
-                    //kunde.godkjent = 1;
-                    db.SaveChanges();
-                    return true;
-
-                }
-               // return false;
+                var kunde = db.Personer.Find(id);
+                kunde.godkjent = 1;
+                db.SaveChanges();
+                return true;
             }
             catch (Exception feil)
             {
@@ -202,59 +202,55 @@ namespace Tolkesentralen_v3.Models
 
             
         /// <summary>
-        /// this method lists all the tolks
-        /// </summary>
-        /// <returns>
-        /// and returns the list of all the tolkes
-        /// </returns>
-        public List<Tolk> ListeAlleTolk()
-        {
-            var db = new DbNetcont();
-            List<Tolk> alleTolker = db.Personer.OfType<Tolk>().ToList();
-            return alleTolker;
+      
 
-        }
-
-        /// <summary>
-        /// SettInn en Tolk
-        /// </summary>
-        /// <param name="inntolk"></param>
-        /// <returns></returns>
-        public bool settinnTolk(FKunde inntolk)
+        /**********************************************************Tolk-start*************************/
+        public bool settinnTolk(Tolk_VM nyTolk)
         {
 
-            var nyTolk = new Tolk()
+            string salt = lagSalt();
+            var passordOgSalt = nyTolk.password + salt;
+            byte[] dbPassword = lagHash(passordOgSalt);
+
+            var dbTolk = new Tolk()
             {
-                fornavn = inntolk.fornavn,
-                etternavn = inntolk.etternavn,
-                email = inntolk.email,
-                adresse = inntolk.adresse,
+
+                fornavn = nyTolk.fornavn,
+                etternavn = nyTolk.etternavn,
+                tlf = nyTolk.tlf,
+                email = nyTolk.email,
+                adresse = nyTolk.adresse,
                 regDato = DateTime.Now,
+<<<<<<< HEAD
                 //tolkNr = "29292992",
                 password = lagHash(inntolk.password)
+=======
+                password = dbPassword,
+                Salt = salt
+>>>>>>> c113ef50d8a672acdffdfcbc3fd70e4eaeca7f78
 
             };
             var db = new DbNetcont();
             try
             {
-                var eksistererPostnr = db.Poststeder.Find(inntolk.postNr);
+                var spraakFunnet = db.Poststeder.Find(nyTolk.postnr);
 
-                if (eksistererPostnr == null)
+                if (spraakFunnet == null)
                 {
                     var nyttpoststed = new Poststed()
                     {
-                        postNr = inntolk.postNr,
-                        postSted = inntolk.postSted
+                        postNr = nyTolk.postnr,
+                        postSted = nyTolk.poststed
 
                     };
-                    nyTolk.poststed = nyttpoststed;
+                    dbTolk.poststed = nyttpoststed;
 
                 }
                 else
                 {
-                    nyTolk.poststed = eksistererPostnr;
+                    dbTolk.poststed = spraakFunnet;
                 }
-                db.Personer.Add(nyTolk);
+                db.Personer.Add(dbTolk);
                 db.SaveChanges();
 
                 return true;
@@ -264,8 +260,108 @@ namespace Tolkesentralen_v3.Models
                 Debug.WriteLine("Exception Message: " + feil.Message);
                 return false;
             }
+        }
+
+
+        public List<Tolk_VM> ListeAlleTolk()
+        {
+            var db = new DbNetcont();
+
+            List<Tolk> alleTolk = db.Personer.OfType<Tolk>().ToList();
+            try
+            {
+                List<Tolk_VM> utListe = new List<Tolk_VM>();
+                foreach (var row in alleTolk)
+                {
+                    if (true)
+                    {
+                        var Tolk = new Tolk_VM()
+                        {
+                            persId = row.persId,
+                            fornavn = row.fornavn,
+                            etternavn = row.etternavn,
+                            tlf = row.tlf,
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
+                            email = row.email,
+                            adresse = row.adresse,
+                            godkjent = row.godkjent
+                        };
+                        utListe.Add(Tolk);
+                    }
+                }
+                return utListe;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public bool RegSprakkPåTolk(int TolkId, Spraak spraak)
+        {
+            Spraak funnetspraak = db.Spraak.Find(spraak.spraakId);
+
+            // var funnetspraak = db.Spraak.SqlQuery(" SELECT * FROM dbo.Spraak WHERE 'navn' = Norsk").ToList();
+
+            //(s => s.navn == spraak.navn)
+            Tolk funnetTolk = db.Personer.OfType<Tolk>().FirstOrDefault(t => t.persId == TolkId);
+
+            if (funnetspraak != null && funnetTolk != null)
+            {
+
+                funnetTolk.spraak.Add(funnetspraak);
+                db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
 
         }
+
+        public List<Tolk_VM> ListeAlleTolkSomSnakkeDetSprrak(int spraakId, int spraakId2)
+        {
+
+            var db = new DbNetcont();
+
+            List<Tolk> alleTolk = db.Personer.OfType<Tolk>().ToList();
+            try
+            {
+                List<Tolk_VM> utListe = new List<Tolk_VM>();
+                foreach (var row in alleTolk)
+                {
+                    if (row.spraak.Contains(db.Spraak.Find(spraakId)) && row.spraak.Contains(db.Spraak.Find(spraakId2)))
+                    {
+                        var Tolk = new Tolk_VM()
+                        {
+                            persId = row.persId,
+                            fornavn = row.fornavn,
+                            etternavn = row.etternavn,
+                            tlf = row.tlf,
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
+                            email = row.email,
+                            adresse = row.adresse,
+                            godkjent = row.godkjent
+                        };
+                        utListe.Add(Tolk);
+                    }
+                }
+                return utListe;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
+        /**********************************************************Tolk-slutt*****************************/
         /// <summary>
         /// lists all the Administrators that the company has
         /// </summary>
@@ -526,21 +622,21 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragsID == oppdragsID);
         }
-        /// <summary>
-        /// Method that lists frammaate
-        /// </summary>
-        /// <return>
-        /// It returns the values in foem of a list 
-        /// </returns>
-        public List<Tolking> ListeAllefremmaate()
-        {
-            var db = new DbNetcont();
+        ///// <summary>
+        ///// Method that lists frammaate
+        ///// </summary>
+        ///// <return>
+        ///// It returns the values in foem of a list 
+        ///// </returns>
+        //public List<Fremmaate> ListeAllefremmaate()
+        //{
+        //    var db = new DbNetcont();
 
-            List<Tolking> allefremmaate = db.Oppdrag.OfType<Tolking>().ToList();
+        //    List<Fremmaate> allefremmaate = db.Oppdrag.OfType<Fremmaate>().ToList();
 
-            return allefremmaate;
-           // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
-        }
+        //    return allefremmaate;
+        //   // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+        //}
 
 
         /********************** Sikkerhets hjelp ***********************/

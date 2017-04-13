@@ -1,0 +1,46 @@
+﻿
+<div>
+    <p><span class="glyphicon glyphicon-info-sign"></span> Liste over alle tolker</p>
+    <hr />
+    <br />
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fornavn</th>
+                <th>Etternavn</th>
+                <th>Språk</th>
+                <th>Nivå</th>
+                <th>Ansattelse-dato</th>
+                <th>Telefon</th>
+                <th>Mobil</th>
+                <th>E-post</th>
+                <th>Adresse</th>
+                <th>Adresse2</th>
+                <th>Postnr</th>
+                <th>Poststed</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let kunde of arrayKunder; let i = index">
+            <tr>
+                <td>{{tolk.kundeId}}</td>
+                <td>{{tolk.fornavn}}</td>
+                <td>{{tolk.etternavn}}</td>
+                <td>{{tolk.spraak}}</td>
+                <td>{{tolk.nivaa}}</td>
+                <td>{{tolk.ansattelsesdato}}</td>
+                <td>{{tolk.telefon}}</td>
+                <td>{{tolk.mobil}}</td>
+                <td>{{tolk.epost}}</td>
+                <td>{{tolk.adresse}}</td>
+                <td>{{tolk.adresse2}}</td>
+                <td>{{tolk.postnr}}</td>
+                <td>{{tolk.poststed}}</td>
+                <td width="190">
+                    <button class="btn btn-warning">Endre</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
