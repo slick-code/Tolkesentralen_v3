@@ -230,7 +230,7 @@ namespace Tolkesentralen_v3.Models
                 email = inntolk.email,
                 adresse = inntolk.adresse,
                 regDato = DateTime.Now,
-                tolkNr = "29292992",
+                //tolkNr = "29292992",
                 password = lagHash(inntolk.password)
 
             };

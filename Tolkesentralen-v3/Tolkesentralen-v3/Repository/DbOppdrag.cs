@@ -56,50 +56,47 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
-        //public bool regOppdragF(Oppdrag_VM input, int kundeId)
-        //{
-        //    var kunde = new Fremmaate()
-        //    {
 
-        //    };
-        //    Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-        //    if (oppdrag != null)
-        //    {
 
-        //        if (Bestiller != null)
-        //        {
-        //            Bestiller.oppdrag.Add(oppdrag);
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //        db.Oppdrag.Add(input);
-        //        db.SaveChanges();
-
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
-        public bool regOppdragO(Oversettelse oppdrag, int kundeID)
+        public bool regOppdragOverssettelse(Oversettelse_vm nyOppdrag, int kundeId)
         {
-            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeID);
 
-            if (oppdrag != null)
+            Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+            if (Bestiller != null)
             {
+                var oppdragDb = new Oversettelse()
+                {
+                  
+                    spraakFra = nyOppdrag.fraspraak,
+                    spraakTil = nyOppdrag.tilspraak,
+                    regDato = DateTime.Now,
+                    frist = nyOppdrag.frist,
+                    andreOpplisning = nyOppdrag.andreopplysninger,
+
+                };
+
+                foreach(var f in nyOppdrag.fil)
+                {
+                    var nyFil = new Fil()
+                    {
+                        type = f.type,
+                        size = f.size,
+                    };
+
+                    oppdragDb.fil.Add(nyFil);
+                }
+
+                 
+
                 if (Bestiller != null)
                 {
-                    Bestiller.oppdrag.Add(oppdrag);
-
+                    Bestiller.oppdrag.Add(oppdragDb);
                 }
                 else
                 {
                     return false;
                 }
-
-                db.Oppdrag.Add(oppdrag);
+                db.Oppdrag.Add(oppdragDb);
                 db.SaveChanges();
 
                 return true;

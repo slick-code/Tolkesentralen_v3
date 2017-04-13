@@ -15,7 +15,8 @@ namespace Tolkesentralen_v3.Controllers
     {
         DbPerson repository = new DbPerson();
 
-
+        [Route("api/kunde/Put")]
+        [HttpPut]
         public HttpResponseMessage Put([FromBody]string email)
         {
             if (ModelState.IsValid)

@@ -35,7 +35,7 @@ namespace Tolkesentralen_v3.Models
                 adresse = "tøyen",
                 regDato = DateTime.Parse("2005-09-01"),
                // password = "1111",
-                tolkNr = "t1",
+                //tolkNr = "t1",
                 spraak = new List<Spraak>()
                 {
                     new Spraak()
