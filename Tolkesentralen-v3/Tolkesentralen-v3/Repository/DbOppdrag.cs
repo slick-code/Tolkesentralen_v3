@@ -234,16 +234,20 @@ namespace Tolkesentralen_v3.Models
 
         }
 
-        public bool regOppdragPaaEnTolk(int oppdragsid, int tolkId)
+        public bool regOppdragPaaEnTolk(Foresporsler fsp, int tolkId)
         {
            
             //finner oppdraget  og Tolken
-           var oppdrag =  finnOppdrag(oppdragsid);
+           var oppdrag =  finnOppdrag(fsp.oppdragsID);
            var Tolk =  db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
+           
             if (Tolk !=null && oppdrag !=null)
             {
                 Tolk.oppdrag.Add(oppdrag);
-                var nr =db.SaveChanges();
+
+                //fjerner føresspørslet 
+                //db.foresporelse.
+                db.SaveChanges();
                 return true;
             }else
             {
