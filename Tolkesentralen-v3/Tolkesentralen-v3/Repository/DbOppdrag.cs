@@ -70,7 +70,7 @@ namespace Tolkesentralen_v3.Models
                     spraakFra = nyOppdrag.fraspraak,
                     spraakTil = nyOppdrag.tilspraak,
                     regDato = DateTime.Now,
-                     ferdiggjoresdato= nyOppdrag.ferdiggjoresdato,
+                    ferdiggjoresdato= nyOppdrag.ferdiggjoresdato,
                     andreOpplisning = nyOppdrag.andreopplysninger
 
                 };
