@@ -89,10 +89,7 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
-<<<<<<< HEAD
 
-=======
->>>>>>> d082b1c34559208235c17d74a421caf158801802
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
@@ -108,13 +105,12 @@ namespace Tolkesentralen_v3.Controllers
             //    tilspraak = "Norsk"
             //};
             //liste.Add(output);
-<<<<<<< HEAD
+
 
             
            // List<Tolking_vm> liste = dbForesp.listTolkForesporslerMedID(id);
 
-=======
->>>>>>> d082b1c34559208235c17d74a421caf158801802
+
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
