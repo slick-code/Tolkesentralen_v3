@@ -16,36 +16,8 @@ namespace Tolkesentralen_v3.Models
         {
             db = new DbNetcont();
         }
-        public bool regEnForesporselPåEnEllerFlereTolk(int[] tolkId, int opprdragId)
-        {
 
-            Oppdrag oppdrag = db.Oppdrag.Find(opprdragId);
-            if (oppdrag != null)
-            {
-
-                foreach (int tolk_ID in tolkId)
-                {
-                    var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolk_ID);
-
-                    if (tolk != null)
-                    {
-
-                        tolk.oppdrag.Add(oppdrag);
-                        db.SaveChanges();
-
-                    }
-
-
-                }
-
-                return true;
-
-
-            }
-
-
-            return false;
-        }
+      
         public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
         {
 
@@ -260,6 +232,24 @@ namespace Tolkesentralen_v3.Models
                 return null;
             }
 
+        }
+
+        public bool regOppdragPaaEnTolk(int oppdragsid, int tolkId)
+        {
+           
+            //finner oppdraget  og Tolken
+           var oppdrag =  finnOppdrag(oppdragsid);
+           var Tolk =  db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
+            if (Tolk !=null && oppdrag !=null)
+            {
+                Tolk.oppdrag.Add(oppdrag);
+                var nr =db.SaveChanges();
+                return true;
+            }else
+            {
+
+                return false;
+            }
         }
 
         // Lister Tolkinger som tilhører en kunde

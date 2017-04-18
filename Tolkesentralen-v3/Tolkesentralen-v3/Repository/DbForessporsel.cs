@@ -28,6 +28,7 @@ namespace Tolkesentralen_v3.Repository
             Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragsID == opprdragId);
             if (oppdrag != null)
             {
+                //oppretter forespørler
                 var foresp = new Foresporsler()
                 {
 
@@ -47,6 +48,7 @@ namespace Tolkesentralen_v3.Repository
 
                 foreach (int tolk_ID in tolkId)
                 {
+                    //finner alle TOLK som oppdraget skal sendes til
                     var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolk_ID);
 
                     if (tolk != null)
@@ -137,17 +139,10 @@ namespace Tolkesentralen_v3.Repository
 
                 if (tolk != null)
                 {
-
-
-
-
-
-
+                    
                     foreach (var rowf in tolk.foresporsler)
                     {
-
-
-
+                       
                         var Tolking_vm = new Tolking_vm()
                         {
 
@@ -161,11 +156,9 @@ namespace Tolkesentralen_v3.Repository
                             tilkl = rowf.tidTil,
                             andreopplysninger = rowf.andreOpplisning,
 
-
                         };
 
                         utListe.Add(Tolking_vm);
-
 
                     }
 
