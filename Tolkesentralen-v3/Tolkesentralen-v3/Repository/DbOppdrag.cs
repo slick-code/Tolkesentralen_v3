@@ -236,7 +236,7 @@ namespace Tolkesentralen_v3.Models
                 List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
                 foreach (var rowf in alleFramaate)
                 {
-
+                     
                     var framaater = new Tolking_vm()
                     {
                         kundeID = rowf.kunde.persId,

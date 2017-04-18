@@ -21,6 +21,7 @@ namespace Tolkesentralen_v3.Controllers
         // Hent alle oppdrag til kunde ID
         // Slett et oppdrag med gitt ID
 
+        
         DbOppdrag repository = new DbOppdrag();
         OppdragRepository funk = new OppdragRepository();
 
@@ -52,21 +53,21 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
-            //List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
-            List<Tolking_vm> liste = new List<Tolking_vm>();
+            DbForessporsel f = new DbForessporsel();
+            List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
-            var output = new Tolking_vm
-            {
-                kundeID = 1,
-                oppdragID = 1,
-                frakl = "12:15",
-                tilkl = "13:15",
-                oppdragsdato = "12-07-2017",
-                typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
-            };
-            liste.Add(output);
+            //var output = new Tolking_vm
+            //{
+            //    kundeID = 1,
+            //    oppdragID = 1,
+            //    frakl = "12:15",
+            //    tilkl = "13:15",
+            //    oppdragsdato = "12-07-2017",
+            //    typetolk = "Fremmedmøtetolk",
+            //    fraspraak = "Spansk",
+            //    tilspraak = "Norsk"
+            //};
+            //liste.Add(output);
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -116,7 +117,7 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetUbehandlet()
         {
 
-            List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
+            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
