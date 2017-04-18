@@ -28,6 +28,11 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
+    public class TolkingSendt_vm : Tolking_vm
+    {
+        public Tolk[] tolker { get; set; }
+    }
+
     public class Oversettelse_VM : Oppdrag_VM
     {
         public Fil fil { get; set; }
