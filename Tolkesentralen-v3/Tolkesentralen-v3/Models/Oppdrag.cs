@@ -50,10 +50,11 @@ namespace Tolkesentralen_v3.Models
     public class Foresporsler
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
+        //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public int foresporselID { get; set; }
 
-        public DateTime regDato { get; set; }
+        public int oppdragsID { get; set; }
+        public DateTime regDato { get; set;}
         public string spraakFra { get; set; }
 
         public string spraakTil { get; set; }

@@ -101,11 +101,11 @@ namespace Tolkesentralen_v3.Models
                 fornavn = innkunde.fornavn,
                 etternavn = innkunde.etternavn,
                 tlf = innkunde.tlf,
-                email = innkunde.epost,
                 adresse = innkunde.adresse,
                 regDato = DateTime.Now,
                 godkjent = 0,
                 password = dbPassword,
+                email = innkunde.email,
                 Salt = salt,
                 firma = innkunde.firma,
                 kontaktperson = innkunde.kontaktperson,
@@ -152,8 +152,11 @@ namespace Tolkesentralen_v3.Models
                 // Sjekker om passord#hash macher brukeren
                 byte[] passordForTest = lagHash(passord + dbData.Salt);
                 bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
-                
-                if (!riktigBruker) return null;
+
+                if (!riktigBruker)
+                {
+                    return null;
+                }
 
                 var bruker = new Get_Login_VM();
                 bruker.brukernavn = dbData.email;
@@ -209,7 +212,7 @@ namespace Tolkesentralen_v3.Models
         {
 
             string salt = lagSalt();
-            var passordOgSalt = nyTolk.password + salt;
+            var passordOgSalt = nyTolk.passord + salt;
             byte[] dbPassword = lagHash(passordOgSalt);
 
             var dbTolk = new Tolk()

@@ -21,7 +21,7 @@ namespace Tolkesentralen_v3.Controllers
         // Get    -> Det skal kunne hentes ut all informasjon til spesifisert kunde-med-ID
         // Get    -> Hent alle kunder som IKKE er behandlet/godkjent
         // Get    -> Hent alle kunder som ER behandlet/godkjent
-
+      
         DbPerson repository = new DbPerson();
 
         public HttpResponseMessage Put(int id)
@@ -76,7 +76,7 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Kunde_VM ny)
+        public HttpResponseMessage Post([FromBody]Kunde_VM ny,int id)
         {
             var test = ny;
             if (ModelState.IsValid)
