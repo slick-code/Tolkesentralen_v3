@@ -81,12 +81,11 @@ namespace Tolkesentralen_v3.Models
                     {
                         //type = f.type,
                         //size = f.size,
+                        //content = f.content
                     };
 
                     //oppdragDb.fil.Add(nyFil);
                 }
-
-                 
 
                 if (Bestiller != null)
                 {
