@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var kunde_service_1 = require('../../_services/kunde.service');
-var models_1 = require('../../_models/models');
-var data_service_1 = require('../../_services/data.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var kunde_service_1 = require("../../_services/kunde.service");
+var models_1 = require("../../_models/models");
+var data_service_1 = require("../../_services/data.service");
 var AdminTolkUtforteOppdragComponent = (function () {
     function AdminTolkUtforteOppdragComponent(service, dataService) {
         this.service = service;
@@ -35,13 +36,14 @@ var AdminTolkUtforteOppdragComponent = (function () {
             }
         });
     };
-    AdminTolkUtforteOppdragComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/tolkehistorikk/admin-tolk-utforte-oppdrag.component.html"
-        }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
-    ], AdminTolkUtforteOppdragComponent);
     return AdminTolkUtforteOppdragComponent;
 }());
+AdminTolkUtforteOppdragComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/tolkehistorikk/admin-tolk-utforte-oppdrag.component.html"
+    }),
+    __metadata("design:paramtypes", [kunde_service_1.KundeService,
+        data_service_1.DataService])
+], AdminTolkUtforteOppdragComponent);
 exports.AdminTolkUtforteOppdragComponent = AdminTolkUtforteOppdragComponent;
 //# sourceMappingURL=admin-tolk-utforte-oppdrag.component.js.map
