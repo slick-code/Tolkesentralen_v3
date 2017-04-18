@@ -40,6 +40,17 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerTilTolk/" + id)
             .map(function (response) { return response.json(); });
     };
+<<<<<<< HEAD
+    OppdragService.prototype.getForesposelSendt = function () {
+        return this.http.get(this.url + "GetForesposlerSendt/")
+            .map(function (response) { return response.json(); });
+    };
+    OppdragService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+    ], OppdragService);
+=======
+>>>>>>> a93d9bcd33215bd2c13c3a891f0eeea3a9e2bb3d
     return OppdragService;
 }());
 OppdragService = __decorate([

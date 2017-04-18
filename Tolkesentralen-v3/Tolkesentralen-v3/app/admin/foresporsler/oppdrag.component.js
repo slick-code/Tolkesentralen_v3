@@ -27,13 +27,16 @@ var OppdragComponent = (function () {
         this.modules = preloadStrategy.preloadedModules;
     }
     OppdragComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.bruker = JSON.parse(localStorage.getItem('currentUser'));
         this.info = false;
         this.avbryt = false;
         this.more = false;
         this.count = 77;
+        this.getNyeOppdrag();
         //this.loading = true
+    };
+    OppdragComponent.prototype.getNyeOppdrag = function () {
+        var _this = this;
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(function (oppdrag) {
             _this.arrayOppdrag = oppdrag;
@@ -43,6 +46,8 @@ var OppdragComponent = (function () {
             _this.dataService.updateData(_this.element);
             _this.loading = false;
         });
+    };
+    OppdragComponent.prototype.getSendteOppdrag = function () {
     };
     OppdragComponent.prototype.onUtdel = function (oppdrag) {
         this.tempService.setObject(oppdrag);

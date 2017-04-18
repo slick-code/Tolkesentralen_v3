@@ -24,6 +24,7 @@ namespace Tolkesentralen_v3.Controllers
         // Hent alle oppdrag til kunde ID
         // Slett et oppdrag med gitt ID
 
+        
         DbOppdrag repository = new DbOppdrag();
         DbForessporsel dbForesp = new DbForessporsel();
         OppdragRepository funk = new OppdragRepository();
@@ -88,8 +89,26 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
+<<<<<<< HEAD
+            DbForessporsel f = new DbForessporsel();
+            List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
+
+            //var output = new Tolking_vm
+            //{
+            //    kundeID = 1,
+            //    oppdragID = 1,
+            //    frakl = "12:15",
+            //    tilkl = "13:15",
+            //    oppdragsdato = "12-07-2017",
+            //    typetolk = "Fremmedmøtetolk",
+            //    fraspraak = "Spansk",
+            //    tilspraak = "Norsk"
+            //};
+            //liste.Add(output);
+=======
             
             List<Tolking_vm> liste = dbForesp.listTolkForesporslerMedID(id);
+>>>>>>> a93d9bcd33215bd2c13c3a891f0eeea3a9e2bb3d
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -100,6 +119,22 @@ namespace Tolkesentralen_v3.Controllers
                 StatusCode = HttpStatusCode.OK
             };
         }
+
+        //[Route("api/oppdrag/GetForesposlerSendt")]
+        //public HttpResponseMessage GetForesposlerSendt()
+        //{
+        //    DbForessporsel f = new DbForessporsel();
+        //    List<Tolking_vm> liste = f.listTolkForesporslerMedID();
+            
+        //    var Json = new JavaScriptSerializer();
+        //    string JsonString = Json.Serialize(liste);
+
+        //    return new HttpResponseMessage()
+        //    {
+        //        Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+        //        StatusCode = HttpStatusCode.OK
+        //    };
+        //}
 
         // Person må være med i ViewModellen, siden oppdraget er fra en anonym (Ikke registert)
         //[System.Web.Mvc.HttpPost]
@@ -139,7 +174,7 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetUbehandlet()
         {
 
-            List<Tolking_vm> liste = funk.hentAlleBehandledeOppdrag();
+            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
