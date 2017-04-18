@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
 using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
+
 
 namespace Tolkesentralen_v3.Controllers
 {
@@ -50,10 +53,46 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [System.Web.Mvc.HttpPost]
+        [Route("api/oppdrag/File")]
+        public HttpResponseMessage Post()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+               // var fileName = Path.GetFileName(file.FileName);
+                //var path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads"), fileName);
+                //file.SaveAs(path);
+
+
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.BadRequest,
+                    
+                };
+
+            }
+            var httpRequest = HttpContext.Current.Request;
+            var filenavn =  "første fil: " +httpRequest.Files[0].FileName + "andrefil:" +httpRequest.Files[1].FileName;
+            
+            var Json = new JavaScriptSerializer();
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(Json.Serialize(filenavn), Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+
+            };
+
+
+        }
+
+
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> d082b1c34559208235c17d74a421caf158801802
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
@@ -69,10 +108,13 @@ namespace Tolkesentralen_v3.Controllers
             //    tilspraak = "Norsk"
             //};
             //liste.Add(output);
+<<<<<<< HEAD
 
             
            // List<Tolking_vm> liste = dbForesp.listTolkForesporslerMedID(id);
 
+=======
+>>>>>>> d082b1c34559208235c17d74a421caf158801802
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -192,7 +234,7 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public HttpResponseMessage Post([FromBody]int[] TolkId, int id)
         {
             if (ModelState.IsValid)
@@ -219,12 +261,12 @@ namespace Tolkesentralen_v3.Controllers
         //regstrerer oppdrag på en tolk
         [Route("api/oppdrag/regOppdragPaaEnTolk/{id}/{tolkId}")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(int id,int tolkId)
+        public HttpResponseMessage regOppdragPaaEnTolk(Foresporsler fs,int tolkId)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(id,tolkId);
+                bool OK = repository.regOppdragPaaEnTolk(fs,tolkId);
 
                 if (OK)
                 {
@@ -239,6 +281,23 @@ namespace Tolkesentralen_v3.Controllers
             {
                 StatusCode = HttpStatusCode.BadRequest,
                 Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+        [HttpGet]
+        [Route("api/oppdrag/listAlleTolkMedForesporselID/{id}")]
+        public HttpResponseMessage listAlleTolkMedForesporselID(int id)     //ok
+        {
+
+            List<Person_VM> liste = dbForesp.listAlleTolkMedForesporselID(id);
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
             };
         }
     }

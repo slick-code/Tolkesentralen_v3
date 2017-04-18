@@ -7,11 +7,12 @@ namespace Tolkesentralen_v3.Models
     {
         [Key]
         public int filID { get; set; }
-        public int size { get; set; }
-        public string type { get; set; }
+        public string filNavn { get; set; }
+        public string ContentType { get; set; }
+        public byte[] Content { get; set; }
 
-        public virtual Oversettelse  oversettelse { get; set; }
 
+        public virtual Oversettelse oversettelse { get; set; }
 
     }
 }
