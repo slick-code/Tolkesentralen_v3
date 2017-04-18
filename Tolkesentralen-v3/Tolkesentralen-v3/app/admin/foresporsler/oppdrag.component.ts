@@ -12,7 +12,8 @@ import { SelectivePreloadingStrategy } from '../../_services/selective-preloadin
     templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
 })
 export class OppdragComponent {
-   arrayOppdrag: Oppdrag[];
+    arrayOppdrag: Oppdrag[];
+    arrayOppdragSendt: Oppdrag[];
    index: number; // valgt index i array
    detaljer: boolean;
    more: boolean;
@@ -45,17 +46,25 @@ export class OppdragComponent {
 
         this.more = false;
         this.count = 77;
-
+        this.getNyeOppdrag();
         //this.loading = true
+        
+    }
+
+    getNyeOppdrag() {
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(oppdrag => {
                 this.arrayOppdrag = oppdrag;
                 this.element = new NavbarElement();
-                this.element.nr= this.arrayOppdrag.length;
+                this.element.nr = this.arrayOppdrag.length;
                 this.element.element = 'oppdrag';
                 this.dataService.updateData(this.element);
                 this.loading = false;
             }); 
+    }
+
+    getSendteOppdrag() {
+
     }
 
     onUtdel(oppdrag: Oppdrag){ 

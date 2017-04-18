@@ -79,6 +79,22 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [Route("api/oppdrag/GetForesposlerSendt")]
+        public HttpResponseMessage GetForesposlerSendt()
+        {
+            DbForessporsel f = new DbForessporsel();
+            List<Tolking_vm> liste = f.listTolkForesporslerMedID();
+            
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         // Person må være med i ViewModellen, siden oppdraget er fra en anonym (Ikke registert)
         //[System.Web.Mvc.HttpPost]
         //[Route("api/oppdrag/PostOppdragFraAnonym")]
