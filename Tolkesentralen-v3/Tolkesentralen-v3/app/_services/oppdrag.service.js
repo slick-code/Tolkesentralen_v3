@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
-var auth_service_1 = require('../_services/auth.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
+var auth_service_1 = require("../_services/auth.service");
 var OppdragService = (function () {
     function OppdragService(http, authenticationService) {
         this.http = http;
@@ -39,6 +40,7 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerTilTolk/" + id)
             .map(function (response) { return response.json(); });
     };
+<<<<<<< HEAD
     OppdragService.prototype.getForesposelSendt = function () {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map(function (response) { return response.json(); });
@@ -47,7 +49,14 @@ var OppdragService = (function () {
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
     ], OppdragService);
+=======
+>>>>>>> a93d9bcd33215bd2c13c3a891f0eeea3a9e2bb3d
     return OppdragService;
 }());
+OppdragService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http,
+        auth_service_1.AuthenticationService])
+], OppdragService);
 exports.OppdragService = OppdragService;
 //# sourceMappingURL=oppdrag.service.js.map

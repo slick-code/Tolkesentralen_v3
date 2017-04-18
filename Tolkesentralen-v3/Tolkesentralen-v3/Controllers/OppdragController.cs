@@ -23,6 +23,7 @@ namespace Tolkesentralen_v3.Controllers
 
         
         DbOppdrag repository = new DbOppdrag();
+        DbForessporsel dbForesp = new DbForessporsel();
         OppdragRepository funk = new OppdragRepository();
 
         [System.Web.Mvc.HttpPost]
@@ -49,10 +50,10 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
+<<<<<<< HEAD
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
@@ -68,6 +69,10 @@ namespace Tolkesentralen_v3.Controllers
             //    tilspraak = "Norsk"
             //};
             //liste.Add(output);
+=======
+            
+            List<Tolking_vm> liste = dbForesp.listTolkForesporslerMedID(id);
+>>>>>>> a93d9bcd33215bd2c13c3a891f0eeea3a9e2bb3d
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -160,6 +165,7 @@ namespace Tolkesentralen_v3.Controllers
 
             //List<FKunde> liste = repository.listOppdrag();
 
+
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
 
@@ -186,27 +192,54 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        //[System.Web.Mvc.HttpPost]
-        //public HttpResponseMessage Post([FromBody]Kunde_vm ny)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        bool OK = repository.settInnKunde(ny);
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage Post([FromBody]int[] TolkId, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                bool OK = dbForesp.regEnForesporselPåEnEllerFlereTolk(TolkId, id);
 
-        //        if (OK)
-        //        {
-        //            return new HttpResponseMessage()
-        //            {
-        //                StatusCode = HttpStatusCode.OK
-        //            };
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
 
-        //        }
-        //    }
-        //    return new HttpResponseMessage()
-        //    {
-        //        StatusCode = HttpStatusCode.BadRequest,
-        //        Content = new StringContent("Søknaden ble ikke lagret!")
-        //    };
-        //}
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
+        //regstrerer oppdrag på en tolk
+        [Route("api/oppdrag/regOppdragPaaEnTolk/{id}/{tolkId}")]
+        [HttpPost]
+        public HttpResponseMessage regOppdragPaaEnTolk(int id,int tolkId)
+        {
+
+            if (ModelState.IsValid)
+            {
+                bool OK = repository.regOppdragPaaEnTolk(id,tolkId);
+
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
     }
 }
