@@ -175,5 +175,8 @@ namespace Tolkesentralen_v3.Repository
         }
 
 
+        /////////////////////////list alle tolk med forespørseler/////////////////////////////////////////
+
+
     }
 }
