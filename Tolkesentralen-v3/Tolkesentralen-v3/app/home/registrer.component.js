@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var kunde_service_1 = require("../_services/kunde.service");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var kunde_service_1 = require('../_services/kunde.service');
+var forms_1 = require('@angular/forms');
 var RegistrerComponent = (function () {
     function RegistrerComponent(kundeService, fb) {
         this.kundeService = kundeService;
@@ -77,16 +76,16 @@ var RegistrerComponent = (function () {
             console.log("Success POST : " + ny.firma);
         }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+    RegistrerComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/home/registrer.component.html',
+            providers: [kunde_service_1.KundeService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [kunde_service_1.KundeService, forms_1.FormBuilder])
+    ], RegistrerComponent);
     return RegistrerComponent;
 }());
-RegistrerComponent = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        templateUrl: './app/home/registrer.component.html',
-        providers: [kunde_service_1.KundeService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [kunde_service_1.KundeService, forms_1.FormBuilder])
-], RegistrerComponent);
 exports.RegistrerComponent = RegistrerComponent;
 //# sourceMappingURL=registrer.component.js.map
