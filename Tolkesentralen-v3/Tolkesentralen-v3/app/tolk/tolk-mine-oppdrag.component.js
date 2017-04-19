@@ -17,6 +17,7 @@ var TolkMineOppdragComponent = (function () {
     }
     TolkMineOppdragComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
+        this.getOppdragTolk();
         //  this.getOppdragTolk();
     };
     TolkMineOppdragComponent.prototype.getOppdragTolk = function () {
