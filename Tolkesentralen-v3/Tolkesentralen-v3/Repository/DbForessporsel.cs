@@ -54,7 +54,6 @@ namespace Tolkesentralen_v3.Repository
                     if (tolk != null)
                     {
 
-
                         tolk.foresporsler.Add(foresp);
                         oppdrag.sendt = true;
 
@@ -127,6 +126,8 @@ namespace Tolkesentralen_v3.Repository
 
         }
 
+
+
         //lister  ut forespørseler/oppdrag som er tilsendt en tolk
         public List<Tolking_vm> listTolkForesporslerMedID(int tolkId)
         {
@@ -173,6 +174,56 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
+        
+        public List<Person_VM> listAlleTolkMedForesporselID(int forespID)
+        {
+
+            var  utListe = new List<Person_VM>();
+
+            var foresp = db.foresporelse.Find(forespID);
+
+            try
+            {
+
+                if(foresp != null)
+                {
+                    foreach (var row in foresp.Tolk)
+                    {
+
+                        //var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == rowf.persId);
+                        if (row != null)
+                        {
+                            var tolkvm = new Person_VM()
+                            {
+                                persId = row.persId,
+                                fornavn = row.fornavn,
+                                etternavn = row.etternavn,
+                                tlf = row.tlf,
+                                postnr = row.poststed.postNr,
+                                poststed = row.poststed.postSted,
+                                email = row.email,
+                                adresse = row.adresse,
+                                godkjent = row.godkjent
+                            };
+                            utListe.Add(tolkvm);
+                        }
+
+                    } 
+
+                }
+
+
+                return utListe;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
+
+        
 
 
     }

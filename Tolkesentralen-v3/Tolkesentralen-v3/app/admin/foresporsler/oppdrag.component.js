@@ -32,6 +32,7 @@ var OppdragComponent = (function () {
         this.more = false;
         this.count = 77;
         this.getNyeOppdrag();
+        this.getSendteOppdrag();
         //this.loading = true
     };
     OppdragComponent.prototype.getNyeOppdrag = function () {
@@ -47,6 +48,11 @@ var OppdragComponent = (function () {
         });
     };
     OppdragComponent.prototype.getSendteOppdrag = function () {
+        var _this = this;
+        this.oppdragService.getBehandleOppdrag()
+            .subscribe(function (oppdrag) {
+            _this.arrayOppdragSendt = oppdrag;
+        });
     };
     OppdragComponent.prototype.onUtdel = function (oppdrag) {
         this.tempService.setObject(oppdrag);

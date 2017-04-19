@@ -47,6 +47,7 @@ export class OppdragComponent {
         this.more = false;
         this.count = 77;
         this.getNyeOppdrag();
+        this.getSendteOppdrag();
         //this.loading = true
         
     }
@@ -64,7 +65,10 @@ export class OppdragComponent {
     }
 
     getSendteOppdrag() {
-
+        this.oppdragService.getBehandleOppdrag()
+            .subscribe(oppdrag => {
+                this.arrayOppdragSendt = oppdrag;
+            });
     }
 
     onUtdel(oppdrag: Oppdrag){ 
