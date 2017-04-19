@@ -70,7 +70,7 @@ namespace Tolkesentralen_v3.Models
                     spraakFra = nyOppdrag.fraspraak,
                     spraakTil = nyOppdrag.tilspraak,
                     regDato = DateTime.Now,
-                     ferdiggjoresdato= nyOppdrag.ferdiggjoresdato,
+                    ferdiggjoresdato= nyOppdrag.ferdiggjoresdato,
                     andreOpplisning = nyOppdrag.andreopplysninger
 
                 };
@@ -81,12 +81,11 @@ namespace Tolkesentralen_v3.Models
                     {
                         //type = f.type,
                         //size = f.size,
+                        //content = f.content
                     };
 
                     //oppdragDb.fil.Add(nyFil);
                 }
-
-                 
 
                 if (Bestiller != null)
                 {
@@ -234,19 +233,59 @@ namespace Tolkesentralen_v3.Models
 
         }
 
-        public bool regOppdragPaaEnTolk(Foresporsler fsp, int tolkId)
+        public List<Tolking_vm> listOppdragTolkSendt()
         {
-           
-            //finner oppdraget  og Tolken
-           var oppdrag =  finnOppdrag(fsp.oppdragsID);
+            // return db.Oppdrag.ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true).ToList();
+
+            try
+            {
+
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
+                foreach (var rowf in alleFramaate)
+                {
+
+                    var framaater = new Tolking_vm()
+                    {
+                        kundeID = rowf.kunde.persId,
+                        oppdragID = rowf.oppdragsID,
+                        typetolk = rowf.oppdragType,
+                        fraspraak = rowf.spraakFra,
+                        tilspraak = rowf.spraakTil,
+                        sted = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
+                        frakl = rowf.tidFra,
+                        tilkl = rowf.tidTil,
+
+                        andreopplysninger = rowf.andreOpplisning,
+
+                    };
+                    vm_listeframmate.Add(framaater);
+                }
+
+                return vm_listeframmate;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
+        //etter godkjenelser av tolk slette oppgrad fra foresporsle fra table
+        public bool regOppdragPaaEnTolk(int fspId, int tolkId)
+        {
+
+            
+             //finner oppdraget  og Tolken
+           var oppdrag =  finnOppdrag(fspId);
            var Tolk =  db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
            
             if (Tolk !=null && oppdrag !=null)
             {
                 Tolk.oppdrag.Add(oppdrag);
-
                 //fjerner føresspørslet 
-                //db.foresporelse.
+                slettOppdrag(fspId);
                 db.SaveChanges();
                 return true;
             }else
@@ -255,6 +294,28 @@ namespace Tolkesentralen_v3.Models
                 return false;
             }
         }
+
+        //public bool regOppdragPaaEnTolk(Foresporsler fsp, int tolkId)
+        //{
+
+        //    //finner oppdraget  og Tolken
+        //    var oppdrag = finnOppdrag(fsp.oppdragsID);
+        //    var Tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
+
+        //    if (Tolk != null && oppdrag != null)
+        //    {
+        //        Tolk.oppdrag.Add(oppdrag);
+        //        //fjerner føresspørslet 
+        //        db.foresporelse.Remove(fsp);
+        //        db.SaveChanges();
+        //        return true;
+        //    }
+        //    else
+        //    {
+
+        //        return false;
+        //    }
+        //}
 
         // Lister Tolkinger som tilhører en kunde
         public List<Tolking_vm> listOppdragMedKundeId(int kundeId)

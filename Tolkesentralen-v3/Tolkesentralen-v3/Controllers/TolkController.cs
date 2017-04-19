@@ -106,8 +106,19 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage PostSvar([FromBody]Svar input)
         {
             var db = new DbOppdrag();
+            bool ok;
             //bool ok = db.regEnForesporselPåEnEllerFlereTolk(tolkIDs.tolkArrey, tolkIDs.oppdragId);
-            bool ok = true;
+            if (input.svar == 1)
+            {
+                // Hvis tolk svarer ja
+                ok = db.regOppdragPaaEnTolk(input.oppdragId, input.tolkID);
+            }
+            else
+            {
+                // Hvis tolk svarer ja
+                // ok = dbFunkjson
+                ok = true;
+            }
             if (ok)
             {
                 return new HttpResponseMessage()

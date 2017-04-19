@@ -89,21 +89,28 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
+
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
-            //var output = new Tolking_vm
-            //{
-            //    kundeID = 1,
-            //    oppdragID = 1,
-            //    frakl = "12:15",
-            //    tilkl = "13:15",
-            //    oppdragsdato = "12-07-2017",
-            //    typetolk = "Fremmedmøtetolk",
-            //    fraspraak = "Spansk",
-            //    tilspraak = "Norsk"
-            //};
-            //liste.Add(output);
+            
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        [Route("api/oppdrag/GetBestillingerTilTolk/{id}")]
+        public HttpResponseMessage GetBestillingerTilTolk(int id)
+        {
+
+            DbForessporsel f = new DbForessporsel();
+            List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
+
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -120,7 +127,7 @@ namespace Tolkesentralen_v3.Controllers
         //{
         //    DbForessporsel f = new DbForessporsel();
         //    List<Tolking_vm> liste = f.listTolkForesporslerMedID();
-            
+
         //    var Json = new JavaScriptSerializer();
         //    string JsonString = Json.Serialize(liste);
 
@@ -211,7 +218,7 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
-            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
+            List<Tolking_vm> liste = repository.listOppdragTolkSendt();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -250,12 +257,12 @@ namespace Tolkesentralen_v3.Controllers
         //regstrerer oppdrag på en tolk
         [Route("api/oppdrag/regOppdragPaaEnTolk/{id}/{tolkId}")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(Foresporsler fs,int tolkId)
+        public HttpResponseMessage regOppdragPaaEnTolk(int fsp,int tolkId)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(fs,tolkId);
+                bool OK = repository.regOppdragPaaEnTolk(fsp,tolkId);
 
                 if (OK)
                 {

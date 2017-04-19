@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var oppdrag_service_1 = require("../../_services/oppdrag.service");
-var models_1 = require("../../_models/models");
-var data_service_1 = require("../../_services/data.service");
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../../_services/oppdrag.service');
+var models_1 = require('../../_models/models');
+var data_service_1 = require('../../_services/data.service');
 var OversettelseComponent = (function () {
     function OversettelseComponent(oppdragService, dataService) {
         this.oppdragService = oppdragService;
@@ -31,14 +30,13 @@ var OversettelseComponent = (function () {
             _this.dataService.updateData(_this.element);
         });
     };
+    OversettelseComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/foresporsler/oversettelse.component.html"
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, data_service_1.DataService])
+    ], OversettelseComponent);
     return OversettelseComponent;
 }());
-OversettelseComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./app/admin/foresporsler/oversettelse.component.html"
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
-        data_service_1.DataService])
-], OversettelseComponent);
 exports.OversettelseComponent = OversettelseComponent;
 //# sourceMappingURL=oversettelse.component.js.map

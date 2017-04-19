@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var oppdrag_service_1 = require("../../_services/oppdrag.service");
-var models_1 = require("../../_models/models");
-var data_service_1 = require("../../_services/data.service");
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../../_services/oppdrag.service');
+var models_1 = require('../../_models/models');
+var data_service_1 = require('../../_services/data.service');
 var AdminUtforteOversettelseOppdragComponent = (function () {
     function AdminUtforteOversettelseOppdragComponent(oppdragService, dataService) {
         this.oppdragService = oppdragService;
@@ -31,14 +30,13 @@ var AdminUtforteOversettelseOppdragComponent = (function () {
             _this.dataService.updateData(_this.element);
         });
     };
+    AdminUtforteOversettelseOppdragComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component.html"
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, data_service_1.DataService])
+    ], AdminUtforteOversettelseOppdragComponent);
     return AdminUtforteOversettelseOppdragComponent;
 }());
-AdminUtforteOversettelseOppdragComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./app/admin/oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component.html"
-    }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
-        data_service_1.DataService])
-], AdminUtforteOversettelseOppdragComponent);
 exports.AdminUtforteOversettelseOppdragComponent = AdminUtforteOversettelseOppdragComponent;
 //# sourceMappingURL=admin-utforte-oversettelse-oppdrag.component.js.map
