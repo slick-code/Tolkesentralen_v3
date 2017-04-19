@@ -173,8 +173,12 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
+<<<<<<< HEAD
 
        
+=======
+        
+>>>>>>> 7530e4b9d5741a0709ae8c3beb1e4ef591673fc7
         public List<Person_VM> listAlleTolkMedForesporselID(int forespID)
         {
 

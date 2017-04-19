@@ -107,6 +107,7 @@ namespace Tolkesentralen_v3.Controllers
         {
             var db = new DbOppdrag();
             //bool ok = db.regEnForesporselPåEnEllerFlereTolk(tolkIDs.tolkArrey, tolkIDs.oppdragId);
+            db.regOppdragPaaEnTolk(input.oppdragId, input.tolkID);
             bool ok = true;
             if (ok)
             {

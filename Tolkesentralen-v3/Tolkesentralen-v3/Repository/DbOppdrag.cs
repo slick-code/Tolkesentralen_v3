@@ -232,6 +232,46 @@ namespace Tolkesentralen_v3.Models
             }
 
         }
+
+        public List<Tolking_vm> listOppdragTolkSendt()
+        {
+            // return db.Oppdrag.ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true).ToList();
+
+            try
+            {
+
+                List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
+                foreach (var rowf in alleFramaate)
+                {
+
+                    var framaater = new Tolking_vm()
+                    {
+                        kundeID = rowf.kunde.persId,
+                        oppdragID = rowf.oppdragsID,
+                        typetolk = rowf.oppdragType,
+                        fraspraak = rowf.spraakFra,
+                        tilspraak = rowf.spraakTil,
+                        sted = rowf.oppdragsAddres,
+                        oppdragsdato = rowf.oppdragsDato,
+                        frakl = rowf.tidFra,
+                        tilkl = rowf.tidTil,
+
+                        andreopplysninger = rowf.andreOpplisning,
+
+                    };
+                    vm_listeframmate.Add(framaater);
+                }
+
+                return vm_listeframmate;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
         //etter godkjenelser av tolk slette oppgrad fra foresporsle fra table
         public bool regOppdragPaaEnTolk(int fspId, int tolkId)
         {

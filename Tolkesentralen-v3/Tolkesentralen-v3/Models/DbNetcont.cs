@@ -12,7 +12,6 @@ namespace Tolkesentralen_v3.Models
 
         public DbNetcont() : base("TolkesentralenDb")
         {
-
             //Database.CreateIfNotExists();
             Database.SetInitializer(new DBContextInitializer());
 

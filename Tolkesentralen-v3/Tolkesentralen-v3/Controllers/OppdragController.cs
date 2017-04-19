@@ -93,25 +93,7 @@ namespace Tolkesentralen_v3.Controllers
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
 
-            //var output = new Tolking_vm
-            //{
-            //    kundeID = 1,
-            //    oppdragID = 1,
-            //    frakl = "12:15",
-            //    tilkl = "13:15",
-            //    oppdragsdato = "12-07-2017",
-            //    typetolk = "Fremmedmøtetolk",
-            //    fraspraak = "Spansk",
-            //    tilspraak = "Norsk"
-            //};
-            //liste.Add(output);
-
-
             
-           // List<Tolking_vm> liste = dbForesp.listTolkForesporslerMedID(id);
-
-
-
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
 
@@ -218,7 +200,7 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetBehandlet")]
         public HttpResponseMessage GetBehandlet()
         {
-            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
+            List<Tolking_vm> liste = repository.listOppdragTolkSendt();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
