@@ -32,7 +32,7 @@ namespace Tolkesentralen_v3.Repository
                 var foresp = new Foresporsler()
                 {
 
-                    foresporselID = oppdrag.oppdragsID,
+                    oppdragsID = oppdrag.oppdragsID,
                     oppdragType = oppdrag.oppdragType,
                     spraakFra = oppdrag.spraakFra,
                     spraakTil = oppdrag.spraakTil,

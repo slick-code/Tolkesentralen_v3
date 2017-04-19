@@ -104,6 +104,25 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [HttpGet]
+        [Route("api/oppdrag/GeOppdragMedTolkId")]
+        public HttpResponseMessage GeOppdragMedTolkId(int tolkID)
+        {
+
+
+            List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
+
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         [Route("api/oppdrag/GetBestillingerTilTolk/{id}")]
         public HttpResponseMessage GetBestillingerTilTolk(int id)
         {
@@ -255,14 +274,14 @@ namespace Tolkesentralen_v3.Controllers
 
 
         //regstrerer oppdrag på en tolk
-        [Route("api/oppdrag/regOppdragPaaEnTolk/{id}/{tolkId}")]
+        [Route("api/oppdrag/regOppdragPaaEnTolk")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(int fsp,int tolkId)
+        public HttpResponseMessage regOppdragPaaEnTolk(int fpId,int tolkId)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(fsp,tolkId);
+                bool OK = repository.regOppdragPaaEnTolk(fpId,tolkId);
 
                 if (OK)
                 {
