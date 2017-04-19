@@ -257,12 +257,12 @@ namespace Tolkesentralen_v3.Controllers
         //regstrerer oppdrag på en tolk
         [Route("api/oppdrag/regOppdragPaaEnTolk/{id}/{tolkId}")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(Foresporsler fs,int tolkId)
+        public HttpResponseMessage regOppdragPaaEnTolk(int fsp,int tolkId)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(fs,tolkId);
+                bool OK = repository.regOppdragPaaEnTolk(fsp,tolkId);
 
                 if (OK)
                 {

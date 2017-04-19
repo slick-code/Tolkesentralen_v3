@@ -79,8 +79,7 @@ namespace Tolkesentralen_v3.Repository
             return false;
         }
 
-
-        //liste alle forespørsler som er tilsendt tolk
+        
         public List<Tolking_vm> listTolkForesporsler()
         {
 
@@ -128,7 +127,7 @@ namespace Tolkesentralen_v3.Repository
 
 
 
-        //lister  ut forespørseler/oppdrag som er tilsendt en tolk
+       
         public List<Tolking_vm> listTolkForesporslerMedID(int tolkId)
         {
 
@@ -175,7 +174,7 @@ namespace Tolkesentralen_v3.Repository
 
         }
 
-        //liste alle forespørsler som er tilsendt tolk
+       
         public List<Person_VM> listAlleTolkMedForesporselID(int forespID)
         {
 
