@@ -232,7 +232,7 @@ namespace Tolkesentralen_v3.Models
             }
 
         }
-
+        //etter godkjenelser av tolk slette oppgrad fra foresporsle fra table
         public bool regOppdragPaaEnTolk(Foresporsler fsp, int tolkId)
         {
            
@@ -243,9 +243,8 @@ namespace Tolkesentralen_v3.Models
             if (Tolk !=null && oppdrag !=null)
             {
                 Tolk.oppdrag.Add(oppdrag);
-
                 //fjerner føresspørslet 
-                //db.foresporelse.
+                db.foresporelse.Remove(fsp);
                 db.SaveChanges();
                 return true;
             }else

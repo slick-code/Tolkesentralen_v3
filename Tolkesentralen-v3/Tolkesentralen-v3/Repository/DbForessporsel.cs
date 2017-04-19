@@ -54,7 +54,6 @@ namespace Tolkesentralen_v3.Repository
                     if (tolk != null)
                     {
 
-
                         tolk.foresporsler.Add(foresp);
                         oppdrag.sendt = true;
 
@@ -225,8 +224,7 @@ namespace Tolkesentralen_v3.Repository
 
         }
 
-
-        /////////////////////////list alle tolk med forespørseler/////////////////////////////////////////
+        
 
 
     }
