@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../../_services/oppdrag.service');
-var router_1 = require('@angular/router');
-var temp_service_1 = require('../../_services/temp.service');
-var data_service_1 = require('../../_services/data.service');
-var models_1 = require('../../_models/models');
-var selective_preloading_strategy_1 = require('../../_services/selective-preloading-strategy');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../../_services/oppdrag.service");
+var router_1 = require("@angular/router");
+var temp_service_1 = require("../../_services/temp.service");
+var data_service_1 = require("../../_services/data.service");
+var models_1 = require("../../_models/models");
+var selective_preloading_strategy_1 = require("../../_services/selective-preloading-strategy");
 var OppdragComponent = (function () {
     function OppdragComponent(preloadStrategy, dataService, oppdragService, route, tempService, router) {
         this.preloadStrategy = preloadStrategy;
@@ -80,13 +81,18 @@ var OppdragComponent = (function () {
             this.avbryt = true;
         }
     };
-    OppdragComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
-        }), 
-        __metadata('design:paramtypes', [selective_preloading_strategy_1.SelectivePreloadingStrategy, data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
-    ], OppdragComponent);
     return OppdragComponent;
 }());
+OppdragComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
+    }),
+    __metadata("design:paramtypes", [selective_preloading_strategy_1.SelectivePreloadingStrategy,
+        data_service_1.DataService,
+        oppdrag_service_1.OppdragService,
+        router_1.ActivatedRoute,
+        temp_service_1.TempService,
+        router_1.Router])
+], OppdragComponent);
 exports.OppdragComponent = OppdragComponent;
 //# sourceMappingURL=oppdrag.component.js.map
