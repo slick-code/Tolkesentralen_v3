@@ -104,12 +104,30 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [Route("api/oppdrag/GetBestillingerTilTolk/{id}")]
+        public HttpResponseMessage GetBestillingerTilTolk(int id)
+        {
+
+            DbForessporsel f = new DbForessporsel();
+            List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
+
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         //[Route("api/oppdrag/GetForesposlerSendt")]
         //public HttpResponseMessage GetForesposlerSendt()
         //{
         //    DbForessporsel f = new DbForessporsel();
         //    List<Tolking_vm> liste = f.listTolkForesporslerMedID();
-            
+
         //    var Json = new JavaScriptSerializer();
         //    string JsonString = Json.Serialize(liste);
 
