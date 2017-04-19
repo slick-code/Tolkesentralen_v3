@@ -8,10 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var data_service_1 = require("../_services/data.service");
-var admin_service_1 = require("../_services/admin.service");
+var core_1 = require('@angular/core');
+var data_service_1 = require('../_services/data.service');
+var admin_service_1 = require('../_services/admin.service');
 var AdminComponent = (function () {
     function AdminComponent(dataService, adminService) {
         this.dataService = dataService;
@@ -58,15 +57,15 @@ var AdminComponent = (function () {
         sum += this.counter.nyekunder == null ? 0 : this.counter.nyekunder;
         return sum == 0 ? "" : "" + sum;
     };
+    AdminComponent = __decorate([
+        core_1.Component({
+            selector: 'admin',
+            templateUrl: "./app/admin/admin.component.html",
+            providers: [admin_service_1.AdminService],
+        }), 
+        __metadata('design:paramtypes', [data_service_1.DataService, admin_service_1.AdminService])
+    ], AdminComponent);
     return AdminComponent;
 }());
-AdminComponent = __decorate([
-    core_1.Component({
-        selector: 'admin',
-        templateUrl: "./app/admin/admin.component.html",
-        providers: [admin_service_1.AdminService],
-    }),
-    __metadata("design:paramtypes", [data_service_1.DataService, admin_service_1.AdminService])
-], AdminComponent);
 exports.AdminComponent = AdminComponent;
 //# sourceMappingURL=admin.component.js.map
