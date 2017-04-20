@@ -276,16 +276,19 @@ namespace Tolkesentralen_v3.Models
         public bool regOppdragPaaEnTolk(int fspId, int tolkId)
         {
 
-            
+            var fp = db.foresporelse.Find(fspId);
              //finner oppdraget  og Tolken
-           var oppdrag =  finnOppdrag(fspId);
+           var oppdrag =  finnOppdrag(fp.oppdragsID);
            var Tolk =  db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
            
-            if (Tolk !=null && oppdrag !=null)
+            if (Tolk !=null && oppdrag !=null && fp != null)
             {
+                //registrerer oppdrag på Tolken som takket ja 
                 Tolk.oppdrag.Add(oppdrag);
-                //fjerner føresspørslet 
-                slettOppdrag(fspId);
+
+                //sletter  føresspørslet 
+                db.foresporelse.Remove(fp);
+
                 db.SaveChanges();
                 return true;
             }else
@@ -368,7 +371,51 @@ namespace Tolkesentralen_v3.Models
         }
 
 
+        public List<Tolking_vm> listOppdragMedTolkId(int tolkId)
+        {
 
+
+            Tolk tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
+            List<Tolking_vm> utListe = new List<Tolking_vm>();
+            try
+            {
+
+                if (tolk != null)
+                {
+
+                    foreach (var rowf in tolk.oppdrag.OfType<Tolking>())
+                    {
+
+                        var Tolking_vm = new Tolking_vm()
+                        {
+                            kundeID = rowf.kunde.persId,
+                            oppdragID = rowf.oppdragsID,
+                            typetolk  = rowf.oppdragType,
+                            fraspraak = rowf.spraakFra,
+                            tilspraak = rowf.spraakTil,
+                            sted = rowf.oppdragsAddres,
+                            oppdragsdato = rowf.oppdragsDato,
+                            frakl = rowf.tidFra,
+                            tilkl = rowf.tidTil,
+                            andreopplysninger = rowf.andreOpplisning,
+
+                        };
+
+                        utListe.Add(Tolking_vm);
+
+                    }
+
+                }
+                return utListe;
+
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
 
     }
 }

@@ -41,7 +41,7 @@ var OppdragService = (function () {
             .map(function (response) { return response.json(); });
     };
     OppdragService.prototype.getBestillingerTilTolk = function (id) {
-        return this.http.get(this.url + "GetBestillingerTilTolk/" + id)
+        return this.http.get(this.url + "GeOppdragMedTolkId/" + id)
             .map(function (response) { return response.json(); });
     };
     OppdragService.prototype.getForesposelSendt = function () {

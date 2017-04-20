@@ -6,7 +6,7 @@ using System.Web;
 using Tolkesentralen_v3.Models;
 using Tolkesentralen_v3.ViewModels;
 
-namespace Tolkesentralen_v3.Models
+namespace Tolkesentralen_v3.Models    
 {
     public class DBContextInitializer : DropCreateDatabaseAlways<DbNetcont>
     {
