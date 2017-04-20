@@ -43,3 +43,4 @@ export class AppModule {
         console.log("Hvorfor printes denne ut 2 ganger?");
     }
 }
+ 

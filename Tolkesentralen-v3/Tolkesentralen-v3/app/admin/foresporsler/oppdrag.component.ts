@@ -14,20 +14,20 @@ import { SelectivePreloadingStrategy } from '../../_services/selective-preloadin
 export class OppdragComponent {
     arrayOppdrag: Oppdrag[];
     arrayOppdragSendt: Oppdrag[];
-   index: number; // valgt index i array
-   detaljer: boolean;
-   more: boolean;
-   count: number;
-   element: NavbarElement;
-   modules: string[];
+    nr: number;
+    index: number; // valgt index i array
+    count: number;
+    element: NavbarElement;
+    modules: string[];
 
-   bruker: any;
+    bruker: any;
 
-   chosen: number;
-
-   info: boolean;
-   avbryt: boolean;
-   loading: boolean;
+    chosen: number;
+    loading: boolean;
+    
+    infoErTrykket: boolean;
+    slettErTrykket: boolean;
+    default: boolean;
 
     constructor(
         private preloadStrategy: SelectivePreloadingStrategy,
@@ -37,19 +37,61 @@ export class OppdragComponent {
         private tempService: TempService,
         private router: Router) {
             this.modules = preloadStrategy.preloadedModules;
-         }
+    }
+
+    btnClick(index: number, nr: number, btn: number) {
+        if (this.index == index && this.nr == nr) {
+            if (btn == 1 && this.infoErTrykket) {   
+                // Gå videre
+            } else {
+                this.SetDefault();
+                return;
+            }
+        }
+        this.index = index;
+        this.nr = nr;
+        this.infoErTrykket = true;
+        if (btn == 1) {
+            this.slettErTrykket = true; 
+        } 
+        
+    }
+
+    VisInfo(index: number, nr: number) {
+        if (this.index == index && this.nr == nr && this.infoErTrykket) {
+            return true;
+        }
+        return false;
+    }
+    
+
+    VisSlett(index: number, nr: number) {
+        if (this.index == index && this.nr == nr && this.slettErTrykket) {
+            return true;
+        }
+        return false;
+    }
+
+    SetDefault() {
+        this.infoErTrykket = false;
+        this.slettErTrykket = false;
+        this.default = true;
+        this.index = -1;
+        this.nr = -1;
+    }
 
     ngOnInit() {
         this.bruker = JSON.parse(localStorage.getItem('currentUser'));
-        this.info = false;
-        this.avbryt = false;
-
-        this.more = false;
         this.count = 77;
         this.getNyeOppdrag();
         this.getSendteOppdrag();
         //this.loading = true
-        
+    }
+
+    checkIfArrayIsEmthy(array: any) {
+        if(array == null) return false;
+        if (array.length == 0) return false;
+        return true;
     }
 
     getNyeOppdrag() {
@@ -75,28 +117,4 @@ export class OppdragComponent {
         this.tempService.setObject(oppdrag);
         this.router.navigate(['./admin/utdel']);
     }
-
-    setInfo(index: number){
-        if(this.index != index && this.avbryt) this.avbryt = false;
-        if(this.info && this.index != index){
-            this.index = index;
-            return;
-        }
-        this.index = index;
-        this.info = !this.info;
-    }
-
-    setAvbryt(index: number){
-        if(this.index == index){
-            this.avbryt = !this.avbryt;
-            if(this.avbryt) this.info = true;
-        }else{
-            this.index = index;
-            this.info = true;
-            this.avbryt = true;
-        }
-    }
-
-    
-    
 }
