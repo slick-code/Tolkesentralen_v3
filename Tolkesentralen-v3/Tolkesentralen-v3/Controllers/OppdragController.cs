@@ -105,7 +105,7 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [HttpGet]
-        [Route("api/oppdrag/GeOppdragMedTolkId")]
+        [Route("api/oppdrag/GeOppdragMedTolkId/{id}")]
         public HttpResponseMessage GeOppdragMedTolkId(int tolkID)
         {
 
@@ -127,19 +127,18 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetBestillingerTilTolk(int id)
         {
 
-            DbForessporsel f = new DbForessporsel();
-            List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
+			List<Tolking_vm> liste = repository.listOppdragMedTolkId(id);
 
 
-            var Json = new JavaScriptSerializer();
-            string JsonString = Json.Serialize(liste);
+			var Json = new JavaScriptSerializer();
+			string JsonString = Json.Serialize(liste);
 
-            return new HttpResponseMessage()
-            {
-                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
-                StatusCode = HttpStatusCode.OK
-            };
-        }
+			return new HttpResponseMessage()
+			{
+				Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+				StatusCode = HttpStatusCode.OK
+			};
+		}
 
         //[Route("api/oppdrag/GetForesposlerSendt")]
         //public HttpResponseMessage GetForesposlerSendt()
