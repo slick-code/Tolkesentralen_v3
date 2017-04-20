@@ -12,9 +12,10 @@ namespace Tolkesentralen_v3.Models
 
         public DbNetcont() : base("TolkesentralenDb")
         {
-            //Database.CreateIfNotExists();
-            Database.SetInitializer(new DBContextInitializer());
-
+          // bool ok = Database.CreateIfNotExists();
+            
+           Database.SetInitializer(new DBContextInitializer());
+   
         }
 
         // public DbSet<Oppdrag> Oppdrager { get; set; }

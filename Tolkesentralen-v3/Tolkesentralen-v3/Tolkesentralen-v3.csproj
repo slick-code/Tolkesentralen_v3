@@ -208,7 +208,7 @@
     <Compile Include="Repository\DbForessporsel.cs" />
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbOversettelse.cs" />
-    <Compile Include="Repository\DbPerson.cs" />
+    <Compile Include="quickstart-master\DbPerson.cs" />
     <Compile Include="Repository\DbSpraak.cs" />
     <Compile Include="Repository\OppdragRepository.cs" />
     <Compile Include="ViewModels\Counter.cs" />
