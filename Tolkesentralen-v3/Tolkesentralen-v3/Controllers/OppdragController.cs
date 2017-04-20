@@ -127,18 +127,18 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetBestillingerTilTolk(int id)
         {
 
-			List<Tolking_vm> liste = repository.listOppdragMedTolkId(id);
+            List<Tolking_vm> liste = repository.listOppdragMedTolkId(id);
 
 
-			var Json = new JavaScriptSerializer();
-			string JsonString = Json.Serialize(liste);
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
 
-			return new HttpResponseMessage()
-			{
-				Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
-				StatusCode = HttpStatusCode.OK
-			};
-		}
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
 
         //[Route("api/oppdrag/GetForesposlerSendt")]
         //public HttpResponseMessage GetForesposlerSendt()

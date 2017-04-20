@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-var auth_service_1 = require("../_services/auth.service");
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
+var auth_service_1 = require('../_services/auth.service');
 var OppdragService = (function () {
     function OppdragService(http, authenticationService) {
         this.http = http;
@@ -48,12 +47,11 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map(function (response) { return response.json(); });
     };
+    OppdragService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+    ], OppdragService);
     return OppdragService;
 }());
-OppdragService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http,
-        auth_service_1.AuthenticationService])
-], OppdragService);
 exports.OppdragService = OppdragService;
 //# sourceMappingURL=oppdrag.service.js.map
