@@ -1,52 +1,68 @@
 ﻿
 <div>
-    <p><span class="glyphicon glyphicon-info-sign"></span> Oversettelse-bestilling som er blitt utført</p>
-    <hr />
-    <br />
+    <div class="col-md-offset-0">
 
-    <table class="table table-bordered table-condensed">
-        <thead>
-            <tr>
-                <th>OppdragsNr</th>
-                <th>Bestillingsdato</th>
-                <th>Tolk navn</th>
-                <th>Type dokument</th>
-                <th>Fra til Språk</th>
-                <th>Ferdiggjoresdato</th>
-                <th>kundeNr</th>
-                <th>Firma/Kunde</th>
-                <th>Kontakt person</th>
-                <th>Telefon</th>
-                <th>Telefax</th>
-                <th>E-post</th>
-                <th>Faktura adresse</th>
-                <th>Postnr</th>
-                <th>Poststed</th>
-                <th>Melding</th>
+        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Oversettelse historikk</p>
+        <p style="display: inline-block;" class="text-center" *ngIf="loading">
+            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </p>
 
-            </tr>
-        </thead>
-        <tbody *ngFor="let oppdrag of arrayOversettelse; let i = index">
-            <tr>
-                <td>{{oppdrag.oppdragsNr}}</td>
-                <td>{{oversettelse.bestillingsdato}}</td>
-                <td>{{tolk.navn}}</td>
-                <td>{{oppdrag.typedokument}}</td>
-                <td>{{oppdrag.fraspraak}} => {{oppdrag.tilspraak}} </td>
-                <td>{{oppdrag.ferdiggjoresdato}}</td>
-                <td>{{kunde.kundeNr}}</td>
-                <td>{{oppdrag.firma}}</td>
-                <td>{{oppdrag.fornavn}} {{oppdrag.etternavn}}</td>
-                <td>{{oppdrag.telefon}}</td>
-                <td>{{oppdrag.telefax}}</td>
-                <td>{{oppdrag.epost}}</td>
-                <td>{{oppdrag.fakturaadresse}}</td>
-                <td>{{oppdrag.postnr}}</td>
-                <td>{{oppdrag.poststed}}</td>
-                <td>{{oppdrag.andreopplysninger}}</td>
+        <hr />
+        <div>
+            <h3 style="display: inline-block;">Avbestilte Oversettelse</h3>
 
-            </tr>
-        </tbody>
-    </table>
+        </div>
+        <br />
 
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>Avbestillingstidspunkt</th>
+                    <th>OppdragsNr</th>
+                    <th>Bestillingsdato</th>
+                    <th>Tolk navn</th>
+                    <th>Type dokument</th>
+                    <th>Fra til Språk</th>
+                    <th>Ferdiggjøresdato</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let oversettelse of arrayOversettelse; let i = index">
+                <tr>
+                    <td>{{oversettelse.avbestillingstidspunkt}}</td>
+                    <td>{{oversettelse.oppdragsNr}}</td>
+                    <td>{{oversettelse.bestillingsdato}}</td>
+                    <td>{{tolk.fornavn}} - {{tolk.etternavn}} </td>
+                    <td>{{oversettelse.typedokument}}</td>
+                    <td>{{oversettelse.frasraak}} - {{oversettelse.tilspraak}}</td>
+                    <td>{{oversettelse.ferdiggjoresdato}}</td>
+                    <td *ngIf="i !== index || !avbryt" width="230">
+                        <button style="width:85px" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> {{i === index && info ? "Sjul" : "Vis mer"}}</button>
+                        <button style="width:40px" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                    <td *ngIf="i === index && avbryt" width="205">
+                        <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
+                        <button style="width:49%" class="btn btn-default" (click)="setAvbryt(i)"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                    </td>
+                </tr>
+                <tr *ngIf="i === index && info">
+                    <td colspan="7">
+                        <table class="table table-bordered table-condensed table1">
+                            <tr><th style="color:orange">KundeNr</th><td style="color:black">{{arrayKunder[index].kundeNr}}</td></tr>
+                            <tr><th style="color:darkorange">Firma</th><td style="color:black">{{arrayKunder[index].firma}}</td></tr>
+                            <tr><th style="color:orange">Kontakt person</th><td style="color:black">{{arrayKunder[index].fornavn}} - {{arrayKunder[index].etternavn}}</td></tr>
+                            <tr><th style="color:darkorange">Telefon</th><td style="color:black">{{arrayKunder[index].telefon}}</td></tr>
+                            <tr><th style="color:orange">Telefax</th><td style="color:black">{{arrayKunder[index].telefax}}</td></tr>
+                            <tr><th style="color:darkorange">Epost</th><td style="color:black">{{arrayKunder[index].epost}}</td></tr>
+                            <tr><th style="color:orange">Faktura-adresse</th><td style="color:black">{{arrayKunder[index].fakturaadresse}}</td></tr>
+                            <tr><th style="color:darkorange">Postnr</th><td style="color:black">{{arrayKunder[index].postnr}}</td></tr>
+                            <tr><th style="color:orange">Poststed</th><td style="color:black">{{arrayKunder[index].poststed}}</td></tr>
+                            <tr><th style="color:darkorange">Melding</th><td style="color:black">{{arrayOversettelse[index].melding}}</td></tr>
+                            <tr><th style="color:orange">Merknad</th><td style="color:black">{{arrayOversettelse[index].merknad}}</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+<br />

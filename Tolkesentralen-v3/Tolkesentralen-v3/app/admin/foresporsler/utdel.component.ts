@@ -30,12 +30,6 @@ export class UtdelComponent {
     ngOnInit() {
         this.oppdrag = this.tempService.getObject();
         this.hentTolkmedGittSpraak();
-        // get users from secure api end point
-        //this.oppdragService.getListeTolk()
-        //    .subscribe(listeTolk => {
-        //        this.arrayTolk = listeTolk;
-        //    });
-
         
         if(this.oppdrag == null){
             console.log("oppdrag er null");

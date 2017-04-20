@@ -339,10 +339,38 @@ namespace Tolkesentralen_v3.Models
                     frakl = "11:15",
                     tilkl = "13:15"
                 };
+
+                var oppdrag4 = new Tolking_vm()
+                {
+                    oppdragsdato = "07-05-2017",
+                    dato = "12-07-2017",
+                    fraspraak = "Fransk",
+                    tilspraak = "Norsk",
+                    andreopplysninger = "Dette er andre opplysninger",
+                    typetolk = "Telefontolk",
+                    sted = "HIOA pilestredet 35",
+                    frakl = "11:15",
+                    tilkl = "13:15"
+                };
+
+                var oppdrag5 = new Tolking_vm()
+                {
+                    oppdragsdato = "07-05-2017",
+                    dato = "12-07-2017",
+                    fraspraak = "Fransk",
+                    tilspraak = "Norsk",
+                    andreopplysninger = "Dette er andre opplysninger",
+                    typetolk = "Telefontolk",
+                    sted = "HIOA pilestredet 35",
+                    frakl = "11:15",
+                    tilkl = "13:15"
+                };
                 var o = new DbOppdrag();
                 o.regTolkOppdrag(oppdrag1, 1);
                 o.regTolkOppdrag(oppdrag2, 1);
                 o.regTolkOppdrag(oppdrag3, 1);
+                o.regTolkOppdrag(oppdrag4, 1);
+                o.regTolkOppdrag(oppdrag5, 1);
 
                 /***************************THis runs the method to register a foresler to a tolk**************************************/
                 //int[] tolkId = new int[2];

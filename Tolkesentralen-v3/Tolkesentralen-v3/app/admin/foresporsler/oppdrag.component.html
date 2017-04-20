@@ -101,9 +101,9 @@
                         <td>{{oppdrag.type}}</td>
                         <td>{{oppdrag.fraspraak}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.tilspraak}} </td>
                         <td>{{oppdrag.dato}}</td>
-                        <td *ngIf="!slettErTrykket || i !== index || nr === 0" width="230">
+                        <td *ngIf="!slettErTrykket || i !== index || nr === 0" width="250">
                             <button style="width:85px" class="btn btn-success" (click)="btnClick(i,1,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 1) ? "Sjul" : "Vis mer"}}</button>
-                            <button style="width:85px" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-share-alt"></span> List tolker</button>
+                            <button style="width:105px" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-user"></span> List tolker</button>
                             <button style="width:40px" class="btn btn-default" (click)="btnClick(i,1,1)"><span class="glyphicon glyphicon-trash"></span></button>
                         </td>
                         <td *ngIf="VisSlett(i, 1)" width="205">

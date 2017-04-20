@@ -15,7 +15,10 @@
     import { AdminTolkUtforteOppdragComponent } from './tolkehistorikk/admin-tolk-utforte-oppdrag.component';
     import { AdminUtforteOversettelseOppdragComponent } from './oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component';
     import { AdminAvbestilteOversettelseOppdragComponent } from './oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component';
-    
+    import { OpprettKundeComponent } from './opprett/opprett-kunde.component';
+    import { OpprettBestillingComponent } from './opprett/opprett-bestilling.component';
+    import { OpprettOversettelseComponent } from './opprett/opprett-oversettelse.component';
+
     const appRoutes: Routes = [
       {
         path: '',
@@ -38,6 +41,9 @@
               { path: 'admin-tolk-utforte-oppdrag', component: AdminTolkUtforteOppdragComponent },
               { path: 'admin-utforte-oversettelse-oppdrag', component: AdminUtforteOversettelseOppdragComponent },
               { path: 'admin-avbestilte-oversettelse-oppdrag', component: AdminAvbestilteOversettelseOppdragComponent },
+              { path: 'opprett-kunde', component: OpprettKundeComponent },
+              { path: 'opprett-bestilling', component: OpprettBestillingComponent },
+              { path: 'opprett-oversettelse', component: OpprettOversettelseComponent },
               { path: '', component: OppdragComponent }
             ]
           }
