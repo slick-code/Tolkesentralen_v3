@@ -75,32 +75,25 @@ namespace Tolkesentralen_v3.Models
 
                 };
 
-                foreach(var f in nyOppdrag.ferdiggjoresdato)
+                foreach(var f in nyOppdrag.Filer)
                 {
                     var nyFil = new Fil()
                     {
-                        //type = f.type,
-                        //size = f.size,
-                        //content = f.content
+                        filNavn = f.filNavn,
+                        ContentType = f.ContentType,
+                        Content = f.Content
+                      
                     };
 
-                    //oppdragDb.fil.Add(nyFil);
+                    oppdragDb.fil.Add(nyFil);
                 }
 
-                if (Bestiller != null)
-                {
-                    Bestiller.oppdrag.Add(oppdragDb);
-                }
-                else
-                {
-                    return false;
-                }
+                Bestiller.oppdrag.Add(oppdragDb);
                 db.Oppdrag.Add(oppdragDb);
                 db.SaveChanges();
 
                 return true;
             }
-
 
             return false;
         }
@@ -272,30 +265,43 @@ namespace Tolkesentralen_v3.Models
             }
 
         }
-        //etter godkjenelser av tolk slette oppgrad fra foresporsle fra table
-        public bool regOppdragPaaEnTolk(int fspId, int tolkId)
+        //etter godkjenelser av tolk slette oppdgrad fra foresporsle fra table
+        public bool regOppdragPaaEnTolk(int fspId, int tolkId, string svar)
         {
 
-            var fp = db.foresporelse.Find(fspId);
+           var fp = db.foresporelse.Find(fspId);
              //finner oppdraget  og Tolken
            var oppdrag =  finnOppdrag(fp.oppdragsID);
            var Tolk =  db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
-           
-            if (Tolk !=null && oppdrag !=null && fp != null)
+
+            if (svar.Equals("ja"))
             {
-                //registrerer oppdrag på Tolken som takket ja 
-                Tolk.oppdrag.Add(oppdrag);
+                
+                if (Tolk != null && oppdrag != null && fp != null)
+                {
+                    //registrerer oppdrag på Tolken som takket ja 
+                    Tolk.oppdrag.Add(oppdrag);
 
-                //sletter  føresspørslet 
-                db.foresporelse.Remove(fp);
+                    //sletter  føresspørslet 
+                    db.foresporelse.Remove(fp);
 
-                db.SaveChanges();
-                return true;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+
+                    return false;
+                }
             }else
             {
+                //sletter  føresspørslet 
+                Tolk.foresporsler.Remove(fp);
 
+                db.SaveChanges();
                 return false;
             }
+             
         }
 
         //public bool regOppdragPaaEnTolk(Foresporsler fsp, int tolkId)
