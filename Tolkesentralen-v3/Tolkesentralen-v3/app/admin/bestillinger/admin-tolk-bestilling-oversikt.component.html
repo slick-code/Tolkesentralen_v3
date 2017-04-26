@@ -1,58 +1,69 @@
-﻿<h3>Bestilte tolke-oppdrag</h3>
-<hr />
-<table class="table table-bordered table-condensed">
-    <thead>
-        <tr>
-            <th>Bestillingsdato</th>
-            <th>OppdragsNr</th>
-            <th>Tolk Navn</th>
-            <th>Type tolk</th>
-            <th>Fra språk</th>
-            <th>Til språk</th>
-            <th>Dato</th>
-            <th>Fra kl</th>
-            <th>Til kl</th>
-            <th>Oppmøtested</th>
-            <th>Firma/kunde</th>
-            <th>Fornavn</th>
-            <th>Etternavn</th>
-            <th>Telefon</th>
-            <th>Telefax</th>
-            <th>E-post</th>
-            <th>Faktura-adresse</th>
-            <th>Postnr</th>
-            <th>Poststed</th>
-            <th>Melding</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let oppdrag of oppdrag; let i = index">
-        <tr>
-            <td>{{oppdrag.bestillingsdato}}</td>
-            <td>#{{oppdrag.oppdragsNr}}</td>
-            <td>{{tolk.navn}}</td>
-            <td>{{oppdrag.typetolk}}</td>
-            <td>{{oppdrag.fraspraak}}</td>
-            <td>{{oppdrag.tilspraak}}</td>
-            <td>{{oppdrag.oppdragsdato}}</td>
-            <td>{{oppdrag.frakl}}</td>
-            <td>{{oppdrag.tilkl}}</td>
-            <!--<td>{{oppdrag.adresse}} - {{oppdrag.postnr}} - {{oppdrag.poststed}}</td>-->
-            <td>{{oppdrag.oppmotested}}</td>
-            <td>{{kunde.firma}}</td>
-            <td>{{kunde.fornavn}}</td>
-            <td>{{kunde.etternavn}}</td>
-            <td>{{kunde.telefon}}</td>
-            <td>{{kunde.telefax}}</td>
-            <td>{{kunde.epost}}</td>
-            <td>{{kunde.fakturaadresse}}</td>
-            <td>{{kunde.postnr}}</td>
-            <td>{{kunde.poststed}}</td>
-            <td>{{kunde.andreopplysninger}}</td>
+﻿
+<div>
+    <div class="col-md-offset-0">
 
+        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Bestillingsoversikt</p>
+        <p style="display: inline-block;" class="text-center" *ngIf="loading">
+            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </p>
 
+        <hr />
+        <div>
+            <h3 style="display: inline-block;">Bestilte tolke-oppdrag</h3>
 
-            <td><button>Avbestill</button> <button>Endre</button></td>
-        </tr>
-    </tbody>
-</table>
+        </div>
+        <br />
+
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>OppdragsNr</th>
+                    <th>Tolk navn</th>
+                    <th>Type tolk</th>
+                    <th>Oppdragsdato</th>
+                    <th>Fra til kl</th>
+                    <th>Fra til Språk</th>
+                    <th>Oppmøtested</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let oppdrag of arrayOppdrag; let i = index">
+                <tr>
+                    <td>{{oppdrag.oppdragsNr}}</td>
+                    <td>{{tolk.fornavn}} - {{tolk.etternavn}} </td>
+                    <td>{{oppdrag.typetolk}}</td>
+                    <td>{{oppdrag.oppdragsdato}}</td>
+                    <td>{{oppdrag.frakl}} - {{oppdrag.tilkl}}</td>
+                    <td>{{oppdrag.fraspraak}} - {{oppdrag.tilspraak}}</td>
+                    <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.poststed}}</td>
+                    <td *ngIf="i !== index || !avbryt" width="230">
+                        <button style="width:85px" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> {{i === index && info ? "Sjul" : "Vis mer"}}</button>
+                        <button style="width:85px" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span> Endre</button>
+                        <button style="width:40px" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                    <td *ngIf="i === index && avbryt" width="205">
+                        <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
+                        <button style="width:49%" class="btn btn-default" (click)="setAvbryt(i)"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                    </td>
+                </tr>
+                <tr *ngIf="i === index && info">
+                    <td colspan="7">
+                        <table class="table table-bordered table-condensed table1">
+                            <tr><th style="color:orange">Bestillingsdato</th><td style="color:black">{{arrayOppdrag[index].bestillingsdato}}</td></tr>
+                            <tr><th style="color:darkorange">KundeNr</th><td style="color:black">{{arrayKunder[index].kundeNr}}</td></tr>
+                            <tr><th style="color:orange">Firma</th><td style="color:black">{{arrayKunder[index].firma}}</td></tr>
+                            <tr><th style="color:darkorange">Kontakt person</th><td style="color:black">{{arrayKunder[index].fornavn}} - {{arrayKunder[index].etternavn}}</td></tr>
+                            <tr><th style="color:orange">Telefon</th><td style="color:black">{{arrayKunder[index].telefon}}</td></tr>
+                            <tr><th style="color:darkorange">Telefax</th><td style="color:black">{{arrayKunder[index].telefax}}</td></tr>
+                            <tr><th style="color:orange">Epost</th><td style="color:black">{{arrayKunder[index].epost}}</td></tr>
+                            <tr><th style="color:darkorange">Faktura-adresse</th><td style="color:black">{{arrayKunder[index].fakturaadresse}}</td></tr>
+                            <tr><th style="color:orange">Postnr</th><td style="color:black">{{arrayKunder[index].postnr}}</td></tr>
+                            <tr><th style="color:darkorange">Poststed</th><td style="color:black">{{arrayKunder[index].poststed}}</td></tr>
+                            <tr><th style="color:orange">Melding</th><td style="color:black">{{arrayOppdrag[index].melding}}</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

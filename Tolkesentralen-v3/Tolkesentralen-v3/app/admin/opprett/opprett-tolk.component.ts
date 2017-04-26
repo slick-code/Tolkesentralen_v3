@@ -33,7 +33,6 @@ export class OpprettTolkComponent implements OnInit {
             ansattelsesdato: [],
             epost: [],
             passord: [],
-            bekreftpassord: [],
             telefon: [],
             mobil: [],
             adresse: [],

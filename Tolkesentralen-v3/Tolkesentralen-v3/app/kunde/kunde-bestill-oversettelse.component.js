@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require("@angular/core");
-var models_1 = require("../_models/models");
-var oversettelse_service_1 = require("../_services/oversettelse.service");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var models_1 = require('../_models/models');
+var oversettelse_service_1 = require('../_services/oversettelse.service');
+var forms_1 = require('@angular/forms');
 var KundeBestillOversettelseComponent = (function () {
     function KundeBestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -30,20 +29,6 @@ var KundeBestillOversettelseComponent = (function () {
         var fileList = event.target.files;
         if (fileList.length > 0) {
             this.fil = fileList[0];
-            //let file: File = fileList[0];
-            //let formData: FormData = new FormData();
-            //formData.append('uploadFile', file, file.name);
-            //let headers = new Headers();
-            //headers.append('Content-Type', 'multipart/form-data');
-            //headers.append('Accept', 'application/json');
-            //let options = new RequestOptions({ headers: headers });
-            //this.http.post(`${this.apiEndPoint}`, formData, options)
-            //    .map(res => res.json())
-            //    .catch(error => Observable.throw(error))
-            //    .subscribe(
-            //    data => console.log('success'),
-            //    error => console.log(error)
-            //    )
         }
     };
     KundeBestillOversettelseComponent.prototype.tilbake = function () {
@@ -86,16 +71,16 @@ var KundeBestillOversettelseComponent = (function () {
             _this.loading = false;
         }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
     };
+    KundeBestillOversettelseComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/kunde/kunde-bestill-oversettelse.component.html',
+            providers: [oversettelse_service_1.OversettelseService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
+    ], KundeBestillOversettelseComponent);
     return KundeBestillOversettelseComponent;
 }());
-KundeBestillOversettelseComponent = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        templateUrl: './app/kunde/kunde-bestill-oversettelse.component.html',
-        providers: [oversettelse_service_1.OversettelseService],
-        styles: ['.error {color:red;}']
-    }),
-    __metadata("design:paramtypes", [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
-], KundeBestillOversettelseComponent);
 exports.KundeBestillOversettelseComponent = KundeBestillOversettelseComponent;
 //# sourceMappingURL=kunde-bestill-oversettelse.component.js.map
