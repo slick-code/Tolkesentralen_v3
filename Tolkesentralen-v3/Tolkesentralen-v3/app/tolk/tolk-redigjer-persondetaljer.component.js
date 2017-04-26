@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Promise Version
 var core_1 = require('@angular/core');
 var models_1 = require('../_models/models');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
+var tolk_service_1 = require('../_services/tolk.service');
 var forms_1 = require('@angular/forms');
 var TolkRedigjerPersondetaljerComponent = (function () {
     function TolkRedigjerPersondetaljerComponent(service, fb) {
@@ -31,6 +31,7 @@ var TolkRedigjerPersondetaljerComponent = (function () {
     }
     TolkRedigjerPersondetaljerComponent.prototype.tilbake = function () {
         this.showForm = true;
+        this.person.persId = JSON.parse(localStorage.getItem('currentUser'));
     };
     TolkRedigjerPersondetaljerComponent.prototype.ngOnInit = function () { };
     TolkRedigjerPersondetaljerComponent.prototype.showLoadingScreen = function () {
@@ -38,8 +39,16 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         this.Success = null;
         this.loading = true;
     };
-    TolkRedigjerPersondetaljerComponent.prototype.postOppdrag = function () {
-        var ny = new models_1.Person();
+    TolkRedigjerPersondetaljerComponent.prototype.getTolk = function () {
+        var _this = this;
+        // get users from secure api end point
+        this.service.getTolk(this.person.persId)
+            .subscribe(function (tolk) {
+            _this.person = tolk;
+        });
+    };
+    TolkRedigjerPersondetaljerComponent.prototype.updateTolk = function () {
+        var ny = new models_1.Tolk();
         // ny.fornavn = this.form.value.fornavn;
         // ny.etternavn = this.form.value.etternavn;
         //ny.epost = this.form.value.epost;
@@ -49,15 +58,14 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         //ny.adresse2 = this.form.value.adresse2;
         //ny.postnr = this.form.value.postnr;
         //ny.poststed = this.form.value.poststed;
-        //ny.fornavn = "Lunga";
-        //ny.etternavn = "Majola";
-        //ny.epost = "hei@på.deg";
-        //ny.telefon = "1234";
-        //ny.mobil = "1234";
-        //ny.adresse = "Osloveien";
-        //ny.adresse2 = "Osloveien";
-        //ny.postnr = "3214";
-        //ny.poststed = "Oslo";
+        ny.fornavn = "Lunga";
+        ny.etternavn = "Majola";
+        ny.email = "hei@på.deg";
+        ny.telefon = "1234";
+        ny.telefon = "1234";
+        ny.adresse = "Osloveien";
+        ny.postnr = "3214";
+        ny.poststed = "Oslo";
         //var body: string = JSON.stringify(ny);
         //this.service.getEndreProfilTolk(body).subscribe(
         //    retur => {
@@ -73,10 +81,10 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         core_1.Component({
             //moduleId: module.id,
             templateUrl: './app/tolk/tolk-redigjer-persondetaljer.component.html',
-            providers: [oppdrag_service_1.OppdragService],
+            providers: [tolk_service_1.TolkService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [tolk_service_1.TolkService, forms_1.FormBuilder])
     ], TolkRedigjerPersondetaljerComponent);
     return TolkRedigjerPersondetaljerComponent;
 }());

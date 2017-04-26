@@ -3,6 +3,7 @@ import { OppdragOgKunde } from '../../_models/models';
 import { OppdragService } from '../../_services/oppdrag.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
+
 @Component({
     templateUrl: './app/admin/opprett/opprett-bestilling.component.html',
     providers: [OppdragService],

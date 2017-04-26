@@ -23,6 +23,15 @@ var TolkService = (function () {
         return this.http.post(this.url + "returnTolk", body, { headers: headers })
             .map(function (response) { return response.json(); });
     };
+    TolkService.prototype.getTolk = function (id) {
+        return this.http.get(this.url + "GetTolk")
+            .map(function (response) { return response.json(); });
+    };
+    TolkService.prototype.updateTolk = function (body) {
+        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        return this.http.post(this.url + "updateTolk", body, { headers: headers })
+            .map(function (response) { return response.json(); });
+    };
     TolkService.prototype.postForesposler = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url + "PostForesposler", body, { headers: headers })

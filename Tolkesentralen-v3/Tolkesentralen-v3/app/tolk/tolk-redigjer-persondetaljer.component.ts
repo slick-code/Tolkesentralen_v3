@@ -1,19 +1,19 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag, Person } from '../_models/models';
-import { OppdragService } from '../_services/oppdrag.service';
+import { Tolk } from '../_models/models';
+import { TolkService } from '../_services/tolk.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
     //moduleId: module.id,
     templateUrl: './app/tolk/tolk-redigjer-persondetaljer.component.html',
-    providers: [OppdragService],
+    providers: [TolkService],
     styles: ['.error {color:red;}']
 })
 export class TolkRedigjerPersondetaljerComponent implements OnInit {
     errorMessage: string;
-    person: Person[];
+    person: Tolk;
     //mode = 'Promise';
 
     //constructor(private kundeService: KundeService) { }
@@ -22,7 +22,7 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
     loading: boolean;
     showForm: boolean;
 
-    constructor(private service: OppdragService, private fb: FormBuilder) {
+    constructor(private service: TolkService, private fb: FormBuilder) {
         this.form = fb.group({
 
             fornavn: [],
@@ -40,9 +40,13 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
 
     tilbake() {
         this.showForm = true;
+        
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.updateTolk();
+        //this.person.persId = JSON.parse(localStorage.getItem('currentUser'));
+    }
 
 
     showLoadingScreen() {
@@ -51,8 +55,33 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
         this.loading = true;
     }
 
-    postOppdrag() {
-        var ny = new Person();
+    getTolk() {
+        // get users from secure api end point
+        this.service.getTolk(this.person.persId)
+            .subscribe(tolk => {
+                this.person = tolk;
+                this.setTextToInputFields(tolk);
+
+            });
+    }
+
+    setTextToInputFields(tolk: Tolk) {
+        this.form.setValue({
+            fornavn: tolk.fornavn,
+            etternavn: tolk.etternavn,
+            epost: tolk.email,
+            telefon: tolk.telefon,
+            mobil: "",
+            adresse: tolk.adresse,
+            adresse2: "",
+            postnr: tolk.postnr,
+            poststed: tolk.poststed
+        });
+    }
+
+    updateTolk() {
+        
+        //var ny = new Tolk();
 
        // ny.fornavn = this.form.value.fornavn;
        // ny.etternavn = this.form.value.etternavn;
@@ -63,16 +92,15 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
         //ny.adresse2 = this.form.value.adresse2;
         //ny.postnr = this.form.value.postnr;
         //ny.poststed = this.form.value.poststed;
-
-        //ny.fornavn = "Lunga";
-        //ny.etternavn = "Majola";
-        //ny.epost = "hei@på.deg";
-        //ny.telefon = "1234";
-        //ny.mobil = "1234";
-        //ny.adresse = "Osloveien";
-        //ny.adresse2 = "Osloveien";
-        //ny.postnr = "3214";
-        //ny.poststed = "Oslo";
+       
+        //this.person.fornavn = "Lunga";
+        //this.person.etternavn = "Majola";
+        //this.person.email = "hei@på.deg";
+        //this.person.telefon = "1234";
+        //this.person.telefon = "1234";
+        //this.person.adresse = "Osloveien";
+        //this.person.postnr = "3214";
+        //this.person.poststed = "Oslo";
 
 
 
