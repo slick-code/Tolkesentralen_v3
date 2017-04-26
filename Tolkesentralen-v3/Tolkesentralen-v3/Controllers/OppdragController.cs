@@ -55,14 +55,14 @@ namespace Tolkesentralen_v3.Controllers
 
         [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/File")]
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post(Oversettelse_VM nyOppdrag)
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
                // var fileName = Path.GetFileName(file.FileName);
                 //var path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads"), fileName);
                 //file.SaveAs(path);
-
+                
 
                 return new HttpResponseMessage()
                 {
@@ -72,7 +72,7 @@ namespace Tolkesentralen_v3.Controllers
 
             }
             var httpRequest = HttpContext.Current.Request;
-            var filenavn =  "første fil: " +httpRequest.Files[0].FileName + "andrefil:" +httpRequest.Files[1].FileName;
+            var filenavn = "første fil: " + httpRequest.Files[0].FileName;
             
             var Json = new JavaScriptSerializer();
             return new HttpResponseMessage()
@@ -111,8 +111,7 @@ namespace Tolkesentralen_v3.Controllers
 
 
             List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
-
-
+            
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
 
@@ -276,12 +275,12 @@ namespace Tolkesentralen_v3.Controllers
         //regstrerer oppdrag på en tolk
         [Route("api/oppdrag/regOppdragPaaEnTolk")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(int fpId,int tolkId)
+        public HttpResponseMessage regOppdragPaaEnTolk(int fpId,int tolkId ,string svar)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(fpId,tolkId);
+                bool OK = repository.regOppdragPaaEnTolk(fpId,tolkId, svar);
 
                 if (OK)
                 {
