@@ -26,7 +26,7 @@ namespace Tolkesentralen_v3.Repository
                     spraakFra = input.fraspraak,
                     spraakTil = input.tilspraak,
                     regDato = DateTime.Now,
-                    typedokument = input.typedokument,
+                    //typedokument = input.typedokument,
                     andreOpplisning = input.andreopplysninger,
 
                 };

@@ -35,9 +35,8 @@ namespace Tolkesentralen_v3.ViewModels
 
     public class Oversettelse_VM : Oppdrag_VM
     {
-        public Fil fil { get; set; }
+        public virtual List<Fil> Filer { get; set; }
         public string ferdiggjoresdato { get; set; }
-        public string typedokument { get; set; }
     }
 
     // Klassen arver Person fordi ved anonym (ikke-registrert) forespørsel må info om kunden fylles ut

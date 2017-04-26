@@ -43,8 +43,8 @@ namespace Tolkesentralen_v3.Models
     {
 
         public string ferdiggjoresdato { get; set; }
-        public string typedokument { get; set; }
 
+        public virtual List<Fil> fil { get; set; }
     }
 
     public class Foresporsler

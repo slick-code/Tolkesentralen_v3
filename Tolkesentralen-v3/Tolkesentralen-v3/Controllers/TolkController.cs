@@ -111,7 +111,7 @@ namespace Tolkesentralen_v3.Controllers
             if (input.svar == 1)
             {
                 // Hvis tolk svarer ja
-                ok = db.regOppdragPaaEnTolk(input.oppdragId, input.tolkID);
+                ok = db.regOppdragPaaEnTolk(input.oppdragId, input.tolkID, "ja");
             }
             else
             {
