@@ -24,13 +24,13 @@ var TolkService = (function () {
             .map(function (response) { return response.json(); });
     };
     TolkService.prototype.getTolk = function (id) {
-        return this.http.get(this.url + "GetTolk")
+        return this.http.get(this.url + "GetTolk/" + id)
             .map(function (response) { return response.json(); });
     };
     TolkService.prototype.updateTolk = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url + "updateTolk", body, { headers: headers })
-            .map(function (response) { return response.json(); });
+            .map(function (returData) { return returData.toString(); });
     };
     TolkService.prototype.postForesposler = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });

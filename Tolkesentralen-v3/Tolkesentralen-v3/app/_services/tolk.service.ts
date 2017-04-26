@@ -23,15 +23,15 @@ export class TolkService {
     }
 
     getTolk(id: number): Observable<Tolk> {
-        return this.http.get(this.url + "GetTolk")
+        return this.http.get(this.url + "GetTolk/" +id)
             .map((response: Response) => response.json());
     }
 
-    updateTolk(body: any): Observable<Tolk> {
+    updateTolk(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 
         return this.http.post(this.url + "updateTolk", body, { headers: headers })
-            .map((response: Response) => response.json());
+            .map(returData => returData.toString())
     }
 
     postForesposler(body: any) {

@@ -24,11 +24,11 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        [Route("api/tolk/GetTolk")]
+        [Route("api/tolk/GetTolk/{id}")]
         public HttpResponseMessage GetTolk(int id)
         {
             //List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
-            Tolk_VM tolk = new Tolk_VM();
+            Tolk_VM tolk = repository.hentEnTolk(id);
 
 
             var Json = new JavaScriptSerializer();
@@ -38,6 +38,26 @@ namespace Tolkesentralen_v3.Controllers
             {
                 Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        [Route("api/tolk/UpdateTolk")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage UpdateTolk([FromBody]Tolk_VM tolk)
+        {
+            bool ok = repository.OppdaterTolk(tolk);
+            if (ok)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
 
