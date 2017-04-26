@@ -27,7 +27,6 @@ var OpprettTolkComponent = (function () {
             ansattelsesdato: [],
             epost: [],
             passord: [],
-            bekreftpassord: [],
             telefon: [],
             mobil: [],
             adresse: [],

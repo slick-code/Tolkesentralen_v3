@@ -23,6 +23,9 @@ var admin_tolk_avbestillinger_oversikt_component_1 = require("./tolkehistorikk/a
 var admin_tolk_utforte_oppdrag_component_1 = require("./tolkehistorikk/admin-tolk-utforte-oppdrag.component");
 var admin_utforte_oversettelse_oppdrag_component_1 = require("./oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component");
 var admin_avbestilte_oversettelse_oppdrag_component_1 = require("./oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component");
+var opprett_kunde_component_1 = require("./opprett/opprett-kunde.component");
+var opprett_bestilling_component_1 = require("./opprett/opprett-bestilling.component");
+var opprett_oversettelse_component_1 = require("./opprett/opprett-oversettelse.component");
 var admin_routing_module_1 = require("./admin-routing.module");
 var shared_module_1 = require("../shared/shared.module");
 var AdminModule = (function () {
@@ -53,7 +56,10 @@ AdminModule = __decorate([
             admin_tolk_avbestillinger_oversikt_component_1.AdminTolkAvbestillingerOversiktComponent,
             admin_tolk_utforte_oppdrag_component_1.AdminTolkUtforteOppdragComponent,
             admin_utforte_oversettelse_oppdrag_component_1.AdminUtforteOversettelseOppdragComponent,
-            admin_avbestilte_oversettelse_oppdrag_component_1.AdminAvbestilteOversettelseOppdragComponent
+            admin_avbestilte_oversettelse_oppdrag_component_1.AdminAvbestilteOversettelseOppdragComponent,
+            opprett_kunde_component_1.OpprettKundeComponent,
+            opprett_bestilling_component_1.OpprettBestillingComponent,
+            opprett_oversettelse_component_1.OpprettOversettelseComponent
         ],
     })
 ], AdminModule);

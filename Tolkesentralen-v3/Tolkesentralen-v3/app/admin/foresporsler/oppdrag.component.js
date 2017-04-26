@@ -26,15 +26,55 @@ var OppdragComponent = (function () {
         this.router = router;
         this.modules = preloadStrategy.preloadedModules;
     }
+    OppdragComponent.prototype.btnClick = function (index, nr, btn) {
+        if (this.index == index && this.nr == nr) {
+            if (btn == 1 && this.infoErTrykket) {
+                // G� videre
+            }
+            else {
+                this.SetDefault();
+                return;
+            }
+        }
+        this.index = index;
+        this.nr = nr;
+        this.infoErTrykket = true;
+        if (btn == 1) {
+            this.slettErTrykket = true;
+        }
+    };
+    OppdragComponent.prototype.VisInfo = function (index, nr) {
+        if (this.index == index && this.nr == nr && this.infoErTrykket) {
+            return true;
+        }
+        return false;
+    };
+    OppdragComponent.prototype.VisSlett = function (index, nr) {
+        if (this.index == index && this.nr == nr && this.slettErTrykket) {
+            return true;
+        }
+        return false;
+    };
+    OppdragComponent.prototype.SetDefault = function () {
+        this.infoErTrykket = false;
+        this.slettErTrykket = false;
+        this.default = true;
+        this.index = -1;
+        this.nr = -1;
+    };
     OppdragComponent.prototype.ngOnInit = function () {
         this.bruker = JSON.parse(localStorage.getItem('currentUser'));
-        this.info = false;
-        this.avbryt = false;
-        this.more = false;
         this.count = 77;
         this.getNyeOppdrag();
         this.getSendteOppdrag();
         //this.loading = true
+    };
+    OppdragComponent.prototype.checkIfArrayIsEmthy = function (array) {
+        if (array == null)
+            return false;
+        if (array.length == 0)
+            return false;
+        return true;
     };
     OppdragComponent.prototype.getNyeOppdrag = function () {
         var _this = this;
@@ -58,28 +98,6 @@ var OppdragComponent = (function () {
     OppdragComponent.prototype.onUtdel = function (oppdrag) {
         this.tempService.setObject(oppdrag);
         this.router.navigate(['./admin/utdel']);
-    };
-    OppdragComponent.prototype.setInfo = function (index) {
-        if (this.index != index && this.avbryt)
-            this.avbryt = false;
-        if (this.info && this.index != index) {
-            this.index = index;
-            return;
-        }
-        this.index = index;
-        this.info = !this.info;
-    };
-    OppdragComponent.prototype.setAvbryt = function (index) {
-        if (this.index == index) {
-            this.avbryt = !this.avbryt;
-            if (this.avbryt)
-                this.info = true;
-        }
-        else {
-            this.index = index;
-            this.info = true;
-            this.avbryt = true;
-        }
     };
     return OppdragComponent;
 }());

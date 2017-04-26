@@ -423,5 +423,60 @@ namespace Tolkesentralen_v3.Models
 
         }
 
-    }
+		public Tolk_VM hentEnTolk(int tolkId) {
+
+			var tk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
+
+			
+			if (tk == null)
+			{
+				return null;
+			}
+			else {
+				var hentetTolk = new Tolk_VM()
+				{
+					persId = tk.persId,
+					fornavn = tk.fornavn,
+					etternavn = tk.etternavn,
+					tlf = tk.tlf,
+					postnr = tk.poststed.postNr,
+					poststed = tk.poststed.postSted,
+					email = tk.email,
+					adresse = tk.adresse,
+					godkjent = tk.godkjent
+				};
+			   return hentetTolk;
+			}
+			
+		}
+
+
+		public bool OppdaterTolk(Tolk_VM Tolk)
+		{
+			//var tolkOpdate = db.Personer.Find(Tolk.persId);
+			try {
+				var dbtolk = db.Personer.Find(Tolk.persId);
+				if (dbtolk != null) {
+					dbtolk.fornavn = Tolk.fornavn;
+					dbtolk.etternavn = Tolk.fornavn;
+					dbtolk.tlf = Tolk.tlf;
+					dbtolk.poststed.postNr = Tolk.postnr;
+					dbtolk.poststed.postSted = Tolk.poststed;
+					dbtolk.email = Tolk.email;
+					dbtolk.adresse = Tolk.adresse;
+
+					db.SaveChanges();
+					return true;
+				}
+				return false;
+
+			} catch (Exception feil) {
+
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
+
+		}
+
+	}
 }

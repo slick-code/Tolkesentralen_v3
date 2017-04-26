@@ -15,6 +15,9 @@
     import { AdminTolkUtforteOppdragComponent } from './tolkehistorikk/admin-tolk-utforte-oppdrag.component';
     import { AdminUtforteOversettelseOppdragComponent } from './oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component';
     import { AdminAvbestilteOversettelseOppdragComponent } from './oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component';
+    import { OpprettKundeComponent } from './opprett/opprett-kunde.component';
+    import { OpprettBestillingComponent } from './opprett/opprett-bestilling.component';
+    import { OpprettOversettelseComponent } from './opprett/opprett-oversettelse.component';
 
     import { AdminRoutingModule } from './admin-routing.module';
     import { SharedModule } from '../shared/shared.module';
@@ -43,7 +46,10 @@
           AdminTolkAvbestillingerOversiktComponent,
           AdminTolkUtforteOppdragComponent,
           AdminUtforteOversettelseOppdragComponent,
-          AdminAvbestilteOversettelseOppdragComponent
+          AdminAvbestilteOversettelseOppdragComponent,
+          OpprettKundeComponent,
+          OpprettBestillingComponent,
+          OpprettOversettelseComponent
       ],
       //bootstrap: [ AppComponent ]
     })

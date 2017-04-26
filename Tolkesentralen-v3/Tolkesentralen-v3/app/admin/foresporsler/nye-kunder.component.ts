@@ -21,6 +21,8 @@ export class NyeKunderComponent {
         this.getKunder();
     }
 
+    
+
     getKunder() {
         this.service.getNyeKunder()
             .subscribe(kunder => {
