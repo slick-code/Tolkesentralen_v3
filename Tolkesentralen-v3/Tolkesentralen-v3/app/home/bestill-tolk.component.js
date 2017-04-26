@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../_services/oppdrag.service");
+var forms_1 = require("@angular/forms");
 var BestillTolkComponent = (function () {
     function BestillTolkComponent(service, fb) {
         this.service = service;
@@ -38,15 +39,15 @@ var BestillTolkComponent = (function () {
     BestillTolkComponent.prototype.ngOnInit = function () {
         //this.getOppdrag;
     };
-    BestillTolkComponent = __decorate([
-        core_1.Component({
-            templateUrl: './app/home/bestill-tolk.component.html',
-            providers: [oppdrag_service_1.OppdragService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
-    ], BestillTolkComponent);
     return BestillTolkComponent;
 }());
+BestillTolkComponent = __decorate([
+    core_1.Component({
+        templateUrl: './app/home/bestill-tolk.component.html',
+        providers: [oppdrag_service_1.OppdragService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+], BestillTolkComponent);
 exports.BestillTolkComponent = BestillTolkComponent;
 //# sourceMappingURL=bestill-tolk.component.js.map

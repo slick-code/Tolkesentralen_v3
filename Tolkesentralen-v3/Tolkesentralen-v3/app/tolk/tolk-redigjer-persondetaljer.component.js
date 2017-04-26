@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var tolk_service_1 = require('../_services/tolk.service');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
+var tolk_service_1 = require("../_services/tolk.service");
+var forms_1 = require("@angular/forms");
 var TolkRedigjerPersondetaljerComponent = (function () {
     function TolkRedigjerPersondetaljerComponent(service, fb) {
         this.service = service;
@@ -83,16 +84,16 @@ var TolkRedigjerPersondetaljerComponent = (function () {
             console.log("Sucess UpdateTolk");
         }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
-    TolkRedigjerPersondetaljerComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/tolk/tolk-redigjer-persondetaljer.component.html',
-            providers: [tolk_service_1.TolkService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [tolk_service_1.TolkService, forms_1.FormBuilder])
-    ], TolkRedigjerPersondetaljerComponent);
     return TolkRedigjerPersondetaljerComponent;
 }());
+TolkRedigjerPersondetaljerComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/tolk/tolk-redigjer-persondetaljer.component.html',
+        providers: [tolk_service_1.TolkService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [tolk_service_1.TolkService, forms_1.FormBuilder])
+], TolkRedigjerPersondetaljerComponent);
 exports.TolkRedigjerPersondetaljerComponent = TolkRedigjerPersondetaljerComponent;
 //# sourceMappingURL=tolk-redigjer-persondetaljer.component.js.map
