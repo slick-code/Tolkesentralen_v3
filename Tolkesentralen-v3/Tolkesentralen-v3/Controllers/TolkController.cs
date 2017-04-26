@@ -24,6 +24,43 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [Route("api/tolk/GetTolk/{id}")]
+        public HttpResponseMessage GetTolk(int id)
+        {
+            //List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
+            Tolk_VM tolk = repository.hentEnTolk(id);
+
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(tolk);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        [Route("api/tolk/UpdateTolk")]
+        [System.Web.Mvc.HttpPost]
+        public HttpResponseMessage UpdateTolk([FromBody]Tolk_VM tolk)
+        {
+            bool ok = repository.OppdaterTolk(tolk);
+            if (ok)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
         [Route("api/tolk/returnTolk")]
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]SpraakID input)
@@ -133,6 +170,8 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
+
+        
 
     }
 

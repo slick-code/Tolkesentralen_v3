@@ -1,28 +1,33 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag, Person } from '../_models/models';
-import { OppdragService } from '../_services/oppdrag.service';
+import { Tolk } from '../_models/models';
+import { TolkService } from '../_services/tolk.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
     //moduleId: module.id,
     templateUrl: './app/tolk/tolk-redigjer-persondetaljer.component.html',
-    providers: [OppdragService],
+    providers: [TolkService],
     styles: ['.error {color:red;}']
 })
 export class TolkRedigjerPersondetaljerComponent implements OnInit {
     errorMessage: string;
-    person: Person[];
+    person: Tolk;
+
+    persId: number;
     //mode = 'Promise';
 
     //constructor(private kundeService: KundeService) { }
     form: FormGroup;
+
+
+    Error: boolean;
     Success: boolean;
     loading: boolean;
     showForm: boolean;
 
-    constructor(private service: OppdragService, private fb: FormBuilder) {
+    constructor(private service: TolkService, private fb: FormBuilder) {
         this.form = fb.group({
 
             fornavn: [],
@@ -40,9 +45,14 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
 
     tilbake() {
         this.showForm = true;
+        
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        
+        this.persId = JSON.parse(localStorage.getItem('id'));
+        this.getTolk();
+    }
 
 
     showLoadingScreen() {
@@ -51,41 +61,57 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
         this.loading = true;
     }
 
-    postOppdrag() {
-        var ny = new Person();
+    getTolk() {
+        // get users from secure api end point
+        this.service.getTolk(this.persId)
+            .subscribe(tolk => {
+                this.person = tolk;
+                this.setTextToInputFields(tolk);
 
-       // ny.fornavn = this.form.value.fornavn;
-       // ny.etternavn = this.form.value.etternavn;
-        //ny.epost = this.form.value.epost;
-        //ny.telefon = this.form.value.telefon;
-        //ny.mobil = this.form.value.mobil;
-        //ny.adresse = this.form.value.adresse;
+            });
+    }
+
+    setTextToInputFields(tolk: Tolk) {
+        this.form.setValue({
+            fornavn: tolk.fornavn,
+            etternavn: tolk.etternavn,
+            epost: tolk.email,
+            telefon: "",
+            mobil: "",
+            adresse: tolk.adresse,
+            adresse2: "",
+            postnr: tolk.postnr,
+            poststed: tolk.poststed
+        });
+    }
+
+    updateTolk() {
+        
+        var ny = new Tolk();
+
+        ny.persId = this.persId;
+        ny.fornavn = this.form.value.fornavn;
+        ny.etternavn = this.form.value.etternavn;
+        ny.email = this.form.value.epost;
+        ny.telefon = this.form.value.telefon;
+        ny.telefon = this.form.value.mobil;
+        ny.adresse = this.form.value.adresse;
         //ny.adresse2 = this.form.value.adresse2;
-        //ny.postnr = this.form.value.postnr;
-        //ny.poststed = this.form.value.poststed;
+        ny.postnr = this.form.value.postnr;
+        ny.poststed = this.form.value.poststed;
+       
 
-        //ny.fornavn = "Lunga";
-        //ny.etternavn = "Majola";
-        //ny.epost = "hei@på.deg";
-        //ny.telefon = "1234";
-        //ny.mobil = "1234";
-        //ny.adresse = "Osloveien";
-        //ny.adresse2 = "Osloveien";
-        //ny.postnr = "3214";
-        //ny.poststed = "Oslo";
-
-
-
-        //var body: string = JSON.stringify(ny);
-        //this.service.getEndreProfilTolk(body).subscribe(
-        //    retur => {
-        //        this.Success = true;
-        //        this.loading = false;
-        //        this.person = retur;
-        //    },
-        //    error => console.log("Beklager, en feil har oppstått - " + error),
-        //    () => console.log("ferdig post-api/bestilling")
-        //);
+        var body: string = JSON.stringify(ny);
+        this.service.updateTolk(body).subscribe(
+            retur => {
+                //this.Success = true;
+                //this.loading = false;
+                //this.person = retur;
+                console.log("Sucess UpdateTolk");
+            },
+            error => console.log("Beklager, en feil har oppstått - " + error),
+            () => console.log("ferdig post-api/bestilling")
+        );
 
     }
 

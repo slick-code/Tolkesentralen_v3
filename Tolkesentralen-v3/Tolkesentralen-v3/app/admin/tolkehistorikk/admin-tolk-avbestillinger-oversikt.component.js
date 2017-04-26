@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var kunde_service_1 = require("../../_services/kunde.service");
-var models_1 = require("../../_models/models");
-var data_service_1 = require("../../_services/data.service");
+var core_1 = require('@angular/core');
+var kunde_service_1 = require('../../_services/kunde.service');
+var models_1 = require('../../_models/models');
+var data_service_1 = require('../../_services/data.service');
 var AdminTolkAvbestillingerOversiktComponent = (function () {
     function AdminTolkAvbestillingerOversiktComponent(service, dataService) {
         this.service = service;
@@ -36,14 +35,13 @@ var AdminTolkAvbestillingerOversiktComponent = (function () {
             }
         });
     };
+    AdminTolkAvbestillingerOversiktComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/tolkehistorikk/admin-tolk-avbestillinger-oversikt.component.html"
+        }), 
+        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
+    ], AdminTolkAvbestillingerOversiktComponent);
     return AdminTolkAvbestillingerOversiktComponent;
 }());
-AdminTolkAvbestillingerOversiktComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./app/admin/tolkehistorikk/admin-tolk-avbestillinger-oversikt.component.html"
-    }),
-    __metadata("design:paramtypes", [kunde_service_1.KundeService,
-        data_service_1.DataService])
-], AdminTolkAvbestillingerOversiktComponent);
 exports.AdminTolkAvbestillingerOversiktComponent = AdminTolkAvbestillingerOversiktComponent;
 //# sourceMappingURL=admin-tolk-avbestillinger-oversikt.component.js.map

@@ -138,6 +138,7 @@ namespace Tolkesentralen_v3.Models
 			if (oppdrag != null)
 			{
 
+<<<<<<< HEAD
 				return oppdrag;
 			}
 
@@ -484,6 +485,9 @@ namespace Tolkesentralen_v3.Models
 			}
 
 		}
+=======
+		
+>>>>>>> fd484901c0abf72adaa76e887851abe5ff4c6093
 
 	}
 }
