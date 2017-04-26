@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var kunde_service_1 = require('../_services/kunde.service');
-var forms_1 = require('@angular/forms');
+var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
+var kunde_service_1 = require("../_services/kunde.service");
+var forms_1 = require("@angular/forms");
 var KundeEndrePassordComponent = (function () {
     function KundeEndrePassordComponent(kundeService, fb) {
         this.kundeService = kundeService;
@@ -43,16 +44,16 @@ var KundeEndrePassordComponent = (function () {
             console.log("Success POST : " + ny.firma);
         }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
-    KundeEndrePassordComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/kunde/kunde-endre-passord.component.html',
-            providers: [kunde_service_1.KundeService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, forms_1.FormBuilder])
-    ], KundeEndrePassordComponent);
     return KundeEndrePassordComponent;
 }());
+KundeEndrePassordComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/kunde/kunde-endre-passord.component.html',
+        providers: [kunde_service_1.KundeService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [kunde_service_1.KundeService, forms_1.FormBuilder])
+], KundeEndrePassordComponent);
 exports.KundeEndrePassordComponent = KundeEndrePassordComponent;
 //# sourceMappingURL=kunde-endre-passord.component.js.map
