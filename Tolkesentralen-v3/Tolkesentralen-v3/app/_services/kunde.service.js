@@ -32,6 +32,10 @@ var KundeService = (function () {
         return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
+    KundeService.prototype.slettKunde = function (id) {
+        return this.http.delete(this.url + id)
+            .map(function (returData) { return returData.toString(); });
+    };
     KundeService.prototype.godkjennKunde = function (id) {
         var headers = new http_2.Headers({ "Content-Type": "application/json" });
         return this.http.put(this.url + id, { headers: headers })

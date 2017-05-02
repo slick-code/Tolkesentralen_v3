@@ -31,6 +31,23 @@ var NyeKunderComponent = (function () {
             }
         });
     };
+    NyeKunderComponent.prototype.setTilSlettErTrykket = function (index) {
+        if (this.index == index && this.slett) {
+            return true;
+        }
+        return false;
+    };
+    NyeKunderComponent.prototype.setTilSlett = function (index) {
+        this.slett = true;
+        this.index = index;
+    };
+    NyeKunderComponent.prototype.setDefaultErtrykket = function (index) {
+        return !this.setTilSlettErTrykket(index);
+    };
+    NyeKunderComponent.prototype.setDefault = function () {
+        this.index = -1;
+        this.slett = false;
+    };
     NyeKunderComponent.prototype.updateNavBar = function () {
         this.element = new models_1.NavbarElement();
         this.element.nr = this.arrayNyeKunder.length;
@@ -40,7 +57,14 @@ var NyeKunderComponent = (function () {
     NyeKunderComponent.prototype.godkjennKunde = function (index, kundeID) {
         var _this = this;
         this.service.godkjennKunde(kundeID).subscribe(function (retur) {
-            console.log("Index: " + index);
+            _this.arrayNyeKunder.splice(index, 1);
+            _this.updateNavBar();
+        }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+    };
+    NyeKunderComponent.prototype.slettKunde = function (index, kundeID) {
+        var _this = this;
+        console.log("kkkkkk");
+        this.service.slettKunde(kundeID).subscribe(function (retur) {
             _this.arrayNyeKunder.splice(index, 1);
             _this.updateNavBar();
         }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });

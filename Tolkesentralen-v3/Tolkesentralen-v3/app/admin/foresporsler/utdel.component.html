@@ -45,21 +45,6 @@
 
 </div>
 
-
-
-<div *ngIf="loading">
-    <div>
-        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
-    </div>
-</div>
-
-<div *ngIf="Error">
-    <p class="error">Ooops, beklager men en feil oppsto og handlingen ble avbrutt!</p>
-    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
-</div>
-
-<div *ngIf="Success">
-    <h3 style="color:forestgreen">Success! </h3>
-    <p>Forespørselen er sendt! Gå til Bestillinger for å se detaljer. </p>
-    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
+<div *ngIf="!showForm">
+    <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
 </div>

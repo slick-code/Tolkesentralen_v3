@@ -16,12 +16,14 @@
             component: TolkComponent,
             canActivate: [AuthGuard], 
             children: [
+                { path: '', redirectTo: 'tolk-mine-oppdrag', pathMatch: 'full' },
                 { path: 'tolk-mine-oppdrag', component: TolkMineOppdragComponent },
                 { path: 'tolk-foresporsel', component: TolkForesporselComponent },
                 { path: 'tolk-oppdrag-historikk', component: TolkOppdragHistorikkComponent }, 
                 { path: 'tolk-sett-tilgjenglighet', component: TolkSettTilgjenglighetComponent },
                 { path: 'tolk-redigjer-persondetaljer', component: TolkRedigjerPersondetaljerComponent },
                 { path: 'tolk-endre-passord', component: TolkEndrePassordComponent }
+
 
         ]
         }

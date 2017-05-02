@@ -28,6 +28,13 @@ var TolkForesporselComponent = (function () {
             console.log("Success -> Mine-oppdrag  , test val:  " + _this.oppdrag);
         }, function (error) { return console.log("Error -> Mine oppdrag feilet! ->" + error); }, function () { return console.log("ferdig: Mine oppdrag"); });
     };
+    TolkForesporselComponent.prototype.checkIfArrayIsEmthy = function (array) {
+        if (array == null)
+            return false;
+        if (array.length == 0)
+            return false;
+        return true;
+    };
     TolkForesporselComponent.prototype.postSvarOpprag = function (index, oppdragId, svar) {
         var _this = this;
         var body = JSON.stringify({ tolkId: this.ID, oppdragId: oppdragId, svar: svar });

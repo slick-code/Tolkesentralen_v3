@@ -99,7 +99,26 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id) {
+            bool OK = repository.slettKunde(id);
+
+            if (OK)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
 
     }
   }

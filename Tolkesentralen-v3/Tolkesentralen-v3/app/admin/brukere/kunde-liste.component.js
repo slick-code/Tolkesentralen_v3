@@ -10,12 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var kunde_service_1 = require('../../_services/kunde.service');
-var models_1 = require('../../_models/models');
-var data_service_1 = require('../../_services/data.service');
 var KundeListeComponent = (function () {
-    function KundeListeComponent(service, dataService) {
+    function KundeListeComponent(service) {
         this.service = service;
-        this.dataService = dataService;
         this.arrayKunder = [];
     }
     KundeListeComponent.prototype.ngOnInit = function () {
@@ -28,18 +25,37 @@ var KundeListeComponent = (function () {
             .subscribe(function (kunder) {
             if (kunder != null) {
                 _this.arrayKunder = kunder;
-                _this.element = new models_1.NavbarElement();
-                _this.element.nr = _this.arrayKunder.length;
-                _this.element.element = 'kunder';
-                _this.dataService.updateData(_this.element);
             }
         });
+    };
+    KundeListeComponent.prototype.setTilSlettErTrykket = function (index) {
+        if (this.index == index && this.slett) {
+            return true;
+        }
+        return false;
+    };
+    KundeListeComponent.prototype.setTilSlett = function (index) {
+        this.slett = true;
+        this.index = index;
+    };
+    KundeListeComponent.prototype.setDefaultErtrykket = function (index) {
+        return !this.setTilSlettErTrykket(index);
+    };
+    KundeListeComponent.prototype.setDefault = function () {
+        this.index = -1;
+        this.slett = false;
+    };
+    KundeListeComponent.prototype.slettKunde = function (index, kundeID) {
+        var _this = this;
+        this.service.slettKunde(kundeID).subscribe(function (retur) {
+            _this.arrayKunder.splice(index, 1);
+        }, function (error) { return console.log("Beklager PUT, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
     };
     KundeListeComponent = __decorate([
         core_1.Component({
             templateUrl: "./app/admin/brukere/kunde-liste.component.html"
         }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
+        __metadata('design:paramtypes', [kunde_service_1.KundeService])
     ], KundeListeComponent);
     return KundeListeComponent;
 }());

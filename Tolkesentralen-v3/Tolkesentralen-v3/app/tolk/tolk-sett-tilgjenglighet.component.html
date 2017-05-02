@@ -1,19 +1,46 @@
-﻿<h3>Ikke tilgjenglig</h3>
-<br />
-<table class="table table-bordered table-condensed">
-    <thead>
-        <tr>
-            <th>Fra</th>
-            <th>
-                Til
-            </th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let oppdrag of oppdrag; let i = index">
-        <tr>
-            <td>{{oppdrag.fra}}</td>
-            <td>{{oppdrag.til}}</td>
-        </tr>
-    </tbody>
-</table>
+﻿<p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Sett av en periode hvor du ikke er tilgjengelig</p>
 <hr />
+<h1>Ikke tilgjengelig</h1>
+<br />
+
+
+<div class="form-group" style="display:inline-block;">
+    <label for="oppdragsdato">Fra dato</label>
+    <div class="inner-addon left-addon">
+        <input [ngModelOptions]="{standalone: true}" [ngModel]="fraStartDate | date:'yyyy-MM-dd'" (ngModelChange)="fraStartDate = $event" type="date" class="form-control" #fra   />
+    </div>
+</div>
+
+<div class="form-group" style="display:inline-block;">
+    <label for="oppdragsdato">Til dato</label>
+    <div class="inner-addon left-addon">
+        <input [ngModelOptions]="{standalone: true}" [ngModel]="tilStartDate | date:'yyyy-MM-dd'" (ngModelChange)="tilStartDate = $event" type="date" class="form-control" #til />
+    </div>
+</div>
+
+
+<button *ngIf="!loading" (click)="postUtilgjengelig(fra.value, til.value)" class="btn btn-primary btn-lg">Lagre</button>
+<loading *ngIf="loading"></loading>
+<p *ngIf="errorText != ''" style="color:red">{{errorText}}</p>
+
+<div *ngIf="checkIfArrayIsEmthy(tilgjengelig)">
+    <hr />
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Fra</th>
+                <th>
+                    Til
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of tilgjengelig; let i = index">
+            <tr>
+                <td>{{item.fraDato}}</td>
+                <td>{{item.tilDato}}</td>
+                <td style="width:40px"><button id="i" name="i" value="i"   (click)="Slett(i, item.id)" class="btn btn-danger ">Slett</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+</div>

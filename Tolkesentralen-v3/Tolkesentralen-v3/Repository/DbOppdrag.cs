@@ -17,7 +17,6 @@ namespace Tolkesentralen_v3.Models
             db = new DbNetcont();
         }
 
-      
         public bool regTolkOppdrag(Tolking_vm nyOppdrag, int kundeId)
         {
 
@@ -56,6 +55,7 @@ namespace Tolkesentralen_v3.Models
 
             return false;
         }
+
 
 
         public bool regOppdragOverssettelse(Oversettelse_VM nyOppdrag, int kundeId)

@@ -8,32 +8,30 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
-                        Forespørsler
-                        <span style="color:orangered"><b> {{sum}}</b></span>
+                        Forespørsler <span style="color:springgreen"><b> {{sum}}</b></span>
                         <span class="caret"></span>
-
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:orangered;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
+                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:springgreen;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
 
-                        <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:orangered;"><b> {{antallOversettelser }}</b></span></a></li>
+                        <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:springgreen;"><b> {{antallOversettelser }}</b></span></a></li>
 
-                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
+                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:springgreen;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Brukere <span style="color:orangered;"><b>{{counter == null ? "0" : counter.kunder}}</b></span>
+                        Brukere
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a routerLink="./tolk-liste" routerLinkActive="active">Ansatte</a></li>
-                        <li><a routerLink="./kunder" routerLinkActive="active">Kunder <span style="color:orangered;"><b>{{counter == null ? "0" : counter.kunder}}</b></span></a></li>
+                        <li><a routerLink="./kunder" routerLinkActive="active">Kunder</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Bestillinger <span style="color:orangered;"><b> 7</b></span>
+                        Bestillinger <span style="color:springgreen;"><b> 7</b></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -44,7 +42,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Tolke historikk <span style="color:orangered;"><b> 7</b></span>
+                        Tolke historikk 
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

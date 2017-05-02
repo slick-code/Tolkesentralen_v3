@@ -20,6 +20,13 @@ var TolkMineOppdragComponent = (function () {
         this.getOppdragTolk();
         //  this.getOppdragTolk();
     };
+    TolkMineOppdragComponent.prototype.checkIfArrayIsEmthy = function (array) {
+        if (array == null)
+            return false;
+        if (array.length == 0)
+            return false;
+        return true;
+    };
     TolkMineOppdragComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.oppdragService.getBestillingerTilTolk(this.ID).subscribe(function (retur) {

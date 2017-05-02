@@ -5,8 +5,11 @@ import { HomeRoutingModule } from './home-routing.module';
 import { IndexComponent } from './index.component';
 import { HomeComponent } from './home.component';
 import { RegistrerComponent } from './registrer.component'
-import { BestillOversettelseComponent } from './bestill-oversettelse.component'
-import { BestillTolkComponent } from './bestill-tolk.component'
+import { BestillOversettelseComponent } from './bestill-oversettelse.component';
+import { BestillTolkComponent } from './bestill-tolk.component';
+import { InfoOmOssComponent } from './info/info-om-oss.component';
+import { InfoOversettelseComponent } from './info/info-oversettelse.component';
+import { InfoTolkComponent } from './info/info-tolk.component';
 import { SharedModule } from '../shared/shared.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -20,7 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RegistrerComponent,
         BestillOversettelseComponent,
         BestillTolkComponent,
-        IndexComponent
+        IndexComponent,
+        InfoOmOssComponent,
+        InfoOversettelseComponent,
+        InfoTolkComponent
 
     ]
     //bootstrap: [ AppComponent ]

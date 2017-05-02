@@ -28,6 +28,7 @@ var admin_avbestilte_oversettelse_oppdrag_component_1 = require('./oversettelseh
 var opprett_kunde_component_1 = require('./opprett/opprett-kunde.component');
 var opprett_bestilling_component_1 = require('./opprett/opprett-bestilling.component');
 var opprett_oversettelse_component_1 = require('./opprett/opprett-oversettelse.component');
+var response_module_1 = require('../shared/response.module');
 var admin_routing_module_1 = require('./admin-routing.module');
 var shared_module_1 = require('../shared/shared.module');
 var AdminModule = (function () {
@@ -40,7 +41,8 @@ var AdminModule = (function () {
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 admin_routing_module_1.AdminRoutingModule,
-                shared_module_1.SharedModule
+                shared_module_1.SharedModule,
+                response_module_1.ResponseModule
             ],
             declarations: [
                 admin_component_1.AdminComponent,

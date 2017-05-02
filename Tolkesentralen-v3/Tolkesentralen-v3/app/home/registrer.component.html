@@ -1,101 +1,101 @@
 ﻿
-<div *ngIf="showForm">
+<div style="margin-left:10px;max-width:700px;" *ngIf="showForm">
     <h1>Registreringsskjema</h1>
     <hr />
-    <form [formGroup]='form'>
+    <div style="margin-left:20px;display:inline-block;background-color:#F4F9F9;border: solid #F8FCFC;  max-width:610px; height:430px;border-radius: 5px;">
+        <form [formGroup]='form'>
 
-        <div class="col-md-3 col-md-offset-0">
-            <div class="form-group">
-                <label for="firma">Firma</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
+            <div style="padding-left: 30px;padding-top: 10px;float: left;width:300px; display:inline-block">
+                <div class="form-group">
+                    <label for="firma">Firma</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
+                    </div>
+                </div>
+                <div style="display:inline-block;width:116px" class="form-group">
+                    <label for="kontaktperson">Kontaktperson</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
+
+                    </div>
+                </div>
+
+                <div style="display:inline-block;width:116px" class="form-group">
+                    <label for="kontaktperson"></label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
+                    </div>
+                </div>
+
+                <div style="display:inline-block;width:116px" class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="11" name="telefon" formControlName="telefon" placeholder="Telefon" />
+                    </div>
+                </div>
+                <div style="display:inline-block;width:116px" class="form-group">
+                    <label for="telefax">Telefax</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fakturaadresse">FakturaAdresse</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
+                    </div>
+                </div>
+                <div style="display:inline-block; width:60px" class="form-group">
+                    <label for="postnr">Postnr</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
+                    </div>
+                </div>
+                <div style="display:inline-block;width:174px" class="form-group">
+                    <label for="poststed">Poststed</label>
+                    <div class="inner-addon left-addon">
+                        <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="kontaktperson">Kontaktperson</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" id="kontaktpersonid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
+
+            <div style="padding-left:30px; padding-top: 10px;width:300px; display:inline-block">
+                <div class="form-group">
+                    <label for="epost">Brukernavn</label>
+                    <div class="inner-addon pleft">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <input type="text" class="form-control" id="url" formControlName="epost" placeholder="Epostadresse" />
+                    </div>
                 </div>
 
-            </div>
-
-            <div class="form-group">
-                <div class="inner-addon left-addon">
-                    <input type="text" id="kontaktpersonid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
+                <div class="form-group">
+                    <label for="passord">Passord</label>
+                    <div class="inner-addon pleft">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        <input type="password" class="form-control" id="url" formControlName="passord" placeholder="Passord" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="telefon">Telefon</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="8" name="telefon" formControlName="telefon" placeholder="Telefon" />
+                <div class="form-group">
+                    <label for="bekreftpassord">Bekreft passord</label>
+                    <div class="inner-addon pleft">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        <input type="password" class="form-control" id="url" placeholder="Bekreft passord" />
 
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="telefax">Telefax</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="fakturaadresse">FakturaAdresse</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
-
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="postnr">Postnr</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="poststed">Poststed</label>
-                <div class="inner-addon left-addon">
-                    <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
-                </div>
-            </div>
-        </div>
 
 
-        <div class="col-md-3 col-md-offset-1">
-            <div class="form-group">
-                <label for="epost">Brukernavn</label>
-                <div class="inner-addon left-addon">
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    <input type="text" class="form-control" id="url" formControlName="epost" placeholder="Epostadresse" />
-                </div>
-            </div>
+        </form>
+    </div>
+    
 
-            <div class="form-group">
-                <label for="passord">Passord</label>
-                <div class="inner-addon left-addon">
-                    <span class="glyphicon glyphicon-lock"></span>
-                    <input type="password" class="form-control" id="url" formControlName="passord" placeholder="Passord" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="bekreftpassord">Bekreft passord</label>
-                <div class="inner-addon left-addon">
-                    <span class="glyphicon glyphicon-lock"></span>
-                    <input type="password" class="form-control" id="url" placeholder="Bekreft passord" />
-
-                </div>
-            </div>
-        </div>
-
-        
-
-    </form>
-
-    <div class="col-md-3 col-md-offset-0" style="clear:both">
+    <div style="clear:both; padding-top:5px;">
         <hr />
 
-        <button (click)="postKunde()" class="btn btn-success">Send skjema</button>
+        <button (click)="postKunde()" class="btn btn-success btn-lg">Send skjema</button>
     </div>
     
 </div>

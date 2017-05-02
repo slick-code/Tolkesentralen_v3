@@ -16,7 +16,7 @@ var SharedModule = (function () {
     }
     SharedModule = __decorate([
         core_1.NgModule({
-            imports: [forms_1.FormsModule, forms_1.ReactiveFormsModule],
+            imports: [forms_1.FormsModule],
             declarations: [loading_component_1.LoadingComponent],
             providers: [],
             exports: [loading_component_1.LoadingComponent]

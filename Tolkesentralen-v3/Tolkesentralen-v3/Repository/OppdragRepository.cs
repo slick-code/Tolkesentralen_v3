@@ -103,5 +103,10 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
+
+        //DateTime tidFra = DateTime.ParseExact(nyOppdrag.oppdragsdato + " " + nyOppdrag.frakl, "yyyy-MM-dd HH:mm",
+        //                           System.Globalization.CultureInfo.InvariantCulture);
+        //DateTime tidTil = DateTime.ParseExact(nyOppdrag.oppdragsdato + " " + nyOppdrag.tilkl, "yyyy-MM-dd HH:mm",
+        //                       System.Globalization.CultureInfo.InvariantCulture);
     }
 }

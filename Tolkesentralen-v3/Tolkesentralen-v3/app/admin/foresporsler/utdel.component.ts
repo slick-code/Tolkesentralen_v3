@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+
 import { Tolk, Oppdrag } from '../../_models/models'
 import { OppdragService } from '../../_services/oppdrag.service'
 import { TempService } from '../../_services/temp.service'
@@ -15,17 +15,20 @@ export class UtdelComponent {
    oppdrag: Oppdrag;
    allChecked: boolean;
 
-   Error: boolean;
-   Success: boolean;
-   loading: boolean;
+
+   Error: string = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
+   underText: string = "Forespørselen er sendt! Gå til Bestillinger for å se detaljer.";
    showForm: boolean;
+    
+   responseText: string;
+   response: string;
+   path: string = 'admin/oppdrag';
 
 
     constructor(
         private oppdragService: OppdragService,
         private tempService: TempService,
-        private tolkService: TolkService,
-        private router: Router) { }
+        private tolkService: TolkService) { }
 
     ngOnInit() {
         this.oppdrag = this.tempService.getObject();
@@ -40,7 +43,6 @@ export class UtdelComponent {
     }
 
     setAllChecked() {
-        console.log("SetAllChecked");
         this.allChecked = !this.allChecked;
         if (this.arrayTolk) {
             for (let object of this.arrayTolk) {
@@ -50,24 +52,25 @@ export class UtdelComponent {
     }
 
     hentTolkmedGittSpraak() {
-        this.loading = true;
+        this.showForm = false;
+        this.response = "loading";
         var body: string = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
         this.tolkService.getTolkMedSpraak(body).subscribe(
             retur => {
                 this.showForm = true;
+                this.response = "";
                 this.arrayTolk = retur;
             },
-            error => { this.Error = true;},
-            () => { this.loading = false;}
+            error => {
+            this.response = "error"
+            this.responseText = this.Error;
+            },
+            () => {}
         );
     }
 
-    tilbake() {
-        this.router.navigate(['./admin/oppdrag']);
-    }
-
     postForesporsler() {
-        this.loading = true;
+        this.response = "loading";
         this.showForm = false;
         var tempArreyTolkID: number[] = [];
         if (this.arrayTolk) {
@@ -80,11 +83,14 @@ export class UtdelComponent {
         var body: string = JSON.stringify({ tolkArrey: tempArreyTolkID, oppdragId: this.oppdrag.oppdragID });
         this.tolkService.postForesposler(body).subscribe(
             retur => {
-                this.Success = true;
-                //this.arrayTolk = retur;
+                this.response = "success";
+                this.responseText = "Success!"
             },
-            error => { this.Error = true;},
-            () => { this.loading = false;}
+            error => {
+            this.response = "error";
+            this.responseText = this.Error;
+            },
+            () => {}
         );
     }
     

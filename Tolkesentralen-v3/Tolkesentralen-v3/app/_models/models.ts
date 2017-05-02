@@ -4,6 +4,15 @@ export class Login {
     email: string;
 }
 
+export class Utilgjengelig {
+    id: number;
+    persId: number;
+    fraDato: string;
+    tilDato: string;
+}
+
+
+
 export class Person {
     persId: number;
 

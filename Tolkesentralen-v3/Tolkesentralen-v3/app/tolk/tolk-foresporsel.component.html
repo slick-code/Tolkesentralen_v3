@@ -1,6 +1,7 @@
-﻿<h3>Ikke svart</h3>
+﻿<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Dine ubesvarte forespørsler" : "Ingen nye forespørsler"}}</h1>
+
 <br />
-<table class="table table-bordered table-condensed">
+<table *ngIf="checkIfArrayIsEmthy(oppdrag)" class="table table-bordered table-condensed">
     <thead>
         <tr>
             <th>Oppdragsnummer</th>
@@ -25,4 +26,3 @@
         </tr>
     </tbody>
 </table>
-<hr />

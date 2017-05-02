@@ -16,6 +16,9 @@ var home_component_1 = require('./home.component');
 var registrer_component_1 = require('./registrer.component');
 var bestill_oversettelse_component_1 = require('./bestill-oversettelse.component');
 var bestill_tolk_component_1 = require('./bestill-tolk.component');
+var info_om_oss_component_1 = require('./info/info-om-oss.component');
+var info_oversettelse_component_1 = require('./info/info-oversettelse.component');
+var info_tolk_component_1 = require('./info/info-tolk.component');
 var shared_module_1 = require('../shared/shared.module');
 var forms_1 = require('@angular/forms');
 var HomeModule = (function () {
@@ -32,7 +35,10 @@ var HomeModule = (function () {
                 registrer_component_1.RegistrerComponent,
                 bestill_oversettelse_component_1.BestillOversettelseComponent,
                 bestill_tolk_component_1.BestillTolkComponent,
-                index_component_1.IndexComponent
+                index_component_1.IndexComponent,
+                info_om_oss_component_1.InfoOmOssComponent,
+                info_oversettelse_component_1.InfoOversettelseComponent,
+                info_tolk_component_1.InfoTolkComponent
             ]
         }), 
         __metadata('design:paramtypes', [])

@@ -11,7 +11,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
     providers: [TolkService],
     styles: ['.error {color:red;}']
 })
-export class TolkRedigjerPersondetaljerComponent implements OnInit {
+export class TolkRedigjerPersondetaljerComponent {
     errorMessage: string;
     person: Tolk;
 
@@ -22,10 +22,13 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
     form: FormGroup;
 
 
-    Error: boolean;
-    Success: boolean;
-    loading: boolean;
+    Error: string = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
+    underText: string = "Din personalia er trygt lagret"
     showForm: boolean;
+
+    responseText: string;
+    response: string;
+    path: string = 'tolk/tolk-redigjer-persondetaljer';
 
     constructor(private service: TolkService, private fb: FormBuilder) {
         this.form = fb.group({
@@ -43,22 +46,10 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
 
     }
 
-    tilbake() {
-        this.showForm = true;
-        
-    }
-
     ngOnInit() {
-        
+        this.showForm = true;
         this.persId = JSON.parse(localStorage.getItem('id'));
         this.getTolk();
-    }
-
-
-    showLoadingScreen() {
-        this.showForm = false;
-        this.Success = null;
-        this.loading = true;
     }
 
     getTolk() {
@@ -86,6 +77,8 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
     }
 
     updateTolk() {
+        this.showForm = false;
+        this.response = "loading";
         
         var ny = new Tolk();
 
@@ -104,13 +97,13 @@ export class TolkRedigjerPersondetaljerComponent implements OnInit {
         var body: string = JSON.stringify(ny);
         this.service.updateTolk(body).subscribe(
             retur => {
-                //this.Success = true;
-                //this.loading = false;
-                //this.person = retur;
-                console.log("Sucess UpdateTolk");
+                this.response = "success";
+                this.responseText = "Success!";
             },
-            error => console.log("Beklager, en feil har oppstått - " + error),
-            () => console.log("ferdig post-api/bestilling")
+            error => {
+                this.responseText = "Beklager, en feil har oppstått - " + error;
+                this.response = "error";
+            }
         );
 
     }

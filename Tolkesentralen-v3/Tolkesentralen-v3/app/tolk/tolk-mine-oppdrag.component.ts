@@ -25,6 +25,12 @@ export class TolkMineOppdragComponent implements OnInit {
       //  this.getOppdragTolk();
     }
 
+    checkIfArrayIsEmthy(array: any) {
+        if (array == null) return false;
+        if (array.length == 0) return false;
+        return true;
+    }
+
     getOppdragTolk() {
         this.oppdragService.getBestillingerTilTolk(this.ID).subscribe(
             retur => {

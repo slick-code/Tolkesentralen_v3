@@ -9,17 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ResulatatComponent = (function () {
-    function ResulatatComponent() {
+var InfoOmOssComponent = (function () {
+    function InfoOmOssComponent() {
     }
-    ResulatatComponent = __decorate([
+    InfoOmOssComponent = __decorate([
         core_1.Component({
-            selector: 'resultat',
-            templateUrl: "./app/admin/resultat.component.html",
+            templateUrl: "./app/home/info/info-om-oss.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], ResulatatComponent);
-    return ResulatatComponent;
+    ], InfoOmOssComponent);
+    return InfoOmOssComponent;
 }());
-exports.ResulatatComponent = ResulatatComponent;
-//# sourceMappingURL=resultat.component.js.map
+exports.InfoOmOssComponent = InfoOmOssComponent;
+//# sourceMappingURL=info-om-oss.component.js.map

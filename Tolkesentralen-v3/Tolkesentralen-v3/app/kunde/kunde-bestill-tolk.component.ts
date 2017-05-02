@@ -1,6 +1,7 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
 import { Oppdrag } from '../_models/models';
+import { Spraak } from '../_models/spraak';
 import { OppdragService } from '../_services/oppdrag.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -19,6 +20,7 @@ export class KundeBestillTolkComponent implements OnInit {
     Success: boolean;
     loading: boolean;
     showForm: boolean;
+    
 
     constructor(private service: OppdragService, private fb: FormBuilder) {
         this.form = fb.group({
@@ -41,6 +43,7 @@ export class KundeBestillTolkComponent implements OnInit {
 
     ngOnInit() {
         this.showForm = true;
+       
     }
 
     showLoadingScreen() {

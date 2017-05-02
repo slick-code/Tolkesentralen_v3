@@ -20,6 +20,7 @@ var tolk_oppdrag_historikk_component_1 = require('./tolk-oppdrag-historikk.compo
 var tolk_sett_tilgjenglighet_component_1 = require('./tolk-sett-tilgjenglighet.component');
 var tolk_redigjer_persondetaljer_component_1 = require('./tolk-redigjer-persondetaljer.component');
 var tolk_endre_passord_component_1 = require('./tolk-endre-passord.component');
+var response_module_1 = require('../shared/response.module');
 var TolkModule = (function () {
     function TolkModule() {
     }
@@ -30,7 +31,8 @@ var TolkModule = (function () {
                 tolk_routing_module_1.TolkRoutingModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
-                shared_module_1.SharedModule
+                shared_module_1.SharedModule,
+                response_module_1.ResponseModule
             ],
             declarations: [
                 tolk_component_1.TolkComponent,

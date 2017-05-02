@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var spraak_1 = require('../_models/spraak');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
 var forms_1 = require('@angular/forms');
 var BestillTolkComponent = (function () {
@@ -36,6 +37,8 @@ var BestillTolkComponent = (function () {
         });
     }
     BestillTolkComponent.prototype.ngOnInit = function () {
+        this.spraak = new spraak_1.Spraak().liste;
+        this.startDate = new Date();
         //this.getOppdrag;
     };
     BestillTolkComponent = __decorate([

@@ -42,6 +42,19 @@ var TolkService = (function () {
         return this.http.post(this.url + "PostSvar", body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
+    TolkService.prototype.postUtilgjengelig = function (body) {
+        var headers = new http_1.Headers({ "Content-Type": "application/json" });
+        return this.http.post(this.url + "PostUtilgjengelig", body, { headers: headers })
+            .map(function (returData) { return returData.toString(); });
+    };
+    TolkService.prototype.GetPerioderUtilgjenelig = function (id) {
+        return this.http.get(this.url + "GetPerioderUtilgjenelig/" + id)
+            .map(function (response) { return response.json(); });
+    };
+    TolkService.prototype.slettPeriodeUtilgjengelig = function (id) {
+        return this.http.delete(this.url + id)
+            .map(function (returData) { return returData.toString(); });
+    };
     TolkService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])

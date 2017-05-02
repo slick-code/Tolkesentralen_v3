@@ -50,5 +50,13 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
+    public class Utilgjengelig_ViewModel
+    {
+        public int id { get; set; }
+        public int persId { get; set; }
+        public string fraDato { get; set; }
+        public string tilDato { get; set; }
+    }
+
 
 }

@@ -34,6 +34,11 @@ export class KundeService {
             .map((response: Response) => response.json());
     }
 
+    slettKunde(id: number) {
+        return this.http.delete(this.url + id)
+            .map(returData => returData.toString())
+    }
+
     godkjennKunde(id: number) {
         var headers = new Headers({ "Content-Type": "application/json" });
         return this.http.put(this.url + id, { headers: headers })
