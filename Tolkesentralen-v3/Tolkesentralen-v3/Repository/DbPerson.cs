@@ -15,6 +15,76 @@ namespace Tolkesentralen_v3.Models
         DbNetcont db = new DbNetcont();
 
 
+        public bool setUtilgjengelig(Utilgjengelig_ViewModel input)
+        {
+            //DateTime myDate = DateTime.ParseExact("2009-05-08 14:40:52,531", "yyyy-MM-dd HH:mm:ss,fff",
+            //                       System.Globalization.CultureInfo.InvariantCulture);
+            DateTime fraDato = DateTime.ParseExact(input.fraDato, "yyyy-MM-dd",
+                                      System.Globalization.CultureInfo.InvariantCulture);
+            DateTime tilDato = DateTime.ParseExact(input.tilDato, "yyyy-MM-dd",
+                                  System.Globalization.CultureInfo.InvariantCulture);
+            
+            try
+            {
+                var db = new DbNetcont();
+                var periode = new Utilgjengelig()
+                {
+                    persId = input.persId,
+                    fraDato = fraDato,
+                    tilDato = tilDato
+                };
+                db.Utilgjengelig.Add(periode);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool slettPeriodeUtilgjengelig(int id)
+        {
+            var db = new DbNetcont();
+            try
+            {
+                db.Utilgjengelig.Remove(db.Utilgjengelig.Find(id));
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception Message: " + e.Message);
+                return false;
+            }
+        }
+
+        public List<Utilgjengelig_ViewModel> getUtilgjengelig(int persId)
+        {
+            try
+            {
+                var db = new DbNetcont();
+                List<Utilgjengelig> periodeListe = db.Utilgjengelig.Where(t => t.persId == persId).ToList();
+                
+                var perioder = new List<Utilgjengelig_ViewModel>();
+                foreach (var item in periodeListe)
+                {
+                    var periode = new Utilgjengelig_ViewModel();
+                    periode.id = item.id;
+                    periode.persId = item.persId;
+                    periode.fraDato = item.fraDato.ToString("yyyy-MM-dd");
+                    periode.tilDato = item.tilDato.ToString("yyyy-MM- dd");
+                    perioder.Add(periode);
+                }
+                return perioder;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
         public Tolk_VM hentEnTolk(int tolkId)
         {
 

@@ -35,6 +35,12 @@ export class TolkForesporselComponent implements OnInit {
         );
     }
 
+    checkIfArrayIsEmthy(array: any) {
+        if (array == null) return false;
+        if (array.length == 0) return false;
+        return true;
+    }
+
     postSvarOpprag(index: any, oppdragId: number, svar: number) {
         var body: string = JSON.stringify({ tolkId: this.ID, oppdragId: oppdragId, svar: svar});
         this.tolkService.postSvar(body).subscribe(

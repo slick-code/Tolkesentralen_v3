@@ -16,6 +16,12 @@ var Login = (function () {
     return Login;
 }());
 exports.Login = Login;
+var Utilgjengelig = (function () {
+    function Utilgjengelig() {
+    }
+    return Utilgjengelig;
+}());
+exports.Utilgjengelig = Utilgjengelig;
 var Person = (function () {
     function Person() {
     }

@@ -11,11 +11,11 @@ import { DataService } from '../../_services/data.service'
 })
 export class KundeListeComponent {
     arrayKunder: Kunde[] = [];
-    element: NavbarElement;
+    index: number;
+    slett: boolean;
 
     constructor(
-        private service: KundeService,
-        private dataService: DataService) { }
+        private service: KundeService) { }
 
     ngOnInit() {
         this.getKunder();
@@ -28,12 +28,41 @@ export class KundeListeComponent {
             .subscribe(kunder => {
                 if (kunder != null) {
                     this.arrayKunder = kunder;
-                    this.element = new NavbarElement();
-                    this.element.nr = this.arrayKunder.length;
-                    this.element.element = 'kunder';
-                    this.dataService.updateData(this.element);
                 }
             });
+    }
+
+    setTilSlettErTrykket(index: number) {
+
+        if (this.index == index && this.slett) {
+            return true;
+        }
+        return false;
+    }
+
+    setTilSlett(index: number) {
+        this.slett = true;
+        this.index = index;
+    }
+
+
+    setDefaultErtrykket(index: number) {
+        return !this.setTilSlettErTrykket(index);
+    }
+
+    setDefault() {
+        this.index = -1;
+        this.slett = false;
+    }
+
+    slettKunde(index: any, kundeID: number) {
+        this.service.slettKunde(kundeID).subscribe(
+            retur => {
+                this.arrayKunder.splice(index, 1);
+            },
+            error => console.log("Beklager PUT, en feil har oppstått - " + error),
+            () => console.log("ferdig post-api/bestilling")
+        );
     }
 
 }

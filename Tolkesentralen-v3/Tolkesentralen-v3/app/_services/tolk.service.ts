@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 import { AuthenticationService } from '../_services/auth.service';
-import { Tolk } from '../_models/models';
+import { Tolk, Utilgjengelig } from '../_models/models';
 
 @Injectable()
 export class TolkService {
@@ -47,4 +47,23 @@ export class TolkService {
         return this.http.post(this.url + "PostSvar", body, { headers: headers })
             .map(returData => returData.toString())
     }
+
+    postUtilgjengelig(body: any) {
+        var headers = new Headers({ "Content-Type": "application/json" });
+
+        return this.http.post(this.url + "PostUtilgjengelig", body, { headers: headers })
+            .map(returData => returData.toString())
+    }
+
+    GetPerioderUtilgjenelig(id: number): Observable<Utilgjengelig[]> {
+        return this.http.get(this.url + "GetPerioderUtilgjenelig/" + id)
+            .map((response: Response) => response.json());
+    }
+
+    slettPeriodeUtilgjengelig(id: number) {
+        return this.http.delete(this.url + id)
+            .map(returData => returData.toString())
+    }
+
+    
 }

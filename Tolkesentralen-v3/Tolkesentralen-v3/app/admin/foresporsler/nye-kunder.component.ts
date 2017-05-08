@@ -12,6 +12,9 @@ import { DataService } from '../../_services/data.service'
 export class NyeKunderComponent {
    arrayNyeKunder: Kunde[] = [];
    element: NavbarElement;
+   index: number;
+   slett: boolean;
+   default: boolean;
 
     constructor(
         private service: KundeService,
@@ -33,6 +36,29 @@ export class NyeKunderComponent {
             });
     }
 
+    setTilSlettErTrykket(index: number) {
+        
+        if (this.index == index && this.slett) {
+            return true;
+        }
+        return false;
+    }
+
+    setTilSlett(index: number) {
+        this.slett = true;
+        this.index = index;
+    }
+
+
+    setDefaultErtrykket(index: number) {
+        return !this.setTilSlettErTrykket(index);
+    }
+
+    setDefault() {
+        this.index = -1;
+        this.slett = false;
+    }
+
     updateNavBar() {
         this.element = new NavbarElement();
         this.element.nr = this.arrayNyeKunder.length;
@@ -43,7 +69,18 @@ export class NyeKunderComponent {
     godkjennKunde(index: any, kundeID: number) {
         this.service.godkjennKunde(kundeID).subscribe(
             retur => {
-                console.log("Index: "+index);
+                this.arrayNyeKunder.splice(index, 1);
+                this.updateNavBar();
+            },
+            error => console.log("Beklager PUT, en feil har oppstått - " + error),
+            () => console.log("ferdig post-api/bestilling")
+        );
+    }
+
+    slettKunde(index: any, kundeID: number) {
+        console.log("kkkkkk");
+        this.service.slettKunde(kundeID).subscribe(
+            retur => {
                 this.arrayNyeKunder.splice(index, 1);
                 this.updateNavBar();
             },

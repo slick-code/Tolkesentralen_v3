@@ -10,6 +10,15 @@ var core_1 = require("@angular/core");
 var IndexComponent = (function () {
     function IndexComponent() {
     }
+<<<<<<< HEAD
+=======
+    IndexComponent = __decorate([
+        core_1.Component({
+            templateUrl: './app/home/index.component.html',
+        }), 
+        __metadata('design:paramtypes', [])
+    ], IndexComponent);
+>>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7
     return IndexComponent;
 }());
 IndexComponent = __decorate([

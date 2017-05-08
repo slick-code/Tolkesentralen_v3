@@ -25,6 +25,7 @@ namespace Tolkesentralen_v3.Repository
         public bool regEnForesporselPåEnEllerFlereTolk(int[] tolkId, int opprdragId)
         {
 
+
             Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragsID == opprdragId);
             if (oppdrag != null)
             {

@@ -1,0 +1,72 @@
+﻿<hr />
+<!--
+<div style="display: inline-block" class="panel panel-default" >
+
+    <div class="panel-body">
+        <button class="btn btn-default" (click)="setTalkOnDemand()">Talk On-Demand &nbsp;<img src="./icons/icon.png" /></button>
+        <button class="btn btn-default" (click)="setFMTolk()">Fremmedmøtetolk &nbsp;<img src="./icons/icon.png" /></button>
+        <button class="btn btn-default" (click)="setTelefontolk()">Telefontolk &nbsp;<img src="./icons/icon.png" /></button>
+        <button class="btn btn-default" (click)="setVideotolk()">Videotolk &nbsp;<img src="./icons/icon.png" /></button>
+        <button class="btn btn-default" (click)="setKonferansetolk()">konferansetolk &nbsp;<img src="./icons/icon.png" /></button>
+    </div>
+
+</div>
+
+    -->
+
+<div>
+    <button autofocus class="btn btn-primary" (click)="setSkjermtolk()">Skjermtolk &nbsp;<img src="./icons/icon.png" /></button>
+    <button class="btn btn-primary" (click)="setFMTolk()">Fremmedmøtetolk &nbsp;<img src="./icons/icon.png" /></button>
+    <button class="btn btn-primary" (click)="setTelefontolk()">Telefontolk &nbsp;<img src="./icons/icon.png" /></button>
+    <button class="btn btn-primary" (click)="setVideotolk()">Videotolk &nbsp;<img src="./icons/icon.png" /></button>
+    <button class="btn btn-primary" (click)="setKonferansetolk()">konferansetolk &nbsp;<img src="./icons/icon.png" /></button>
+
+    <hr />
+</div>
+
+
+
+
+<div  *ngIf="Skjermtolk">
+    <h2>Skjermtolking</h2>
+    <br />
+    <p>Tolkesentralen AS tilbyr profesjonell skjermtolking gjennom en ny og spennende teknisk løsning via vår samarbeidspartner. Ved bestilling av skjermtolk klikker du bare på en egen link på oppdrags bekreftelsen og systemet kobler deg automatisk opp mot bestilt tolk hos Tolkesentralen AS. Enklere kan det ikke gjøres! </p>
+    
+</div>
+
+<div *ngIf="FMTolk">
+    <h2>Fremmedmøtetolk</h2>
+    <br />
+    <p><b>Fremmøte tolking</b></p>
+    <p>Fremmøte tolking har i lang tid vært den mest brukte formen for tolking og har i den senere tid ofte blitt erstattet av telefontolking. Enkelte oppdrag kan for noen tolker oppleves som ubehagelige, det elimineres ofte gjennom telefontolking. 
+</p>
+    <br />
+    <p><b>Hvordan fungerer fremmøtetolking</b></p>
+    <p>Tolken er til stede i rommet sammen med samtalepartene, og oversetter det de sier umiddelbart etter at hver ytring har funnet sted. Tolkene oversetter ordrett og i riktig kontekst. Tolkene våre har selvsagt forbud mot å ytre meninger, og skal alltid avstå fra å besvare spørsmål som henviser til egne meninger, oppfatninger. Tolkenes ulike oppfatninger hører aldri med under våre oppdrag. 
+</p>
+    <br />
+    <p><b>Fordeler med fremmøtetolking </b></p>
+    <p>Man behøver ikke ekstra utstyr. Tolken får tilgang til både det verbale og “non” verbale signalene i samtalen.</p>
+    <br />
+    <p><b>Ulemper med fremmøtetolking </b></p>
+    <p>En fremmøtetolking må planlegges god tid i forveien, samt at det er mer kostbart å benytte fremmøte kontra telefontolking. I tillegg kan tolken i enkelte situasjoner ta for stor plass i rommet, og komme i veien for den viktige kommunikasjonen mellom samtalepartene. Tolkesentralen AS prioriterer hele tiden å minimere ulempene i forbindelse med sine tolkeoppdrag.</p>
+</div>
+
+<div *ngIf="Telefontolk">
+    <h2>Telefontolk</h2>
+    <br />
+    <p>Telefon tolking har blitt den mest vanlige formen for tolking de senere år. Nærmere 75 prosent av alle våre oppdrag er telefontolking.</p>
+</div>
+
+<div *ngIf="Videotolk">
+    <h3>Videotolk</h3>
+    <p>Beskrivelse..</p>
+</div>
+
+<div *ngIf="Konferansetolk">
+    <h3>Konferansetolk</h3>
+    <p>Beskrivelse..</p>
+</div>
+
+
+    

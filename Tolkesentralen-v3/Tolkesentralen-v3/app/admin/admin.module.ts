@@ -19,6 +19,12 @@
     import { OpprettBestillingComponent } from './opprett/opprett-bestilling.component';
     import { OpprettOversettelseComponent } from './opprett/opprett-oversettelse.component';
 
+    import { ResponseModule } from '../shared/response.module';
+
+    
+
+    
+
     import { AdminRoutingModule } from './admin-routing.module';
     import { SharedModule } from '../shared/shared.module';
     
@@ -29,7 +35,8 @@
           FormsModule,
           ReactiveFormsModule,
           AdminRoutingModule,
-          SharedModule
+          SharedModule,
+          ResponseModule
           
       ],
       declarations: [
@@ -50,6 +57,7 @@
           OpprettKundeComponent,
           OpprettBestillingComponent,
           OpprettOversettelseComponent
+          
       ],
       //bootstrap: [ AppComponent ]
     })

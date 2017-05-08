@@ -1,6 +1,6 @@
-﻿<h3>Oppdrag som er tilordnet deg</h3>
+﻿<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Oppdrag tilordnet deg" : "Ingen oppdrag"}}</h1>
 <br />
-<table class="table table-bordered table-condensed">
+<table *ngIf="checkIfArrayIsEmthy(oppdrag)" class="table table-bordered table-condensed">
     <thead>
         <tr>
             <th>OppdragsNr</th>
@@ -13,7 +13,7 @@
            
         </tr>
     </thead>
-    <tbody *ngFor="let oppdrag of oppdrag; let i = index">
+    <tbody  *ngFor="let oppdrag of oppdrag; let i = index">
         <tr>
             <td>{{oppdrag.oppdragsNr}}</td>
             <td>{{oppdrag.typetolk}}</td>
@@ -25,4 +25,3 @@
         </tr>
     </tbody>
 </table>
-<hr />

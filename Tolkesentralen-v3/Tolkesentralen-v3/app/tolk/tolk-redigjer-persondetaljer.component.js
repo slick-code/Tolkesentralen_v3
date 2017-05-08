@@ -18,6 +18,9 @@ var TolkRedigjerPersondetaljerComponent = (function () {
     function TolkRedigjerPersondetaljerComponent(service, fb) {
         this.service = service;
         this.fb = fb;
+        this.Error = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
+        this.underText = "Din personalia er trygt lagret";
+        this.path = 'tolk/tolk-redigjer-persondetaljer';
         this.form = fb.group({
             fornavn: [],
             etternavn: [],
@@ -30,17 +33,10 @@ var TolkRedigjerPersondetaljerComponent = (function () {
             poststed: []
         });
     }
-    TolkRedigjerPersondetaljerComponent.prototype.tilbake = function () {
-        this.showForm = true;
-    };
     TolkRedigjerPersondetaljerComponent.prototype.ngOnInit = function () {
+        this.showForm = true;
         this.persId = JSON.parse(localStorage.getItem('id'));
         this.getTolk();
-    };
-    TolkRedigjerPersondetaljerComponent.prototype.showLoadingScreen = function () {
-        this.showForm = false;
-        this.Success = null;
-        this.loading = true;
     };
     TolkRedigjerPersondetaljerComponent.prototype.getTolk = function () {
         var _this = this;
@@ -65,6 +61,9 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         });
     };
     TolkRedigjerPersondetaljerComponent.prototype.updateTolk = function () {
+        var _this = this;
+        this.showForm = false;
+        this.response = "loading";
         var ny = new models_1.Tolk();
         ny.persId = this.persId;
         ny.fornavn = this.form.value.fornavn;
@@ -78,11 +77,12 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         ny.poststed = this.form.value.poststed;
         var body = JSON.stringify(ny);
         this.service.updateTolk(body).subscribe(function (retur) {
-            //this.Success = true;
-            //this.loading = false;
-            //this.person = retur;
-            console.log("Sucess UpdateTolk");
-        }, function (error) { return console.log("Beklager, en feil har oppstått - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+            _this.response = "success";
+            _this.responseText = "Success!";
+        }, function (error) {
+            _this.responseText = "Beklager, en feil har oppstått - " + error;
+            _this.response = "error";
+        });
     };
     return TolkRedigjerPersondetaljerComponent;
 }());

@@ -12,13 +12,19 @@
     import { TolkRedigjerPersondetaljerComponent } from './tolk-redigjer-persondetaljer.component';
     import { TolkEndrePassordComponent } from './tolk-endre-passord.component';
 
+import { ResponseModule } from '../shared/response.module';
+
+    
+
+
     @NgModule({
       imports: [
         CommonModule,
         TolkRoutingModule, 
         FormsModule,
         ReactiveFormsModule,
-        SharedModule
+          SharedModule,
+          ResponseModule
       ],
       declarations: [
           TolkComponent,
@@ -28,6 +34,7 @@
           TolkSettTilgjenglighetComponent,
           TolkRedigjerPersondetaljerComponent,
           TolkEndrePassordComponent
+         
          
       ],
       //bootstrap: [ AppComponent ]

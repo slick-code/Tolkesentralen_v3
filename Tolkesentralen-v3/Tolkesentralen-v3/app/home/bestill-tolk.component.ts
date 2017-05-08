@@ -1,7 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { OppdragOgKunde } from '../_models/models';
+import { Spraak } from '../_models/spraak';
 import { OppdragService } from '../_services/oppdrag.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 
 @Component({
     templateUrl: './app/home/bestill-tolk.component.html',
@@ -12,6 +14,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class BestillTolkComponent implements OnInit {
     errorMessage: string;
     liste: OppdragOgKunde[];
+    spraak: any[];
+    startDate: any;
+        
 
     form: FormGroup;
     constructor(private service: OppdragService, private fb: FormBuilder) {
@@ -38,6 +43,8 @@ export class BestillTolkComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.spraak = new Spraak().liste;
+        this.startDate = new Date();
         //this.getOppdrag;
     }
 

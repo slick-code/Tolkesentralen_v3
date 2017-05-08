@@ -27,10 +27,13 @@
                 <td>{{kunde.fakturaadresse}}</td>
                 <td>{{kunde.postnr}} {{kunde.poststed}}</td>
                 <td>{{kunde.email}}</td>
-                <td width="190">
-                    <button  class="btn btn-danger" >Slett</button>
-                    <button  class="btn btn-success" (click)="godkjennKunde(i, kunde.persId)">Legg til kunde</button>
-                    
+                <td *ngIf="!setTilSlettErTrykket(i)" width="190">
+                    <button  class="btn btn-primary" (click)="godkjennKunde(i, kunde.persId)"><span class="glyphicon glyphicon-thumbs-up"></span> Legg til kunde</button>
+                    <button style="width:40px" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+                <td *ngIf="setTilSlettErTrykket(i)" width="190">
+                    <button (click)="slettKunde(i, kunde.persId)" style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
+                    <button style="width:49%" class="btn btn-default" (click)="setDefault()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
                 </td>
             </tr>
         </tbody>

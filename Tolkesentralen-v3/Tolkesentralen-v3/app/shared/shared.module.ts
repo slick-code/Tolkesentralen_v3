@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading.component';
 
 @NgModule({
-    imports: [ FormsModule, ReactiveFormsModule],
+    imports: [ FormsModule],
     declarations: [LoadingComponent],
     providers: [
     ],
