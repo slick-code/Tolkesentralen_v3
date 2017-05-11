@@ -28,21 +28,31 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
-    public class OppdragOgKunde
+    public class OppdragOgKunde : Kunde
     {
         public int oppdragID { get; set; }
         public string dato { get; set; }
-        public string fraspraak { get; set; }
-        public string tilspraak { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
         public string andreopplysninger { get; set; }
         public string typetolk { get; set; }
         public string oppmoteadresse { get; set; }
-        public string oppmptepostnr { get; set; }
+        public string oppmotepoststed { get; set; }
         public int oppmotepostnr { get; set; }
         public string oppdragsdato { get; set; }
         public string frakl { get; set; }
         public string tilkl { get; set; }
         //dato
+    }
+
+    public class OversettelseOgKunde : Kunde
+    {
+        public int oppdragID { get; set; }
+        public string dato { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
+        public string andreopplysninger { get; set; }
+        public string ferdiggjoresdato { get; set; }
     }
 
     public class TolkingSendt_vm : Tolking_vm

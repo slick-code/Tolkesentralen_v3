@@ -21,6 +21,7 @@ var info_oversettelse_component_1 = require('./info/info-oversettelse.component'
 var info_tolk_component_1 = require('./info/info-tolk.component');
 var shared_module_1 = require('../shared/shared.module');
 var forms_1 = require('@angular/forms');
+var response_module_1 = require('../shared/response.module');
 var HomeModule = (function () {
     function HomeModule() {
     }
@@ -28,7 +29,7 @@ var HomeModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                home_routing_module_1.HomeRoutingModule, shared_module_1.SharedModule, forms_1.FormsModule, forms_1.ReactiveFormsModule
+                home_routing_module_1.HomeRoutingModule, shared_module_1.SharedModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, response_module_1.ResponseModule
             ],
             declarations: [
                 home_component_1.HomeComponent,

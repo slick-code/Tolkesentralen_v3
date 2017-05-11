@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Promise Version
 var core_1 = require('@angular/core');
 var models_1 = require('../_models/models');
+var spraak_1 = require('../_models/spraak');
 var oversettelse_service_1 = require('../_services/oversettelse.service');
 var forms_1 = require('@angular/forms');
 var KundeBestillOversettelseComponent = (function () {
@@ -18,62 +18,88 @@ var KundeBestillOversettelseComponent = (function () {
         this.service = service;
         this.fb = fb;
         this.form = fb.group({
-            typedokument: [],
-            fraspraak: [],
-            tilspraak: [],
-            ferdiggjoresdato: [],
-            andreopplysninger: []
+            andreopplysninger: [],
         });
     }
-    KundeBestillOversettelseComponent.prototype.fileChange = function (event) {
-        var fileList = event.target.files;
-        if (fileList.length > 0) {
-            this.fil = fileList[0];
-        }
+    KundeBestillOversettelseComponent.prototype.ngOnInit = function () {
+        this.typedokument = "Vitnemål";
+        this.showForm = true;
+        this.validerSpraak = true;
+        this.spraak = new spraak_1.Spraak().liste;
+        this.minDate = this.getDateString(new Date());
+        this.startDate = this.minDate;
+        this.fraspraak = 1;
+        this.tilspraak = 2;
+        this.form.patchValue({
+            frakl: "08:00",
+            tilkl: "10:00"
+        });
+    };
+    KundeBestillOversettelseComponent.prototype.onchange = function (type) {
+        console.log("TYPE :" + type);
+        this.typedokument = type;
+    };
+    KundeBestillOversettelseComponent.prototype.getDateString = function (date) {
+        //setter +3 som vanlig deadline
+        return date = date.getFullYear() + '-'
+            + ('0' + (date.getMonth() + 1)).slice(-2) + '-'
+            + ('0' + (date.getDate() + 3)).slice(-2);
+    };
+    KundeBestillOversettelseComponent.prototype.setFraSpraak = function (id) {
+        this.fraspraak = id;
+        this.ValidateSpraak();
+    };
+    KundeBestillOversettelseComponent.prototype.setTilSpraak = function (id) {
+        this.tilspraak = id;
+        this.ValidateSpraak();
+    };
+    KundeBestillOversettelseComponent.prototype.ValidateSpraak = function () {
+        if (this.fraspraak == this.tilspraak)
+            this.validerSpraak = false;
+        else
+            this.validerSpraak = true;
+    };
+    KundeBestillOversettelseComponent.prototype.form_MarkAsTouched = function () {
+        var _this = this;
+        Object.keys(this.form.controls).forEach(function (key) {
+            _this.form.get(key).markAsTouched(true);
+        });
     };
     KundeBestillOversettelseComponent.prototype.tilbake = function () {
         this.showForm = true;
     };
-    KundeBestillOversettelseComponent.prototype.ngOnInit = function () {
-        this.showForm = true;
-        this.brukerID = parseInt(localStorage.getItem('id'));
-    };
-    KundeBestillOversettelseComponent.prototype.showLoadingScreen = function () {
-        this.showForm = false;
-        this.Success = null;
-        this.loading = true;
-    };
-    KundeBestillOversettelseComponent.prototype.postOppdrag = function () {
+    KundeBestillOversettelseComponent.prototype.postKunde = function (navn) {
         var _this = this;
-        this.loading = true;
+        this.ugyldigFelter = false;
+        if (!this.validerSpraak || !this.form.valid) {
+            this.ugyldigFelter = true;
+            if (!this.form.valid) {
+                this.form_MarkAsTouched();
+            }
+            return;
+        }
         this.showForm = false;
+        this.response = "loading";
         var ny = new models_1.Oversettelse();
-        //ny.kundeID = parseInt(localStorage.getItem('id'));
-        //ny.typetolk = this.form.value.typetolk;
-        //ny.fraspraak = this.form.value.fraspraak;
-        //ny.tilspraak = this.form.value.tilspraak;
-        //ny.oppdragsdato = this.form.value.oppdragsdato;
-        //ny.frakl = this.form.value.frakl;
-        //ny.tilkl = this.form.value.tilkl;
-        //ny.sted = this.form.value.oppmptested;
-        //ny.andreopplysninger = this.form.value.andreopplysninger;
         ny.dato = Date.now();
-        ny.kundeID = this.brukerID;
-        ny.typedokument = "Juridisk";
-        ny.fraspraak = "Norsk";
-        ny.tilspraak = "Pashto";
-        ny.ferdiggjoresdato = "12-12-12";
-        ny.andreopplysninger = "Jamaca MAN";
-        ny.fil = this.fil;
+        ny.kundeID = parseInt(localStorage.getItem('id'));
+        ny.typedokument = this.typedokument;
+        ny.fraspraak = this.fraspraak;
+        ny.tilspraak = this.tilspraak;
+        ny.andreopplysninger = this.form.value.andreopplysninger;
         var body = JSON.stringify(ny);
         this.service.postOversettelseKunde(body).subscribe(function (retur) {
-            _this.Success = true;
-            _this.loading = false;
-        }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
+            _this.response = "success";
+            _this.responseText = "Takk for din bestilling!";
+            _this.underText = "";
+        }, function (error) {
+            _this.response = "error";
+            _this.responseText = "Ingen kontakt med server";
+            _this.underText = "Tilkoblet internett?";
+        }, function () { });
     };
     KundeBestillOversettelseComponent = __decorate([
         core_1.Component({
-            //moduleId: module.id,
             templateUrl: './app/kunde/kunde-bestill-oversettelse.component.html',
             providers: [oversettelse_service_1.OversettelseService],
             styles: ['.error {color:red;}']

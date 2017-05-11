@@ -12,11 +12,12 @@ import { InfoOversettelseComponent } from './info/info-oversettelse.component';
 import { InfoTolkComponent } from './info/info-tolk.component';
 import { SharedModule } from '../shared/shared.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResponseModule } from '../shared/response.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        HomeRoutingModule, SharedModule, FormsModule, ReactiveFormsModule
+        HomeRoutingModule, SharedModule, FormsModule, ReactiveFormsModule, ResponseModule
     ],
     declarations: [
         HomeComponent,

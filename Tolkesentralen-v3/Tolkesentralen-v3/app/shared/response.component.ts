@@ -11,12 +11,4 @@ export class ResponseComponent {
     @Input('responseText') responseText: string;
     @Input('underText') underText: string;
     @Input('path') path: string;
-
-    constructor(private router: Router) { }
-
-    tilbake() {
-        this.router.navigate([this.path]);
-    }
-
-
 }

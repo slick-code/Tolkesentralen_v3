@@ -1,4 +1,21 @@
 /*Inputs*/
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  
+
+}
+
+.inner-addon { 
+    position: relative; 
+   
+}
+
+.pleft input{
+    padding-left:  30px;
+     
+}
 
 .form-control.error-border{
     border-left: 3px solid red;

@@ -8,64 +8,53 @@
             <div style="padding-left: 30px;padding-top: 10px;float: left;width:300px; display:inline-block">
                 <div class="form-group">
                     <label for="firma">Firma</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.firma.valid || !form.controls.firma.touched ? '' : '3px solid red'}" class="form-control" type="text" formControlName="firma" placeholder="Firma/institusjon" />
+
                 </div>
-                <div style="display:inline-block;width:116px" class="form-group">
+                <div class="form-group line-equal">
                     <label for="kontaktperson">Kontaktperson</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
-
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.fornavn.valid || !form.controls.fornavn.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
                 </div>
 
-                <div style="display:inline-block;width:116px" class="form-group">
+                <div class="form-group line-equal">
                     <label for="kontaktperson"></label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.etternavn.valid || !form.controls.etternavn.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
                 </div>
 
-                <div style="display:inline-block;width:116px" class="form-group">
+                <div class="form-group line-equal">
                     <label for="telefon">Telefon</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="11" name="telefon" formControlName="telefon" placeholder="Telefon" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.telefon.valid || !form.controls.telefon.touched ? '' : '3px solid red'}" class="form-control" minlength="5" maxlength="11" formControlName="telefon" placeholder="Telefon" />
                 </div>
-                <div style="display:inline-block;width:116px" class="form-group">
+
+                <div class="form-group line-equal">
                     <label for="telefax">Telefax</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.telefax.valid || !form.controls.telefax.touched ? '' : '3px solid red'}" type="number" class="form-control" formControlName="telefax" placeholder="Telefax" />
                 </div>
+
                 <div class="form-group">
                     <label for="fakturaadresse">FakturaAdresse</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.fakturaadresse.valid || !form.controls.fakturaadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
                 </div>
-                <div style="display:inline-block; width:60px" class="form-group">
+
+                <div style="display:inline-block; width:84px" class="form-group">
                     <label for="postnr">Postnr</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.postnr.valid || !form.controls.postnr.touched ? '' : '3px solid red'}" type="number" pattern="[0-9]{4}" class="form-control" formControlName="postnr" placeholder="Postnr" />
                 </div>
-                <div style="display:inline-block;width:174px" class="form-group">
+
+                <div style="display:inline-block;width:150px" class="form-group">
                     <label for="poststed">Poststed</label>
-                    <div class="inner-addon left-addon">
-                        <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
-                    </div>
+                    <input required [ngStyle]="{'border-left': form.controls.poststed.valid || !form.controls.poststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="poststed" placeholder="Poststed" />
                 </div>
             </div>
 
 
             <div style="padding-left:30px; padding-top: 10px;width:300px; display:inline-block">
+
                 <div class="form-group">
                     <label for="epost">Brukernavn</label>
                     <div class="inner-addon pleft">
                         <span class="glyphicon glyphicon-envelope"></span>
-                        <input type="text" class="form-control" id="url" formControlName="epost" placeholder="Epostadresse" />
+                        <input required [ngStyle]="{'border-left': form.controls.epost.valid || !form.controls.epost.touched ? '' : '3px solid red'}" type="email" class="form-control" formControlName="epost" placeholder="Epostadresse" />
                     </div>
                 </div>
 
@@ -73,16 +62,19 @@
                     <label for="passord">Passord</label>
                     <div class="inner-addon pleft">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <input type="password" class="form-control" id="url" formControlName="passord" placeholder="Passord" />
+                        <input required [ngStyle]="{'border-left': form.controls.epost.valid || !form.controls.epost.touched ? '' : '3px solid red'}" type="password" class="form-control"  formControlName="passord" placeholder="Passord" />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="bekreftpassord">Bekreft passord</label>
                     <div class="inner-addon pleft">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <input type="password" class="form-control" id="url" placeholder="Bekreft passord" />
-
+                        <input required type="password" class="form-control" formControlName="bekreftpassord" placeholder="Bekreft passord" />
                     </div>
+                    <p class="alert alert-warning" [hidden]="PassordMatch() || !form.controls.bekreftpassord.touched">
+                        Passordet matcher ikke
+                    </p>
                 </div>
             </div>
 
@@ -90,31 +82,22 @@
 
         </form>
     </div>
-    
 
-    <div style="clear:both; padding-top:5px;">
-        <hr />
+    <div style="clear:both;">
+        <div style="padding-top:5px;max-width:610px;">
+            <hr />
+            <div style="float:right;">
+                <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felt</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send skjema</button></p>
+            </div>
 
-        <button (click)="postKunde()" class="btn btn-success btn-lg">Send skjema</button>
+        </div>
     </div>
+
+    
     
 </div>
   
-<div *ngIf="loading">
-    <div>
-        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
-    </div>
-    
-
-</div>
-  
-<div *ngIf="!Success && !showForm && !loading">
-    <p class="error">{{errorMessage}}</p>
-    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
-</div>
-
-<div *ngIf="Success && !showForm  && !loading">
-    <h3 style="color:forestgreen">Takk for din registrering! </h3>
-    <p>Du vil bli tilsendt en bekreftelse så fort søknaden er behandlet.</p>
-
+<div *ngIf="!showForm">
+    <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
+    <div *ngIf="response !== 'loading'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
 </div>

@@ -22,6 +22,7 @@ var kunde_oversettelse_historikk_component_1 = require('./kunde-oversettelse-his
 var kunde_endre_opplysninger_component_1 = require('./kunde-endre-opplysninger.component');
 var kunde_endre_passord_component_1 = require('./kunde-endre-passord.component');
 var shared_module_1 = require('../shared/shared.module');
+var response_module_1 = require('../shared/response.module');
 var KundeModule = (function () {
     function KundeModule() {
     }
@@ -32,7 +33,8 @@ var KundeModule = (function () {
                 kunde_routing_module_1.KundeRoutingModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
-                shared_module_1.SharedModule
+                shared_module_1.SharedModule,
+                response_module_1.ResponseModule
             ],
             declarations: [
                 kunde_component_1.KundeComponent,

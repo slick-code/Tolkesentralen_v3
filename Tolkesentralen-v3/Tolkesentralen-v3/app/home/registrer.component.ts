@@ -15,27 +15,31 @@ export class RegistrerComponent implements OnInit {
     errorMessage: string;
     kunder: Kunde[];
     
-    resultText: string;
-
-    Success: boolean;
-    loading: boolean;
     showForm: boolean;
-    form: FormGroup;
+    responseText: string;
+    response: string;
+    underText: string;
 
+    passordMatch: boolean;
+    
+
+    ugyldigFelter: boolean;
+
+    form: FormGroup;
     constructor(private kundeService: KundeService, private fb: FormBuilder) {
         this.form = fb.group({
-
-            firma: [],
-            fornavn: [],
-            etternavn: [],
-            telefon: [],
-            telefax: [],
-            epost: [],
+            firma: ["", Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
+            fornavn: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            etternavn: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            telefon: ["", Validators.pattern("[0-9]{8,12}")],
+            telefax: ["", Validators.pattern("[0-9]{8,12}")],
+            epost: ["", Validators.pattern("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")],
+            fakturaadresse: ["", Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
+            postnr: ["", Validators.pattern("[0-9]{4}")],
+            poststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            andreopplysninger: [],
             passord: [],
             bekreftpassord: [],
-            fakturaadresse: [],
-            postnr: [],
-            poststed: []
         });
 
     }
@@ -45,14 +49,7 @@ export class RegistrerComponent implements OnInit {
         //this.getKunder();
         this.errorMessage = "Ooops! Bestilling ble ikke sendt."
     }
-
-    showLoadingScreen() {
-        this.showForm = false;
-        this.Success = null;
-        this.loading = true;
-    }
-
-
+    
     getKunder() {
         this.kundeService.getKunder()
             .subscribe(kunder => {
@@ -64,9 +61,33 @@ export class RegistrerComponent implements OnInit {
         this.showForm = true;
     }
 
+    form_MarkAsTouched() {
+        Object.keys(this.form.controls).forEach(key => {
+            this.form.get(key).markAsTouched(true);
+        });
+    }
+
+    PassordMatch() {
+        if (this.form.value.passord == this.form.value.bekreftpassord) {
+            this.passordMatch = true;
+            return true;
+        } else {
+            this.passordMatch = false;
+            return false;
+        }
+    }
+
     postKunde() {
-        this.loading = true;
+
+        this.ugyldigFelter = false;
+        if (!this.form.valid || !this.passordMatch) {
+            this.form_MarkAsTouched();
+            this.ugyldigFelter = true;
+            return;
+        }
+       
         this.showForm = false;
+        this.response = "loading";
         
 
         var ny = new Kunde();
@@ -87,13 +108,16 @@ export class RegistrerComponent implements OnInit {
         
         this.kundeService.postKunde(body).subscribe(
             retur => {
-                this.Success = true;
-                this.loading = false;
-                this.kunder.push(ny);
-                console.log("Success POST : "+ ny.firma);
+                this.response = "success";
+                this.responseText = "Din registrering er sendt";
+                this.underText = "Takk for ditt medlemskap";
             },
-            error => { console.log("Beklager, en feil har oppstått - " + error); this.loading = false; },
-            () => console.log("ferdig post-api/bestilling")
+            error => {
+                this.response = "error";
+                this.responseText = "Ingen kontakt med server";
+                this.underText = "Tilkoblet internett?";
+            },
+            () => { }
         );
         
         

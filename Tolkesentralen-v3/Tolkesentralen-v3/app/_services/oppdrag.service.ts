@@ -22,6 +22,8 @@ export class OppdragService {
             .map(returData => returData.toString())
     }
 
+    
+
     postOppdragFraKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 

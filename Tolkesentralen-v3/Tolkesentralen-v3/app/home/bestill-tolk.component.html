@@ -1,6 +1,4 @@
-﻿<div >
-    
-    
+﻿<div *ngIf="showForm"> 
     <h1>Bestill Tolk</h1>
     <hr />
     <div  style="min-height:500px;max-width:910px;background-color:#F4F9F9;">
@@ -64,12 +62,12 @@
                             <input required [ngStyle]="{'border-left': form.controls.fakturaadresse.valid || !form.controls.fakturaadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
                         </div>
 
-                        <div style="display:inline-block; width:60px" class="form-group">
+                        <div style="display:inline-block; width:84px" class="form-group">
                             <label for="postnr">Postnr</label>
-                            <input required [ngStyle]="{'border-left': form.controls.postnr.valid || !form.controls.postnr.touched ? '' : '3px solid red'}" type="number" class="form-control" formControlName="postnr" placeholder="Postnr" />
+                            <input required [ngStyle]="{'border-left': form.controls.postnr.valid || !form.controls.postnr.touched ? '' : '3px solid red'}" type="number" pattern=".{4,4}" class="form-control" formControlName="postnr" placeholder="Postnr" />
                         </div>
 
-                        <div style="display:inline-block;width:174px" class="form-group">
+                        <div style="display:inline-block;width:150px" class="form-group">
                             <label for="poststed">Poststed</label>
                             <input required [ngStyle]="{'border-left': form.controls.poststed.valid || !form.controls.poststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="poststed" placeholder="Poststed" />
                         </div>
@@ -109,8 +107,9 @@
 
                         <div class="form-group">
                             <label for="oppdragsdato">Oppdragsdato</label>
-                            <div class="inner-addon left-addon">
-                                <input min="{{startDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}" [ngModel]="startDate" (ngModelChange)="startDate = $event" type="date" class="form-control" />
+                            <div class="inner-addon">
+                                <input min="{{minDate}}" [ngModelOptions]="{standalone: true}" [ngModel]="startDate" (ngModelChange)="startDate = $event" type="date" class="form-control" />
+                                <!--<span class="glyphicon glyphicon-calendar"></span>-->
                             </div>
                         </div>
 
@@ -134,11 +133,11 @@
                                 <label for="oppmotested">OppmøteAdresse</label>
                                     <input required [ngStyle]="{'border-left': form2.controls.oppmoteadresse.valid || !form2.controls.oppmoteadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmoteadresse"  placeholder="Oppmøtested" />
                             </div>
-                            <div style="display:inline-block; width:60px" class="form-group">
+                            <div style="display:inline-block; width:84px" class="form-group">
                                 <label for="postnr">Postnr</label>
-                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepostnr.valid || !form2.controls.oppmotepostnr.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmotepostnr" placeholder="oppmotepostnr" />
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepostnr.valid || !form2.controls.oppmotepostnr.touched ? '' : '3px solid red'}" type="number" pattern=".{4,4}" class="form-control" formControlName="oppmotepostnr" placeholder="Postnr" />
                             </div>
-                            <div style="display:inline-block;width:174px" class="form-group">
+                            <div style="display:inline-block;width:150px" class="form-group">
                                 <label for="poststed">Poststed</label>
                                     <input required [ngStyle]="{'border-left': form2.controls.oppmotepoststed.valid || !form2.controls.oppmotepoststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmotepoststed" placeholder="oppmotepoststed" />
                             </div>
@@ -151,13 +150,20 @@
         
     </div>
 
+    <div style="max-width:910px;">
+        <hr />
+        <div style="float:right;clear:both;padding-top:10px">
+            <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felt</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send bestilling</button></p>
+
+        </div>
+    </div>
+
 </div>
 
 
-<div style="max-width:910px;">
-    <hr />
-    <div style="float:right;clear:both;padding-top:10px">
-        <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felter</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send bestilling</button></p>
-        
-    </div>
+
+
+<div *ngIf="!showForm">
+    <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
+    <div *ngIf="response !== 'loading'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
 </div>

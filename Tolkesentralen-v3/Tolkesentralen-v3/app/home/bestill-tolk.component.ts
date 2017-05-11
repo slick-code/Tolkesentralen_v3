@@ -12,9 +12,15 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 
 export class BestillTolkComponent implements OnInit {
+    showForm: boolean;
+    responseText: string;
+    response: string;
+    underText: string;
+
     errorMessage: string;
     spraak: any[];
     tolkTyper: string[];
+    minDate: any;
     startDate: any;
 
     adresseFelt: boolean;
@@ -25,7 +31,6 @@ export class BestillTolkComponent implements OnInit {
     oppragsdato: string;
 
     validerSpraak: boolean;
-
     ugyldigFelter: boolean;
         
 
@@ -56,10 +61,12 @@ export class BestillTolkComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showForm = true;
         this.validerSpraak = true;
         this.typetolk = this.tolkTyper[1];
         this.spraak = new Spraak().liste;
-        this.startDate = this.getDateString(new Date());
+        this.minDate = this.getDateString(new Date());
+        this.startDate = this.minDate;
         this.adresseFelt = true; 
         this.fraspraak = 1;
         this.tilspraak = 2;
@@ -114,9 +121,16 @@ export class BestillTolkComponent implements OnInit {
         });
     }
 
+    tilbake() {
+        this.showForm = true;
+    }
+
     postKunde(navn: string) {
         this.ugyldigFelter = false;
-        if (!this.validerSpraak) return;
+        if (!this.validerSpraak) {
+            this.ugyldigFelter = true;
+            return;
+        }
         if (this.adresseFelt) {
             if (!this.form.valid) {
                 this.form_MarkAsTouched();
@@ -126,57 +140,52 @@ export class BestillTolkComponent implements OnInit {
                 this.ugyldigFelter = true;
                 return;
             }
-            
-
         } else {
             if (!this.form.valid) {
                 this.form_MarkAsTouched();
                 this.ugyldigFelter = true;
                 return;
             }
-            
         }
-
-
-
-        console.log("D " + this.typetolk);
-        console.log("FR " + this.fraspraak);
-        console.log("Ti " + this.tilspraak);
-        console.log("o " + this.startDate);
-        console.log("k " + this.form.value.frakl);
-        console.log("t " + this.form.value.tilkl);
-
-        return;
-        //var ny = new OppdragOgKunde();
-        //ny.typetolk = this.form.value.typetolk;
-        //ny.fraspraak = this.form.value.fraspraak;
-        //ny.tilspraak = this.form.value.tilspraak;
-        //ny.oppdragsdato = this.form.value.oppdragsdato;
-        //ny.frakl = this.form.value.fraspraak;
-        //ny.tilkl = this.form.value.tilspraak;
-        //ny.oppmoteadresse = this.form.value.oppmoteadresse;
-        //ny.oppmotepostnr = this.form.value.oppmotepostnr;
-        //ny.oppmotepoststed = this.form.value.oppmotepoststed;
-
-        //ny.firma = this.form.value.firma;
-        //ny.fornavn = this.form.value.fornavn;
-        //ny.etternavn = this.form.value.etternavn;
-        //ny.telefon = this.form.value.telefon;
-        //ny.telefax = this.form.value.telefax;
-        //ny.epost = this.form.value.epost;
-        //ny.fakturaadresse = this.form.value.fakturaadresse;
-        //ny.postnr = this.form.value.postnr;
-        //ny.poststed = this.form.value.poststed;
-
-        //ny.andreopplysninger = this.form.value.andreopplysninger;
-        //var body: string = JSON.stringify(ny);
-        //this.service.postOppdragOgKunde(body).subscribe(
-        //    retur => {
-        //        console.log("Success POST : " + ny.typetolk);
-        //    },
-        //    error => console.log("Beklager, en feil har oppstått - " + error),
-        //    () => console.log("ferdig post-api/bestilling")
-        //);
+        this.showForm = false;
+        this.response = "loading";
+        
+        var ny = new OppdragOgKunde();
+        ny.typetolk = this.typetolk;
+        ny.fraspraak = this.fraspraak;
+        ny.tilspraak = this.tilspraak;
+        ny.oppdragsdato = this.startDate;
+        ny.frakl = this.form.value.frakl;
+        ny.tilkl = this.form.value.tilkl;
+        ny.firma = this.form.value.firma;
+        ny.fornavn = this.form.value.fornavn;
+        ny.etternavn = this.form.value.etternavn;
+        ny.telefon = this.form.value.telefon;
+        ny.telefax = this.form.value.telefax;
+        ny.epost = this.form.value.epost;
+        ny.fakturaadresse = this.form.value.fakturaadresse;
+        ny.postnr = this.form.value.postnr;
+        ny.poststed = this.form.value.poststed;
+        ny.andreopplysninger = this.form.value.andreopplysninger;
+        if (this.adresseFelt) {
+            ny.oppmoteadresse = this.form.value.oppmoteadresse;
+            ny.oppmotepostnr = this.form.value.oppmotepostnr;
+            ny.oppmotepoststed = this.form.value.oppmotepoststed;
+        }
+        var body: string = JSON.stringify(ny);
+        this.service.postOppdragOgKunde(body).subscribe(
+            retur => {
+                this.response = "success";
+                this.responseText = "Takk for din bestilling!";
+                this.underText = "";
+            },
+            error => {
+                this.response = "error";
+                this.responseText = "Ingen kontakt med server";
+                this.underText = "Tilkoblet internett?";
+            },
+            () => {}
+        );
     }
 
 }
