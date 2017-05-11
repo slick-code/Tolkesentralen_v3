@@ -78,7 +78,7 @@ export class Oppdrag {
     andreopplysninger: string;
 }
 
-export class OppdragOgKunde {
+export class OppdragOgKunde extends Kunde {
     kundeID: number;
     dato: any;
     typetolk: string;
@@ -87,7 +87,9 @@ export class OppdragOgKunde {
     frakl: string;
     tilkl: string;
     oppdragsdato: string;
-    sted: string;
+    oppmoteadresse: string;
+    oppmotepostnr: string;
+    oppmotepoststed: string;
     andreopplysninger: string;
 }
 

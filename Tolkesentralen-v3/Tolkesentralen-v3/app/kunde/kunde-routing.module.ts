@@ -26,7 +26,6 @@ const appRoutes: Routes = [
             { path: 'kunde-endre-opplysninger', component: KundeEndreOpplysningerComponent },
             { path: 'kunde-endre-passord', component: KundeEndrePassordComponent },
             { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-oversettelse'}
-
         ]
     }
 ];

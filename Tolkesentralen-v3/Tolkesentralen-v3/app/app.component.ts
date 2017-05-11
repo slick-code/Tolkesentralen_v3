@@ -7,6 +7,7 @@ import { Login } from './_models/models';
     template: `<router-outlet></router-outlet>`,
 })
 
+
 export class AppComponent {
     bruker: Login;
     rolle: string;

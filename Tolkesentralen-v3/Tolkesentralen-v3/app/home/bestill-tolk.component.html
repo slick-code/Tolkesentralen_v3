@@ -3,15 +3,14 @@
     
     <h1>Bestill Tolk</h1>
     <hr />
-
-    <div  style="max-height:500px;max-width:910px;background-color:#F4F9F9;">
+    <div  style="min-height:500px;max-width:910px;background-color:#F4F9F9;">
         <div style="display:inline-block;width:300px;">
             <div style="background-color:white;width:260px; height:270px">
                 <img style="width:150px;border-bottom: solid #1F1F1F;margin-left:20px; margin-top:10px" src="../../bilder/hot_operator.jpg">
             </div>
             
             <form [formGroup]='form'>
-                <div style="margin-top:30px;margin-left:10px" class="form-group">
+                <div style="max-width:260px;margin-top:30px;margin-left:10px" class="form-group">
                     <label for="andreopplysninger">Andre opplysninger</label>
                     <div class="inner-addon left-addon">
                         <textarea ng-model="andreopplysninger" style="height: 150px" class="form-control" id="andreopplysningerid"
@@ -24,174 +23,141 @@
         
 
         <div style="float:right;display:inline-block;border: solid #F8FCFC;  max-width:610px; height:500px;border-radius: 5px;">
-            <form [formGroup]='form'>
+            
 
                 <div style="padding-top: 10px;width:300px; display:inline-block">
+                    <form [formGroup]='form'>
 
-                    <div class="form-group">
-                        <label for="firma">Firma</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="firmaid" formControlName="firma" placeholder="Firma/institusjon" />
-                        </div>
-                    </div>
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="kontaktperson">Kontaktperson</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" id="fornavnid" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
-                           
-                        </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="firma">Firma</label>
+                            <input required [ngStyle]="{'border-left': form.controls.firma.valid || !form.controls.firma.touched ? '' : '3px solid red'}" class="form-control" type="text" formControlName="firma" placeholder="Firma/institusjon" />
 
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="kontaktperson"></label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" id="etternavnid" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="epost">Epost</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" id="epostid" class="form-control" formControlName="epost" placeholder="Epostadresse" />
+                        <div class="form-group line-equal">
+                            <label for="kontaktperson">Kontaktperson</label>
+                            <input required [ngStyle]="{'border-left': form.controls.fornavn.valid || !form.controls.fornavn.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="fornavn" placeholder="Fornavn" />
                         </div>
-                    </div>
 
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="telefon">Telefon</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" id="telefonid" class="form-control" minlength="5" maxlength="11" name="telefon" formControlName="telefon" placeholder="Telefon" />
+                        <div class="form-group line-equal">
+                            <label for="kontaktperson"></label>
+                            <input required [ngStyle]="{'border-left': form.controls.etternavn.valid || !form.controls.etternavn.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="etternavn" placeholder="Etternavn" />
                         </div>
-                    </div>
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="telefax">Telefax</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="telefax" placeholder="Telefax" />
+
+
+                        <div class="form-group">
+                            <label for="epost">Epost</label>
+                            <input required [ngStyle]="{'border-left': form.controls.epost.valid || !form.controls.epost.touched ? '' : '3px solid red'}" type="email" class="form-control" formControlName="epost" placeholder="Epostadresse" />
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="fakturaadresse">FakturaAdresse</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
+
+                        <div class="form-group line-equal">
+                            <label for="telefon">Telefon</label>
+                            <input required [ngStyle]="{'border-left': form.controls.telefon.valid || !form.controls.telefon.touched ? '' : '3px solid red'}" class="form-control" minlength="5" maxlength="11" formControlName="telefon" placeholder="Telefon" />
                         </div>
-                    </div>
-                    <div style="display:inline-block; width:60px" class="form-group">
-                        <label for="postnr">Postnr</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
+
+                        <div class="form-group line-equal">
+                            <label for="telefax">Telefax</label>
+                            <input required [ngStyle]="{'border-left': form.controls.telefax.valid || !form.controls.telefax.touched ? '' : '3px solid red'}" type="number" class="form-control" formControlName="telefax" placeholder="Telefax" />
                         </div>
-                    </div>
-                    <div style="display:inline-block;width:174px" class="form-group">
-                        <label for="poststed">Poststed</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
+
+                        <div class="form-group">
+                            <label for="fakturaadresse">FakturaAdresse</label>
+                            <input required [ngStyle]="{'border-left': form.controls.fakturaadresse.valid || !form.controls.fakturaadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="fakturaadresse" placeholder="Fakturaadresse" />
                         </div>
-                    </div>
+
+                        <div style="display:inline-block; width:60px" class="form-group">
+                            <label for="postnr">Postnr</label>
+                            <input required [ngStyle]="{'border-left': form.controls.postnr.valid || !form.controls.postnr.touched ? '' : '3px solid red'}" type="number" class="form-control" formControlName="postnr" placeholder="Postnr" />
+                        </div>
+
+                        <div style="display:inline-block;width:174px" class="form-group">
+                            <label for="poststed">Poststed</label>
+                            <input required [ngStyle]="{'border-left': form.controls.poststed.valid || !form.controls.poststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="poststed" placeholder="Poststed" />
+                        </div>
+                    </form>
                 </div>
 
 
 
-                <div style="padding-left:30px; padding-top: 10px;width:280px; display:inline-block">
+                <div style="vertical-align:top;padding-left:20px; padding-top: 10px;width:280px; display:inline-block">
+                    <form [formGroup]='form'>
+                        <div class="form-group">
+                            <label for="typetolk">Type Tolk</label>
+                            <div class="inner-addon left-addon">
+                                <select (change)="onchange($event.target.value)" class="form-control">
+                                    <option value="1" selected>Fremmøtetolk</option>
+                                    <option value="2">Telefontolk</option>
+                                    <option value="3">Videotolk</option>
+                                    <option value="4">Konferansetolk</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="typetolk">Type Tolk</label>
-                        <div class="inner-addon left-addon">
-                            <select class="form-control">
-                                <option>Fremmøtetolk</option>
-                                <option value="1" selected>Telefontolk</option>
-                                <option>Videotolk</option>
-                                <option>Konferansetolk</option>
+
+                        <div class="form-group line-equal">
+                            <label for="fraspraak">Fra Språk</label>
+                                <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setFraSpraak($event.target.value)" class="form-control">
+                                    <option [value]="item.id" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                                </select>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="tilspraak">Til Språk</label>
+                            <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setTilSpraak($event.target.value)" class="form-control">
+                                <option  [value]="item.id" [selected]="i == 1" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
                             </select>
                         </div>
-                    </div>
 
+                        <div class="form-group">
+                            <label for="oppdragsdato">Oppdragsdato</label>
+                            <div class="inner-addon left-addon">
+                                <input min="{{startDate | date:'yyyy-MM-dd'}}" [ngModelOptions]="{standalone: true}" [ngModel]="startDate" (ngModelChange)="startDate = $event" type="date" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="frakl">Fra kl</label>
+                            <div class="inner-addon left-addon">
+                                <input type="time" class="form-control" formControlName="frakl" />
+                            </div>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="tilkl">Til kl</label>
+                            <div class="inner-addon left-addon">
+                                <input type="time" class="form-control" formControlName="tilkl" />
+                            </div>
+                        </div>
+                    </form>
+                    <div *ngIf="adresseFelt">
+                        <form [formGroup]='form2'>
+                            <div class="form-group">
+                                <label for="oppmotested">OppmøteAdresse</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmoteadresse.valid || !form2.controls.oppmoteadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmoteadresse"  placeholder="Oppmøtested" />
+                            </div>
+                            <div style="display:inline-block; width:60px" class="form-group">
+                                <label for="postnr">Postnr</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepostnr.valid || !form2.controls.oppmotepostnr.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmotepostnr" placeholder="oppmotepostnr" />
+                            </div>
+                            <div style="display:inline-block;width:174px" class="form-group">
+                                <label for="poststed">Poststed</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepoststed.valid || !form2.controls.oppmotepoststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmotepoststed" placeholder="oppmotepoststed" />
+                            </div>
+                        </form>
+                    </div>
                     
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="fraspraak">Fra Språk</label>
-                        <div  class="inner-addon left-addon">
-                            <select  formControlName="fraspraak" class="form-control">
-                                <option *ngFor="let item of spraak; let i = index" [selected]="i == 2" >{{item.spraak}}</option>       
-                            </select>
-
-                        </div>
-                    </div>
-
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="tilspraak">Til Språk</label>
-                        <select formControlName="fraspraak" class="form-control">
-                            <option *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="oppdragsdato">Oppdragsdato</label>
-                        <div class="inner-addon left-addon">
-                            <input [ngModelOptions]="{standalone: true}" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" class="form-control" />
-                        </div>
-                    </div>
-
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="frakl">Fra kl</label>
-                        <div class="inner-addon left-addon">
-                            <input type="time" min="00:00" max="23:59" class="form-control" id="fraklid" formControlName="frakl" autocomplete="off" placeholder="Fra kl" />
-                        </div>
-                    </div>
-
-                    <div style="display:inline-block;width:116px" class="form-group">
-                        <label for="tilkl">Til kl</label>
-                        <div class="inner-addon left-addon">
-                            <input type="time" min="00:00" max="23:59" class="form-control" id="tilklid" formControlName="tilkl" autocomplete="off" placeholder="Til kl" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="oppmotested">OppmøteAdresse</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="oppmotestedid" formControlName="oppmotested" autocomplete="off" placeholder="Oppmøtested" />
-
-                        </div>
-                    </div>
-                    <div style="display:inline-block; width:60px" class="form-group">
-                        <label for="postnr">Postnr</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="postnr" placeholder="Postnr" />
-                        </div>
-                    </div>
-                    <div style="display:inline-block;width:174px" class="form-group">
-                        <label for="poststed">Poststed</label>
-                        <div class="inner-addon left-addon">
-                            <input type="text" class="form-control" id="url" formControlName="poststed" placeholder="Poststed" />
-                        </div>
-                    </div>
-
-                    
-
-
-                </div>
-
-
-            </form>
-            
+            </div>
+   
         </div>
-
-
+        
     </div>
 
+</div>
 
-    
 
-    <div  style="clear:both;padding-top:5px">
-        <hr />
-        <p><button (click)="postKunde()" type="submit" class="btn btn-success btn-lg" [disabled]="!form.valid">Send bestilling</button></p>
-
+<div style="max-width:910px;">
+    <hr />
+    <div style="float:right;clear:both;padding-top:10px">
+        <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felter</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send bestilling</button></p>
+        
     </div>
-    
-
-    
-    
-
-    
-
-
-    </div>
-
-
+</div>

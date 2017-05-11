@@ -58,11 +58,13 @@ var Oppdrag = (function () {
     return Oppdrag;
 }());
 exports.Oppdrag = Oppdrag;
-var OppdragOgKunde = (function () {
+var OppdragOgKunde = (function (_super) {
+    __extends(OppdragOgKunde, _super);
     function OppdragOgKunde() {
+        _super.apply(this, arguments);
     }
     return OppdragOgKunde;
-}());
+}(Kunde));
 exports.OppdragOgKunde = OppdragOgKunde;
 var NavbarElement = (function () {
     function NavbarElement() {

@@ -1,3 +1,19 @@
+/*Inputs*/
+
+.form-control.error-border{
+    border-left: 3px solid red;
+}
+
+.form-group{
+    width: 235px;
+}
+
+.line-equal{
+    display:inline-block;
+    width:116px
+}
+
+
 /*Text*/
 h1{
     color:#005200;

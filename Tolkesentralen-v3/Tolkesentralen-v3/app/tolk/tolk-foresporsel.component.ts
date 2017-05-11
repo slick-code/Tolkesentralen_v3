@@ -1,7 +1,7 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { OppdragOgKunde, Oppdrag } from '../_models/models';
+import { Oppdrag } from '../_models/models';
 import { OppdragService, } from '../_services/oppdrag.service';
 import { TolkService, } from '../_services/tolk.service';
 
@@ -14,7 +14,7 @@ import { TolkService, } from '../_services/tolk.service';
 })
 export class TolkForesporselComponent implements OnInit {
     ID: number;
-    oppdrag: OppdragOgKunde[];
+    oppdrag: Oppdrag[];
 
     constructor(private oppdragService: OppdragService, private tolkService: TolkService) { }
 

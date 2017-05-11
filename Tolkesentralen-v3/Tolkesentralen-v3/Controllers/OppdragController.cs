@@ -54,6 +54,33 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
+        [Route("api/oppdrag/PostOppdragOgKunde")]
+        public HttpResponseMessage PostOppdragOgKunde([FromBody]OppdragOgKunde input)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool OK = repository.regTolkOppdrag(input, input.kundeID);
+                bool OK;
+                if (input != null) OK = true;
+                else OK = false;
+                
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+        [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/File")]
         public HttpResponseMessage Post(Oversettelse_VM nyOppdrag)
         {

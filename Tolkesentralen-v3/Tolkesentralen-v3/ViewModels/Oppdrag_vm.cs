@@ -28,6 +28,23 @@ namespace Tolkesentralen_v3.ViewModels
 
     }
 
+    public class OppdragOgKunde
+    {
+        public int oppdragID { get; set; }
+        public string dato { get; set; }
+        public string fraspraak { get; set; }
+        public string tilspraak { get; set; }
+        public string andreopplysninger { get; set; }
+        public string typetolk { get; set; }
+        public string oppmoteadresse { get; set; }
+        public string oppmptepostnr { get; set; }
+        public int oppmotepostnr { get; set; }
+        public string oppdragsdato { get; set; }
+        public string frakl { get; set; }
+        public string tilkl { get; set; }
+        //dato
+    }
+
     public class TolkingSendt_vm : Tolking_vm
     {
         public Tolk[] tolker { get; set; }

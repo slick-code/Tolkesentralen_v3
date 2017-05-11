@@ -15,6 +15,13 @@ export class OppdragService {
         private authenticationService: AuthenticationService) {
     }
 
+    postOppdragOgKunde(body: any) {
+        var headers = new Headers({ "Content-Type": "application/json" });
+
+        return this.http.post(this.url + "/PostOppdragogKunde", body, { headers: headers })
+            .map(returData => returData.toString())
+    }
+
     postOppdragFraKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 
