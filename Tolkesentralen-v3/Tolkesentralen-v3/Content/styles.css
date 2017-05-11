@@ -83,7 +83,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:checked {
-    background:url(../bilder/check-mark.png);
+    background:url(../bilder/check-mark-g.png);
     background-size:contain;
     background-repeat: no-repeat;
 }

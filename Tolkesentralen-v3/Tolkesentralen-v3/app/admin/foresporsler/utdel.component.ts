@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Tolk, Oppdrag } from '../../_models/models'
-import { OppdragService } from '../../_services/oppdrag.service'
-import { TempService } from '../../_services/temp.service'
-import { TolkService } from '../../_services/tolk.service'
+import { Tolk, Oppdrag } from '../../_models/models';
+import { OppdragService } from '../../_services/oppdrag.service';
+import { TempService } from '../../_services/temp.service';
+import { TolkService } from '../../_services/tolk.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class UtdelComponent {
     constructor(
         private oppdragService: OppdragService,
         private tempService: TempService,
-        private tolkService: TolkService) { }
+        private tolkService: TolkService,
+        private router: Router) { }
 
     ngOnInit() {
         this.oppdrag = this.tempService.getObject();
@@ -67,6 +69,11 @@ export class UtdelComponent {
             },
             () => {}
         );
+    }
+
+    tilbake() {
+        this.showForm = true;
+        this.router.navigate(["./admin/oppdrag"]); 
     }
 
     postForesporsler() {
