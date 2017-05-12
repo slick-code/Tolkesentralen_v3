@@ -58,6 +58,7 @@ export class BestillTolkComponent implements OnInit {
             oppmotepoststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
+        
     }
 
     ngOnInit() {

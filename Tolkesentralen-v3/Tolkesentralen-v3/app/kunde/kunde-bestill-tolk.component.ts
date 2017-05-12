@@ -49,6 +49,12 @@ export class KundeBestillTolkComponent implements OnInit {
             oppmotepoststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
+
+        this.form2.valueChanges.subscribe(data => {
+            if (this.ugyldigFelter) {
+                if (this.form2.valid) this.ugyldigFelter = false;
+            }
+        })
     }
 
     ngOnInit() {
@@ -99,12 +105,6 @@ export class KundeBestillTolkComponent implements OnInit {
 
     }
 
-    form_MarkAsTouched() {
-        Object.keys(this.form.controls).forEach(key => {
-            this.form.get(key).markAsTouched(true);
-        });
-    }
-
     form2_MarkAsTouched() {
         Object.keys(this.form2.controls).forEach(key => {
             this.form2.get(key).markAsTouched(true);
@@ -122,17 +122,8 @@ export class KundeBestillTolkComponent implements OnInit {
             return;
         }
         if (this.adresseFelt) {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
-            }
             if (!this.form2.valid) {
                 this.form2_MarkAsTouched();
-                this.ugyldigFelter = true;
-                return;
-            }
-        } else {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
                 this.ugyldigFelter = true;
                 return;
             }
