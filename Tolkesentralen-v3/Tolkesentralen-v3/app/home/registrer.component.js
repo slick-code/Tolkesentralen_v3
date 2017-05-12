@@ -63,14 +63,19 @@ var RegistrerComponent = (function () {
             return false;
         }
     };
+    RegistrerComponent.prototype.responseHandler = function (data) {
+        if (this.epostEksiterer) {
+            this.epostEksiterer = false;
+        }
+    };
     RegistrerComponent.prototype.Valider = function () {
         var _this = this;
         this.ugyldigFelter = false;
-        //if (!this.form.valid || !this.passordMatch) {
-        //    this.form_MarkAsTouched();
-        //    this.ugyldigFelter = true;
-        //    return;
-        //}
+        if (!this.form.valid || !this.passordMatch) {
+            this.form_MarkAsTouched();
+            this.ugyldigFelter = true;
+            return;
+        }
         this.showForm = false;
         this.response = "loading";
         var body = JSON.stringify(this.form.value.epost);
@@ -85,7 +90,7 @@ var RegistrerComponent = (function () {
             }
             return true;
         }, function (error) {
-            console.log("error");
+            console.log("error" + error);
             _this.avbryt();
         }, function () { });
     };
@@ -97,8 +102,6 @@ var RegistrerComponent = (function () {
     };
     RegistrerComponent.prototype.postKunde = function () {
         var _this = this;
-        console.log("POSTKUDE");
-        return;
         var ny = new models_1.Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;

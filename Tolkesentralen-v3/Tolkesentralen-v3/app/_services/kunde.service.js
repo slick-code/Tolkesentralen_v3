@@ -44,7 +44,7 @@ var KundeService = (function () {
     KundeService.prototype.SjekkOmEpostEksisterer = function (body) {
         var headers = new http_2.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url + "SjekkOmEpostEksisterer", body, { headers: headers })
-            .map(function (res) { return res.json(); });
+            .map(function (res) { return res; });
     };
     KundeService = __decorate([
         core_1.Injectable(), 
