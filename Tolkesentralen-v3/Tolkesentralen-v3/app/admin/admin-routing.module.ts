@@ -24,6 +24,7 @@
         path: '',
         component: AdminComponent,
         canActivate: [AuthGuard],
+        data: { domene: 'admin' },
         children: [
           {
             path: '',

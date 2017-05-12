@@ -23,6 +23,7 @@ var appRoutes = [
         path: '',
         component: tolk_component_1.TolkComponent,
         canActivate: [auth_guard_1.AuthGuard],
+        data: { domene: 'tolk' },
         children: [
             { path: '', redirectTo: 'tolk-mine-oppdrag', pathMatch: 'full' },
             { path: 'tolk-mine-oppdrag', component: tolk_mine_oppdrag_component_1.TolkMineOppdragComponent },

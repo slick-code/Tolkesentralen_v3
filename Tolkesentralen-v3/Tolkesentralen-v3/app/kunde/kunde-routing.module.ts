@@ -16,6 +16,7 @@ const appRoutes: Routes = [
         path: '',
         component: KundeComponent,
         canActivate: [AuthGuard],
+        data: { domene: 'kunde' },
         children: [
             { path: 'kunde-bestill-tolk', component: KundeBestillTolkComponent },
             { path: 'kunde-bestill-oversettelse', component: KundeBestillOversettelseComponent },

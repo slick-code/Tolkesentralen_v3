@@ -14,10 +14,14 @@ var AuthGuard = (function () {
     function AuthGuard(router) {
         this.router = router;
     }
-    AuthGuard.prototype.canActivate = function () {
-        if (localStorage.getItem('currentUser')) {
-            // logged in so return true
-            return true;
+    AuthGuard.prototype.canActivate = function (route, state) {
+        //let roles = route.data["role"];
+        //console.log("ROLE: "+ roles);
+        var innlogget = localStorage.getItem('currentUser');
+        if (innlogget) {
+            if (route.data["domene"] === (JSON.parse(innlogget).rolle)) {
+                return true;
+            }
         }
         // not logged in so redirect to login page
         this.router.navigate(['/login']);

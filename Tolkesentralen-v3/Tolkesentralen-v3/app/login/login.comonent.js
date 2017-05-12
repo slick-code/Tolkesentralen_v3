@@ -36,9 +36,8 @@ var LoginComponent = (function () {
         this.authService.login(body)
             .subscribe(function (retur) {
             localStorage.setItem('id', JSON.stringify(retur.id));
-            localStorage.setItem('currentUser', JSON.stringify(retur)); // service ?
+            localStorage.setItem('currentUser', JSON.stringify(retur));
             _this.router.navigate(["/" + retur.rolle]);
-            //this.router.navigate(["/admin"]); // <-- Alltid velg admin for testing
         }, function (error) { _this.loading = false; _this.error = "Feil brukernavn eller passord"; }, function () { _this.loading = false; });
     };
     LoginComponent = __decorate([

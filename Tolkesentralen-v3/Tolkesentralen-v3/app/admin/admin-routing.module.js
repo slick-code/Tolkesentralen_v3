@@ -33,6 +33,7 @@ var appRoutes = [
         path: '',
         component: admin_component_1.AdminComponent,
         canActivate: [auth_guard_1.AuthGuard],
+        data: { domene: 'admin' },
         children: [
             {
                 path: '',

@@ -25,6 +25,7 @@ var appRoutes = [
         path: '',
         component: kunde_component_1.KundeComponent,
         canActivate: [auth_guard_1.AuthGuard],
+        data: { domene: 'kunde' },
         children: [
             { path: 'kunde-bestill-tolk', component: kunde_bestill_tolk_component_1.KundeBestillTolkComponent },
             { path: 'kunde-bestill-oversettelse', component: kunde_bestill_oversettelse_component_1.KundeBestillOversettelseComponent },
