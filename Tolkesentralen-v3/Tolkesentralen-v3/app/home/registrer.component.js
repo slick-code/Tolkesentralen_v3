@@ -63,16 +63,42 @@ var RegistrerComponent = (function () {
             return false;
         }
     };
-    RegistrerComponent.prototype.postKunde = function () {
+    RegistrerComponent.prototype.Valider = function () {
         var _this = this;
         this.ugyldigFelter = false;
-        if (!this.form.valid || !this.passordMatch) {
-            this.form_MarkAsTouched();
-            this.ugyldigFelter = true;
-            return;
-        }
+        //if (!this.form.valid || !this.passordMatch) {
+        //    this.form_MarkAsTouched();
+        //    this.ugyldigFelter = true;
+        //    return;
+        //}
         this.showForm = false;
         this.response = "loading";
+        var body = JSON.stringify(this.form.value.epost);
+        this.kundeService.SjekkOmEpostEksisterer(body).subscribe(function (res) {
+            if (res.status == 202) {
+                _this.postKunde();
+                console.log("202: " + res.status);
+            }
+            else {
+                console.log("status ikke 202" + res.status);
+                _this.avbryt();
+            }
+            return true;
+        }, function (error) {
+            console.log("error");
+            _this.avbryt();
+        }, function () { });
+    };
+    RegistrerComponent.prototype.avbryt = function () {
+        this.response = "";
+        this.showForm = true;
+        this.epostEksiterer = true;
+        return;
+    };
+    RegistrerComponent.prototype.postKunde = function () {
+        var _this = this;
+        console.log("POSTKUDE");
+        return;
         var ny = new models_1.Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;

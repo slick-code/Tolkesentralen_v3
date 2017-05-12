@@ -118,6 +118,35 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
+        [System.Web.Mvc.HttpPost]
+        [Route("api/kunde/SjekkOmEpostEksisterer")]
+        public HttpResponseMessage SjekkOmEpostEksisterer([FromBody]string epost)
+        {
+            if (ModelState.IsValid)
+            {
+                bool epostErAlleredeLagret = repository.SjekkOmEpostEksisterer(epost);
+
+                if (!epostErAlleredeLagret)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.Accepted
+                    };
+                }else
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
 
 
     }

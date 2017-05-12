@@ -20,8 +20,10 @@ export class RegistrerComponent implements OnInit {
     response: string;
     underText: string;
 
+    epost: string;
+
     passordMatch: boolean;
-    
+    epostEksiterer: boolean;
 
     ugyldigFelter: boolean;
 
@@ -77,19 +79,53 @@ export class RegistrerComponent implements OnInit {
         }
     }
 
-    postKunde() {
+    responseHandler(data: any) {
+        if (this.epostEksiterer) {
+            this.epostEksiterer = false;
+        }
+    }
 
+    Valider() {
         this.ugyldigFelter = false;
         if (!this.form.valid || !this.passordMatch) {
             this.form_MarkAsTouched();
             this.ugyldigFelter = true;
             return;
         }
-       
+
         this.showForm = false;
         this.response = "loading";
         
+        var body: string = JSON.stringify(this.form.value.epost);
+        this.kundeService.SjekkOmEpostEksisterer(body).subscribe(
+            res => {
+                if (res.status == 202) {
+                    this.postKunde();
+                    console.log("202: " + res.status);
+                }
+                else {
+                    console.log("status ikke 202"+ res.status);
+                    this.avbryt();
+                }
+                
+                return true;
+            },
+            error => {
+                console.log("error"+error)
+                this.avbryt();
+            },
+            () => { }
+        );
+    }
 
+    avbryt() {
+        this.response = "";
+        this.showForm = true;
+        this.epostEksiterer = true;
+        return;
+    }
+
+    postKunde() {
         var ny = new Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
@@ -103,7 +139,7 @@ export class RegistrerComponent implements OnInit {
         ny.poststed = this.form.value.poststed;
         ny.email = this.form.value.email;
         ny.passord = this.form.value.passord;
-
+        
         var body: string = JSON.stringify(ny);
         
         this.kundeService.postKunde(body).subscribe(

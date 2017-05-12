@@ -14,6 +14,19 @@ namespace Tolkesentralen_v3.Models
     {
         DbNetcont db = new DbNetcont();
 
+        public bool SjekkOmEpostEksisterer(string epost)
+        {
+            var objekt = db.Personer.FirstOrDefault(b => b.email == epost);
+            if (objekt == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         public bool setUtilgjengelig(Utilgjengelig_ViewModel input)
         {

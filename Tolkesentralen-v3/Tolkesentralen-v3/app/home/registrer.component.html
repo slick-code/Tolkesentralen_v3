@@ -54,15 +54,18 @@
                     <label for="epost">Brukernavn</label>
                     <div class="inner-addon pleft">
                         <span class="glyphicon glyphicon-envelope"></span>
-                        <input required [ngStyle]="{'border-left': form.controls.epost.valid || !form.controls.epost.touched ? '' : '3px solid red'}" type="email" class="form-control" formControlName="epost" placeholder="Epostadresse" />
+                        <input required [ngStyle]="{'border-left': (form.controls.epost.valid || !form.controls.epost.touched) && !epostEksiterer ? '' : '3px solid red'}"   (ngModelChange)="responseHandler($event)" type="email" class="form-control" formControlName="epost" placeholder="Epostadresse" />
                     </div>
+                    <p class="alert alert-warning" [hidden]="!epostEksiterer || !form.controls.epost.touched">
+                        Det finnes allerede en bruker med gitt epost 
+                    </p>
                 </div>
 
                 <div class="form-group">
                     <label for="passord">Passord</label>
                     <div class="inner-addon pleft">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <input required [ngStyle]="{'border-left': form.controls.epost.valid || !form.controls.epost.touched ? '' : '3px solid red'}" type="password" class="form-control"  formControlName="passord" placeholder="Passord" />
+                        <input required [ngStyle]="{'border-left': form.controls.passord.valid || !form.controls.passord.touched ? '' : '3px solid red'}" type="password" class="form-control"  formControlName="passord" placeholder="Passord" />
                     </div>
                 </div>
 
@@ -87,7 +90,7 @@
         <div style="padding-top:5px;max-width:610px;">
             <hr />
             <div style="float:right;">
-                <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felt</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send skjema</button></p>
+                <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felt</span><button (click)="Valider()" class="btn btn-success btn-lg">Send skjema</button></p>
             </div>
 
         </div>
