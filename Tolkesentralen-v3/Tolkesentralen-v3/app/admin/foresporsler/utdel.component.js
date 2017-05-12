@@ -12,11 +12,13 @@ var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../../_services/oppdrag.service');
 var temp_service_1 = require('../../_services/temp.service');
 var tolk_service_1 = require('../../_services/tolk.service');
+var router_1 = require('@angular/router');
 var UtdelComponent = (function () {
-    function UtdelComponent(oppdragService, tempService, tolkService) {
+    function UtdelComponent(oppdragService, tempService, tolkService, router) {
         this.oppdragService = oppdragService;
         this.tempService = tempService;
         this.tolkService = tolkService;
+        this.router = router;
         this.Error = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
         this.underText = "Foresp�rselen er sendt! G� til Bestillinger for � se detaljer.";
         this.path = 'admin/oppdrag';
@@ -55,6 +57,10 @@ var UtdelComponent = (function () {
             _this.responseText = _this.Error;
         }, function () { });
     };
+    UtdelComponent.prototype.tilbake = function () {
+        this.showForm = true;
+        this.router.navigate(["./admin/oppdrag"]);
+    };
     UtdelComponent.prototype.postForesporsler = function () {
         var _this = this;
         this.response = "loading";
@@ -82,7 +88,7 @@ var UtdelComponent = (function () {
             templateUrl: "./app/admin/foresporsler/utdel.component.html",
             providers: [tolk_service_1.TolkService],
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService, router_1.Router])
     ], UtdelComponent);
     return UtdelComponent;
 }());
