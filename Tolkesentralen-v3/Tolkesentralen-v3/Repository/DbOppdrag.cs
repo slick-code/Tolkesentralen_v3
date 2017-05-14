@@ -238,7 +238,7 @@ namespace Tolkesentralen_v3.Models
 
         public List<Tolking_vm> listOppdragTolkSendt()
         {
-            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true).ToList();
+            List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true && O.Tolk == null ).ToList();
 
             try
             {
@@ -344,6 +344,49 @@ namespace Tolkesentralen_v3.Models
                 }
 
                 return utListe;
+            }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
+        }
+
+        public List<OppdragOgKunde> listOppdragBestillinger()
+        {
+            try
+            {
+                var dbOppdrag = db.Oppdrag.OfType<Tolking>().Where(O => O.Tolk != null).ToList();
+                var liste = new List<OppdragOgKunde>();
+                foreach (var row in dbOppdrag)
+                {
+                    var ny = new OppdragOgKunde()
+                    {
+                        dato = row.regDato.ToString("dd-MM-yyyy, HH:mm"),
+                        oppdragID = row.oppdragID,
+                        typetolk = row.typetolk,
+                        fraspraak = row.fraspraak,
+                        tilspraak = row.tilspraak,
+                        oppmoteadresse = row.oppmoteadresse,
+                        fratidspunkt = row.fratidspunkt,
+                        tiltidspunkt = row.tiltidspunkt,
+                        andreopplysninger = row.andreopplysninger,
+
+                        persId = row.kunde.persId,
+                        firma = row.kunde.firma,
+                        fornavn = row.kunde.fornavn,
+                        etternavn = row.kunde.etternavn,
+                        telefon = row.kunde.telefax,
+                        epost = row.kunde.email,
+                        adresse = row.kunde.adresse,
+                        postnr = row.kunde.poststed.postNr,
+                        poststed = row.kunde.poststed.postSted
+                    };
+                    liste.Add(ny);
+                }
+                return liste;
+
             }
             catch (Exception feil)
             {

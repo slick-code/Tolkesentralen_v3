@@ -2,68 +2,78 @@
 <div>
     <div class="col-md-offset-0">
 
-        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Bestillingsoversikt</p>
-        <p style="display: inline-block;" class="text-center" *ngIf="loading">
-            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        </p>
+        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Forespørsler tildelt én Tolk</p>
+        <loading *ngIf="loading"></loading>
 
         <hr />
-        <div>
-            <h3 style="display: inline-block;">Bestilte tolke-oppdrag</h3>
+        <div *ngIf="checkIfArrayIsEmthy(arrayOppdrag)">
+            <div>
+                <h1 style="display: inline-block;"> Bestillinger</h1>
 
+            </div>
+            <br />
+
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Mottatt</th>
+                        <th>Type</th>
+                        <th>Fra Språk</th>
+                        <th>Til Språk</th>
+                        <th>Dato</th>
+                        <th>Tid</th>
+                        <th>Oppmøtested</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let oppdrag of arrayOppdrag; let i = index">
+                    <tr>
+                        <td>{{oppdrag.dato}}</td>
+                        <td>{{oppdrag.typetolk}}</td>
+                        <td>{{arraySpraak[oppdrag.fraspraak].spraak}}</td>
+                        <td>{{arraySpraak[oppdrag.tilspraak].spraak}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+                        <td width="90px">
+                            <button style="width:90px" class="btn btn-success" (click)="btnInfoClick(i,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
+                            
+                        </td>
+                    </tr>
+                    <tr *ngIf="VisInfo(i, 0)">
+                        <td colspan="8">
+                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                                <tr><th style="width:140px">Tolk</th><td style="color:black">{{arrayOppdrag[index].oppmoteadresse}} - {{arrayOppdrag[index].oppmotepostnr}} - {{arrayOppdrag[index].oppmotepoststed}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
+                            </table>
+                            <p style="display:inline-block;margin:10px;margin-left:5px">
+                                <button style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span>  Ny utdeling</button>
+                                <button style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Gå til Tolk</button>
+                            </p>
+                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                                <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
+                                <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
+                                <tr>
+                                    <th>Melding</th>
+                                    <td>{{arrayOppdrag[index].andreopplysninger}}</td>
+                                </tr>
+                            </table>
+                            <button *ngIf="!slettErTrykket" style="margin:10px;margin-left:5px" class="btn btn-danger" (click)="btnTilSlettClick()"><span class="glyphicon glyphicon-trash"></span> Slett?</button>
+                            <p style="display:inline-block;width:220px;margin:10px;margin-left:5px" *ngIf="slettErTrykket && nr == 0">
+                                <button style="width:38%" class="btn btn-default" (click)="btnAvbrytTilSlettClick()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                                <button style="width:60%" class="btn btn-danger" (click)="slettOppdrag(oppdrag.persId, i)"><span class="glyphicon glyphicon-trash"></span> Slett for godt</button>
+                            </p> <p style="color:red;display:inline-block">{{slettText}}</p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br />
 
-        <table class="table table-bordered table-condensed">
-            <thead>
-                <tr>
-                    <th>OppdragsNr</th>
-                    <th>Tolk navn</th>
-                    <th>Type tolk</th>
-                    <th>Oppdragsdato</th>
-                    <th>Fra til kl</th>
-                    <th>Fra til Språk</th>
-                    <th>Oppmøtested</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let oppdrag of arrayOppdrag; let i = index">
-                <tr>
-                    <td>{{oppdrag.oppdragsNr}}</td>
-                    <td>{{tolk.fornavn}} - {{tolk.etternavn}} </td>
-                    <td>{{oppdrag.typetolk}}</td>
-                    <td>{{oppdrag.oppdragsdato}}</td>
-                    <td>{{oppdrag.frakl}} - {{oppdrag.tilkl}}</td>
-                    <td>{{oppdrag.fraspraak}} - {{oppdrag.tilspraak}}</td>
-                    <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.poststed}}</td>
-                    <td *ngIf="i !== index || !avbryt" width="230">
-                        <button style="width:85px" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> {{i === index && info ? "Sjul" : "Vis mer"}}</button>
-                        <button style="width:85px" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span> Endre</button>
-                        <button style="width:40px" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                    <td *ngIf="i === index && avbryt" width="205">
-                        <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
-                        <button style="width:49%" class="btn btn-default" (click)="setAvbryt(i)"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
-                    </td>
-                </tr>
-                <tr *ngIf="i === index && info">
-                    <td colspan="7">
-                        <table class="table table-bordered table-condensed table1">
-                            <tr><th style="color:orange">Bestillingsdato</th><td style="color:black">{{arrayOppdrag[index].bestillingsdato}}</td></tr>
-                            <tr><th style="color:darkorange">KundeNr</th><td style="color:black">{{arrayKunder[index].kundeNr}}</td></tr>
-                            <tr><th style="color:orange">Firma</th><td style="color:black">{{arrayKunder[index].firma}}</td></tr>
-                            <tr><th style="color:darkorange">Kontakt person</th><td style="color:black">{{arrayKunder[index].fornavn}} - {{arrayKunder[index].etternavn}}</td></tr>
-                            <tr><th style="color:orange">Telefon</th><td style="color:black">{{arrayKunder[index].telefon}}</td></tr>
-                            <tr><th style="color:darkorange">Telefax</th><td style="color:black">{{arrayKunder[index].telefax}}</td></tr>
-                            <tr><th style="color:orange">Epost</th><td style="color:black">{{arrayKunder[index].epost}}</td></tr>
-                            <tr><th style="color:darkorange">Faktura-adresse</th><td style="color:black">{{arrayKunder[index].fakturaadresse}}</td></tr>
-                            <tr><th style="color:orange">Postnr</th><td style="color:black">{{arrayKunder[index].postnr}}</td></tr>
-                            <tr><th style="color:darkorange">Poststed</th><td style="color:black">{{arrayKunder[index].poststed}}</td></tr>
-                            <tr><th style="color:orange">Melding</th><td style="color:black">{{arrayOppdrag[index].melding}}</td></tr>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 style="color:forestgreen" *ngIf="!loading && !checkIfArrayIsEmthy(arrayOppdrag)">Ingen Bestillinger</h3>
+
+
     </div>
 </div>
-<br />

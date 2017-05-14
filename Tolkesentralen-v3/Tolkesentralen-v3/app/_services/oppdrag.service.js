@@ -52,6 +52,10 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map(function (response) { return response.json(); });
     };
+    OppdragService.prototype.getGetBestillinger = function () {
+        return this.http.get(this.url + "GetBestillinger/")
+            .map(function (response) { return response.json(); });
+    };
     OppdragService.prototype.slettOppdrag = function (id) {
         return this.http.delete(this.url + id)
             .map(function (returData) { return returData.toString(); });

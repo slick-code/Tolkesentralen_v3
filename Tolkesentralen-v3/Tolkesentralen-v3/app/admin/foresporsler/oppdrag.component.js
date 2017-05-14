@@ -112,6 +112,10 @@ var OppdragComponent = (function () {
         this.tempService.setObject(oppdrag);
         this.router.navigate(['./admin/utdel']);
     };
+    OppdragComponent.prototype.fixString = function (text) {
+        //return text.split('-')[0];
+        //return text.substring(0, text.indexOf('-'));
+    };
     OppdragComponent.prototype.slettOppdrag = function (id, index) {
         var _this = this;
         this.loading = true;

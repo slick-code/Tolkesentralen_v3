@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Promise Version
 var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
+var router_1 = require('@angular/router');
 var TolkMineOppdragComponent = (function () {
-    function TolkMineOppdragComponent(oppdragService) {
+    function TolkMineOppdragComponent(oppdragService, router) {
         this.oppdragService = oppdragService;
+        this.router = router;
     }
     TolkMineOppdragComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
@@ -41,7 +43,7 @@ var TolkMineOppdragComponent = (function () {
             providers: [oppdrag_service_1.OppdragService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, router_1.Router])
     ], TolkMineOppdragComponent);
     return TolkMineOppdragComponent;
 }());

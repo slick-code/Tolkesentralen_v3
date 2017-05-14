@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Tolkesentralen_v3.Models;
+using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
 
 namespace Tolkesentralen_v3.Models    
@@ -26,12 +27,12 @@ namespace Tolkesentralen_v3.Models
             {
                 /******************* Last inn alle språk fra fil-liste til database *******************/
                 string relativePathTilListe = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Repository\SpraakListe.txt");
-                
+
                 string line;
                 StreamReader file = new StreamReader(relativePathTilListe);
                 while ((line = file.ReadLine()) != null)
                 {
-                    db.Spraak.Add(new Spraak(){ navn = line });
+                    db.Spraak.Add(new Spraak() { navn = line });
                 }
                 file.Close();
 
@@ -56,7 +57,7 @@ namespace Tolkesentralen_v3.Models
                     Salt = saltKunde,
                     firma = "Firma1",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse" 
+                    fakturaAddress = "fakAdresse"
                 };
 
                 var kunde2 = new Kunde()
@@ -90,7 +91,7 @@ namespace Tolkesentralen_v3.Models
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
-                
+
 
                 var kunde4 = new Kunde()
                 {
@@ -176,7 +177,7 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(kunde7);
                 db.SaveChanges();
 
-                
+
 
                 var admin = new Admin()
                 {
@@ -194,7 +195,7 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(admin);
                 db.SaveChanges();
 
-                
+
                 //db.Spraak.Add(spraak1);
                 //db.Spraak.Add(spraak2);
                 //db.Spraak.Add(spraak3);
@@ -244,7 +245,7 @@ namespace Tolkesentralen_v3.Models
                 var tolk4 = new Tolk()
                 {
                     fornavn = "Rambo",
-                    etternavn = "Ammok", 
+                    etternavn = "Ammok",
                     telefon = 9595995,
                     email = "rambo1@tolk.no",
                     adresse = "addresse1",
@@ -306,10 +307,9 @@ namespace Tolkesentralen_v3.Models
                 db.SaveChanges();
 
                 
-
                 var oppdrag1 = new Tolking_vm()
                 {
-                    oppdragsdato = "11-05-2017",
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"),
                     dato = "12-07-2017",
                     fraspraak = 21,
                     tilspraak = 22,
@@ -322,7 +322,7 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag2 = new Tolking_vm()
                 {
-                    oppdragsdato = "12-05-2017",
+                    oppdragsdato = DateTime.Now.AddDays(2).ToString("dd-MM-yyyy"),
                     dato = "12-07-2017",
                     fraspraak = 1,
                     tilspraak = 2,
@@ -335,7 +335,7 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag3 = new Tolking_vm()
                 {
-                    oppdragsdato = "07-05-2017",
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"),
                     dato = "12-07-2017",
                     fraspraak = 4,
                     tilspraak = 3,
@@ -348,7 +348,7 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag4 = new Tolking_vm()
                 {
-                    oppdragsdato = "07-05-2017",
+                    oppdragsdato = DateTime.Now.AddDays(4).ToString("dd-MM-yyyy"),
                     dato = "12-07-2017",
                     fraspraak = 5,
                     tilspraak = 6,
@@ -361,7 +361,7 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag5 = new Tolking_vm()
                 {
-                    oppdragsdato = "07-05-2017",
+                    oppdragsdato = DateTime.Now.AddDays(5).ToString("dd-MM-yyyy"),
                     dato = "12-07-2017",
                     fraspraak = 7,
                     tilspraak = 8,
@@ -378,6 +378,14 @@ namespace Tolkesentralen_v3.Models
                 o.regTolkOppdrag(oppdrag4, 4);
                 o.regTolkOppdrag(oppdrag5, 5);
                 o.regTolkOppdrag(oppdrag2, 6);
+                db.SaveChanges();
+
+                var de = new DbForessporsel();
+                int[] tolkId = { 9 };
+                de.regEnForesporselPåEnEllerFlereTolk(tolkId, 1);
+                //de.regEnForesporselPåEnEllerFlereTolk(tolkId, 6);
+                db.SaveChanges();
+                o.regOppdragPaaEnTolk(1, 9, "ja");
 
                 /***************************THis runs the method to register a foresler to a tolk**************************************/
                 //int[] tolkId = new int[2];

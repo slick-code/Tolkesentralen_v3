@@ -31,11 +31,11 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Bestillinger <span style="color:aquamarine;"><b> 7</b></span>
+                        Bestillinger <span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.oppdrag}}</b></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="./admin-tolk-bestilling-oversikt" routerLinkActive="active">Tolkeoppdrag</a></li>
+                        <li><a routerLink="./admin-tolk-bestilling-oversikt" routerLinkActive="active">Tolkeoppdrag <span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.oppdrag}}</b></span></a></li>
                         <li><a routerLink="./admin-oversettelse-bestilling-oversikt" routerLinkActive="active">Oversettelse</a></li>
                     </ul>
                 </li>

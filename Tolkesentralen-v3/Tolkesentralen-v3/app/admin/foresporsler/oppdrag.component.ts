@@ -142,6 +142,11 @@ export class OppdragComponent {
         this.router.navigate(['./admin/utdel']);
     }
 
+    fixString(text: any) {
+        //return text.split('-')[0];
+        //return text.substring(0, text.indexOf('-'));
+    }
+
     slettOppdrag(id: number, index: any) {
         this.loading = true;
         this.oppdragService.slettOppdrag(id)

@@ -60,6 +60,11 @@ export class OppdragService {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map((response: Response) => response.json());
     }
+    
+    getGetBestillinger(): Observable<OppdragOgKunde[]> {
+        return this.http.get(this.url + "GetBestillinger/")
+            .map((response: Response) => response.json());
+    }
 
     slettOppdrag(id: number) {
         return this.http.delete(this.url + id)

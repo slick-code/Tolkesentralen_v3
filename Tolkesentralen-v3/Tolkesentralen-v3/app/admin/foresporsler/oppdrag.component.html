@@ -24,6 +24,7 @@
                         <th>Til Språk</th>
                         <th>Dato</th>
                         <th>Tid</th>
+                        <th>Oppmøtested</th>
                     </tr>
                 </thead>
                 <tbody  *ngFor="let oppdrag of arrayOppdrag; let i = index">
@@ -34,16 +35,16 @@
                         <td>{{arraySpraak[oppdrag.tilspraak].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
                         <td width="185">
                             <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
                             <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-share-alt"></span> Utdel</button>
                         </td>
                     </tr>
                     <tr *ngIf="VisInfo(i, 0)">
-                        <td colspan="7">
+                        <td colspan="8">
                             <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
-                                <tr><th style="width:140px">Oppmoteadresse</th><td style="color:black">{{arrayOppdrag[index].oppmoteadresse}} - {{arrayOppdrag[index].oppmotepostnr}} - {{arrayOppdrag[index].oppmotepoststed}}</td></tr>
-                                <tr><th>Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
+                                <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
                                 <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
                                 <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
                                 <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
@@ -96,6 +97,7 @@
                         <th>Til Språk</th>
                         <th>Dato</th>
                         <th>Tid</th>
+                        <th>Oppmøtested</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let oppdrag of arrayOppdragSendt; let i = index">
@@ -106,16 +108,16 @@
                         <td>{{arraySpraak[oppdrag.tilspraak].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy HH:mm'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
                         <td width="185">
                             <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,1)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 1) ? "Sjul" : "Vis mer"}}</button>
                             <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-user"></span> Utdelt</button>
                         </td>
                     </tr>
                     <tr *ngIf="VisInfo(i, 1)">
-                        <td colspan="7">
+                        <td colspan="8">
                             <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
-                                <tr><th style="width:140px">Oppmoteadresse</th><td style="color:black">{{arrayOppdrag[index].oppmoteadresse}} - {{arrayOppdrag[index].oppmotepostnr}} - {{arrayOppdrag[index].oppmotepoststed}}</td></tr>
-                                <tr><th>Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
+                                <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
                                 <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
                                 <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
                                 <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>

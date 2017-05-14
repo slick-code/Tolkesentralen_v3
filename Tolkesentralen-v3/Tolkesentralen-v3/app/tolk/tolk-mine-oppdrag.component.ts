@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Oppdrag} from '../_models/models';
 import { OppdragService } from '../_services/oppdrag.service';
-
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +17,7 @@ import { OppdragService } from '../_services/oppdrag.service';
 export class TolkMineOppdragComponent implements OnInit {
     ID: number;
     oppdrag: Oppdrag[];
-    constructor(private oppdragService: OppdragService) { }
+    constructor(private oppdragService: OppdragService, private router: Router,) { }
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));

@@ -35,6 +35,9 @@ var AdminComponent = (function () {
                 case 'nye-kunder':
                     _this.counter.nyekunder = _this.element.nr;
                     break;
+                case 'bestilling':
+                    _this.counter.oppdrag = _this.element.nr;
+                    break;
             }
             _this.sum = _this.getSum();
         });

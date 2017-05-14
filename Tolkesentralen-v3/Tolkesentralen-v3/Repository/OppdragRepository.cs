@@ -19,7 +19,8 @@ namespace Tolkesentralen_v3.Repository
                 var counter = new Counter()
                 {
                     nyeoppdrag = db.Oppdrag.OfType<Tolking>().Count(),
-                    nyekunder = db.Personer.Where(r => r is Kunde && r.godkjent == 0).Count()
+                    nyekunder = db.Personer.Where(r => r is Kunde && r.godkjent == 0).Count(),
+                    oppdrag = db.Oppdrag.OfType<Tolking>().Where(r => r.Tolk != null).Count()
                 };
 
                 return counter;
