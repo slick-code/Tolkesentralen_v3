@@ -11,31 +11,25 @@ namespace Tolkesentralen_v3.Models
     public abstract class Oppdrag
     {
         [Key]
-        public int oppdragsID { get; set; }
-
+        public int oppdragID { get; set; }
         public DateTime regDato { get; set; }
-        public string spraakFra { get; set; }
-
-        public string spraakTil { get; set; }
-        public string andreOpplisning { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
+        public string andreopplysninger { get; set; }
+        public bool sendt { get; set; }
 
         public virtual Kunde kunde { get; set; }
-        public virtual Tolk Tolk { get; set; }
-
-        public bool sendt { get; set; }
+        public virtual Tolk Tolk { get; set; }  
     }
-
-
+    
     // [Table("Fremmaate")]
     public class Tolking : Oppdrag
     {
-
-
-        public string oppdragType { get; set; }
-        public string oppdragsAddres { get; set; }
-        public string oppdragsDato { get; set; }
-        public string tidFra { get; set; }
-        public string tidTil { get; set; }
+        public string typetolk { get; set; }
+        public string oppmoteadresse { get; set; }
+        public DateTime fratidspunkt { get; set; }
+        public DateTime tiltidspunkt { get; set; }
+        public virtual Poststed poststed { get; set; }
     }
 
     // [Table("Oversettelse")]
@@ -53,21 +47,18 @@ namespace Tolkesentralen_v3.Models
         //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.None)]
         public int foresporselID { get; set; }
 
-        public int oppdragsID { get; set; }
-        public DateTime regDato { get; set;}
-        public string spraakFra { get; set; }
+        public int oppdragID { get; set; }
+        public DateTime regDato { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
+        public string andreopplysninger { get; set; }
 
-        public string spraakTil { get; set; }
-        public string oppdragType { get; set; }
-        public string andreOpplisning { get; set; }
+        public string typetolk { get; set; }
+        public string oppmoteadresse { get; set; }
+        public DateTime fratidspunkt { get; set; }
+        public DateTime tiltidspunkt { get; set; }
+        public virtual Poststed poststed { get; set; }
 
-
-        public string oppdragsAddres { get; set; }
-        public string oppdragsDato { get; set; }
-        public string tidFra { get; set; }
-        public string tidTil { get; set; }
-
-        // public virtual Kunde kunde { get; set; }
         public virtual List<Tolk> Tolk { get; set; }
 
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Oppdrag } from '../../_models/models'
+import { OppdragOgKunde } from '../../_models/models'
+import { Spraak } from '../../_models/spraak'
 import { OppdragService } from '../../_services/oppdrag.service'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { TempService } from '../../_services/temp.service'
@@ -12,13 +13,15 @@ import { SelectivePreloadingStrategy } from '../../_services/selective-preloadin
     templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
 })
 export class OppdragComponent {
-    arrayOppdrag: Oppdrag[];
-    arrayOppdragSendt: Oppdrag[];
+    arrayOppdrag: OppdragOgKunde[];
+    arrayOppdragSendt: OppdragOgKunde[];
+    arraySpraak: any[];
     nr: number;
     index: number; // valgt index i array
     count: number;
     element: NavbarElement;
     modules: string[];
+    d: Date = new Date(1494576900000);
 
     bruker: any;
 
@@ -36,37 +39,52 @@ export class OppdragComponent {
         private route: ActivatedRoute,
         private tempService: TempService,
         private router: Router) {
-            this.modules = preloadStrategy.preloadedModules;
+        this.modules = preloadStrategy.preloadedModules;
+        this.arraySpraak = new Spraak().liste;
+
     }
 
-    btnClick(index: number, nr: number, btn: number) {
+    ngOnInit() {
+        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
+        this.count = 77;
+        this.loading = true
+        this.getNyeOppdrag();
+        this.getSendteOppdrag();
+        console.info("This is console.indo");
+
+        if (window.performance) {
+            console.log("window.performance work's fine on this browser");
+        }
+        if (performance.navigation.type == 1) {
+            console.log("This page is reloaded");
+        } else {
+            console.log("This page is not reloaded");
+        }
+    
+    }
+
+    btnTilSlettClick() {
+        this.slettErTrykket = true;
+    }
+
+    btnAvbrytTilSlettClick() {
+        this.slettErTrykket = false;
+    }
+
+    btnInfoClick(index: number, nr: number) {
+        console.log("INFOOO " + index + " , " + nr);
         if (this.index == index && this.nr == nr) {
-            if (btn == 1 && this.infoErTrykket) {   
-                // Gå videre
-            } else {
-                this.SetDefault();
-                return;
-            }
+            this.SetDefault();
+        } else {
+            this.index = index;
+            this.nr = nr;
+            this.infoErTrykket = true;
         }
-        this.index = index;
-        this.nr = nr;
-        this.infoErTrykket = true;
-        if (btn == 1) {
-            this.slettErTrykket = true; 
-        } 
-        
-    }
-
-    VisInfo(index: number, nr: number) {
-        if (this.index == index && this.nr == nr && this.infoErTrykket) {
-            return true;
-        }
-        return false;
     }
     
 
-    VisSlett(index: number, nr: number) {
-        if (this.index == index && this.nr == nr && this.slettErTrykket) {
+    VisInfo(index: number, nr: number) {
+        if (this.index == index && this.nr == nr && this.infoErTrykket) {
             return true;
         }
         return false;
@@ -80,13 +98,7 @@ export class OppdragComponent {
         this.nr = -1;
     }
 
-    ngOnInit() {
-        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
-        this.count = 77;
-        this.getNyeOppdrag();
-        this.getSendteOppdrag();
-        //this.loading = true
-    }
+    
 
     checkIfArrayIsEmthy(array: any) {
         if(array == null) return false;
@@ -94,16 +106,28 @@ export class OppdragComponent {
         return true;
     }
 
+    fix(jsonDate: any) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    }
+
+    updateNavBar() {
+        this.element = new NavbarElement();
+        this.element.nr = this.arrayOppdrag.length;
+        this.element.element = 'oppdrag';
+        this.dataService.updateData(this.element);
+    }
+
     getNyeOppdrag() {
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(oppdrag => {
                 this.arrayOppdrag = oppdrag;
-                this.element = new NavbarElement();
-                this.element.nr = this.arrayOppdrag.length;
-                this.element.element = 'oppdrag';
-                this.dataService.updateData(this.element);
-                this.loading = false;
-            }); 
+                this.updateNavBar();
+            },
+            error => {
+            },
+            () => { this.loading = false;}
+            );
     }
 
     getSendteOppdrag() {
@@ -113,8 +137,22 @@ export class OppdragComponent {
             });
     }
 
-    onUtdel(oppdrag: Oppdrag){ 
+    onUtdel(oppdrag: OppdragOgKunde){ 
         this.tempService.setObject(oppdrag);
         this.router.navigate(['./admin/utdel']);
+    }
+
+    slettOppdrag(id: number, index: any) {
+        this.loading = true;
+        this.oppdragService.slettOppdrag(id)
+            .subscribe(response => {
+                this.SetDefault();
+                this.arrayOppdrag.splice(index, 1);
+                this.updateNavBar();
+            },
+            error => {
+            },
+            () => { this.loading = false; }
+          );
     }
 }

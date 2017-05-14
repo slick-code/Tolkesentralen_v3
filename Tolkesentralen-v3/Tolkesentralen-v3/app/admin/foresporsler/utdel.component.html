@@ -2,12 +2,13 @@
 
 
 <div *ngIf="showForm">
-    <br />
+    <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Utvalg av tolker med språk <b>{{oppdrag !== undefined  ? getSpraak(oppdrag.fraspraak): "null"}}</b> og <b>{{oppdrag !== undefined ? getSpraak(oppdrag.tilspraak): "null"}}</b></p>
+    <hr />
     <div>
-    <h3 >Utvalg tolker </h3>
-    <p><span class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.fraspraak}} og {{oppdrag.tilspraak}} </p> 
+    <h1 >Velg Tolk</h1>
+       <br />
     </div>
-    <br />
+    
 
     
     <div style="width:440px;">
@@ -26,7 +27,7 @@
                     <td>
                         <table>
                             <tr>
-                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.tlf}}</p></td>
+                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.telefon}}</p></td>
               
                         </table>
                     </td>

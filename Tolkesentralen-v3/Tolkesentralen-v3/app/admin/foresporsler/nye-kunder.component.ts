@@ -15,12 +15,14 @@ export class NyeKunderComponent {
    index: number;
    slett: boolean;
    default: boolean;
+   loading: boolean;
 
     constructor(
         private service: KundeService,
         private dataService: DataService) { }
 
     ngOnInit() {
+        
         this.getKunder();
     }
 
@@ -67,26 +69,36 @@ export class NyeKunderComponent {
     }
 
     godkjennKunde(index: any, kundeID: number) {
+        this.loading = true;
         this.service.godkjennKunde(kundeID).subscribe(
             retur => {
                 this.arrayNyeKunder.splice(index, 1);
                 this.updateNavBar();
             },
-            error => console.log("Beklager PUT, en feil har oppstått - " + error),
-            () => console.log("ferdig post-api/bestilling")
+            error => {
+            },
+            () => { this.loading = false;}
         );
     }
 
     slettKunde(index: any, kundeID: number) {
-        console.log("kkkkkk");
+        this.loading = true;
         this.service.slettKunde(kundeID).subscribe(
             retur => {
                 this.arrayNyeKunder.splice(index, 1);
+                this.slett = false;
                 this.updateNavBar();
             },
-            error => console.log("Beklager PUT, en feil har oppstått - " + error),
-            () => console.log("ferdig post-api/bestilling")
+            error => {
+            },
+            () => { this.loading = false; }
         );
+    }
+
+    checkIfArrayIsEmthy(array: any) {
+        if (array == null) return false;
+        if (array.length == 0) return false;
+        return true;
     }
     
 }

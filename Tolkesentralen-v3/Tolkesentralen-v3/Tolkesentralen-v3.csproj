@@ -184,6 +184,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Repository\SpraakListe.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -213,6 +214,7 @@
     <Compile Include="Models\Spraak.cs" />
     <Compile Include="Models\Utilgjengelig.cs" />
     <Compile Include="Models\Tolk.cs" />
+    <Compile Include="Repository\Class1.cs" />
     <Compile Include="Repository\DbForessporsel.cs" />
     <Compile Include="Repository\DbOppdrag.cs" />
     <Compile Include="Repository\DbOversettelse.cs" />
@@ -314,6 +316,7 @@
     <TypeScriptCompile Include="app\_services\kunde.service.ts" />
     <TypeScriptCompile Include="app\_services\oppdrag.service.ts" />
     <TypeScriptCompile Include="app\_services\oversettelse.service.ts" />
+    <TypeScriptCompile Include="app\_services\praktisk.service.ts" />
     <TypeScriptCompile Include="app\_services\selective-preloading-strategy.ts" />
     <TypeScriptCompile Include="app\_services\temp.service.ts" />
     <TypeScriptCompile Include="app\_services\tolk.service.ts" />

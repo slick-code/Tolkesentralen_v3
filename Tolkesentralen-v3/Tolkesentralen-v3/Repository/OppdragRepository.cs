@@ -44,15 +44,14 @@ namespace Tolkesentralen_v3.Repository
                         var oppdrag = new Tolking_vm()
                         {
                             kundeID = row.kunde.persId,
-                            oppdragID = row.oppdragsID,
-                            typetolk = row.oppdragType,
-                            fraspraak = row.spraakFra,
-                            tilspraak = row.spraakTil,
-                            sted = row.oppdragsAddres,
-                            oppdragsdato = row.oppdragsDato,
-                            frakl = row.tidFra,
-                            tilkl = row.tidTil,
-                            andreopplysninger = row.andreOpplisning
+                            oppdragID = row.oppdragID,
+                            typetolk = row.typetolk,
+                            fraspraak = row.fraspraak,
+                            tilspraak = row.tilspraak,
+                            oppmoteadresse = row.oppmoteadresse,
+                            fratidspunkt = row.fratidspunkt,
+                            tiltidspunkt = row.tiltidspunkt,
+                            andreopplysninger = row.andreopplysninger
                         };
                         vmListe.Add(oppdrag);
                     }
@@ -81,15 +80,14 @@ namespace Tolkesentralen_v3.Repository
                         var oppdrag = new Tolking_vm()
                         {
                             kundeID = row.kunde.persId,
-                            oppdragID = row.oppdragsID,
-                            typetolk = row.oppdragType,
-                            fraspraak = row.spraakFra,
-                            tilspraak = row.spraakTil,
-                            sted = row.oppdragsAddres,
-                            oppdragsdato = row.oppdragsDato,
-                            frakl = row.tidFra,
-                            tilkl = row.tidTil,
-                            andreopplysninger = row.andreOpplisning
+                            oppdragID = row.oppdragID,
+                            typetolk = row.typetolk,
+                            fraspraak = row.fraspraak,
+                            tilspraak = row.tilspraak,
+                            oppmoteadresse = row.oppmoteadresse,
+                            fratidspunkt = row.fratidspunkt,
+                            tiltidspunkt = row.tiltidspunkt,
+                            andreopplysninger = row.andreopplysninger
                         };
                         vmListe.Add(oppdrag);
                     }

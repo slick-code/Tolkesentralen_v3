@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 import { AuthenticationService } from '../_services/auth.service';
-import { Oppdrag, Oversettelse, OppdragOgKunde } from '../_models/models';
+import { Oppdrag, OppdragOgKunde } from '../_models/models';
 
 @Injectable()
 export class OppdragService {
@@ -15,15 +15,15 @@ export class OppdragService {
         private authenticationService: AuthenticationService) {
     }
 
+
+
     postOppdragOgKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 
         return this.http.post(this.url + "/PostOppdragogKunde", body, { headers: headers })
             .map(returData => returData.toString())
     }
-
-    
-
+   
     postOppdragFraKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });
 
@@ -31,12 +31,12 @@ export class OppdragService {
             .map(returData => returData.toString())
     }
 
-    getUbehandleOppdrag(): Observable<Oppdrag[]> {
+    getUbehandleOppdrag(): Observable<OppdragOgKunde[]> {
         return this.http.get(this.url +"GetUbehandlet")
             .map((response: Response) => response.json());
     }
 
-    getBehandleOppdrag(): Observable<Oppdrag[]> {
+    getBehandleOppdrag(): Observable<OppdragOgKunde[]> {
         return this.http.get(this.url + "GetBehandlet")
             .map((response: Response) => response.json());
     }
@@ -59,5 +59,10 @@ export class OppdragService {
     getForesposelSendt(): Observable<Oppdrag[]> {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map((response: Response) => response.json());
+    }
+
+    slettOppdrag(id: number) {
+        return this.http.delete(this.url + id)
+            .map(returData => returData.toString())
     }
 }

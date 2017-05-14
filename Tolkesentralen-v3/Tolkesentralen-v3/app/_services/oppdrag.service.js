@@ -52,6 +52,10 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map(function (response) { return response.json(); });
     };
+    OppdragService.prototype.slettOppdrag = function (id) {
+        return this.http.delete(this.url + id)
+            .map(function (returData) { return returData.toString(); });
+    };
     OppdragService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])

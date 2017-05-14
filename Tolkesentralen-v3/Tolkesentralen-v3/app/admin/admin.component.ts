@@ -29,6 +29,7 @@ export class AdminComponent  {
     }
 
     getUpdate() {
+        console.log("ADMIN getUpdate()");
         this.dataService.getData().subscribe(data => {
             this.temp = data;
             this.element = this.temp;

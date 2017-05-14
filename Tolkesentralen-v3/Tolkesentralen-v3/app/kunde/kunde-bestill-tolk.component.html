@@ -119,5 +119,6 @@
 
 <div *ngIf="!showForm">
     <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
-    <div *ngIf="response !== 'loading'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
+    <div *ngIf="response !== 'loading' && response !== 'success'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
+    <div *ngIf="response === 'success'" align="center"><h3><button (click)="tilBestilling()" class="btn btn-success btn-lg">Trykk her</button></h3></div>
 </div>

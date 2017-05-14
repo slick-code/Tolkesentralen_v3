@@ -13,26 +13,25 @@ var oppdrag_service_1 = require('../../_services/oppdrag.service');
 var temp_service_1 = require('../../_services/temp.service');
 var tolk_service_1 = require('../../_services/tolk.service');
 var router_1 = require('@angular/router');
+var spraak_1 = require('../../_models/spraak');
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService, tolkService, router) {
         this.oppdragService = oppdragService;
         this.tempService = tempService;
         this.tolkService = tolkService;
         this.router = router;
-        this.Error = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
-        this.underText = "Foresp�rselen er sendt! G� til Bestillinger for � se detaljer.";
         this.path = 'admin/oppdrag';
+        this.oppdrag = this.tempService.getObject();
     }
     UtdelComponent.prototype.ngOnInit = function () {
-        this.oppdrag = this.tempService.getObject();
-        this.hentTolkmedGittSpraak();
         if (this.oppdrag == null) {
-            console.log("oppdrag er null");
+            this.router.navigate(['./admin/oppdrag']);
+            return;
         }
-        else {
-            console.log('TEM -> ' + this.tempService.getObject());
-            console.log(this.oppdrag.fraspraak + " -> " + this.oppdrag.tilspraak);
-        }
+        this.hentTolkmedGittSpraak();
+    };
+    UtdelComponent.prototype.getSpraak = function (i) {
+        return new spraak_1.Spraak().liste[i].spraak;
     };
     UtdelComponent.prototype.setAllChecked = function () {
         this.allChecked = !this.allChecked;
@@ -45,16 +44,19 @@ var UtdelComponent = (function () {
     };
     UtdelComponent.prototype.hentTolkmedGittSpraak = function () {
         var _this = this;
+        console.log("hentTolkmedGittSpraak BLIR KANL");
         this.showForm = false;
         this.response = "loading";
-        var body = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
+        var body = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
         this.tolkService.getTolkMedSpraak(body).subscribe(function (retur) {
             _this.showForm = true;
             _this.response = "";
+            _this.responseText = "Forespørselen er sendt! Gå til Bestillinger for å se detaljer.";
             _this.arrayTolk = retur;
         }, function (error) {
             _this.response = "error";
-            _this.responseText = _this.Error;
+            _this.responseText = "Ooops, beklager..";
+            _this.underText = "En feil oppsto og handlingen ble avbrutt!";
         }, function () { });
     };
     UtdelComponent.prototype.tilbake = function () {
@@ -77,10 +79,12 @@ var UtdelComponent = (function () {
         var body = JSON.stringify({ tolkArrey: tempArreyTolkID, oppdragId: this.oppdrag.oppdragID });
         this.tolkService.postForesposler(body).subscribe(function (retur) {
             _this.response = "success";
-            _this.responseText = "Success!";
+            _this.responseText = "Success! Forespørselen er utdelt.";
+            _this.underText = "Gå tilbake for å se detaljer.";
         }, function (error) {
             _this.response = "error";
-            _this.responseText = _this.Error;
+            _this.responseText = "Ooops, beklager..";
+            _this.underText = "En feil oppsto og handlingen ble avbrutt!";
         }, function () { });
     };
     UtdelComponent = __decorate([

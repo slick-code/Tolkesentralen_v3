@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Tolkesentralen_v3.Models;
@@ -23,7 +24,18 @@ namespace Tolkesentralen_v3.Models
 
             try
             {
+                /******************* Last inn alle språk fra fil-liste til database *******************/
+                string relativePathTilListe = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Repository\SpraakListe.txt");
                 
+                string line;
+                StreamReader file = new StreamReader(relativePathTilListe);
+                while ((line = file.ReadLine()) != null)
+                {
+                    db.Spraak.Add(new Spraak(){ navn = line });
+                }
+                file.Close();
+
+
 
                 db.Poststeder.Add(new Poststed() { postNr = 2050, postSted = "Jessheim" });
                 db.Poststeder.Add(new Poststed() { postNr = 2060, postSted = "Gardermoen" });
@@ -35,7 +47,7 @@ namespace Tolkesentralen_v3.Models
                 var kunde = new Kunde() {
                     fornavn = "Emilie",
                     etternavn = "Nice",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "kunde@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -43,7 +55,6 @@ namespace Tolkesentralen_v3.Models
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse" 
                 };
@@ -52,7 +63,7 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "Arock",
                     etternavn = "Star",
-                    tlf = 77734969,
+                    telefon = 77734969,
                     email = "rockstar@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -60,7 +71,6 @@ namespace Tolkesentralen_v3.Models
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
@@ -69,7 +79,7 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "Franz",
                     etternavn = "Jeger",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "jeger@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -77,41 +87,39 @@ namespace Tolkesentralen_v3.Models
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
+                
 
                 var kunde4 = new Kunde()
                 {
                     fornavn = "Bob",
                     etternavn = "Marley",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "bob@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
-                    godkjent = 0,
+                    godkjent = 1,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
 
                 var kunde5 = new Kunde()
                 {
-                    fornavn = "Rassmus",
-                    etternavn = "M",
-                    tlf = 9595995,
+                    fornavn = "The",
+                    etternavn = "Don",
+                    telefon = 9595995,
                     email = "rassmus@kunde.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
-                    godkjent = 0,
+                    godkjent = 1,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
@@ -120,15 +128,31 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "Rambo",
                     etternavn = "Ammok",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "rambo@kunde.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 1,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Firma1",
+                    telefax = 999999,
+                    fakturaAddress = "fakAdresse"
+                };
+
+
+                var kunde7 = new Kunde()
+                {
+                    fornavn = "Albert",
+                    etternavn = "Einstein",
+                    telefon = 9595995,
+                    email = "alberit@einstein.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
-                    kontaktperson = "Kontaktperson",
                     telefax = 999999,
                     fakturaAddress = "fakAdresse"
                 };
@@ -149,6 +173,7 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(kunde4);
                 db.Personer.Add(kunde5);
                 db.Personer.Add(kunde6);
+                db.Personer.Add(kunde7);
                 db.SaveChanges();
 
                 
@@ -157,7 +182,7 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "AdminFornavn",
                     etternavn = "AdminEtternavn",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "admin@admin.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -169,32 +194,7 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(admin);
                 db.SaveChanges();
 
-                var spraak1 = new Spraak()
-                {
-
-                    navn = "Norsk"
-                    
-                };
-                var spraak2 = new Spraak()
-                {
-
-                    navn = "Somalisk"
-
-                };
-                var spraak3 = new Spraak()
-                {
-
-                    navn = "Lugandisk"
-
-                };
-
-                var spraak4 = new Spraak()
-                {
-
-                    navn = "Afganisk"
-
-                };
-
+                
                 //db.Spraak.Add(spraak1);
                 //db.Spraak.Add(spraak2);
                 //db.Spraak.Add(spraak3);
@@ -204,9 +204,9 @@ namespace Tolkesentralen_v3.Models
 
                 var tolk1 = new Tolk()
                 {
-                    fornavn = "TolkFornavn",
-                    etternavn = "TolkEtternavn",
-                    tlf = 9595995,
+                    fornavn = "Fredrik",
+                    etternavn = "Hansen",
+                    telefon = 9595995,
                     email = "tolk@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -219,7 +219,7 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "Lars",
                     etternavn = "Flexnes",
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "tolk2@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -230,9 +230,9 @@ namespace Tolkesentralen_v3.Models
 
                 var tolk3 = new Tolk()
                 {
-                    fornavn = "Bjarne",
-                    etternavn = "Tolk",
-                    tlf = 9595995,
+                    fornavn = "Ine",
+                    etternavn = "Tolknes",
+                    telefon = 9595995,
                     email = "tolk3@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
@@ -245,8 +245,22 @@ namespace Tolkesentralen_v3.Models
                 {
                     fornavn = "Rambo",
                     etternavn = "Ammok", 
-                    tlf = 9595995,
+                    telefon = 9595995,
                     email = "rambo1@tolk.no",
+                    adresse = "addresse1",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    //spraak = {}
+                };
+
+                var tolk5 = new Tolk()
+                {
+                    fornavn = "Harald",
+                    etternavn = "Lystad",
+                    telefon = 9595995,
+                    email = "h@tolk.no",
                     adresse = "addresse1",
                     regDato = DateTime.Now,
                     godkjent = 0,
@@ -259,31 +273,27 @@ namespace Tolkesentralen_v3.Models
                 tolk2.poststed = jessheim;
                 tolk3.poststed = jessheim;
                 tolk4.poststed = jessheim;
-                //db.SaveChanges();
 
                 tolk1.spraak = new List<Spraak>();
                 tolk2.spraak = new List<Spraak>();
                 tolk3.spraak = new List<Spraak>();
                 tolk4.spraak = new List<Spraak>();
-
-
-                tolk1.spraak.Add(spraak2);
-                tolk1.spraak.Add(spraak3);
-                tolk1.spraak.Add(spraak4);
-
-                tolk2.spraak.Add(spraak2);
-                tolk2.spraak.Add(spraak3);
-                tolk2.spraak.Add(spraak4);
-
-                //tolk2.spraak.Add(spraak1);
-                //tolk2.spraak.Add(spraak2);
-
-                tolk3.spraak.Add(spraak2);
-                tolk3.spraak.Add(spraak3);
-                tolk3.spraak.Add(spraak4);
-
-                tolk4.spraak.Add(spraak1);
-                tolk4.spraak.Add(spraak2);
+                for (int i = 1; i < 10; i++)
+                {
+                    tolk1.spraak.Add(db.Spraak.Find(i));
+                }
+                for (int i = 1; i < 10; i++)
+                {
+                    tolk2.spraak.Add(db.Spraak.Find(i));
+                }
+                for (int i = 1; i < 20; i++)
+                {
+                    tolk3.spraak.Add(db.Spraak.Find(i));
+                }
+                for (int i = 20; i < 40; i++)
+                {
+                    tolk4.spraak.Add(db.Spraak.Find(i));
+                }
 
                 db.SaveChanges();
 
@@ -295,21 +305,17 @@ namespace Tolkesentralen_v3.Models
 
                 db.SaveChanges();
 
-
-
-
-                //DateTime localDate = DateTime.Now;
-
+                
 
                 var oppdrag1 = new Tolking_vm()
                 {
                     oppdragsdato = "11-05-2017",
                     dato = "12-07-2017",
-                    fraspraak = "Spansk",
-                    tilspraak = "Norsk",
+                    fraspraak = 21,
+                    tilspraak = 22,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
-                    sted = "HIOA pilestredet 35",
+                    oppmoteadresse = "HIOA pilestredet 35",
                     frakl = "13:15",
                     tilkl = "14:15"
                 };
@@ -318,11 +324,11 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = "12-05-2017",
                     dato = "12-07-2017",
-                    fraspraak = "Italiensk",
-                    tilspraak = "Norsk",
+                    fraspraak = 1,
+                    tilspraak = 2,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Fremmedmøte",
-                    sted = "HIOA pilestredet 35",
+                    oppmoteadresse = "HIOA pilestredet 35",
                     frakl = "10:15",
                     tilkl = "12:15"
                 };
@@ -331,11 +337,11 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = "07-05-2017",
                     dato = "12-07-2017",
-                    fraspraak = "Fransk",
-                    tilspraak = "Norsk",
+                    fraspraak = 4,
+                    tilspraak = 3,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
-                    sted = "HIOA pilestredet 35",
+                    oppmoteadresse = "HIOA pilestredet 35",
                     frakl = "11:15",
                     tilkl = "13:15"
                 };
@@ -344,11 +350,11 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = "07-05-2017",
                     dato = "12-07-2017",
-                    fraspraak = "Fransk",
-                    tilspraak = "Norsk",
+                    fraspraak = 5,
+                    tilspraak = 6,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
-                    sted = "HIOA pilestredet 35",
+                    oppmoteadresse = "HIOA pilestredet 35",
                     frakl = "11:15",
                     tilkl = "13:15"
                 };
@@ -357,20 +363,21 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = "07-05-2017",
                     dato = "12-07-2017",
-                    fraspraak = "Fransk",
-                    tilspraak = "Norsk",
+                    fraspraak = 7,
+                    tilspraak = 8,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
-                    sted = "HIOA pilestredet 35",
+                    oppmoteadresse = "HIOA pilestredet 35",
                     frakl = "11:15",
                     tilkl = "13:15"
                 };
                 var o = new DbOppdrag();
-                o.regTolkOppdrag(oppdrag1, 1);
-                o.regTolkOppdrag(oppdrag2, 1);
-                o.regTolkOppdrag(oppdrag3, 1);
-                o.regTolkOppdrag(oppdrag4, 1);
-                o.regTolkOppdrag(oppdrag5, 1);
+                o.regTolkOppdrag(oppdrag1, 4);
+                o.regTolkOppdrag(oppdrag2, 5);
+                o.regTolkOppdrag(oppdrag3, 6);
+                o.regTolkOppdrag(oppdrag4, 4);
+                o.regTolkOppdrag(oppdrag5, 5);
+                o.regTolkOppdrag(oppdrag2, 6);
 
                 /***************************THis runs the method to register a foresler to a tolk**************************************/
                 //int[] tolkId = new int[2];

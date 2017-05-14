@@ -102,8 +102,8 @@ namespace Tolkesentralen_v3.Controllers
                 //sted = "Jessheim",
                 frakl = "13:00",
                 typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
+                fraspraak = 1,
+                tilspraak = 2
             };
             liste.Add(output);
 

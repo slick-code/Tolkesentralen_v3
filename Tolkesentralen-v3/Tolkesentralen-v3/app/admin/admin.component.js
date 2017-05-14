@@ -21,6 +21,7 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.getUpdate = function () {
         var _this = this;
+        console.log("ADMIN getUpdate()");
         this.dataService.getData().subscribe(function (data) {
             _this.temp = data;
             _this.element = _this.temp;

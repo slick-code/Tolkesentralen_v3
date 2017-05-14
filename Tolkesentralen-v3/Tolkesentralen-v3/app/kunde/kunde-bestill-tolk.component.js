@@ -13,10 +13,13 @@ var models_1 = require('../_models/models');
 var spraak_1 = require('../_models/spraak');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
 var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var KundeBestillTolkComponent = (function () {
-    function KundeBestillTolkComponent(service, fb) {
+    function KundeBestillTolkComponent(service, fb, router) {
+        var _this = this;
         this.service = service;
         this.fb = fb;
+        this.router = router;
         this.form = fb.group({
             frakl: [],
             tilkl: [],
@@ -28,6 +31,12 @@ var KundeBestillTolkComponent = (function () {
             oppmotepoststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
+        this.form2.valueChanges.subscribe(function (data) {
+            if (_this.ugyldigFelter) {
+                if (_this.form2.valid)
+                    _this.ugyldigFelter = false;
+            }
+        });
     }
     KundeBestillTolkComponent.prototype.ngOnInit = function () {
         this.showForm = true;
@@ -73,12 +82,6 @@ var KundeBestillTolkComponent = (function () {
         else
             this.validerSpraak = true;
     };
-    KundeBestillTolkComponent.prototype.form_MarkAsTouched = function () {
-        var _this = this;
-        Object.keys(this.form.controls).forEach(function (key) {
-            _this.form.get(key).markAsTouched(true);
-        });
-    };
     KundeBestillTolkComponent.prototype.form2_MarkAsTouched = function () {
         var _this = this;
         Object.keys(this.form2.controls).forEach(function (key) {
@@ -88,6 +91,9 @@ var KundeBestillTolkComponent = (function () {
     KundeBestillTolkComponent.prototype.tilbake = function () {
         this.showForm = true;
     };
+    KundeBestillTolkComponent.prototype.tilBestilling = function () {
+        this.router.navigate(["/kunde/kunde-list-alle-tolke-bestillinger"]);
+    };
     KundeBestillTolkComponent.prototype.postKunde = function (navn) {
         var _this = this;
         this.ugyldigFelter = false;
@@ -96,18 +102,8 @@ var KundeBestillTolkComponent = (function () {
             return;
         }
         if (this.adresseFelt) {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
-            }
             if (!this.form2.valid) {
                 this.form2_MarkAsTouched();
-                this.ugyldigFelter = true;
-                return;
-            }
-        }
-        else {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
                 this.ugyldigFelter = true;
                 return;
             }
@@ -132,7 +128,7 @@ var KundeBestillTolkComponent = (function () {
         this.service.postOppdragFraKunde(body).subscribe(function (retur) {
             _this.response = "success";
             _this.responseText = "Takk for din bestilling!";
-            _this.underText = "";
+            _this.underText = "Se Mine Bestillinger..";
         }, function (error) {
             _this.response = "error";
             _this.responseText = "Ingen kontakt med server";
@@ -145,7 +141,7 @@ var KundeBestillTolkComponent = (function () {
             providers: [oppdrag_service_1.OppdragService],
             styles: ['.error {color:red;}']
         }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder, router_1.Router])
     ], KundeBestillTolkComponent);
     return KundeBestillTolkComponent;
 }());

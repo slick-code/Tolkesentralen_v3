@@ -1,7 +1,9 @@
+<p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Kunde-forespørsler som venter behandling</p>
+<loading *ngIf="loading"></loading>
+<hr />
 
-<div>
-<p><span class="glyphicon glyphicon-info-sign"></span> Kunde-forespørsler som venter behandling</p>
-    <hr />
+
+<div *ngIf="checkIfArrayIsEmthy(arrayNyeKunder)">
     <br />
     
     <table class="table table-bordered table-condensed">
@@ -9,7 +11,7 @@
         <thead>
             <tr>
                 <th>Firma</th>
-                <th>Kontakt-person</th>
+                <th>Kontaktperson</th>
                 <th>Telefon</th>
                 <th>Telefax</th>
                 <th>Faktura-adresse</th>
@@ -22,18 +24,19 @@
             <tr>
                 <td>{{kunde.firma}}</td>
                 <td>{{kunde.fornavn}} {{kunde.etternavn}}</td>
-                <td>{{kunde.tlf}}</td>
+                <td>{{kunde.telefon}}</td>
                 <td>{{kunde.telefax}}</td>
                 <td>{{kunde.fakturaadresse}}</td>
                 <td>{{kunde.postnr}} {{kunde.poststed}}</td>
                 <td>{{kunde.email}}</td>
-                <td *ngIf="!setTilSlettErTrykket(i)" width="190">
-                    <button  class="btn btn-primary" (click)="godkjennKunde(i, kunde.persId)"><span class="glyphicon glyphicon-thumbs-up"></span> Legg til kunde</button>
-                    <button style="width:40px" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-trash"></span></button>
+                <td *ngIf="!setTilSlettErTrykket(i)" width="230">
+                    <button style="width:38%" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-thumbs-down"></span> Fjern</button>
+                    <button class="btn btn-primary" (click)="godkjennKunde(i, kunde.persId)"><span class="glyphicon glyphicon-thumbs-up"></span> Legg til kunde</button>
                 </td>
-                <td *ngIf="setTilSlettErTrykket(i)" width="190">
-                    <button (click)="slettKunde(i, kunde.persId)" style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
-                    <button style="width:49%" class="btn btn-default" (click)="setDefault()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                <td *ngIf="setTilSlettErTrykket(i)" width="230">
+                    <button style="width:45%" class="btn btn-default" (click)="setDefault()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                    <button (click)="slettKunde(i, kunde.persId)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett kunde</button>
+                    
                 </td>
             </tr>
         </tbody>
@@ -41,3 +44,5 @@
     
 
 </div>
+
+<h1 style="color:forestgreen" *ngIf="!loading && !checkIfArrayIsEmthy(arrayNyeKunder)">Ingen nye kunder</h1>

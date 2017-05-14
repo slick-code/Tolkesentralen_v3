@@ -6,29 +6,32 @@ using Tolkesentralen_v3.Models;
 
 namespace Tolkesentralen_v3.ViewModels
 {
+    
     public class Oppdrag_VM
     {
         public int kundeID { get; set; }
         public int oppdragID { get; set; }
         public string dato { get; set; }
-        public string fraspraak { get; set; }
-        public string tilspraak { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
         public string andreopplysninger { get; set; }
     }
 
     public class Tolking_vm : Oppdrag_VM
     {
         public string typetolk { get; set; }
-        public string sted { get; set; }
+        public string oppmoteadresse { get; set; }
+        public int oppmotepostnr { get; set; }
+        public string oppmotepoststed { get; set; }
+        public DateTime fratidspunkt { get; set; }
+        public DateTime tiltidspunkt { get; set; }
         public string oppdragsdato { get; set; }
-
         public string frakl { get; set; }
-
         public string tilkl { get; set; }
 
     }
 
-    public class OppdragOgKunde : Kunde
+    public class OppdragOgKunde : Kunde_VM
     {
         public int oppdragID { get; set; }
         public string dato { get; set; }
@@ -40,12 +43,13 @@ namespace Tolkesentralen_v3.ViewModels
         public string oppmotepoststed { get; set; }
         public int oppmotepostnr { get; set; }
         public string oppdragsdato { get; set; }
+        public DateTime fratidspunkt { get; set; }
+        public DateTime tiltidspunkt { get; set; }
         public string frakl { get; set; }
         public string tilkl { get; set; }
-        //dato
     }
 
-    public class OversettelseOgKunde : Kunde
+    public class OversettelseOgKunde : Kunde_VM
     {
         public int oppdragID { get; set; }
         public string dato { get; set; }
@@ -53,6 +57,7 @@ namespace Tolkesentralen_v3.ViewModels
         public int tilspraak { get; set; }
         public string andreopplysninger { get; set; }
         public string ferdiggjoresdato { get; set; }
+        public DateTime ferdiggjoresDateTime { get; set; }
     }
 
     public class TolkingSendt_vm : Tolking_vm
@@ -74,8 +79,8 @@ namespace Tolkesentralen_v3.ViewModels
         public string sted { get; set; }
         public string tid { get; set; }
         public string type { get; set; }
-        public string fraspraak { get; set; }
-        public string tilspraak { get; set; }
+        public int fraspraak { get; set; }
+        public int tilspraak { get; set; }
     }
 
     public class Utdel

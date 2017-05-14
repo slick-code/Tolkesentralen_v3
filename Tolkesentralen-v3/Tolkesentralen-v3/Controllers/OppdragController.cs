@@ -79,8 +79,28 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
-
         
+        
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            bool OK = repository.slettOppdrag(id);
+            if (OK)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
 
         [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/File")]
@@ -222,7 +242,7 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetUbehandlet()
         {
 
-            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
+            List<OppdragOgKunde> liste = repository.listOppdragTolkUbehandlett();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);

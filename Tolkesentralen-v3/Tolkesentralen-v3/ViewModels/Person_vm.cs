@@ -11,8 +11,8 @@ namespace Tolkesentralen_v3.ViewModels
         public int persId { get; set; }
         public string fornavn { get; set; }
         public string etternavn { get; set; }
-        public int tlf { get; set; }
-        public string email { get; set; }
+        public int telefon { get; set; }
+        public string epost { get; set; }
         public string passord { get; set; }
         public string adresse { get; set; }
         public int postnr { get; set; }
@@ -22,7 +22,6 @@ namespace Tolkesentralen_v3.ViewModels
 
     public class Kunde_VM : Person_VM {
         public string firma { get; set; }
-        public string kontaktperson { get; set; }
         public int telefax { get; set; }
         public string fakturaadresse { get; set; }
     }
@@ -30,6 +29,12 @@ namespace Tolkesentralen_v3.ViewModels
     public class Post_Login_VM{
         public string passord { get; set; }
         public string brukernavn { get; set; }
+    }
+
+    public class Spraak
+    {
+        public int id { get; set; }
+        public string spraak { get; set; }
     }
 
     public class Get_Login_VM

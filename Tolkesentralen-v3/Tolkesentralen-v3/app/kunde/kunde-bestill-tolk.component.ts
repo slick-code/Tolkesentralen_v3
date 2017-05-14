@@ -3,6 +3,7 @@ import { Oppdrag } from '../_models/models';
 import { Spraak } from '../_models/spraak';
 import { OppdragService } from '../_services/oppdrag.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class KundeBestillTolkComponent implements OnInit {
 
     form: FormGroup;
     form2: FormGroup;
-    constructor(private service: OppdragService, private fb: FormBuilder) {
+    constructor(private service: OppdragService, private fb: FormBuilder, private router: Router) {
         this.form = fb.group({
             frakl: [],
             tilkl: [],
@@ -115,6 +116,10 @@ export class KundeBestillTolkComponent implements OnInit {
         this.showForm = true;
     }
 
+    tilBestilling(){
+        this.router.navigate(["/kunde/kunde-list-alle-tolke-bestillinger"]);
+    }
+
     postKunde(navn: string) {
         this.ugyldigFelter = false;
         if (!this.validerSpraak) {
@@ -150,7 +155,7 @@ export class KundeBestillTolkComponent implements OnInit {
             retur => {
                 this.response = "success";
                 this.responseText = "Takk for din bestilling!";
-                this.underText = "";
+                this.underText = "Se Mine Bestillinger..";
             },
             error => {
                 this.response = "error";

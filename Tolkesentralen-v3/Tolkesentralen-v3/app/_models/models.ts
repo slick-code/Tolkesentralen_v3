@@ -73,6 +73,8 @@ export class Oppdrag {
     tilspraak: number;
     frakl: string;
     tilkl: string;
+    fratidspunkt: Date;
+    tiltidspunkt: Date;
     oppdragsdato: string;
     oppmoteadresse: string;
     oppmotepostnr: number;
@@ -88,6 +90,8 @@ export class OppdragOgKunde extends Kunde {
     tilspraak: number;
     frakl: string;
     tilkl: string;
+    fratidspunkt: Date;
+    tiltidspunkt: Date;
     oppdragsdato: string;
     oppmoteadresse: string;
     oppmotepostnr: number;

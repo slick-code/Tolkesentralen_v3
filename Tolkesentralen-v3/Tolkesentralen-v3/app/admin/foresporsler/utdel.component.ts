@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 
 import { Tolk, Oppdrag } from '../../_models/models';
 import { OppdragService } from '../../_services/oppdrag.service';
 import { TempService } from '../../_services/temp.service';
 import { TolkService } from '../../_services/tolk.service';
 import { Router } from '@angular/router';
+import { Spraak } from '../../_models/spraak'
 
 
 @Component({
@@ -15,10 +16,8 @@ export class UtdelComponent {
    arrayTolk: Tolk[];
    oppdrag: Oppdrag;
    allChecked: boolean;
-
-
-   Error: string = "Ooops, beklager men en feil oppsto og handlingen ble avbrutt!";
-   underText: string = "Foresp�rselen er sendt! G� til Bestillinger for � se detaljer.";
+    
+   underText: string; 
    showForm: boolean;
     
    responseText: string;
@@ -30,18 +29,22 @@ export class UtdelComponent {
         private oppdragService: OppdragService,
         private tempService: TempService,
         private tolkService: TolkService,
-        private router: Router) { }
+        private router: Router) {
+        this.oppdrag = this.tempService.getObject();
+
+        
+    }
 
     ngOnInit() {
-        this.oppdrag = this.tempService.getObject();
-        this.hentTolkmedGittSpraak();
-        
-        if(this.oppdrag == null){
-            console.log("oppdrag er null");
-        }else{
-            console.log('TEM -> ' + this.tempService.getObject());
-            console.log(this.oppdrag.fraspraak + " -> " + this.oppdrag.tilspraak);
+        if (this.oppdrag == null) {
+            this.router.navigate(['./admin/oppdrag']);
+            return;
         }
+        this.hentTolkmedGittSpraak();
+    }
+
+    getSpraak(i: number) {
+        return new Spraak().liste[i].spraak;
     }
 
     setAllChecked() {
@@ -54,18 +57,22 @@ export class UtdelComponent {
     }
 
     hentTolkmedGittSpraak() {
+        console.log("hentTolkmedGittSpraak BLIR KANL");
         this.showForm = false;
         this.response = "loading";
-        var body: string = JSON.stringify({ fraspraak: 1, tilspraak: 2 });
+        var body: string = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
         this.tolkService.getTolkMedSpraak(body).subscribe(
             retur => {
                 this.showForm = true;
                 this.response = "";
+                this.responseText = "Forespørselen er sendt! Gå til Bestillinger for å se detaljer."
                 this.arrayTolk = retur;
+
             },
             error => {
             this.response = "error"
-            this.responseText = this.Error;
+            this.responseText = "Ooops, beklager..";
+            this.underText = "En feil oppsto og handlingen ble avbrutt!"
             },
             () => {}
         );
@@ -91,11 +98,13 @@ export class UtdelComponent {
         this.tolkService.postForesposler(body).subscribe(
             retur => {
                 this.response = "success";
-                this.responseText = "Success!"
+                this.responseText = "Success! Forespørselen er utdelt.";
+                this.underText = "Gå tilbake for å se detaljer."
             },
             error => {
             this.response = "error";
-            this.responseText = this.Error;
+            this.responseText = "Ooops, beklager..";
+            this.underText = "En feil oppsto og handlingen ble avbrutt!"
             },
             () => {}
         );

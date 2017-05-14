@@ -1,29 +1,40 @@
 <div>
-    <nav  class="navbar navbar-default">
-        <div class="container body-content">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a routerLink="/home" routerLinkActive="active" class="navbar-brand" href="/home"><span class="glyphicon glyphicon-home"></span> Hjem</a>
-                </div>
 
+
+    <div style="margin:10px;background-color:lime;width:200px;position: absolute;">
+        <div>
+            <div style="margin-left:10px;">
+
+                <br />
+                <table class="table" border="0">
+                    <tr style="border-top:hidden"><td><p><span class="glyphicon glyphicon-user"></span></p></td><td><p><b>admin@admin.no</b></p></td></tr>
+                    <tr><td></td><td><p><b>kunde@kunde.no</b></p></td></tr>
+                    <tr><td></td><td><p><b>tolk@tolk.no</b></p></td></tr>
+                    <tr><td><p><span class="glyphicon glyphicon-lock"></span></p></td><td><p><b>1234</b></p></td></tr>
+                </table>
             </div>
         </div>
-    </nav>
-    <div >
+    </div>
+   
+    <div style="height: calc(100vh - 0px); background-image:  url('../../bilder/tastatur.jpg') ;background-size:cover; background-repeat:no-repeat;  ">
 
-        <div>
+        
 
 
 
             <div class="login-panel container">
-
+                
 
 
                 <div class="col-md-5 col-md-offset-4 panel panel-default">
+                    
                     <div class="gap margin-base-vertical" align="center">
-                        <img style="width:100px" src="../../bilder/guard1.png">
-                        <h1 style="color:darkred; margin-top:10px" align="center">Tolkesentralen</h1>
+                        <img style="width:95px" src="../../bilder/guard1.png">
+                        <h1  style="margin-top:10px" align="center"><a style="color:darkred;text-decoration : none" routerLink="/home" routerLinkActive="active" href="/home"><span style="color:black" class="glyphicon glyphicon-home"></span> Tolkesentralen</a> </h1>
+                        
+                        
                     </div>
+                    
 
 
 
@@ -52,7 +63,7 @@
 
 
                         <p *ngIf="!loading" class="text-center">
-                            <button (click)="onLogin()" class="btn btn-primary btn-lg">Logg inn</button>
+                            <button  (click)="onLogin()" class="btn btn-primary btn-lg">Logg inn</button>
 
                         </p>
 
@@ -81,28 +92,5 @@
     </div>
 
 
-    <div style="margin-left:10px;background-color:aquamarine;width:200px;">
-        <div >
-            <div style="margin-left:10px;">
-        
-                <br />
-                <table class="table" border="0">
-                    <tr style="border-top:hidden"><td><p><span class="glyphicon glyphicon-user"></span></p></td><td><p><b>admin@admin.no</b></p></td></tr>
-                    <tr><td></td><td><p><b>kunde@kunde.no</b></p></td></tr>
-                    <tr><td></td><td><p><b>tolk@tolk.no</b></p></td></tr>
-                    <tr><td><p><span class="glyphicon glyphicon-lock"></span></p></td><td><p><b>1234</b></p></td></tr>
-                </table>
-                <p></p>
 
 
-
-                <p> </p>
-
-            </div>
-        </div>
-        
-
-    </div>
-
-
-</div>
