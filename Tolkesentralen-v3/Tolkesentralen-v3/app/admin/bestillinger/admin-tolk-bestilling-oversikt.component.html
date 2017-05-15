@@ -42,9 +42,9 @@
                     <tr *ngIf="VisInfo(i, 0)">
                         <td colspan="8">
                             <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
-                                <tr><th style="width:140px">Tolk</th><td style="color:black">{{arrayOppdrag[index].oppmoteadresse}} - {{arrayOppdrag[index].oppmotepostnr}} - {{arrayOppdrag[index].oppmotepoststed}}</td></tr>
-                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
-                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
+                                <tr><th style="width:140px">Tolk</th><td style="color:black">{{arrayOppdrag[index].tolkfornavn}} {{arrayOppdrag[index].tolketternavn}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].tolktelefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].tolkepost}}</td></tr>
                             </table>
                             <p style="display:inline-block;margin:10px;margin-left:5px">
                                 <button style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span>  Ny utdeling</button>

@@ -97,6 +97,12 @@ export class OppdragOgKunde extends Kunde {
     oppmotepostnr: number;
     oppmotepoststed: string;
     andreopplysninger: string;
+
+    tolkId: number;
+    tolkpost: string;
+    tolktelefon: number;
+    tolkfornavn: string;
+    tolketternavn: string;
 }
 
 export class NavbarElement {

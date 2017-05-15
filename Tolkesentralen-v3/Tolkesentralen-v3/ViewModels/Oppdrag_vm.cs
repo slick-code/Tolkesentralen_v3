@@ -47,6 +47,12 @@ namespace Tolkesentralen_v3.ViewModels
         public DateTime tiltidspunkt { get; set; }
         public string frakl { get; set; }
         public string tilkl { get; set; }
+
+        public int tolkId { get; set; }
+        public string tolkepost { get; set; }
+        public int  tolktelefon { get; set; }
+        public string tolkfornavn { get; set; }
+        public string tolketternavn { get; set; }
     }
 
     public class OversettelseOgKunde : Kunde_VM

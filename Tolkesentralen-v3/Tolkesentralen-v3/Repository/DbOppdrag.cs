@@ -381,7 +381,13 @@ namespace Tolkesentralen_v3.Models
                         epost = row.kunde.email,
                         adresse = row.kunde.adresse,
                         postnr = row.kunde.poststed.postNr,
-                        poststed = row.kunde.poststed.postSted
+                        poststed = row.kunde.poststed.postSted,
+
+                        tolkId = row.Tolk.persId,
+                        tolkepost = row.Tolk.email,
+                        tolktelefon = row.Tolk.telefon,
+                        tolkfornavn = row.Tolk.fornavn,
+                        tolketternavn = row.Tolk.etternavn
                     };
                     liste.Add(ny);
                 }
