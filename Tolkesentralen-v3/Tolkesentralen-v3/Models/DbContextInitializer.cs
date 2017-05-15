@@ -167,6 +167,7 @@ namespace Tolkesentralen_v3.Models
                 kunde4.poststed = jessheim;
                 kunde5.poststed = gardermoden;
                 kunde6.poststed = jessheim;
+                kunde7.poststed = jessheim;
 
                 db.Personer.Add(kunde);
                 db.Personer.Add(kunde2);

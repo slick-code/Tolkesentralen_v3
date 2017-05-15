@@ -199,8 +199,8 @@ namespace Tolkesentralen_v3.Models
                             telefon = row.telefon,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            //postnr = row.poststed.postNr,
-                            //poststed = row.poststed.postSted,
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
                             epost = row.email
                         };
                         vm_liste.Add(kunde);
