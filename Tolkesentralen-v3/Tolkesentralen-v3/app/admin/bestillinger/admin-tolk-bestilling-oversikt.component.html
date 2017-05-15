@@ -16,6 +16,7 @@
             <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
+                        <th>Oppdragsnr</th>
                         <th>Mottatt</th>
                         <th>Type</th>
                         <th>Fra Språk</th>
@@ -27,6 +28,7 @@
                 </thead>
                 <tbody *ngFor="let oppdrag of arrayOppdrag; let i = index">
                     <tr>
+                        <td>{{oppdrag.oppdragID}}</td>
                         <td>{{oppdrag.dato}}</td>
                         <td>{{oppdrag.typetolk}}</td>
                         <td>{{arraySpraak[oppdrag.fraspraak].spraak}}</td>
@@ -41,15 +43,7 @@
                     </tr>
                     <tr *ngIf="VisInfo(i, 0)">
                         <td colspan="8">
-                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
-                                <tr><th style="width:140px">Tolk</th><td style="color:black">{{arrayOppdrag[index].tolkfornavn}} {{arrayOppdrag[index].tolketternavn}}</td></tr>
-                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].tolktelefon}}</td></tr>
-                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].tolkepost}}</td></tr>
-                            </table>
-                            <p style="display:inline-block;margin:10px;margin-left:5px">
-                                <button style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span>  Ny utdeling</button>
-                                <button style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Gå til Tolk</button>
-                            </p>
+                            
                             <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
                                 <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
                                 <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
@@ -60,11 +54,22 @@
                                     <td>{{arrayOppdrag[index].andreopplysninger}}</td>
                                 </tr>
                             </table>
-                            <button *ngIf="!slettErTrykket" style="margin:10px;margin-left:5px" class="btn btn-danger" (click)="btnTilSlettClick()"><span class="glyphicon glyphicon-trash"></span> Slett?</button>
-                            <p style="display:inline-block;width:220px;margin:10px;margin-left:5px" *ngIf="slettErTrykket && nr == 0">
-                                <button style="width:38%" class="btn btn-default" (click)="btnAvbrytTilSlettClick()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
-                                <button style="width:60%" class="btn btn-danger" (click)="slettOppdrag(oppdrag.persId, i)"><span class="glyphicon glyphicon-trash"></span> Slett for godt</button>
-                            </p> <p style="color:red;display:inline-block">{{slettText}}</p>
+
+                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                                <tr><th style="width:140px">Tolk</th><td style="color:black">{{arrayOppdrag[index].tolkfornavn}} {{arrayOppdrag[index].tolketternavn}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].tolktelefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].tolkepost}}</td></tr>
+                            </table>
+                            <p style="display:inline-block;margin:10px;margin-left:5px">
+                                <button *ngIf="!slettErTrykket" style="margin-left:5px" class="btn btn-default" (click)="btnTilSlettClick()"><span class="glyphicon glyphicon-trash"></span> Avbestill</button>
+                                <span style="display:inline-block;margin-left:5px" *ngIf="slettErTrykket && nr == 0">
+                                    <button style="width:auto" class="btn btn-default" (click)="btnAvbrytTilSlettClick()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                                    <button style="width:auto" class="btn btn-danger" (click)="slettOppdrag(oppdrag.persId, i)"><span class="glyphicon glyphicon-trash"></span> Avbestill</button>
+                                </span>
+                                <button *ngIf="!slettErTrykket" style="width:auto" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span>  Endre</button>
+                                
+                            </p>
+                             <p style="color:red;display:inline-block">{{slettText}}</p>
                         </td>
 
                     </tr>
