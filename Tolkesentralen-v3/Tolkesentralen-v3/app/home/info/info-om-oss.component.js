@@ -5,38 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-<<<<<<< HEAD:Tolkesentralen-v3/Tolkesentralen-v3/app/shared/resultat.component.js
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ResulatatComponent = (function () {
-    function ResulatatComponent() {
-    }
-    return ResulatatComponent;
-}());
-ResulatatComponent = __decorate([
-    core_1.Component({
-        selector: 'resultat',
-        templateUrl: "./app/admin/resultat.component.html",
-    })
-], ResulatatComponent);
-exports.ResulatatComponent = ResulatatComponent;
-//# sourceMappingURL=resultat.component.js.map
-=======
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
 var InfoOmOssComponent = (function () {
     function InfoOmOssComponent() {
     }
-    InfoOmOssComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/home/info/info-om-oss.html"
-        }), 
-        __metadata('design:paramtypes', [])
-    ], InfoOmOssComponent);
     return InfoOmOssComponent;
 }());
+InfoOmOssComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/home/info/info-om-oss.html"
+    })
+], InfoOmOssComponent);
 exports.InfoOmOssComponent = InfoOmOssComponent;
 //# sourceMappingURL=info-om-oss.component.js.map
->>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7:Tolkesentralen-v3/Tolkesentralen-v3/app/home/info/info-om-oss.component.js

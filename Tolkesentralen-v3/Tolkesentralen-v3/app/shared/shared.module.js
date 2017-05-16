@@ -12,23 +12,11 @@ var loading_component_1 = require("./loading.component");
 var SharedModule = (function () {
     function SharedModule() {
     }
-<<<<<<< HEAD
-=======
-    SharedModule = __decorate([
-        core_1.NgModule({
-            imports: [forms_1.FormsModule],
-            declarations: [loading_component_1.LoadingComponent],
-            providers: [],
-            exports: [loading_component_1.LoadingComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], SharedModule);
->>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7
     return SharedModule;
 }());
 SharedModule = __decorate([
     core_1.NgModule({
-        imports: [forms_1.FormsModule, forms_1.ReactiveFormsModule],
+        imports: [forms_1.FormsModule],
         declarations: [loading_component_1.LoadingComponent],
         providers: [],
         exports: [loading_component_1.LoadingComponent]

@@ -8,17 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var spraak_1 = require("../_models/spraak");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
 var forms_1 = require("@angular/forms");
-=======
-var core_1 = require('@angular/core');
-var spraak_1 = require('../_models/spraak');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
->>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7
 var BestillTolkComponent = (function () {
     function BestillTolkComponent(service, fb) {
         this.service = service;

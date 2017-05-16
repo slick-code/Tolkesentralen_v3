@@ -10,14 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-<<<<<<< HEAD
 var core_1 = require("@angular/core");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
-=======
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var tolk_service_1 = require('../_services/tolk.service');
->>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7
+var models_1 = require("../_models/models");
+var tolk_service_1 = require("../_services/tolk.service");
 var TolkSettTilgjenglighetComponent = (function () {
     function TolkSettTilgjenglighetComponent(service) {
         this.service = service;
@@ -69,28 +64,16 @@ var TolkSettTilgjenglighetComponent = (function () {
             _this.tilgjengelig.splice(index, 1);
         }, function (error) { console.log("Feil: slettPerioderUtilgjengelig - " + error); }, function () { _this.slettLoading = false; });
     };
-<<<<<<< HEAD
-=======
-    TolkSettTilgjenglighetComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/tolk/tolk-sett-tilgjenglighet.component.html',
-            providers: [tolk_service_1.TolkService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [tolk_service_1.TolkService])
-    ], TolkSettTilgjenglighetComponent);
->>>>>>> 5a7073c528b434a9137ecd04b036a9fc65b35ee7
     return TolkSettTilgjenglighetComponent;
 }());
 TolkSettTilgjenglighetComponent = __decorate([
     core_1.Component({
         //moduleId: module.id,
         templateUrl: './app/tolk/tolk-sett-tilgjenglighet.component.html',
-        providers: [oppdrag_service_1.OppdragService],
+        providers: [tolk_service_1.TolkService],
         styles: ['.error {color:red;}']
     }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService])
+    __metadata("design:paramtypes", [tolk_service_1.TolkService])
 ], TolkSettTilgjenglighetComponent);
 exports.TolkSettTilgjenglighetComponent = TolkSettTilgjenglighetComponent;
 //# sourceMappingURL=tolk-sett-tilgjenglighet.component.js.map
