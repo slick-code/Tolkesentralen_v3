@@ -67,7 +67,7 @@ exports.Oppdrag = Oppdrag;
 var OppdragOgKunde = (function (_super) {
     __extends(OppdragOgKunde, _super);
     function OppdragOgKunde() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return OppdragOgKunde;
 }(Kunde));

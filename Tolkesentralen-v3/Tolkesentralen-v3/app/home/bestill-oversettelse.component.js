@@ -8,18 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var oppdrag_service_1 = require("../_services/oppdrag.service");
+var models_1 = require("../_models/models");
+var spraak_1 = require("../_models/spraak");
+var oversettelse_service_1 = require("../_services/oversettelse.service");
 var forms_1 = require("@angular/forms");
-=======
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var spraak_1 = require('../_models/spraak');
-var oversettelse_service_1 = require('../_services/oversettelse.service');
-var forms_1 = require('@angular/forms');
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -127,26 +121,15 @@ var BestillOversettelseComponent = (function () {
             _this.underText = "Tilkoblet internett?";
         }, function () { });
     };
-<<<<<<< HEAD
-=======
-    BestillOversettelseComponent = __decorate([
-        core_1.Component({
-            templateUrl: './app/home/bestill-oversettelse.component.html',
-            providers: [oversettelse_service_1.OversettelseService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
-    ], BestillOversettelseComponent);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return BestillOversettelseComponent;
 }());
 BestillOversettelseComponent = __decorate([
     core_1.Component({
         templateUrl: './app/home/bestill-oversettelse.component.html',
-        providers: [oppdrag_service_1.OppdragService],
+        providers: [oversettelse_service_1.OversettelseService],
         styles: ['.error {color:red;}']
     }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
 ], BestillOversettelseComponent);
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
 //# sourceMappingURL=bestill-oversettelse.component.js.map

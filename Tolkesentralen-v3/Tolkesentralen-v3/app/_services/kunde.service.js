@@ -42,18 +42,11 @@ var KundeService = (function () {
         return this.http.put(this.url + id, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
-<<<<<<< HEAD
-=======
     KundeService.prototype.SjekkOmEpostEksisterer = function (body) {
         var headers = new http_2.Headers({ "Content-Type": "application/json" });
         return this.http.post(this.url + "SjekkOmEpostEksisterer", body, { headers: headers })
             .map(function (res) { return res; });
     };
-    KundeService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], KundeService);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return KundeService;
 }());
 KundeService = __decorate([

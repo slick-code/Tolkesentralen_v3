@@ -8,20 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var oppdrag_service_1 = require("../../_services/oppdrag.service");
 var temp_service_1 = require("../../_services/temp.service");
 var tolk_service_1 = require("../../_services/tolk.service");
-=======
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../../_services/oppdrag.service');
-var temp_service_1 = require('../../_services/temp.service');
-var tolk_service_1 = require('../../_services/tolk.service');
-var router_1 = require('@angular/router');
-var spraak_1 = require('../../_models/spraak');
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
+var router_1 = require("@angular/router");
+var spraak_1 = require("../../_models/spraak");
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService, tolkService, router) {
         this.oppdragService = oppdragService;
@@ -95,16 +88,6 @@ var UtdelComponent = (function () {
             _this.underText = "En feil oppsto og handlingen ble avbrutt!";
         }, function () { });
     };
-<<<<<<< HEAD
-=======
-    UtdelComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/foresporsler/utdel.component.html",
-            providers: [tolk_service_1.TolkService],
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService, router_1.Router])
-    ], UtdelComponent);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return UtdelComponent;
 }());
 UtdelComponent = __decorate([
@@ -114,7 +97,8 @@ UtdelComponent = __decorate([
     }),
     __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
         temp_service_1.TempService,
-        tolk_service_1.TolkService])
+        tolk_service_1.TolkService,
+        router_1.Router])
 ], UtdelComponent);
 exports.UtdelComponent = UtdelComponent;
 //# sourceMappingURL=utdel.component.js.map

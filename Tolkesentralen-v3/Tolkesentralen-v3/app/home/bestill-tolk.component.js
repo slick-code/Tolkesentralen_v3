@@ -8,19 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
 var spraak_1 = require("../_models/spraak");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
 var forms_1 = require("@angular/forms");
-=======
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var spraak_1 = require('../_models/spraak');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
 var BestillTolkComponent = (function () {
     function BestillTolkComponent(service, fb) {
         this.service = service;

@@ -8,22 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var kunde_service_1 = require("../../_services/kunde.service");
-var models_1 = require("../../_models/models");
+var spraak_1 = require("../../_models/spraak");
+var oppdrag_service_1 = require("../../_services/oppdrag.service");
+var router_1 = require("@angular/router");
+var temp_service_1 = require("../../_services/temp.service");
 var data_service_1 = require("../../_services/data.service");
-=======
-var core_1 = require('@angular/core');
-var spraak_1 = require('../../_models/spraak');
-var oppdrag_service_1 = require('../../_services/oppdrag.service');
-var router_1 = require('@angular/router');
-var temp_service_1 = require('../../_services/temp.service');
-var data_service_1 = require('../../_services/data.service');
-var models_1 = require('../../_models/models');
-var selective_preloading_strategy_1 = require('../../_services/selective-preloading-strategy');
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
+var models_1 = require("../../_models/models");
+var selective_preloading_strategy_1 = require("../../_services/selective-preloading-strategy");
 var AdminTolkBestillingOversiktComponent = (function () {
     function AdminTolkBestillingOversiktComponent(preloadStrategy, dataService, oppdragService, route, tempService, router) {
         this.preloadStrategy = preloadStrategy;
@@ -126,23 +119,18 @@ var AdminTolkBestillingOversiktComponent = (function () {
         //    () => { this.loading = false; }
         //    );
     };
-<<<<<<< HEAD
-=======
-    AdminTolkBestillingOversiktComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/bestillinger/admin-tolk-bestilling-oversikt.component.html"
-        }), 
-        __metadata('design:paramtypes', [selective_preloading_strategy_1.SelectivePreloadingStrategy, data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
-    ], AdminTolkBestillingOversiktComponent);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return AdminTolkBestillingOversiktComponent;
 }());
 AdminTolkBestillingOversiktComponent = __decorate([
     core_1.Component({
         templateUrl: "./app/admin/bestillinger/admin-tolk-bestilling-oversikt.component.html"
     }),
-    __metadata("design:paramtypes", [kunde_service_1.KundeService,
-        data_service_1.DataService])
+    __metadata("design:paramtypes", [selective_preloading_strategy_1.SelectivePreloadingStrategy,
+        data_service_1.DataService,
+        oppdrag_service_1.OppdragService,
+        router_1.ActivatedRoute,
+        temp_service_1.TempService,
+        router_1.Router])
 ], AdminTolkBestillingOversiktComponent);
 exports.AdminTolkBestillingOversiktComponent = AdminTolkBestillingOversiktComponent;
 //# sourceMappingURL=admin-tolk-bestilling-oversikt.component.js.map

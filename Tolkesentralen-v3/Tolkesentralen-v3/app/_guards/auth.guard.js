@@ -23,6 +23,11 @@ var AuthGuard = (function () {
             if (route.data["domene"] === (JSON.parse(innlogget).rolle)) {
                 return true;
             }
+            ///route.data["role"].equals(JSON.parse(localStorage.getItem('currentUser')).rolle)
+            //JSON.parse(innlogget);
+            //console.log("ObjectU " + JSON.parse(localStorage.getItem('currentUser')).rolle);
+            //console.log("User "+localStorage.getItem('currentUser').toString());
+            // logged in so return true
         }
         // not logged in so redirect to login page
         this.router.navigate(['/login']);

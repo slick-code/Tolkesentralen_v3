@@ -53,8 +53,6 @@ var OppdragService = (function () {
         return this.http.get(this.url + "GetForesposlerSendt/")
             .map(function (response) { return response.json(); });
     };
-<<<<<<< HEAD
-=======
     OppdragService.prototype.getGetBestillinger = function () {
         return this.http.get(this.url + "GetBestillinger/")
             .map(function (response) { return response.json(); });
@@ -63,11 +61,6 @@ var OppdragService = (function () {
         return this.http.delete(this.url + id)
             .map(function (returData) { return returData.toString(); });
     };
-    OppdragService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
-    ], OppdragService);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return OppdragService;
 }());
 OppdragService = __decorate([

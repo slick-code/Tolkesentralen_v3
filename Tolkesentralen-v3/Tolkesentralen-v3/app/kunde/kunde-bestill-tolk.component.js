@@ -8,21 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
-// Promise Version
 var core_1 = require("@angular/core");
 var models_1 = require("../_models/models");
+var spraak_1 = require("../_models/spraak");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
 var forms_1 = require("@angular/forms");
-=======
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var spraak_1 = require('../_models/spraak');
-var oppdrag_service_1 = require('../_services/oppdrag.service');
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
+var router_1 = require("@angular/router");
 var KundeBestillTolkComponent = (function () {
     function KundeBestillTolkComponent(service, fb, router) {
         var _this = this;
@@ -144,27 +136,15 @@ var KundeBestillTolkComponent = (function () {
             _this.underText = "Tilkoblet internett?";
         }, function () { });
     };
-<<<<<<< HEAD
-=======
-    KundeBestillTolkComponent = __decorate([
-        core_1.Component({
-            templateUrl: './app/kunde/kunde-bestill-tolk.component.html',
-            providers: [oppdrag_service_1.OppdragService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, forms_1.FormBuilder, router_1.Router])
-    ], KundeBestillTolkComponent);
->>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return KundeBestillTolkComponent;
 }());
 KundeBestillTolkComponent = __decorate([
     core_1.Component({
-        //moduleId: module.id,
         templateUrl: './app/kunde/kunde-bestill-tolk.component.html',
         providers: [oppdrag_service_1.OppdragService],
         styles: ['.error {color:red;}']
     }),
-    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService, forms_1.FormBuilder, router_1.Router])
 ], KundeBestillTolkComponent);
 exports.KundeBestillTolkComponent = KundeBestillTolkComponent;
 //# sourceMappingURL=kunde-bestill-tolk.component.js.map

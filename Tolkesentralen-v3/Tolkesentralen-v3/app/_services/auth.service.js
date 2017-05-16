@@ -20,9 +20,7 @@ var AuthenticationService = (function () {
         this.token = currentUser; // && currentUser.token;
     }
     AuthenticationService.prototype.login = function (body) {
-        console.log("BOOODY " + JSON.parse(body));
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
-        console.log("ServiceLogin");
         return this.http.post('/api/login', body, { headers: headers })
             .map(function (response) { return response.json(); });
     };
