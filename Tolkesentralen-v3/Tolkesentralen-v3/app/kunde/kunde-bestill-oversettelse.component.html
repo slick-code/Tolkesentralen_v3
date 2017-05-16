@@ -1,79 +1,111 @@
 ﻿<div *ngIf="showForm">
-    <h1>Bestill oversettelse</h1>
+    <h1>Bestill Oversettelse</h1>
     <hr />
-    <form [formGroup]='form'>
-
-        
-        <div class="form-group">
-            <label for="frasprak">Velg fil</label>
-            <div class="inner-addon left-addon">
-                <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.txt">
+    <div style="min-height:275px;max-width:890px;background-color:#F4F9F9;">
+        <div style="margin-top:15px;display:inline-block;width:300px;">
+            <div style="background-color:white;width:230px; height:240px">
+                <img style="width:150px;border-bottom: solid #1F1F1F;margin-left:20px; margin-top:5px" src="../../bilder/hot_operator.jpg">
             </div>
+
+
+
         </div>
 
 
-        <div class="form-group">
-            <label for="typetolk">Type Dokument</label>
-            <div class="inner-addon left-addon">
-                <select formControlName="typedokument" class="form-control">
-                    <option>Vitnemål</option>
-                    <option>Attester</option>
-                    <option>Juridiske dokumenter</option>
-                    <option>Medisinske dokumenter</option>
-                    <option>Språkvask/Korrektur</option>
-                    <option>Andre</option>
-                </select>
+        <div style="float:right;display:inline-block;border: solid #F8FCFC;  max-width:610px; min-height:260px;border-radius: 5px;">
 
+
+            <div style="padding-top: 10px;width:300px; display:inline-block">
+                <form [formGroup]='form'>
+                    <div class="form-group">
+                        <label for="frasprak">Velg fil</label>
+                        <div class="inner-addon left-addon">
+                            <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.txt">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="typetolk">Type Dokument</label>
+                        <div class="inner-addon left-addon">
+                            <select (change)="onchange($event.target.value)" class="form-control">
+                                <option value="Vitnemål">Vitnemål</option>
+                                <option value="Attester">Attester</option>
+                                <option value="Juridiske dokumenter">Juridiske dokumenter</option>
+                                <option value="Medisinske dokumenter">Medisinske dokumenter</option>
+                                <option value="Språkvask/Korrektur">Språkvask/Korrektur</option>
+                                <option value="Andre">Andre</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group line-equal">
+                        <label for="fraspraak">Fra Språk</label>
+                        <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setFraSpraak($event.target.value)" class="form-control">
+                            <option [value]="item.id" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group line-equal">
+                        <label for="tilspraak">Til Språk</label>
+                        <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setTilSpraak($event.target.value)" class="form-control">
+                            <option [value]="item.id" [selected]="i == 1" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+
+
+            <div style="vertical-align:top;padding-left:20px; padding-top: 10px;width:280px; display:inline-block">
+                <form [formGroup]='form'>
+
+                    
+
+                    <div class="form-group">
+                        <label for="oppdragsdato">Ferdiggjøresdato</label>
+                        <div class="inner-addon">
+                            <input min="{{minDate}}" [ngModelOptions]="{standalone: true}" [ngModel]="startDate" (ngModelChange)="startDate = $event" type="date" class="form-control" />
+                            <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="andreopplysninger">Andre opplysninger</label>
+                        <div class="inner-addon left-addon">
+                            <textarea ng-model="andreopplysninger" style="height: 115px" class="form-control" id="andreopplysningerid"
+                                      formControlName="andreopplysninger" autocomplete="off" placeholder="Andre opplysninger"></textarea>
+                        </div>
+                    </div>
+
+
+
+
+
+                </form>
 
             </div>
+
         </div>
 
-        <div class="form-group">
-            <label for="frasprak">Fra Språk</label>
-            <div class="inner-addon left-addon">
-                <input type="text" name="fraspraak" class="form-control" id="fraspraakid" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="tilsprak">Til Språk</label>
-            <div class="inner-addon left-addon">
-                <input type="text" name="fraspraak" class="form-control" id="tilspraakid" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="ferdiggjoresdato">Ferdiggjøresdato</label>
-            <div class="inner-addon left-addon">
-                <input type="text" name="ferdiggjoresdato" class="form-control" id="ferdiggjoresdatoid" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="andreopplysninger">Andre opplysninger</label>
-            <div class="inner-addon left-addon">
-                <textarea style="height: 100px" class="form-control" id="andreopplysningerid"
-                          autocomplete="off" placeholder="Andre opplysninger"></textarea>
-            </div>
-        </div>
-
-        <button (click)="postOppdrag()" type="submit" class="btn btn-success">Send bestilling</button>
-    </form>
-</div>
-
-<div *ngIf="loading">
-    <div>
-        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
     </div>
+
+    <div style="max-width:890px;">
+        <hr />
+        <div style="float:right;clear:both;padding-top:10px">
+            <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felter</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send bestilling</button></p>
+
+        </div>
+    </div>
+
 </div>
 
-<div *ngIf="!Success && !showForm && !loading">
-    <p class="error">Ooops, bestillingen ble ikke sendt!</p>
-    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
-</div>
 
-<div *ngIf="Success && !showForm  && !loading">
-    <h3 style="color:forestgreen">Bestillingen er sendt! </h3>
-    <p>Vi vil behandle din søknad så fort som mulig</p>
+
+
+<div *ngIf="!showForm">
+    <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
+    <div *ngIf="response !== 'loading'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
 
 </div>

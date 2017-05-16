@@ -23,6 +23,7 @@ var appRoutes = [
         path: '',
         component: kunde_component_1.KundeComponent,
         canActivate: [auth_guard_1.AuthGuard],
+        data: { domene: 'kunde' },
         children: [
             { path: 'kunde-bestill-tolk', component: kunde_bestill_tolk_component_1.KundeBestillTolkComponent },
             { path: 'kunde-bestill-oversettelse', component: kunde_bestill_oversettelse_component_1.KundeBestillOversettelseComponent },
@@ -32,7 +33,7 @@ var appRoutes = [
             { path: 'kunde-oversettelse-historikk', component: kunde_oversettelse_historikk_component_1.KundeOversettelseHistorikkComponent },
             { path: 'kunde-endre-opplysninger', component: kunde_endre_opplysninger_component_1.KundeEndreOpplysningerComponent },
             { path: 'kunde-endre-passord', component: kunde_endre_passord_component_1.KundeEndrePassordComponent },
-            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-oversettelse' }
+            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-tolk' }
         ]
     }
 ];

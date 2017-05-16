@@ -76,7 +76,7 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]Kunde_VM ny,int id)
+        public HttpResponseMessage Post([FromBody]Kunde_VM ny)
         {
             var test = ny;
             if (ModelState.IsValid)
@@ -110,6 +110,35 @@ namespace Tolkesentralen_v3.Controllers
                     StatusCode = HttpStatusCode.OK
                 };
 
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+        [System.Web.Mvc.HttpPost]
+        [Route("api/kunde/SjekkOmEpostEksisterer")]
+        public HttpResponseMessage SjekkOmEpostEksisterer([FromBody]string epost)
+        {
+            if (ModelState.IsValid)
+            {
+                bool epostErAlleredeLagret = repository.SjekkOmEpostEksisterer(epost);
+
+                if (!epostErAlleredeLagret)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.Accepted
+                    };
+                }else
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
             }
             return new HttpResponseMessage()
             {

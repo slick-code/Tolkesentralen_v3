@@ -8,16 +8,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+=======
+var core_1 = require('@angular/core');
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
 var ResponseComponent = (function () {
-    function ResponseComponent(router) {
-        this.router = router;
+    function ResponseComponent() {
     }
+<<<<<<< HEAD
     ResponseComponent.prototype.tilbake = function () {
         this.router.navigate([this.path]);
     };
+=======
+    __decorate([
+        core_1.Input('response'), 
+        __metadata('design:type', String)
+    ], ResponseComponent.prototype, "response", void 0);
+    __decorate([
+        core_1.Input('responseText'), 
+        __metadata('design:type', String)
+    ], ResponseComponent.prototype, "responseText", void 0);
+    __decorate([
+        core_1.Input('underText'), 
+        __metadata('design:type', String)
+    ], ResponseComponent.prototype, "underText", void 0);
+    __decorate([
+        core_1.Input('path'), 
+        __metadata('design:type', String)
+    ], ResponseComponent.prototype, "path", void 0);
+    ResponseComponent = __decorate([
+        core_1.Component({
+            selector: 'response',
+            templateUrl: "./app/shared/response.component.html",
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ResponseComponent);
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return ResponseComponent;
 }());
 __decorate([

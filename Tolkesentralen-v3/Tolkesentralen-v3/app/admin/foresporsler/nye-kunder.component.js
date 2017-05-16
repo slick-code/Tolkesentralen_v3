@@ -57,18 +57,29 @@ var NyeKunderComponent = (function () {
     };
     NyeKunderComponent.prototype.godkjennKunde = function (index, kundeID) {
         var _this = this;
+        this.loading = true;
         this.service.godkjennKunde(kundeID).subscribe(function (retur) {
             _this.arrayNyeKunder.splice(index, 1);
             _this.updateNavBar();
-        }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+        }, function (error) {
+        }, function () { _this.loading = false; });
     };
     NyeKunderComponent.prototype.slettKunde = function (index, kundeID) {
         var _this = this;
-        console.log("kkkkkk");
+        this.loading = true;
         this.service.slettKunde(kundeID).subscribe(function (retur) {
             _this.arrayNyeKunder.splice(index, 1);
+            _this.slett = false;
             _this.updateNavBar();
-        }, function (error) { return console.log("Beklager PUT, en feil har oppst�tt - " + error); }, function () { return console.log("ferdig post-api/bestilling"); });
+        }, function (error) {
+        }, function () { _this.loading = false; });
+    };
+    NyeKunderComponent.prototype.checkIfArrayIsEmthy = function (array) {
+        if (array == null)
+            return false;
+        if (array.length == 0)
+            return false;
+        return true;
     };
     return NyeKunderComponent;
 }());

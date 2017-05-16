@@ -1,256 +1,124 @@
-﻿<div *ngIf="showForm">
-    <h1>Bestill tolk</h1>
+﻿<div *ngIf="showForm"> 
+    <h1>Bestill Tolk</h1>
     <hr />
-    <form [formGroup]='form'>
-
+    <div  style="min-height:360px;max-width:910px;background-color:#F4F9F9;">
+        <div style="margin-top:35px;display:inline-block;width:300px;">
+            <div style="background-color:white;width:260px; height:270px">
+                <img style="width:150px;border-bottom: solid #1F1F1F;margin-left:20px; margin-top:5px" src="../../bilder/hot_operator.jpg">
+            </div>
+            
+            
+        </div>
         
 
-        <div class="form-group">
-            <label for="typetolk">Type Tolk</label>
-            <div class="inner-addon left-addon">
-                <select formControlName="typetolk" class="form-control">
-                    <option>Fremmøtetolk</option>
-                    <option>Telefontolk</option>
-                    <option>Videotolk</option>
-                    <option>Konferansetolk</option>
-                </select>
+        <div style="float:right;display:inline-block;border: solid #F8FCFC;  max-width:610px; min-height:360px;border-radius: 5px;">
+            
+
+                <div style="padding-top: 10px;width:300px; display:inline-block">
+                    <form [formGroup]='form'>
+                        <div class="form-group">
+                            <label for="typetolk">Type Tolk</label>
+                            <div class="inner-addon left-addon">
+                                <select (change)="onchange($event.target.value)" class="form-control">
+                                    <option value="1" selected>Fremmøtetolk</option>
+                                    <option value="2">Telefontolk</option>
+                                    <option value="3">Videotolk</option>
+                                    <option value="4">Konferansetolk</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group line-equal">
+                            <label for="fraspraak">Fra Språk</label>
+                            <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setFraSpraak($event.target.value)" class="form-control">
+                                <option [value]="item.id" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="tilspraak">Til Språk</label>
+                            <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setTilSpraak($event.target.value)" class="form-control">
+                                <option [value]="item.id" [selected]="i == 1" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="oppdragsdato">Oppdragsdato</label>
+                            <div class="inner-addon">
+                                <input min="{{minDate}}" [ngModelOptions]="{standalone: true}" [ngModel]="startDate" (ngModelChange)="startDate = $event" type="date" class="form-control" />
+                                <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                            </div>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="frakl">Fra kl</label>
+                            <div class="inner-addon left-addon">
+                                <input type="time" class="form-control" formControlName="frakl" />
+                            </div>
+                        </div>
+
+                        <div class="form-group line-equal">
+                            <label for="tilkl">Til kl</label>
+                            <div class="inner-addon left-addon">
+                                <input type="time" class="form-control" formControlName="tilkl" />
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+
+
+
+                <div style="vertical-align:top;padding-left:20px; padding-top: 10px;width:280px; display:inline-block">
+                    
+                    <div *ngIf="adresseFelt">
+                        <form [formGroup]='form2'>
+                            <div class="form-group">
+                                <label for="oppmotested">OppmøteAdresse</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmoteadresse.valid || !form2.controls.oppmoteadresse.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmoteadresse"  placeholder="Oppmøtested" />
+                            </div>
+                            <div style="display:inline-block; width:84px" class="form-group">
+                                <label for="postnr">Postnr</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepostnr.valid || !form2.controls.oppmotepostnr.touched ? '' : '3px solid red'}" type="number" pattern=".{4,4}" class="form-control" formControlName="oppmotepostnr" placeholder="Postnr" />
+                            </div>
+                            <div style="display:inline-block;width:150px" class="form-group">
+                                <label for="poststed">Poststed</label>
+                                    <input required [ngStyle]="{'border-left': form2.controls.oppmotepoststed.valid || !form2.controls.oppmotepoststed.touched ? '' : '3px solid red'}" type="text" class="form-control" formControlName="oppmotepoststed" placeholder="oppmotepoststed" />
+                            </div>
+                        </form>
+                    </div>
+                    <form [formGroup]='form'>
+                        <div class="form-group">
+                            <label for="andreopplysninger">Andre opplysninger</label>
+                            <div class="inner-addon left-addon">
+                                <textarea ng-model="andreopplysninger" style="height: 120px" class="form-control" id="andreopplysningerid"
+                                          formControlName="andreopplysninger" autocomplete="off" placeholder="Andre opplysninger"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    
             </div>
+   
         </div>
-
-        <div class="form-group">
-            <label for="fraspraak">Fra Språk</label>
-            <div class="inner-addon left-addon">
-                <select formControlName="fraspraak" class="form-control">
-                    <option>Aceh                </option>
-                    <option>Acholi              </option>
-                    <option>Afaan               </option>
-                    <option>Afar                </option>
-                    <option>Afrikaans           </option>
-                    <option>Afrikansk engelsk   </option>
-                    <option>Agni                </option>
-                    <option>Akan                </option>
-                    <option>Akuapem             </option>
-                    <option>Albansk             </option>
-                    <option>Amharisk            </option>
-                    <option>Arabisk             </option>
-                    <option>Arabisk Marokko     </option>
-                    <option>Arabisk Sodan       </option>
-                    <option>Armensk             </option>
-                    <option>Asante              </option>
-                    <option>Aserbadjansk        </option>
-                    <option>Assyrisk kldani     </option>
-                    <option>Asyrisk ashori      </option>
-                    <option>Azari               </option>
-                    <option>Baluchi             </option>
-                    <option>Bambara             </option>
-                    <option>Baoule              </option>
-                    <option>Bengali             </option>
-                    <option>Berbisk             </option>
-                    <option>Bilin               </option>
-                    <option>Bisaya              </option>
-                    <option>Bosnisk             </option>
-                    <option>Bulgarsk            </option>
-                    <option>Burmesisk           </option>
-                    <option>Cebuano             </option>
-                    <option>Chin                </option>
-                    <option>Chin haka           </option>
-                    <option>Chin matu           </option>
-                    <option>Dansk               </option>
-                    <option>Dari                </option>
-                    <option>Dinka (Sør Sudan)   </option>
-                    <option>Diola               </option>
-                    <option>Edo                 </option>
-                    <option>Engelsk             </option>
-                    <option>Estisk              </option>
-                    <option>Ewe                 </option>
-                    <option>Fanti               </option>
-                    <option>Farsi               </option>
-                    <option>Filippinsk          </option>
-                    <option>Finsk               </option>
-                    <option>Flamsk              </option>
-                    <option>Fransk              </option>
-                    <option>Fulah               </option>
-                    <option>Færøysk             </option>
-                    <option>Ga (chi Ghana)      </option>
-                    <option>Georgisk            </option>
-                    <option>Gresk               </option>
-                    <option>Grønlansk           </option>
-                    <option>Gujarati            </option>
-                    <option>Gælisk              </option>
-                    <option>Hausa               </option>
-                    <option>Hazaragi            </option>
-                    <option>Hebraisk            </option>
-                    <option>Hindi               </option>
-                    <option>Ibo                 </option>
-                    <option>Indonesisk          </option>
-                    <option>Ingusjisk           </option>
-                    <option>Islandsk            </option>
-                    <option>Italiensk           </option>
-                    <option>Japansk             </option>
-                    <option>Jola                </option>
-                    <option>Kantonesisk         </option>
-                    <option>Karen               </option>
-                    <option>Kashmiri            </option>
-                    <option>katalansk           </option>
-                    <option>Kazakhisk           </option>
-                    <option>Khmer               </option>
-                    <option>Kikuyu              </option>
-                    <option>Kinesisk            </option>
-                    <option>Kinyarwanda         </option>
-                    <option>Kirundi (Burundi)   </option>
-                    <option>Koreansk            </option>
-                    <option>Krio(Creol-engelsk) </option>
-                    <option>Krio(Creol-Fransk)  </option>
-                    <option>Krio      (Creol)   </option>
-                    <option>Kroatisk            </option>
-                    <option>Kurdisk-Badini      </option>
-                    <option>Kurdisk-Kurmanji    </option>
-                    <option>Kurdisk-Sorani      </option>
-                    <option>Lagos               </option>
-                    <option>Langi               </option>
-                    <option>Lango               </option>
-                    <option>Lao                 </option>
-                    <option>Latin               </option>
-                    <option>Latvisk             </option>
-                    <option>Lingala             </option>
-                    <option>Litauisk            </option>
-                    <option>Luganda             </option>
-                    <option>Luo                 </option>
-                    <option>Lusoga              </option>
-                    <option>Lutoro/Nyoro        </option>
-                    <option>Luxemburgsk         </option>
-                    <option>Makedonsk           </option>
-                    <option>Malay               </option>
-                    <option>Mandarin            </option>
-                    <option>Mandingo/mandinka   </option>
-                    <option>Marathi             </option>
-                    <option>Moldovsk            </option>
-                    <option>Mongolsk            </option>
-                    <option>Nederlandsk         </option>
-                    <option>Nepali              </option>
-                    <option>Nigeriansk          </option>
-                    <option>Norsk               </option>
-                    <option>Nubisk              </option>
-                    <option>Oromo               </option>
-                    <option>Pashto              </option>
-                    <option>Persisk             </option>
-                    <option>Pidgin              </option>
-                    <option>Polsk               </option>
-                    <option>Portugisisk         </option>
-                    <option>Punjabi             </option>
-                    <option>Romanes             </option>
-                    <option>Ruhingla            </option>
-                    <option>Rumensk             </option>
-                    <option>Russisk             </option>
-                    <option>Rwandisk            </option>
-                    <option>Samisk              </option>
-                    <option>Samisk - lule       </option>
-                    <option>Samisk - nord       </option>
-                    <option>Serbisk             </option>
-                    <option>Singalesisk         </option>
-                    <option>Slovakisk           </option>
-                    <option>Slovensk            </option>
-                    <option>Somali              </option>
-                    <option>Soninke/Serahuli    </option>
-                    <option>Spansk              </option>
-                    <option>Susu                </option>
-                    <option>Svensk              </option>
-                    <option>Swahili             </option>
-                    <option>Tadzhik             </option>
-                    <option>Tagalog             </option>
-                    <option>Tamil               </option>
-                    <option>Tchiluba            </option>
-                    <option>Tegnspråk Norsk     </option>
-                    <option>Temene              </option>
-                    <option>Thai                </option>
-                    <option>Tibetansk           </option>
-                    <option>Tigre               </option>
-                    <option>Tigrinja            </option>
-                    <option>Tsjekkisk           </option>
-                    <option>Tsjetsjensk         </option>
-                    <option>Turkmensk           </option>
-                    <option>Twi                 </option>
-                    <option>Tyrkisk             </option>
-                    <option>Tysk                </option>
-                    <option>Uigurisk            </option>
-                    <option>Ukrainsk            </option>
-                    <option>Ungarsk             </option>
-                    <option>Urdu                </option>
-                    <option>Uzbekisk            </option>
-                    <option>Vietnamesisk        </option>
-                    <option>Visayan             </option>
-                    <option>Wolof               </option>
-                    <option>Xibo                </option>
-                    <option>Yoruba              </option>
-                    <option>Zulu                </option>
-                </select>
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="tilsprak">Til Språk</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="tilsprakid" formControlName="tilspraak" autocomplete="off" placeholder="Til Språk" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="oppmotested">Oppmøtested</label>
-            <div class="inner-addon left-addon">
-                <input type="text" class="form-control" id="oppmotestedid" formControlName="oppmotested" autocomplete="off" placeholder="Oppmøtested" />
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="oppdragsdato">Oppdragsdato</label>
-            <div class="inner-addon left-addon">
-                <input type="date" class="form-control" id="oppdragsdatoid" FormControlName="oppdragsdato" autocomplete="off" placeholder="Oppdragsdato" />
-            </div>
-        </div>
-
-        <div class="form-group"  style="display:inline-block; width:112px">
-            <label for="frakl">Fra kl</label>
-            <div>
-                <input type="time" min="00:00" max="23:59" class="form-control" id="fraklid" formControlName="frakl" autocomplete="off" placeholder="Fra kl" />
-            </div>
-        </div>
-
-        <div class="form-group" style="display:inline-block; width:118px; padding-left:10px">
-            <label for="tilkl">Til kl</label>
-            <div>
-                <input type="time" min="00:00" max="23:59" class="form-control" id="tilklid" formControlName="tilkl" autocomplete="off" placeholder="Til kl" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="andreopplysninger">Andre opplysninger</label>
-            <div class="inner-addon left-addon">
-                <textarea ng-model="andreopplysninger" style="height: 100px" class="form-control" id="andreopplysningerid"
-                          formControlName="andreopplysninger" autocomplete="off" placeholder="Andre opplysninger"></textarea>
-            </div>
-        </div>
-
-        <button (click)="postOppdrag()" type="submit" class="btn btn-success" [disabled]="!form.valid">Send bestilling</button>
-    </form>
-</div>
-
-<div *ngIf="loading">
-    <div>
-        <p style="display:inline-block">Vennligst vent . .</p><loading style="display:inline-block"></loading>
+        
     </div>
 
+    <div style="clear:both;max-width:910px;">
+        <hr />
+        <div style="float:right;padding-top:10px">
+            <p><span *ngIf="ugyldigFelter" style="color:red; margin-right:15px">Ugyldig felt</span><button (click)="postKunde()" class="btn btn-success btn-lg">Send bestilling</button></p>
+
+        </div>
+    </div>
 
 </div>
 
-<div *ngIf="!Success && !showForm && !loading">
-    <p class="error" >Ooops, bestillingen ble ikke sendt!</p>
-    <button (click)="tilbake()" class="btn btn-success">Gå tilbake</button>
-</div>
 
-<div *ngIf="Success && !showForm  && !loading">
-    <h3 style="color:forestgreen">Bestillingen er sendt! </h3>
-    <p>Vi vil behandle din søknad så fort som mulig</p>
 
+
+<div *ngIf="!showForm">
+    <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
+    <div *ngIf="response !== 'loading' && response !== 'success'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
+    <div *ngIf="response === 'success'" align="center"><h3><button (click)="tilBestilling()" class="btn btn-success btn-lg">Trykk her</button></h3></div>
 </div>

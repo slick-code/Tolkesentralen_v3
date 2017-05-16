@@ -15,12 +15,12 @@ export class OversettelseService {
         private authenticationService: AuthenticationService) {
     }
 
-    postOversettelseAnonym(body: any) {
+    postOversettelseOgKunde(body: any) {
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         headers.append('Accept', 'application/json');
 
-        return this.http.post(this.url, body, { headers: headers })
+        return this.http.post(this.url + "/PostOversettelseOgKunde", body, { headers: headers })
             .map(returData => returData.toString())
     }
 

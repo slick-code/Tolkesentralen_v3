@@ -22,6 +22,7 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.getUpdate = function () {
         var _this = this;
+        console.log("ADMIN getUpdate()");
         this.dataService.getData().subscribe(function (data) {
             _this.temp = data;
             _this.element = _this.temp;
@@ -34,6 +35,9 @@ var AdminComponent = (function () {
                     break;
                 case 'nye-kunder':
                     _this.counter.nyekunder = _this.element.nr;
+                    break;
+                case 'bestilling':
+                    _this.counter.oppdrag = _this.element.nr;
                     break;
             }
             _this.sum = _this.getSum();

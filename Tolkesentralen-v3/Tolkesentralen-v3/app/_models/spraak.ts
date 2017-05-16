@@ -5,201 +5,147 @@ export class Spraak {
 
     constructor() {
         this.liste = [
-            { "id": "1", "spraak": "Aceh" },
-            { "id": "2", "spraak": "Acholi" },
-            { "id": "3", "spraak": "Afaan" },
-            { "id": "4", "spraak": "Afar" },
-            { "id": "5", "spraak": "Afrikaans" },
-            { "id": "6", "spraak": "Afrikansk engelsk" },
-            { "id": "7", "spraak": "Agni" },
-            { "id": "8", "spraak": "Akan" },
-            { "id": "9", "spraak": "Akuapem" },
-            { "id": "10", "spraak": "Albansk" },
-            { "id": "11", "spraak": "Amharisk" },
-            { "id": "12", "spraak": "Arabisk" },
-            { "id": "13", "spraak": "Arabisk Marokko " },
-            { "id": "14", "spraak": "Arabisk Sodan" },
-            { "id": "15", "spraak": "Armensk" },
-            { "id": "16", "spraak": "Asante" },
-            { "id": "17", "spraak": "Aserbadjansk" },
-            { "id": "18", "spraak": "Assyrisk kldani" },
-            { "id": "19", "spraak": "Asyrisk ashori" },
-            { "id": "20", "spraak": "Azari" },
-            //{ "id": "21", "spraak": "" },
-            //{ "id": "22", "spraak": "" },
-            //{ "id": "23", "spraak": "" },
-            //{ "id": "24", "spraak": "" },
-            //{ "id": "25", "spraak": "" },
-            //{ "id": "26", "spraak": "" },
-            //{ "id": "27", "spraak": "" },
-            //{ "id": "28", "spraak": "" },
-            //{ "id": "29", "spraak": "" },
-            //{ "id": "30", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
-            //{ "id": "", "spraak": "" },
+            { 'id': 1, 'spraak': 'Acholi' },
+            { 'id': 2, 'spraak': 'Afar' },
+            { 'id': 3, 'spraak': 'Akan' },
+            { 'id': 4, 'spraak': 'Amo' },
+            { 'id': 5, 'spraak': 'Albansk' },
+            { 'id': 6, 'spraak': 'Amharisk' },
+            { 'id': 7, 'spraak': 'Arabisk' },
+            { 'id': 8, 'spraak': 'Arameisk' },
+            { 'id': 9, 'spraak': 'Armensk' },
+            { 'id': 10, 'spraak': 'Aserbadjansk' },
+            { 'id': 11, 'spraak': 'Asyrisk' },
+            { 'id': 12, 'spraak': 'Azari' },
+            { 'id': 13, 'spraak': 'Kurdisk-Badini' },
+            { 'id': 14, 'spraak': 'Baluchi' },
+            { 'id': 15, 'spraak': 'Bambara' },
+            { 'id': 16, 'spraak': 'Bengali' },
+            { 'id': 17, 'spraak': 'Benin' },
+            { 'id': 18, 'spraak': 'Berbisk' },
+            { 'id': 19, 'spraak': 'Bete' },
+            { 'id': 20, 'spraak': 'Bilen' },
+            { 'id': 21, 'spraak': 'Bisaya' },
+            { 'id': 22, 'spraak': 'Bosnisk' },
+            { 'id': 23, 'spraak': 'Bulgarsk' },
+            { 'id': 24, 'spraak': 'Burmesisk' },
+            { 'id': 25, 'spraak': 'Cebuano' },
+            { 'id': 26, 'spraak': 'Chao' },
+            { 'id': 27, 'spraak': 'Zhou' },
+            { 'id': 28, 'spraak': 'Chin' },
+            { 'id': 29, 'spraak': 'Dansk' },
+            { 'id': 30, 'spraak': 'Dari' },
+            { 'id': 31, 'spraak': 'Diola' },
+            { 'id': 32, 'spraak': 'Djerma' },
+            { 'id': 33, 'spraak': 'Engelsk' },
+            { 'id': 34, 'spraak': 'Engelsk-am.' },
+            { 'id': 35, 'spraak': 'Estisk' },
+            { 'id': 36, 'spraak': 'Ewe' },
+            { 'id': 37, 'spraak': 'Farsi (persisk)' },
+            { 'id': 38, 'spraak': 'Feili' },
+            { 'id': 39, 'spraak': 'Filippinsk' },
+            { 'id': 40, 'spraak': 'Finsk' },
+            { 'id': 41, 'spraak': 'Flamsk' },
+            { 'id': 42, 'spraak': 'Fransk' },
+            { 'id': 43, 'spraak': 'Fula' },
+            { 'id': 44, 'spraak': 'Færøyisk' },
+            { 'id': 45, 'spraak': 'Gassisk' },
+            { 'id': 46, 'spraak': 'Georgisk' },
+            { 'id': 47, 'spraak': 'Gresk' },
+            { 'id': 48, 'spraak': 'Hausa' },
+            { 'id': 49, 'spraak': 'Hazaragi' },
+            { 'id': 50, 'spraak': 'Hebraisk' },
+            { 'id': 51, 'spraak': 'Hindi' },
+            { 'id': 52, 'spraak': 'Hviterussisk' },
+            { 'id': 53, 'spraak': 'Ibo' },
+            { 'id': 54, 'spraak': 'Indonesisk' },
+            { 'id': 55, 'spraak': 'Ingushetisk' },
+            { 'id': 56, 'spraak': 'Islandsk' },
+            { 'id': 57, 'spraak': 'Italiensk' },
+            { 'id': 58, 'spraak': 'Japansk' },
+            { 'id': 59, 'spraak': 'Kakwa' },
+            { 'id': 60, 'spraak': 'Kamba' },
+            { 'id': 61, 'spraak': 'Kantonesisk' },
+            { 'id': 62, 'spraak': 'Karen' },
+            { 'id': 63, 'spraak': 'Karenni' },
+            { 'id': 64, 'spraak': 'Katalansk' },
+            { 'id': 65, 'spraak': 'Kazak/Tatar' },
+            { 'id': 66, 'spraak': 'Kazakhisk' },
+            { 'id': 67, 'spraak': 'Khmer' },
+            { 'id': 68, 'spraak': 'Kinesisk' },
+            { 'id': 69, 'spraak': 'Kinyarwanda' },
+            { 'id': 70, 'spraak': 'Kirundi' },
+            { 'id': 71, 'spraak': 'Kiswahili' },
+            { 'id': 72, 'spraak': 'Koreansk' },
+            { 'id': 73, 'spraak': 'Krio (creol – english)' },
+            { 'id': 74, 'spraak': 'Krio (creol)' },
+            { 'id': 75, 'spraak': 'Kroatisk' },
+            { 'id': 76, 'spraak': 'Kurdisk-Kurmancî' },
+            { 'id': 77, 'spraak': 'Latin' },
+            { 'id': 78, 'spraak': 'Latvisk' },
+            { 'id': 79, 'spraak': 'Lingala' },
+            { 'id': 80, 'spraak': 'Litauisk' },
+            { 'id': 81, 'spraak': 'Luganda' },
+            { 'id': 82, 'spraak': 'Luo' },
+            { 'id': 83, 'spraak': 'Makedonsk' },
+            { 'id': 84, 'spraak': 'Malay' },
+            { 'id': 85, 'spraak': 'Mandarin' },
+            { 'id': 86, 'spraak': 'Mandingo' },
+            { 'id': 87, 'spraak': 'Mandinka' },
+            { 'id': 88, 'spraak': 'Mende' },
+            { 'id': 89, 'spraak': 'Moldovsk' },
+            { 'id': 90, 'spraak': 'Mongolsk' },
+            { 'id': 91, 'spraak': 'Nederlandsk' },
+            { 'id': 92, 'spraak': 'Nepali' },
+            { 'id': 93, 'spraak': 'Norsk' },
+            { 'id': 94, 'spraak': 'Oromo' },
+            { 'id': 95, 'spraak': 'Pashto' },
+            { 'id': 96, 'spraak': 'Polsk' },
+            { 'id': 97, 'spraak': 'Portugisisk' },
+            { 'id': 98, 'spraak': 'Punjabi' },
+            { 'id': 99, 'spraak': 'Rohingya' },
+            { 'id': 100, 'spraak': 'Romanes' },
+            { 'id': 101, 'spraak': 'Romani' },
+            { 'id': 102, 'spraak': 'Rumensk' },
+            { 'id': 103, 'spraak': 'Russisk' },
+            { 'id': 104, 'spraak': 'Rwandisk' },
+            { 'id': 105, 'spraak': 'Saho' },
+            { 'id': 106, 'spraak': 'Samisk' },
+            { 'id': 107, 'spraak': 'Serbisk' },
+            { 'id': 108, 'spraak': 'Serbokroatisk' },
+            { 'id': 109, 'spraak': 'Singalesisk' },
+            { 'id': 110, 'spraak': 'Slovakisk' },
+            { 'id': 111, 'spraak': 'Slovensk' },
+            { 'id': 112, 'spraak': 'Somali' },
+            { 'id': 113, 'spraak': 'Soninke' },
+            { 'id': 114, 'spraak': 'Sorani' },
+            { 'id': 115, 'spraak': 'Spansk' },
+            { 'id': 116, 'spraak': 'Svensk' },
+            { 'id': 117, 'spraak': 'Swahili' },
+            { 'id': 118, 'spraak': 'Tadzhik' },
+            { 'id': 119, 'spraak': 'Tagalog' },
+            { 'id': 120, 'spraak': 'Tamil' },
+            { 'id': 121, 'spraak': 'Thai' },
+            { 'id': 122, 'spraak': 'TIBETANSK' },
+            { 'id': 123, 'spraak': 'Tigre' },
+            { 'id': 124, 'spraak': 'Tigrinja' },
+            { 'id': 125, 'spraak': 'Tsjekkisk' },
+            { 'id': 126, 'spraak': 'Tsjetsjensk' },
+            { 'id': 127, 'spraak': 'Turkmensk' },
+            { 'id': 128, 'spraak': 'Twi' },
+            { 'id': 129, 'spraak': 'Tyrkisk' },
+            { 'id': 130, 'spraak': 'Tysk' },
+            { 'id': 131, 'spraak': 'Ukrainsk' },
+            { 'id': 132, 'spraak': 'Ungarsk' },
+            { 'id': 133, 'spraak': 'Urdu' },
+            { 'id': 134, 'spraak': 'Uyghur' },
+            { 'id': 135, 'spraak': 'Uzbekisk' },
+            { 'id': 136, 'spraak': 'Vietnamesisk' },
+            { 'id': 137, 'spraak': 'Visaya' },
+            { 'id': 138, 'spraak': 'Wolof' },
+
         ];
     }
 
    
 }
-
-//< option > Baluchi < /option>
-//< option > Bambara < /option>
-//< option > Baoule < /option>
-//< option > Bengali < /option>
-//< option > Berbisk < /option>
-//< option > Bilin < /option>
-//< option > Bisaya < /option>
-//< option > Bosnisk < /option>
-//< option > Bulgarsk < /option>
-//< option > Burmesisk < /option>
-//< option > Cebuano < /option>
-//< option > Chin < /option>
-//< option > Chin haka           < /option>
-//< option > Chin matu           < /option>
-//< option > Dansk < /option>
-//< option > Dari < /option>
-//< option > Dinka(Sør Sudan) < /option>
-//< option > Diola < /option>
-//< option > Edo < /option>
-//< option > Engelsk < /option>
-//< option > Estisk < /option>
-//< option > Ewe < /option>
-//< option > Fanti < /option>
-//< option > Farsi < /option>
-//< option > Filippinsk < /option>
-//< option > Finsk < /option>
-//< option > Flamsk < /option>
-//< option > Fransk < /option>
-//< option > Fulah < /option>
-//< option > Færøysk < /option>
-//< option > Ga(chi Ghana) < /option>
-//< option > Georgisk < /option>
-//< option > Gresk < /option>
-//< option > Grønlansk < /option>
-//< option > Gujarati < /option>
-//< option > Gælisk < /option>
-//< option > Hausa < /option>
-//< option > Hazaragi < /option>
-//< option > Hebraisk < /option>
-//< option > Hindi < /option>
-//< option > Ibo < /option>
-//< option > Indonesisk < /option>
-//< option > Ingusjisk < /option>
-//< option > Islandsk < /option>
-//< option > Italiensk < /option>
-//< option > Japansk < /option>
-//< option > Jola < /option>
-//< option > Kantonesisk < /option>
-//< option > Karen < /option>
-//< option > Kashmiri < /option>
-//< option > katalansk < /option>
-//< option > Kazakhisk < /option>
-//< option > Khmer < /option>
-//< option > Kikuyu < /option>
-//< option > Kinesisk < /option>
-//< option > Kinyarwanda < /option>
-//< option > Kirundi(Burundi) < /option>
-//< option > Koreansk < /option>
-//< option > Krio(Creol - engelsk) < /option>
-//< option > Krio(Creol - Fransk) < /option>
-//< option > Krio(Creol) < /option>
-//< option > Kroatisk < /option>
-//< option > Kurdisk - Badini < /option>
-//< option > Kurdisk - Kurmanji < /option>
-//< option > Kurdisk - Sorani < /option>
-//< option > Lagos < /option>
-//< option > Langi < /option>
-//< option > Lango < /option>
-//< option > Lao < /option>
-//< option > Latin < /option>
-//< option > Latvisk < /option>
-//< option > Lingala < /option>
-//< option > Litauisk < /option>
-//< option > Luganda < /option>
-//< option > Luo < /option>
-//< option > Lusoga < /option>
-//< option > Lutoro / Nyoro < /option>
-//< option > Luxemburgsk < /option>
-//< option > Makedonsk < /option>
-//< option > Malay < /option>
-//< option > Mandarin < /option>
-//< option > Mandingo / mandinka < /option>
-//< option > Marathi < /option>
-//< option > Moldovsk < /option>
-//< option > Mongolsk < /option>
-//< option > Nederlandsk < /option>
-//< option > Nepali < /option>
-//< option > Nigeriansk < /option>
-//< option > Norsk < /option>
-//< option > Nubisk < /option>
-//< option > Oromo < /option>
-//< option > Pashto < /option>
-//< option > Persisk < /option>
-//< option > Pidgin < /option>
-//< option > Polsk < /option>
-//< option > Portugisisk < /option>
-//< option > Punjabi < /option>
-//< option > Romanes < /option>
-//< option > Ruhingla < /option>
-//< option > Rumensk < /option>
-//< option > Russisk < /option>
-//< option > Rwandisk < /option>
-//< option > Samisk < /option>
-//< option > Samisk - lule < /option>
-//< option > Samisk - nord < /option>
-//< option > Serbisk < /option>
-//< option > Singalesisk < /option>
-//< option > Slovakisk < /option>
-//< option > Slovensk < /option>
-//< option > Somali < /option>
-//< option > Soninke / Serahuli < /option>
-//< option > Spansk < /option>
-//< option > Susu < /option>
-//< option > Svensk < /option>
-//< option > Swahili < /option>
-//< option > Tadzhik < /option>
-//< option > Tagalog < /option>
-//< option > Tamil < /option>
-//< option > Tchiluba < /option>
-//< option > Tegnspråk Norsk     < /option>
-//< option > Temene < /option>
-//< option > Thai < /option>
-//< option > Tibetansk < /option>
-//< option > Tigre < /option>
-//< option > Tigrinja < /option>
-//< option > Tsjekkisk < /option>
-//< option > Tsjetsjensk < /option>
-//< option > Turkmensk < /option>
-//< option > Twi < /option>
-//< option > Tyrkisk < /option>
-//< option > Tysk < /option>
-//< option > Uigurisk < /option>
-//< option > Ukrainsk < /option>
-//< option > Ungarsk < /option>
-//< option > Urdu < /option>
-//< option > Uzbekisk < /option>
-//< option > Vietnamesisk < /option>
-//< option > Visayan < /option>
-//< option > Wolof < /option>
-//< option > Xibo < /option>
-//< option > Yoruba < /option>
-//< option > Zulu < /option>

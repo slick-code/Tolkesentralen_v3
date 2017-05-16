@@ -54,6 +54,55 @@ namespace Tolkesentralen_v3.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
+        [Route("api/oppdrag/PostOppdragOgKunde")]
+        public HttpResponseMessage PostOppdragOgKunde([FromBody]OppdragOgKunde input)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool OK = repository.regTolkOppdrag(input, input.kundeID);
+                bool OK;
+                if (input != null) OK = true;
+                else OK = false;
+                
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+        
+        
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            bool OK = repository.slettOppdrag(id);
+            if (OK)
+            {
+                return new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK
+                };
+
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+
+
+        [System.Web.Mvc.HttpPost]
         [Route("api/oppdrag/File")]
         public HttpResponseMessage Post(Oversettelse_VM nyOppdrag)
         {
@@ -63,7 +112,6 @@ namespace Tolkesentralen_v3.Controllers
                 //var path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads"), fileName);
                 //file.SaveAs(path);
                 
-
                 return new HttpResponseMessage()
                 {
                     StatusCode = HttpStatusCode.BadRequest,
@@ -89,10 +137,8 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
-
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
-
             
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -108,8 +154,6 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GeOppdragMedTolkId/{id}")]
         public HttpResponseMessage GeOppdragMedTolkId(int tolkID)
         {
-
-
             List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
             
             var Json = new JavaScriptSerializer();
@@ -193,7 +237,7 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetUbehandlet()
         {
 
-            List<Tolking_vm> liste = repository.listOppdragTolkUbehandlett();
+            List<OppdragOgKunde> liste = repository.listOppdragTolkUbehandlett();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
@@ -236,6 +280,22 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetBehandlet()
         {
             List<Tolking_vm> liste = repository.listOppdragTolkSendt();
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        // Ferdig behandlet (tildelt tolk)
+        [Route("api/oppdrag/GetBestillinger")]
+        public HttpResponseMessage GetBestillinger()
+        {
+            var liste = repository.listOppdragBestillinger();
 
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);

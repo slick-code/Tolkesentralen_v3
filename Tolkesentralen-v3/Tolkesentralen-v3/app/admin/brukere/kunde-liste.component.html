@@ -4,14 +4,14 @@
 <div>
     <div class="col-md-offset-0">
 
-        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Kunde oversikt</p>
+        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Alle registrerte kunder</p>
         <p style="display: inline-block;" class="text-center" *ngIf="loading">
             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
         </p>
 
         <hr />
         <div>
-            <h3 style="display: inline-block;">Liste over alle kunder </h3>
+            <h1 style="display: inline-block;">Kundeoversikt </h1>
 
         </div>
         <br />
@@ -23,8 +23,7 @@
                     <th>Kontakt-person</th>
                     <th>Telefon</th>
                     <th>Telefax</th>
-                    <th>Faktura-adresse</th>
-                    <th>Poststed</th>
+                    <th>Fakturaadresse</th>
                     <th>Brukernavn</th>
                 </tr>
             </thead>
@@ -32,11 +31,10 @@
                 <tr>
                     <td>{{kunde.firma}}</td>
                     <td>{{kunde.fornavn}} {{kunde.etternavn}}</td>
-                    <td>{{kunde.tlf}}</td>
+                    <td>{{kunde.telefon}}</td>
                     <td>{{kunde.telefax}}</td>
-                    <td>{{kunde.fakturaadresse}}</td>
-                    <td>{{kunde.postnr}} {{kunde.poststed}}</td>
-                    <td>{{kunde.email}}</td>
+                    <td>{{kunde.fakturaadresse}} {{kunde.postnr}} {{kunde.poststed}}</td>
+                    <td>{{kunde.epost}}</td>
                     <td style="width:40px;" *ngIf="!setTilSlettErTrykket(i)" >
                         <button [ngClass]="{'fl': slett }" style="width:40px" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-trash"></span></button>
                     </td>

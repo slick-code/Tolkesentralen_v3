@@ -16,6 +16,7 @@ const appRoutes: Routes = [
         path: '',
         component: KundeComponent,
         canActivate: [AuthGuard],
+        data: { domene: 'kunde' },
         children: [
             { path: 'kunde-bestill-tolk', component: KundeBestillTolkComponent },
             { path: 'kunde-bestill-oversettelse', component: KundeBestillOversettelseComponent },
@@ -25,8 +26,7 @@ const appRoutes: Routes = [
             { path: 'kunde-oversettelse-historikk', component: KundeOversettelseHistorikkComponent },
             { path: 'kunde-endre-opplysninger', component: KundeEndreOpplysningerComponent },
             { path: 'kunde-endre-passord', component: KundeEndrePassordComponent },
-            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-oversettelse'}
-
+            { path: '', pathMatch: 'full', redirectTo: 'kunde-bestill-tolk'}
         ]
     }
 ];

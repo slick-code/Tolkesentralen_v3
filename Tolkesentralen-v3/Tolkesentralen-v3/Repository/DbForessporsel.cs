@@ -26,25 +26,21 @@ namespace Tolkesentralen_v3.Repository
         {
 
 
-            Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragsID == opprdragId);
+            Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragID == opprdragId);
             if (oppdrag != null)
             {
                 //oppretter forespørler
                 var foresp = new Foresporsler()
                 {
-
-                    oppdragsID = oppdrag.oppdragsID,
-                    oppdragType = oppdrag.oppdragType,
-                    spraakFra = oppdrag.spraakFra,
-                    spraakTil = oppdrag.spraakTil,
-                    oppdragsAddres = oppdrag.oppdragsAddres,
                     regDato = oppdrag.regDato,
-                    oppdragsDato = oppdrag.oppdragsDato,
-                    tidFra = oppdrag.tidFra,
-                    tidTil = oppdrag.tidTil,
-                    andreOpplisning = oppdrag.andreOpplisning,
-
-
+                    oppdragID = oppdrag.oppdragID,
+                    typetolk = oppdrag.typetolk,
+                    fraspraak = oppdrag.fraspraak,
+                    tilspraak = oppdrag.tilspraak,
+                    oppmoteadresse = oppdrag.oppmoteadresse,
+                    fratidspunkt = oppdrag.fratidspunkt,
+                    tiltidspunkt = oppdrag.tiltidspunkt,
+                    andreopplysninger = oppdrag.andreopplysninger
                 };
 
                 foreach (int tolk_ID in tolkId)
@@ -91,23 +87,19 @@ namespace Tolkesentralen_v3.Repository
 
                 List<Tolking_vm> utListe = new List<Tolking_vm>();
 
-                foreach (var rowf in foresp)
+                foreach (var row in foresp)
                 {
 
                     var Tolking_vm = new Tolking_vm()
                     {
-
-                        oppdragID = rowf.foresporselID,
-                        typetolk = rowf.oppdragType,
-                        fraspraak = rowf.spraakFra,
-                        tilspraak = rowf.spraakTil,
-                        sted = rowf.oppdragsAddres,
-                        oppdragsdato = rowf.oppdragsDato,
-                        frakl = rowf.tidFra,
-                        tilkl = rowf.tidTil,
-                        andreopplysninger = rowf.andreOpplisning,
-
-
+                        oppdragID = row.oppdragID,
+                        typetolk = row.typetolk,
+                        fraspraak = row.fraspraak,
+                        tilspraak = row.tilspraak,
+                        oppmoteadresse = row.oppmoteadresse,
+                        fratidspunkt = row.fratidspunkt,
+                        tiltidspunkt = row.tiltidspunkt,
+                        andreopplysninger = row.andreopplysninger
                     };
 
                     utListe.Add(Tolking_vm);
@@ -141,22 +133,19 @@ namespace Tolkesentralen_v3.Repository
                 if (tolk != null)
                 {
                     
-                    foreach (var rowf in tolk.foresporsler)
+                    foreach (var row in tolk.foresporsler)
                     {
                        
                         var Tolking_vm = new Tolking_vm()
                         {
-
-                            oppdragID = rowf.foresporselID,
-                            typetolk = rowf.oppdragType,
-                            fraspraak = rowf.spraakFra,
-                            tilspraak = rowf.spraakTil,
-                            sted = rowf.oppdragsAddres,
-                            oppdragsdato = rowf.oppdragsDato,
-                            frakl = rowf.tidFra,
-                            tilkl = rowf.tidTil,
-                            andreopplysninger = rowf.andreOpplisning,
-
+                            oppdragID = row.oppdragID,
+                            typetolk = row.typetolk,
+                            fraspraak = row.fraspraak,
+                            tilspraak = row.tilspraak,
+                            oppmoteadresse = row.oppmoteadresse,
+                            fratidspunkt = row.fratidspunkt,
+                            tiltidspunkt = row.tiltidspunkt,
+                            andreopplysninger = row.andreopplysninger
                         };
 
                         utListe.Add(Tolking_vm);
@@ -198,10 +187,10 @@ namespace Tolkesentralen_v3.Repository
                                 persId = row.persId,
                                 fornavn = row.fornavn,
                                 etternavn = row.etternavn,
-                                tlf = row.tlf,
+                                telefon = row.telefon,
                                 postnr = row.poststed.postNr,
                                 poststed = row.poststed.postSted,
-                                email = row.email,
+                                epost = row.email,
                                 adresse = row.adresse,
                                 godkjent = row.godkjent
                             };
@@ -222,7 +211,6 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
-
         
 
 

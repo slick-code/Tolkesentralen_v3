@@ -1,3 +1,43 @@
+a:hover {
+    color: black;
+}
+/**/
+.table-bordered td.cc{
+    border: 1px solid aquamarine !important;
+  }
+/*Inputs*/
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  
+
+}
+
+.inner-addon { 
+    position: relative; 
+   
+}
+
+.pleft input{
+    padding-left:  30px;
+     
+}
+
+.form-control.error-border{
+    border-left: 3px solid red;
+}
+
+.form-group{
+    width: 235px;
+}
+
+.line-equal{
+    display:inline-block;
+    width:116px
+}
+
+
 /*Text*/
 h1{
     color:#005200;
@@ -14,6 +54,9 @@ body {
   line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff;
+  	margin:0;
+	padding:0;
+	height:100%;
 }
 .gap{
   margin-top:50px;
@@ -31,7 +74,7 @@ html {
 }
 
 .ubuntu-text{
-  color:#e95420;
+  color:orangered;
 }
 
 
@@ -50,7 +93,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:checked {
-    background:url(../bilder/check-mark.png);
+    background:url(../bilder/check-mark-g.png);
     background-size:contain;
     background-repeat: no-repeat;
 }
@@ -287,7 +330,65 @@ fieldset[disabled] .btn-primary.focus {
 }
 
 
+/*BUTTON DEFAULT*/
 
+.btn-default {
+  color: #555555;
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default:focus,
+.btn-default.focus {
+  color: #555555;
+  background-color: #e6e6e6;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default:hover {
+  color: #555555;
+  background-color: #e6e6e6;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #555555;
+  background-color: #e6e6e6;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #555555;
+  background-color: #d4d4d4;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.btn-default .badge {
+  color: #ffffff;
+  background-color: #555555;
+}
 
 
 

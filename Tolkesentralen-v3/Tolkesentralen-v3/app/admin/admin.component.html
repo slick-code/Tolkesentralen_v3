@@ -8,15 +8,15 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" routerLinkActive="active">
-                        Forespørsler <span style="color:springgreen"><b> {{sum}}</b></span>
+                        Forespørsler <span style="color:aquamarine"><b>{{sum}}</b></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:springgreen;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
+                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
 
-                        <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:springgreen;"><b> {{antallOversettelser }}</b></span></a></li>
+                        <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:aquamarine;"><b> {{antallOversettelser }}</b></span></a></li>
 
-                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:springgreen;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
+                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:aquamarine;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -31,11 +31,11 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Bestillinger <span style="color:springgreen;"><b> 7</b></span>
+                        Bestillinger <span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.oppdrag}}</b></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="./admin-tolk-bestilling-oversikt" routerLinkActive="active">Tolkeoppdrag</a></li>
+                        <li><a routerLink="./admin-tolk-bestilling-oversikt" routerLinkActive="active">Tolkeoppdrag <span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.oppdrag}}</b></span></a></li>
                         <li><a routerLink="./admin-oversettelse-bestilling-oversikt" routerLinkActive="active">Oversettelse</a></li>
                     </ul>
                 </li>
@@ -53,7 +53,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        Oversettelse historikk <span style="color:orangered;"><b> 7</b></span>
+                        Oversettelse historikk
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -91,12 +91,12 @@
                         <li><a routerLink="./kunde-tolke-historikk" routerLinkActive="active">Endre tolk</a></li>
                     </ul>
                 </li>
-                <li><a routerLink="/home" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> Logg ut</a></li>
+                <li><a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-out"></span> Logg ut</a></li>
             </ul>
         </div>
 
     </div>
 </nav>
 <div class="container body-content">
-<router-outlet ></router-outlet>
+<router-outlet></router-outlet>
 </div>

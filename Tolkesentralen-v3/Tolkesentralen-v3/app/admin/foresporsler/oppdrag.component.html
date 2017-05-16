@@ -1,18 +1,16 @@
-<p style="float:right"><span style="color:forestgreen">Innlogget: </span> {{bruker != null ? bruker.email : ""}}  (id: {{bruker != null ? bruker.id : ""}})</p>
+<p style="float:right"><span style="color:forestgreen">Innlogget : </span> {{bruker != null ? bruker.brukernavn : ""}}</p>
 <div >
     <div class="col-md-offset-0" >
         
         <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Forespørsler som venter behandling</p>
 
-        <p style="display: inline-block;" class="text-center" *ngIf="loading">
-					<img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-					</p>
+        <loading *ngIf="loading"></loading>
        
         <hr />
 
         <div *ngIf="checkIfArrayIsEmthy(arrayOppdrag)">
             <div>
-                <h3 style="display: inline-block;"> Nye Oppdrag</h3>
+                <h1 style="display: inline-block;"> Nye Oppdrag</h1>
 
             </div>
             <br />
@@ -22,44 +20,46 @@
                     <tr>
                         <th>Mottatt</th>
                         <th>Type</th>
-                        <th>Fra til Språk</th>
-                        <th>Tidspunk</th>
+                        <th>Fra Språk</th>
+                        <th>Til Språk</th>
+                        <th>Dato</th>
+                        <th>Tid</th>
+                        <th>Oppmøtested</th>
                     </tr>
                 </thead>
                 <tbody  *ngFor="let oppdrag of arrayOppdrag; let i = index">
                     <tr>
-                        <td>Mottatt dato</td>
-                        <td>{{oppdrag.type}}</td>
-                        <td>{{oppdrag.fraspraak}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.tilspraak}} </td>
                         <td>{{oppdrag.dato}}</td>
-                        <td *ngIf="!slettErTrykket || i !== index || nr === 1" width="230">
-                            <button style="width:85px" class="btn btn-success" (click)="btnClick(i,0,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
-                            <button style="width:85px" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-share-alt"></span> Utdel</button>
-                            <button style="width:40px" class="btn btn-default" (click)="btnClick(i,0,1)"><span class="glyphicon glyphicon-trash"></span></button>
-                        </td>
-                        <td *ngIf="VisSlett(i, 0)" width="205">
-                            <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
-                            <button style="width:49%" class="btn btn-default" (click)="SetDefault()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                        <td>{{oppdrag.typetolk}}</td>
+                        <td>{{arraySpraak[oppdrag.fraspraak].spraak}}</td>
+                        <td>{{arraySpraak[oppdrag.tilspraak].spraak}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+                        <td width="185">
+                            <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
+                            <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-share-alt"></span> Utdel</button>
                         </td>
                     </tr>
                     <tr *ngIf="VisInfo(i, 0)">
-                        <td colspan="7">
-                            <table class="table table-bordered table-condensed table1">
-                                <tr><th style="color:orange">Sted</th><td style="color:black">{{arrayOppdrag[index].sted}}</td></tr>
-                                <tr><th style="color:darkorange">Navn</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
-                                <tr><th style="color:orange">Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
-                                <tr><th style="color:darkorange">Tlf</th><td style="color:black">{{arrayOppdrag[index].tlf}}</td></tr>
-                                <tr><th style="color:orange">E-post</th><td style="color:black">{{arrayOppdrag[index].email}}</td></tr>
+                        <td colspan="8">
+                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                                <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
+                                <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
                                 <tr>
-                                    <th style="color:darkorange">Melding</th>
-                                    <td style="color:black">
-                                        .info er et generisk toppnivådomene på internett, beregnet for informative nettsteder (selv om bruken er uten begrensninger). Det var en del av ICANNs sterkt publiserte annonsering, sent i 2000, av en gradvis innfasing av syv nye generiske toppnivådomener (gTLD'er). Hendelsen ble karakterisert som den første større tilføyelsen av større gTLD'er til internett etter at DNS-systemet ble utviklet på 1980-tallet. De syv nye gTLD'ene, som var utvalgt fra over 180 forslag, hadde som delformål å lette noe av presset fra det overbefolkede .com-domenet.
-
-                                        .info har vært det mest suksessfulle av de syv nye domenene, med over 4 millioner domenenavn registrert frem til mars 2007. Over 1,6 millioner .info-nettsteder er i aktivt bruk pr. juli 2007.
-                                    </td>
+                                    <th>Melding</th>
+                                    <td>{{arrayOppdrag[index].andreopplysninger}}</td>
                                 </tr>
                             </table>
+                            <button *ngIf="!slettErTrykket" style="margin:10px;margin-left:5px" class="btn btn-danger" (click)="btnTilSlettClick()"><span class="glyphicon glyphicon-trash"></span> Slett?</button>
+                            <p  style="width:220px;margin:10px;margin-left:5px" *ngIf="slettErTrykket && nr == 0">
+                                <button style="width:38%" class="btn btn-default" (click)="btnAvbrytTilSlettClick()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                                <button style="width:60%" class="btn btn-danger" (click)="slettOppdrag(oppdrag.persId, i)"><span class="glyphicon glyphicon-trash"></span> Slett for godt</button>
+                            </p>
                         </td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -67,7 +67,7 @@
 
         
 
-        <h3 style="color:forestgreen" *ngIf="!checkIfArrayIsEmthy(arrayOppdrag)">Ingen nye oppdrag</h3>
+        <h3 style="color:forestgreen" *ngIf="!loading && !checkIfArrayIsEmthy(arrayOppdrag)">Ingen nye oppdrag</h3>
 
 
 
@@ -81,54 +81,58 @@
             <br />
             <hr />
             <div>
-                <h3 style="display: inline-block;"> Oppdrag som venter godkjenning fra tolk</h3>
+                
+                <h1 style="display: inline-block;"> Utdelte Oppdrag </h1>
+
 
             </div>
             <br />
 
-            <table  class="table table-bordered table-condensed">
+            <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
                         <th>Mottatt</th>
                         <th>Type</th>
-                        <th>Fra til Språk</th>
-                        <th>Tidspunk</th>
+                        <th>Fra Språk</th>
+                        <th>Til Språk</th>
+                        <th>Dato</th>
+                        <th>Tid</th>
+                        <th>Oppmøtested</th>
                     </tr>
                 </thead>
-                <tbody  *ngFor="let oppdrag of arrayOppdragSendt; let i = index">
+                <tbody *ngFor="let oppdrag of arrayOppdragSendt; let i = index">
                     <tr>
-                        <td>Mottatt dato</td>
-                        <td>{{oppdrag.type}}</td>
-                        <td>{{oppdrag.fraspraak}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.tilspraak}} </td>
                         <td>{{oppdrag.dato}}</td>
-                        <td *ngIf="!slettErTrykket || i !== index || nr === 0" width="250">
-                            <button style="width:85px" class="btn btn-success" (click)="btnClick(i,1,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 1) ? "Sjul" : "Vis mer"}}</button>
-                            <button style="width:105px" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-user"></span> List tolker</button>
-                            <button style="width:40px" class="btn btn-default" (click)="btnClick(i,1,1)"><span class="glyphicon glyphicon-trash"></span></button>
-                        </td>
-                        <td *ngIf="VisSlett(i, 1)" width="205">
-                            <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
-                            <button style="width:49%" class="btn btn-default" (click)="SetDefault()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                        <td>{{oppdrag.typetolk}}</td>
+                        <td>{{arraySpraak[oppdrag.fraspraak].spraak}}</td>
+                        <td>{{arraySpraak[oppdrag.tilspraak].spraak}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy HH:mm'}}</td>
+                        <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+                        <td width="185">
+                            <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,1)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 1) ? "Sjul" : "Vis mer"}}</button>
+                            <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-user"></span> Utdelt</button>
                         </td>
                     </tr>
                     <tr *ngIf="VisInfo(i, 1)">
-                        <td colspan="7">
-                            <table class="table table-bordered table-condensed table1">
-                                <tr><th style="color:orange">Sted</th><td style="color:black">{{arrayOppdrag[index].sted}}</td></tr>
-                                <tr><th style="color:darkorange">Navn</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
-                                <tr><th style="color:orange">Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
-                                <tr><th style="color:darkorange">Tlf</th><td style="color:black">{{arrayOppdrag[index].tlf}}</td></tr>
-                                <tr><th style="color:orange">E-post</th><td style="color:black">{{arrayOppdrag[index].email}}</td></tr>
+                        <td colspan="8">
+                            <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                                <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{arrayOppdrag[index].fornavn}} {{arrayOppdrag[index].etternavn}}</td></tr>
+                                <tr><th>Firma</th><td style="color:black">{{arrayOppdrag[index].firma}}</td></tr>
+                                <tr><th>Telefon</th><td style="color:black">{{arrayOppdrag[index].telefon}}</td></tr>
+                                <tr><th>Epost</th><td style="color:black">{{arrayOppdrag[index].epost}}</td></tr>
                                 <tr>
-                                    <th style="color:darkorange">Melding</th>
-                                    <td style="color:black">
-                                        .info er et generisk toppnivådomene på internett, beregnet for informative nettsteder (selv om bruken er uten begrensninger). Det var en del av ICANNs sterkt publiserte annonsering, sent i 2000, av en gradvis innfasing av syv nye generiske toppnivådomener (gTLD'er). Hendelsen ble karakterisert som den første større tilføyelsen av større gTLD'er til internett etter at DNS-systemet ble utviklet på 1980-tallet. De syv nye gTLD'ene, som var utvalgt fra over 180 forslag, hadde som delformål å lette noe av presset fra det overbefolkede .com-domenet.
-
-                                        .info har vært det mest suksessfulle av de syv nye domenene, med over 4 millioner domenenavn registrert frem til mars 2007. Over 1,6 millioner .info-nettsteder er i aktivt bruk pr. juli 2007.
-                                    </td>
+                                    <th>Melding</th>
+                                    <td>{{arrayOppdrag[index].andreopplysninger}}</td>
                                 </tr>
                             </table>
+                            <button *ngIf="!slettErTrykket" style="margin:10px;margin-left:5px" class="btn btn-danger" (click)="btnTilSlettClick()"><span class="glyphicon glyphicon-trash"></span> Slett?</button>
+                            <p style="width:220px;margin:10px;margin-left:5px" *ngIf="slettErTrykket && nr == 1">
+                                <button style="width:38%" class="btn btn-default" (click)="btnAvbrytTilSlettClick()"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
+                                <button style="width:60%" class="btn btn-danger" (click)="slettOppdrag(oppdrag.persId, i)"><span class="glyphicon glyphicon-trash"></span> Slett for godt</button>
+                            </p>
                         </td>
+
                     </tr>
                 </tbody>
             </table>

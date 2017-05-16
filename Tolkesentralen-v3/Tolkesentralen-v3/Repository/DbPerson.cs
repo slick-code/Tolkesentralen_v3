@@ -14,6 +14,19 @@ namespace Tolkesentralen_v3.Models
     {
         DbNetcont db = new DbNetcont();
 
+        public bool SjekkOmEpostEksisterer(string epost)
+        {
+            var objekt = db.Personer.FirstOrDefault(b => b.email == epost);
+            if (objekt == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         public bool setUtilgjengelig(Utilgjengelig_ViewModel input)
         {
@@ -102,10 +115,10 @@ namespace Tolkesentralen_v3.Models
                     persId = tk.persId,
                     fornavn = tk.fornavn,
                     etternavn = tk.etternavn,
-                    tlf = tk.tlf,
+                    telefon = tk.telefon,
                     postnr = tk.poststed.postNr,
                     poststed = tk.poststed.postSted,
-                    email = tk.email,
+                    epost = tk.email,
                     adresse = tk.adresse,
                     godkjent = tk.godkjent
                 };
@@ -125,10 +138,10 @@ namespace Tolkesentralen_v3.Models
                 {
                     dbtolk.fornavn = Tolk.fornavn;
                     dbtolk.etternavn = Tolk.etternavn;
-                    dbtolk.tlf = Tolk.tlf;
+                    dbtolk.telefon = Tolk.telefon;
                     dbtolk.poststed.postNr = Tolk.postnr;
                     dbtolk.poststed.postSted = Tolk.poststed;
-                    dbtolk.email = Tolk.email;
+                    dbtolk.email = Tolk.epost;
                     dbtolk.adresse = Tolk.adresse;
 
                     db.SaveChanges();
@@ -183,12 +196,12 @@ namespace Tolkesentralen_v3.Models
                             firma = row.firma,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
-                            tlf = row.tlf,
+                            telefon = row.telefon,
                             telefax = row.telefax,
                             fakturaadresse = row.fakturaAddress,
-                            //postnr = row.poststed.postNr,
-                            //poststed = row.poststed.postSted,
-                            email = row.email
+                            postnr = row.poststed.postNr,
+                            poststed = row.poststed.postSted,
+                            epost = row.email
                         };
                         vm_liste.Add(kunde);
                     }
@@ -232,15 +245,14 @@ namespace Tolkesentralen_v3.Models
 
                 fornavn = innkunde.fornavn,
                 etternavn = innkunde.etternavn,
-                tlf = innkunde.tlf,
+                telefon = innkunde.telefon,
                 adresse = innkunde.adresse,
                 regDato = DateTime.Now,
                 godkjent = 0,
                 password = dbPassword,
-                email = innkunde.email,
+                email = innkunde.epost,
                 Salt = salt,
                 firma = innkunde.firma,
-                kontaktperson = innkunde.kontaktperson,
                 telefax = innkunde.telefax,
                 fakturaAddress = innkunde.fakturaadresse
 
@@ -352,8 +364,8 @@ namespace Tolkesentralen_v3.Models
 
                 fornavn = nyTolk.fornavn,
                 etternavn = nyTolk.etternavn,
-                tlf = nyTolk.tlf,
-                email = nyTolk.email,
+                telefon = nyTolk.telefon,
+                email = nyTolk.epost,
                 adresse = nyTolk.adresse,
                 regDato = DateTime.Now,
                 password = dbPassword,
@@ -410,10 +422,10 @@ namespace Tolkesentralen_v3.Models
                             persId = row.persId,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
-                            tlf = row.tlf,
+                            telefon = row.telefon,
                             postnr = row.poststed.postNr,
                             poststed = row.poststed.postSted,
-                            email = row.email,
+                            epost = row.email,
                             adresse = row.adresse,
                             godkjent = row.godkjent
                         };
@@ -471,10 +483,10 @@ namespace Tolkesentralen_v3.Models
                             persId = row.persId,
                             fornavn = row.fornavn,
                             etternavn = row.etternavn,
-                            tlf = row.tlf,
+                            telefon = row.telefon,
                             postnr = row.poststed.postNr,
                             poststed = row.poststed.postSted,
-                            email = row.email,
+                            epost = row.email,
                             adresse = row.adresse,
                             godkjent = row.godkjent
                         };
@@ -750,7 +762,7 @@ namespace Tolkesentralen_v3.Models
         public Oppdrag visOppdrag(int oppdragsID)
         {
             var db = new DbNetcont();
-            return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragsID == oppdragsID);
+            return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragID == oppdragsID);
         }
         ///// <summary>
         ///// Method that lists frammaate

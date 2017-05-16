@@ -19,28 +19,24 @@ var RegistrerComponent = (function () {
         this.kundeService = kundeService;
         this.fb = fb;
         this.form = fb.group({
-            firma: [],
-            fornavn: [],
-            etternavn: [],
-            telefon: [],
-            telefax: [],
-            epost: [],
+            firma: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
+            fornavn: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            etternavn: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            telefon: ["", forms_1.Validators.pattern("[0-9]{8,12}")],
+            telefax: ["", forms_1.Validators.pattern("[0-9]{8,12}")],
+            epost: ["", forms_1.Validators.pattern("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")],
+            fakturaadresse: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
+            postnr: ["", forms_1.Validators.pattern("[0-9]{4}")],
+            poststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            andreopplysninger: [],
             passord: [],
             bekreftpassord: [],
-            fakturaadresse: [],
-            postnr: [],
-            poststed: []
         });
     }
     RegistrerComponent.prototype.ngOnInit = function () {
         this.showForm = true;
         //this.getKunder();
         this.errorMessage = "Ooops! Bestilling ble ikke sendt.";
-    };
-    RegistrerComponent.prototype.showLoadingScreen = function () {
-        this.showForm = false;
-        this.Success = null;
-        this.loading = true;
     };
     RegistrerComponent.prototype.getKunder = function () {
         var _this = this;
@@ -52,10 +48,61 @@ var RegistrerComponent = (function () {
     RegistrerComponent.prototype.tilbake = function () {
         this.showForm = true;
     };
+    RegistrerComponent.prototype.form_MarkAsTouched = function () {
+        var _this = this;
+        Object.keys(this.form.controls).forEach(function (key) {
+            _this.form.get(key).markAsTouched(true);
+        });
+    };
+    RegistrerComponent.prototype.PassordMatch = function () {
+        if (this.form.value.passord == this.form.value.bekreftpassord) {
+            this.passordMatch = true;
+            return true;
+        }
+        else {
+            this.passordMatch = false;
+            return false;
+        }
+    };
+    RegistrerComponent.prototype.responseHandler = function (data) {
+        if (this.epostEksiterer) {
+            this.epostEksiterer = false;
+        }
+    };
+    RegistrerComponent.prototype.Valider = function () {
+        var _this = this;
+        this.ugyldigFelter = false;
+        if (!this.form.valid || !this.passordMatch) {
+            this.form_MarkAsTouched();
+            this.ugyldigFelter = true;
+            return;
+        }
+        this.showForm = false;
+        this.response = "loading";
+        var body = JSON.stringify(this.form.value.epost);
+        this.kundeService.SjekkOmEpostEksisterer(body).subscribe(function (res) {
+            if (res.status == 202) {
+                _this.postKunde();
+                console.log("202: " + res.status);
+            }
+            else {
+                console.log("status ikke 202" + res.status);
+                _this.avbryt();
+            }
+            return true;
+        }, function (error) {
+            console.log("error" + error);
+            _this.avbryt();
+        }, function () { });
+    };
+    RegistrerComponent.prototype.avbryt = function () {
+        this.response = "";
+        this.showForm = true;
+        this.epostEksiterer = true;
+        return;
+    };
     RegistrerComponent.prototype.postKunde = function () {
         var _this = this;
-        this.loading = true;
-        this.showForm = false;
         var ny = new models_1.Kunde();
         ny.firma = this.form.value.firma;
         ny.fornavn = this.form.value.fornavn;
@@ -71,11 +118,14 @@ var RegistrerComponent = (function () {
         ny.passord = this.form.value.passord;
         var body = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(function (retur) {
-            _this.Success = true;
-            _this.loading = false;
-            _this.kunder.push(ny);
-            console.log("Success POST : " + ny.firma);
-        }, function (error) { console.log("Beklager, en feil har oppstått - " + error); _this.loading = false; }, function () { return console.log("ferdig post-api/bestilling"); });
+            _this.response = "success";
+            _this.responseText = "Din registrering er sendt";
+            _this.underText = "Takk for ditt medlemskap";
+        }, function (error) {
+            _this.response = "error";
+            _this.responseText = "Ingen kontakt med server";
+            _this.underText = "Tilkoblet internett?";
+        }, function () { });
     };
     return RegistrerComponent;
 }());

@@ -24,6 +24,33 @@ namespace Tolkesentralen_v3.Controllers
         DbOversettelse repository = new DbOversettelse();
 
         [System.Web.Mvc.HttpPost]
+        [Route("api/oppdrag/PostOversettelseOgKunde")]
+        public HttpResponseMessage PostOversettelseOgKunde([FromBody]OversettelseOgKunde input)
+        {
+            if (ModelState.IsValid)
+            {
+                //bool OK = repository.regTolkOppdrag(input, input.kundeID);
+                bool OK;
+                if (input != null) OK = true;
+                else OK = false;
+
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Content = new StringContent("Søknaden ble ikke lagret!")
+            };
+        }
+
+        [System.Web.Mvc.HttpPost]
         [Route("api/oversettelse/PostOppdragFraKunde")]
         public HttpResponseMessage PostOppdragFraKunde([FromBody]Oversettelse_VM input)
         {
@@ -75,8 +102,8 @@ namespace Tolkesentralen_v3.Controllers
                 //sted = "Jessheim",
                 frakl = "13:00",
                 typetolk = "Fremmedmøtetolk",
-                fraspraak = "Spansk",
-                tilspraak = "Norsk"
+                fraspraak = 1,
+                tilspraak = 2
             };
             liste.Add(output);
 

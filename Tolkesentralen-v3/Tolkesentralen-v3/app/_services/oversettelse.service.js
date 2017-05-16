@@ -19,11 +19,11 @@ var OversettelseService = (function () {
         this.authenticationService = authenticationService;
         this.url = 'api/oversettelse/'; // URL to web API
     }
-    OversettelseService.prototype.postOversettelseAnonym = function (body) {
+    OversettelseService.prototype.postOversettelseOgKunde = function (body) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'multipart/form-data');
         headers.append('Accept', 'application/json');
-        return this.http.post(this.url, body, { headers: headers })
+        return this.http.post(this.url + "/PostOversettelseOgKunde", body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
     OversettelseService.prototype.postOversettelseKunde = function (body) {

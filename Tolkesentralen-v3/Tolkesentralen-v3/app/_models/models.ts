@@ -46,8 +46,8 @@ export class Oversettelse {
     kundeID: number;
     dato: any;
     typedokument: string;
-    fraspraak: string;
-    tilspraak: string;
+    fraspraak: number;
+    tilspraak: number;
     ferdiggjoresdato: string;
     andreopplysninger: string;
     fil: File;
@@ -57,38 +57,52 @@ export class OversettelseOgKunde extends Kunde {
     kundeID: number;
     dato: any;
     typedokument: string;
-    fraspraak: string;
-    tilspraak: string;
+    fraspraak: number;
+    tilspraak: number;
     ferdiggjoresdato: string;
     andreopplysninger: string;
     fil: File;
 }
 
 export class Oppdrag {
-    kundeID: number;
     oppdragID: number;
+    kundeID: number;
     dato: any;
     typetolk: string;
-    fraspraak: string;
-    tilspraak: string;
+    fraspraak: number;
+    tilspraak: number;
     frakl: string;
     tilkl: string;
+    fratidspunkt: Date;
+    tiltidspunkt: Date;
     oppdragsdato: string;
-    sted: string;
+    oppmoteadresse: string;
+    oppmotepostnr: number;
+    oppmotepoststed: string;
     andreopplysninger: string;
 }
 
-export class OppdragOgKunde {
+export class OppdragOgKunde extends Kunde {
     kundeID: number;
     dato: any;
     typetolk: string;
-    fraspraak: string;
-    tilspraak: string;
+    fraspraak: number;
+    tilspraak: number;
     frakl: string;
     tilkl: string;
+    fratidspunkt: Date;
+    tiltidspunkt: Date;
     oppdragsdato: string;
-    sted: string;
+    oppmoteadresse: string;
+    oppmotepostnr: number;
+    oppmotepoststed: string;
     andreopplysninger: string;
+
+    tolkId: number;
+    tolkpost: string;
+    tolktelefon: number;
+    tolkfornavn: string;
+    tolketternavn: string;
 }
 
 export class NavbarElement {

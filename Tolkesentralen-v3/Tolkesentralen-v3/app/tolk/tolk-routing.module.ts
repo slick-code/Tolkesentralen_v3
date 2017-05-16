@@ -14,7 +14,8 @@
         {
             path: '',
             component: TolkComponent,
-            canActivate: [AuthGuard], 
+            canActivate: [AuthGuard],
+            data: { domene: 'tolk' },
             children: [
                 { path: '', redirectTo: 'tolk-mine-oppdrag', pathMatch: 'full' },
                 { path: 'tolk-mine-oppdrag', component: TolkMineOppdragComponent },

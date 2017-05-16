@@ -2,44 +2,59 @@
 
 
 <div *ngIf="showForm">
-    <br />
+    <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Utvalg av tolker med språk <b>{{oppdrag !== undefined  ? getSpraak(oppdrag.fraspraak): "null"}}</b> og <b>{{oppdrag !== undefined ? getSpraak(oppdrag.tilspraak): "null"}}</b></p>
+   
+    
+     <hr />
     <div>
-    <h3 >Utvalg tolker </h3>
-    <p><span class="glyphicon glyphicon-arrow-right"></span> {{oppdrag.fraspraak}} og {{oppdrag.tilspraak}} </p> 
-    </div>
-    <br />
+        
 
+
+    <h1 >Velg Tolk</h1>
+       <br />
+    </div>
     
     <div style="width:440px;">
+
+
 
 
         <table class="table table-bordered table-condensed">
             <thead>
                 <tr>
                     <th><p style="display: inline-block;">Velg Alle</p> </th>
-                    <td align="center"><input style="width: 35px" (click)="setAllChecked()"   type="checkbox" name="mon" id="mon" value="1" class="form-control big-checkbox" /></td>
+                    <td align="center"><input style="width: 35px" (click)="setAllChecked()" type="checkbox" name="mon" id="mon" value="1" class="form-control big-checkbox" /></td>
                 </tr>
             </thead>
-
             <tbody *ngFor="let tolk of arrayTolk; let i = index  ">
                 <tr>
                     <td>
                         <table>
                             <tr>
-                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.tlf}}</p></td>
-              
+                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.telefon}}</p></td>
+
                         </table>
                     </td>
-                    <td align="center"><input [checked]="arrayTolk[i].valgt"  (change)="arrayTolk[i].valgt = !arrayTolk[i].valgt"  style="width: 35px" type="checkbox" name="checkbox" id="" value="{{tolk}}" class="form-control" /></td>
+                    <td align="center"><input [checked]="arrayTolk[i].valgt" (change)="arrayTolk[i].valgt = !arrayTolk[i].valgt" style="width: 35px" type="checkbox" name="checkbox" id="" value="{{tolk}}" class="form-control" /></td>
                 </tr>
-                
 
             </tbody>
 
-
         </table>
+        
+        <div align="center">
+            <p>
+                <button  style="width:100%" class="btn btn-success" (click)="postForesporsler()">Send forespørsel</button>
+            </p>
+        </div>
 
-        <button style="width:100%; float:right; " class="btn btn-success" (click)="postForesporsler()">Send forespørsel</button>
+        <div align="center" style="width:440px;">
+            <p>
+                <button style="width:100%" (click)="tilbake()" class="btn btn-default">Gå tilbake</button>
+
+            </p>
+        </div>
+
     </div>
 
 
@@ -47,4 +62,5 @@
 
 <div *ngIf="!showForm">
     <response [underText]="underText" [response]="response" [path]="path" [responseText]="responseText"></response>
+    <div *ngIf="response !== 'loading'" align="center"><h3><button (click)="tilbake()" class="btn btn-success btn-lg">Gå tilbake</button></h3></div>
 </div>

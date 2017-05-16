@@ -13,7 +13,7 @@ namespace Tolkesentralen_v3.Models
         public int persId { get; set; }
         public string fornavn { get; set; }
         public string etternavn { get; set; }
-        public int tlf { get; set; }
+        public int telefon { get; set; }
         public string email { get; set; }
         public string adresse { get; set; }
         public byte[] password { get; set; }

@@ -23,11 +23,11 @@ namespace Tolkesentralen_v3.Repository
             {
                 var oppdragDb = new Oversettelse()
                 {
-                    spraakFra = input.fraspraak,
-                    spraakTil = input.tilspraak,
+                    fraspraak = input.fraspraak,
+                    tilspraak = input.tilspraak,
                     regDato = DateTime.Now,
                     //typedokument = input.typedokument,
-                    andreOpplisning = input.andreopplysninger,
+                    andreopplysninger = input.andreopplysninger,
 
                 };
 

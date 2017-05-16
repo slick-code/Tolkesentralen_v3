@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './shared/not-found.component';
 import { SharedModule } from './shared/shared.module';
 
 
+
 @NgModule({
     imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule, SharedModule],
     declarations: [AppComponent, LoginComponent, PageNotFoundComponent],

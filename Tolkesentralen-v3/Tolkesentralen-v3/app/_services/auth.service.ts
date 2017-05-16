@@ -15,31 +15,9 @@ export class AuthenticationService {
 
     
     login(body: any): Observable<any> {
-        console.log("BOOODY "+JSON.parse(body));
         var headers = new Headers({ "Content-Type": "application/json" });
-        console.log("ServiceLogin");
         return this.http.post('/api/login', body, { headers: headers })
-            //.map((response: Response) => response.json());
             .map((response: Response) => response.json());
-
-                //console.log("servieceLoginn respoinde");
-                //// login successful if there's a jwt token in the response
-                //let token = response.json() //&& response.json().token;
-                //if (token) {
-                //    // set token property
-                //    this.token = token;
-                //    console.log(""+token.rolle);
-
-                //    // store username and jwt token in local storage to keep user logged in between page refreshes
-                //    //localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
-
-                //    // return true to indicate successful login
-                //    return true;
-                //} else {
-                //    // return false to indicate failed login
-                //    return false;
-                //}
-            //});
     }
 
     logout(): void {

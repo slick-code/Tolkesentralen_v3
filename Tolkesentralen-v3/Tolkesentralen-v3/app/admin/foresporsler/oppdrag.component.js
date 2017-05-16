@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var oppdrag_service_1 = require("../../_services/oppdrag.service");
@@ -16,6 +17,16 @@ var temp_service_1 = require("../../_services/temp.service");
 var data_service_1 = require("../../_services/data.service");
 var models_1 = require("../../_models/models");
 var selective_preloading_strategy_1 = require("../../_services/selective-preloading-strategy");
+=======
+var core_1 = require('@angular/core');
+var spraak_1 = require('../../_models/spraak');
+var oppdrag_service_1 = require('../../_services/oppdrag.service');
+var router_1 = require('@angular/router');
+var temp_service_1 = require('../../_services/temp.service');
+var data_service_1 = require('../../_services/data.service');
+var models_1 = require('../../_models/models');
+var selective_preloading_strategy_1 = require('../../_services/selective-preloading-strategy');
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
 var OppdragComponent = (function () {
     function OppdragComponent(preloadStrategy, dataService, oppdragService, route, tempService, router) {
         this.preloadStrategy = preloadStrategy;
@@ -24,10 +35,37 @@ var OppdragComponent = (function () {
         this.route = route;
         this.tempService = tempService;
         this.router = router;
+        this.d = new Date(1494576900000);
         this.modules = preloadStrategy.preloadedModules;
+        this.arraySpraak = new spraak_1.Spraak().liste;
     }
-    OppdragComponent.prototype.btnClick = function (index, nr, btn) {
+    OppdragComponent.prototype.ngOnInit = function () {
+        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
+        this.count = 77;
+        this.loading = true;
+        this.getNyeOppdrag();
+        this.getSendteOppdrag();
+        console.info("This is console.indo");
+        if (window.performance) {
+            console.log("window.performance work's fine on this browser");
+        }
+        if (performance.navigation.type == 1) {
+            console.log("This page is reloaded");
+        }
+        else {
+            console.log("This page is not reloaded");
+        }
+    };
+    OppdragComponent.prototype.btnTilSlettClick = function () {
+        this.slettErTrykket = true;
+    };
+    OppdragComponent.prototype.btnAvbrytTilSlettClick = function () {
+        this.slettErTrykket = false;
+    };
+    OppdragComponent.prototype.btnInfoClick = function (index, nr) {
+        console.log("INFOOO " + index + " , " + nr);
         if (this.index == index && this.nr == nr) {
+<<<<<<< HEAD
             if (btn == 1 && this.infoErTrykket) {
                 // G� videre
             }
@@ -35,22 +73,18 @@ var OppdragComponent = (function () {
                 this.SetDefault();
                 return;
             }
+=======
+            this.SetDefault();
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
         }
-        this.index = index;
-        this.nr = nr;
-        this.infoErTrykket = true;
-        if (btn == 1) {
-            this.slettErTrykket = true;
+        else {
+            this.index = index;
+            this.nr = nr;
+            this.infoErTrykket = true;
         }
     };
     OppdragComponent.prototype.VisInfo = function (index, nr) {
         if (this.index == index && this.nr == nr && this.infoErTrykket) {
-            return true;
-        }
-        return false;
-    };
-    OppdragComponent.prototype.VisSlett = function (index, nr) {
-        if (this.index == index && this.nr == nr && this.slettErTrykket) {
             return true;
         }
         return false;
@@ -62,13 +96,6 @@ var OppdragComponent = (function () {
         this.index = -1;
         this.nr = -1;
     };
-    OppdragComponent.prototype.ngOnInit = function () {
-        this.bruker = JSON.parse(localStorage.getItem('currentUser'));
-        this.count = 77;
-        this.getNyeOppdrag();
-        this.getSendteOppdrag();
-        //this.loading = true
-    };
     OppdragComponent.prototype.checkIfArrayIsEmthy = function (array) {
         if (array == null)
             return false;
@@ -76,17 +103,24 @@ var OppdragComponent = (function () {
             return false;
         return true;
     };
+    OppdragComponent.prototype.fix = function (jsonDate) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    };
+    OppdragComponent.prototype.updateNavBar = function () {
+        this.element = new models_1.NavbarElement();
+        this.element.nr = this.arrayOppdrag.length;
+        this.element.element = 'oppdrag';
+        this.dataService.updateData(this.element);
+    };
     OppdragComponent.prototype.getNyeOppdrag = function () {
         var _this = this;
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(function (oppdrag) {
             _this.arrayOppdrag = oppdrag;
-            _this.element = new models_1.NavbarElement();
-            _this.element.nr = _this.arrayOppdrag.length;
-            _this.element.element = 'oppdrag';
-            _this.dataService.updateData(_this.element);
-            _this.loading = false;
-        });
+            _this.updateNavBar();
+        }, function (error) {
+        }, function () { _this.loading = false; });
     };
     OppdragComponent.prototype.getSendteOppdrag = function () {
         var _this = this;
@@ -99,6 +133,30 @@ var OppdragComponent = (function () {
         this.tempService.setObject(oppdrag);
         this.router.navigate(['./admin/utdel']);
     };
+<<<<<<< HEAD
+=======
+    OppdragComponent.prototype.fixString = function (text) {
+        //return text.split('-')[0];
+        //return text.substring(0, text.indexOf('-'));
+    };
+    OppdragComponent.prototype.slettOppdrag = function (id, index) {
+        var _this = this;
+        this.loading = true;
+        this.oppdragService.slettOppdrag(id)
+            .subscribe(function (response) {
+            _this.SetDefault();
+            _this.arrayOppdrag.splice(index, 1);
+            _this.updateNavBar();
+        }, function (error) {
+        }, function () { _this.loading = false; });
+    };
+    OppdragComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
+        }), 
+        __metadata('design:paramtypes', [selective_preloading_strategy_1.SelectivePreloadingStrategy, data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
+    ], OppdragComponent);
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return OppdragComponent;
 }());
 OppdragComponent = __decorate([

@@ -14,6 +14,7 @@ import { KundeEndreOpplysningerComponent } from './kunde-endre-opplysninger.comp
 import { KundeEndrePassordComponent } from './kunde-endre-passord.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { ResponseModule } from '../shared/response.module';
     
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
         KundeRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        ResponseModule
     ],
     declarations: [
         KundeComponent,

@@ -10,11 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
+<<<<<<< HEAD
 var core_1 = require("@angular/core");
 var oppdrag_service_1 = require("../_services/oppdrag.service");
+=======
+var core_1 = require('@angular/core');
+var oppdrag_service_1 = require('../_services/oppdrag.service');
+var router_1 = require('@angular/router');
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
 var TolkMineOppdragComponent = (function () {
-    function TolkMineOppdragComponent(oppdragService) {
+    function TolkMineOppdragComponent(oppdragService, router) {
         this.oppdragService = oppdragService;
+        this.router = router;
     }
     TolkMineOppdragComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
@@ -35,6 +42,18 @@ var TolkMineOppdragComponent = (function () {
             console.log("Success -> Mine-oppdrag  , test val:  " + _this.oppdrag);
         }, function (error) { return console.log("Error -> Mine oppdrag feilet! ->" + error); }, function () { return console.log("ferdig: Mine oppdrag"); });
     };
+<<<<<<< HEAD
+=======
+    TolkMineOppdragComponent = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            templateUrl: './app/tolk/tolk-mine-oppdrag.component.html',
+            providers: [oppdrag_service_1.OppdragService],
+            styles: ['.error {color:red;}']
+        }), 
+        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, router_1.Router])
+    ], TolkMineOppdragComponent);
+>>>>>>> 9e3fe497a2938e9bbd7ab4262693cbc05f51dcf8
     return TolkMineOppdragComponent;
 }());
 TolkMineOppdragComponent = __decorate([
