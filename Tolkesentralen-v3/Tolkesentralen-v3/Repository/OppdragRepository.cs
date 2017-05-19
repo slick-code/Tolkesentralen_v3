@@ -9,7 +9,13 @@ namespace Tolkesentralen_v3.Repository
 {
     public class OppdragRepository
     {
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Gets the count. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	The count. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Counter getCount()
         {
@@ -31,6 +37,14 @@ namespace Tolkesentralen_v3.Repository
                 return null;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Hent alle ubehandlede oppdrag. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A List&lt;Tolking_vm&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Tolking_vm> hentAlleUbehandledeOppdrag()
         {
@@ -66,6 +80,14 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Hent alle behandlede oppdrag. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A List&lt;Tolking_vm&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Tolking_vm> hentAlleBehandledeOppdrag()
         {

@@ -7,6 +7,7 @@ namespace Tolkesentralen_v3.ViewModels
 {
     public class Counter
     {
+
         public int nyeoppdrag { get; set; }
         public int nyeoversettelser { get; set; }
         public int nyekunder { get; set; }

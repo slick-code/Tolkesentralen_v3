@@ -18,65 +18,91 @@ namespace Tolkesentralen_v3.Repository
 
         }
 
-
-
-        /*****************Registerer en foresporsel på en tolk av typen Tolking eller flere tolk*****************/
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// /*****************Registerer en foresporsel på en tolk av typen Tolking eller flere
+        /// tolk****************.
+        /// </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="tolkId">	 	Identifier for the tolk. </param>
+        /// <param name="opprdragId">	Identifier for the opprdrag. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public bool regEnForesporselPåEnEllerFlereTolk(int[] tolkId, int opprdragId)
         {
 
 
-            Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragID == opprdragId);
-            if (oppdrag != null)
-            {
-                //oppretter forespørler
-                var foresp = new Foresporsler()
-                {
-                    regDato = oppdrag.regDato,
-                    oppdragID = oppdrag.oppdragID,
-                    typetolk = oppdrag.typetolk,
-                    fraspraak = oppdrag.fraspraak,
-                    tilspraak = oppdrag.tilspraak,
-                    oppmoteadresse = oppdrag.oppmoteadresse,
-                    fratidspunkt = oppdrag.fratidspunkt,
-                    tiltidspunkt = oppdrag.tiltidspunkt,
-                    andreopplysninger = oppdrag.andreopplysninger
-                };
+			try
+			{
+				Tolking oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(T => T.oppdragID == opprdragId);
+				if (oppdrag != null)
+				{
+					//oppretter forespørler
+					var foresp = new Foresporsler()
+					{
+						regDato = oppdrag.regDato,
+						oppdragID = oppdrag.oppdragID,
+						typetolk = oppdrag.typetolk,
+						fraspraak = oppdrag.fraspraak,
+						tilspraak = oppdrag.tilspraak,
+						oppmoteadresse = oppdrag.oppmoteadresse,
+						fratidspunkt = oppdrag.fratidspunkt,
+						tiltidspunkt = oppdrag.tiltidspunkt,
+						andreopplysninger = oppdrag.andreopplysninger
+					};
 
-                foreach (int tolk_ID in tolkId)
-                {
-                    //finner alle TOLK som oppdraget skal sendes til
-                    var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolk_ID);
+					foreach (int tolk_ID in tolkId)
+					{
+						//finner alle TOLK som oppdraget skal sendes til
+						var tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolk_ID);
 
-                    if (tolk != null)
-                    {
+						if (tolk != null)
+						{
 
-                        tolk.foresporsler.Add(foresp);
-                        oppdrag.sendt = true;
+							tolk.foresporsler.Add(foresp);
+							oppdrag.sendt = true;
 
-                        db.SaveChanges();
-
-
-                    }
-                    else
-                    {
-
-                        return false;
-                    }
+							db.SaveChanges();
 
 
-                }
+						}
+						else
+						{
 
-                return true;
+							return false;
+						}
 
 
-            }
+					}
+
+					return true;
 
 
-            return false;
-        }
+				}
 
-        
+
+				return false;
+
+
+			} catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+
+			}
+		}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	List tolk foresporsler. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A List&lt;Tolking_vm&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public List<Tolking_vm> listTolkForesporsler()
         {
 
@@ -118,9 +144,16 @@ namespace Tolkesentralen_v3.Repository
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	List tolk foresporsler median identifier. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="tolkId">	Identifier for the tolk. </param>
+        ///
+        /// <returns>	A List&lt;Tolking_vm&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-       
         public List<Tolking_vm> listTolkForesporslerMedID(int tolkId)
         {
 
@@ -163,6 +196,16 @@ namespace Tolkesentralen_v3.Repository
             }
 
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	List alle tolk median foresporsel identifier. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="forespID">	Identifier for the foresp. </param>
+        ///
+        /// <returns>	A List&lt;Person_VM&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Person_VM> listAlleTolkMedForesporselID(int forespID)
         {

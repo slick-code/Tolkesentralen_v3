@@ -14,19 +14,44 @@ namespace Tolkesentralen_v3.Models
     {
         DbNetcont db = new DbNetcont();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Sjekk om epost eksisterer. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="epost">	The epost. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public bool SjekkOmEpostEksisterer(string epost)
         {
-            var objekt = db.Personer.FirstOrDefault(b => b.email == epost);
-            if (objekt == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+			try
+			{
+				var objekt = db.Personer.FirstOrDefault(b => b.email == epost);
+				if (objekt == null)
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+			} catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Sets an utilgjengelig. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="input">	The input. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public bool setUtilgjengelig(Utilgjengelig_ViewModel input)
         {
@@ -50,11 +75,23 @@ namespace Tolkesentralen_v3.Models
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception feil)
             {
-                return false;
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				
+				return false;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Slett periode utilgjengelig. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="id">	The identifier. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public bool slettPeriodeUtilgjengelig(int id)
         {
@@ -71,6 +108,16 @@ namespace Tolkesentralen_v3.Models
                 return false;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Gets an utilgjengelig. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="persId">	. </param>
+        ///
+        /// <returns>	The utilgjengelig. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Utilgjengelig_ViewModel> getUtilgjengelig(int persId)
         {
@@ -97,36 +144,62 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Hent en tolk. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="tolkId">	Identifier for the tolk. </param>
+        ///
+        /// <returns>	A Tolk_VM. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Tolk_VM hentEnTolk(int tolkId)
         {
+			try
+			{
+				var tk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
 
-            var tk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
 
+				if (tk == null)
+				{
+					return null;
+				}
+				else
+				{
+					var hentetTolk = new Tolk_VM()
+					{
+						persId = tk.persId,
+						fornavn = tk.fornavn,
+						etternavn = tk.etternavn,
+						telefon = tk.telefon,
+						postnr = tk.poststed.postNr,
+						poststed = tk.poststed.postSted,
+						epost = tk.email,
+						adresse = tk.adresse,
+						godkjent = tk.godkjent
+					};
+					return hentetTolk;
+				}
 
-            if (tk == null)
-            {
-                return null;
-            }
-            else
-            {
-                var hentetTolk = new Tolk_VM()
-                {
-                    persId = tk.persId,
-                    fornavn = tk.fornavn,
-                    etternavn = tk.etternavn,
-                    telefon = tk.telefon,
-                    postnr = tk.poststed.postNr,
-                    poststed = tk.poststed.postSted,
-                    epost = tk.email,
-                    adresse = tk.adresse,
-                    godkjent = tk.godkjent
-                };
-                return hentetTolk;
-            }
-
+			}
+			catch (Exception feil)
+			{
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return null;
+			}
+			
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Oppdater tolk. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="Tolk">	The tolk. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public bool OppdaterTolk(Tolk_VM Tolk)
         {
@@ -159,6 +232,16 @@ namespace Tolkesentralen_v3.Models
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Hent kunde. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="id">	The identifier. </param>
+        ///
+        /// <returns>	A Kunde_VM. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Kunde_VM HentKunde(int id)
         {
             try
@@ -169,23 +252,37 @@ namespace Tolkesentralen_v3.Models
                 var a = kunde;
                 
             }
-            catch
+            catch(Exception feil)
             {
 
-            }
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return null;
+			}
             return null;
             
         }
 
 
-        // List alle kunder. Enten godkjente (1) eller til godkjenning (0)
-        public List<Kunde_VM> ListeAlleKunder(int godkjent)
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Liste alle kunder./ </summary>
+		/// List alle kunder. Enten godkjente (1) eller til godkjenning (0)
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="godkjent">	The godkjent. </param>
+		///
+		/// <returns>	A List&lt;Kunde_VM&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		public List<Kunde_VM> ListeAlleKunder(int godkjent)
         {
             var db = new DbNetcont();
-            List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+            
             try
             {
-                List<Kunde_VM> vm_liste = new List<Kunde_VM>();
+				List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
+				List<Kunde_VM> vm_liste = new List<Kunde_VM>();
                 foreach (var row in alleKunder)
                 {
                     if(row.godkjent == godkjent)
@@ -214,6 +311,16 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Oppdater til godkjent kunde. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="id">	The identifier. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public bool OppdaterTilGodkjentKunde(int id)
         {
             try
@@ -231,83 +338,123 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
-        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Sett inn kunde. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="innkunde">	. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public bool settInnKunde(Kunde_VM innkunde)
         {
-            var db = new DbNetcont();
-           
-            string salt = lagSalt();
-            var passordOgSalt = innkunde.passord + salt;
-            byte[] dbPassword = lagHash(passordOgSalt);
+			try
+			{
+				var db = new DbNetcont();
 
-            var nykunde = new Kunde()
-            {
+				string salt = lagSalt();
+				var passordOgSalt = innkunde.passord + salt;
+				byte[] dbPassword = lagHash(passordOgSalt);
 
-                fornavn = innkunde.fornavn,
-                etternavn = innkunde.etternavn,
-                telefon = innkunde.telefon,
-                adresse = innkunde.adresse,
-                regDato = DateTime.Now,
-                godkjent = 0,
-                password = dbPassword,
-                email = innkunde.epost,
-                Salt = salt,
-                firma = innkunde.firma,
-                telefax = innkunde.telefax,
-                fakturaAddress = innkunde.fakturaadresse
+				var nykunde = new Kunde()
+				{
 
-            };
-        
-        //her finner vi et poststed ved hjelp av en postnr
-        Poststed eksistererPoststed = db.Poststeder.Find(innkunde.postnr);
+					fornavn = innkunde.fornavn,
+					etternavn = innkunde.etternavn,
+					telefon = innkunde.telefon,
+					adresse = innkunde.adresse,
+					regDato = DateTime.Now,
+					godkjent = 0,
+					password = dbPassword,
+					email = innkunde.epost,
+					Salt = salt,
+					firma = innkunde.firma,
+					telefax = innkunde.telefax,
+					fakturaAddress = innkunde.fakturaadresse
 
-            if (eksistererPoststed == null)
-            {
-                var nyttpoststed = new Poststed()
-                {
-                    postNr = innkunde.postnr,
-                    postSted = innkunde.poststed
+				};
 
-                };
-               // db.Poststeder.Add(nyttpoststed);
-                nykunde.poststed = nyttpoststed;
-                   
-            }else
-            {
-                nykunde.poststed = eksistererPoststed;
-            }
-                
+				//her finner vi et poststed ved hjelp av en postnr
 
-            db.Personer.Add(nykunde);
-            db.SaveChanges();
-            return true;
+				Poststed eksistererPoststed = db.Poststeder.Find(innkunde.postnr);
+
+				if (eksistererPoststed == null)
+				{
+					var nyttpoststed = new Poststed()
+					{
+						postNr = innkunde.postnr,
+						postSted = innkunde.poststed
+
+					};
+					// db.Poststeder.Add(nyttpoststed);
+					nykunde.poststed = nyttpoststed;
+
+				}
+				else
+				{
+					nykunde.poststed = eksistererPoststed;
+				}
+
+
+				db.Personer.Add(nykunde);
+				db.SaveChanges();
+				return true;
+
+			}
+			catch (Exception feil) {
+
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
                
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Autoriser og returner bruker. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="brukernavn">	The brukernavn. </param>
+        /// <param name="passord">   	The passord. </param>
+        ///
+        /// <returns>	A Get_Login_VM. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Get_Login_VM AutoriserOgReturnerBruker(string brukernavn, string passord)
         {
             using (var db = new DbNetcont())
             {
-                // Finner første machende rad til brukernavn
-                Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
+				try
+				{
+					// Finner første machende rad til brukernavn
+					Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
 
-                if (dbData == null) return null;
+					if (dbData == null) return null;
 
-                // Sjekker om passord#hash macher brukeren
-                byte[] passordForTest = lagHash(passord + dbData.Salt);
-                bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
+					// Sjekker om passord#hash macher brukeren
+					byte[] passordForTest = lagHash(passord + dbData.Salt);
+					bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
 
-                if (!riktigBruker)
-                {
-                    return null;
-                }
+					if (!riktigBruker)
+					{
+						return null;
+					}
 
-                var bruker = new Get_Login_VM();
-                bruker.brukernavn = dbData.email;
-                bruker.id = dbData.persId;
-                bruker.rolle = dbData.GetType().BaseType.Name.ToLower();
-                return bruker;
+					var bruker = new Get_Login_VM();
+					bruker.brukernavn = dbData.email;
+					bruker.id = dbData.persId;
+					bruker.rolle = dbData.GetType().BaseType.Name.ToLower();
+					return bruker;
+				}
+				catch (Exception feil)
+				{
+					Debug.WriteLine("Exception Message: " + feil.Message);
+					return null;
+				}
             }
+			
         }
 
 
@@ -349,54 +496,65 @@ namespace Tolkesentralen_v3.Models
 
             
         /// <summary>
-      
 
-        /**********************************************************Tolk-start*************************/
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// /**********************************************************Tolk-start************************.
+        /// </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="nyTolk">	The ny tolk. </param>
+        ///
+        /// <returns>	True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public bool settinnTolk(Tolk_VM nyTolk)
         {
 
-            string salt = lagSalt();
-            var passordOgSalt = nyTolk.passord + salt;
-            byte[] dbPassword = lagHash(passordOgSalt);
+			try
+			{
+				string salt = lagSalt();
+				var passordOgSalt = nyTolk.passord + salt;
+				byte[] dbPassword = lagHash(passordOgSalt);
 
-            var dbTolk = new Tolk()
-            {
+				var dbTolk = new Tolk()
+				{
 
-                fornavn = nyTolk.fornavn,
-                etternavn = nyTolk.etternavn,
-                telefon = nyTolk.telefon,
-                email = nyTolk.epost,
-                adresse = nyTolk.adresse,
-                regDato = DateTime.Now,
-                password = dbPassword,
-                Salt = salt
+					fornavn = nyTolk.fornavn,
+					etternavn = nyTolk.etternavn,
+					telefon = nyTolk.telefon,
+					email = nyTolk.epost,
+					adresse = nyTolk.adresse,
+					regDato = DateTime.Now,
+					password = dbPassword,
+					Salt = salt
 
-            };
-            var db = new DbNetcont();
-            try
-            {
-                var spraakFunnet = db.Poststeder.Find(nyTolk.postnr);
+				};
+				var db = new DbNetcont();
+           
+					var spraakFunnet = db.Poststeder.Find(nyTolk.postnr);
 
-                if (spraakFunnet == null)
-                {
-                    var nyttpoststed = new Poststed()
-                    {
-                        postNr = nyTolk.postnr,
-                        postSted = nyTolk.poststed
+					if (spraakFunnet == null)
+					{
+						var nyttpoststed = new Poststed()
+						{
+							postNr = nyTolk.postnr,
+							postSted = nyTolk.poststed
 
-                    };
-                    dbTolk.poststed = nyttpoststed;
+						};
+						dbTolk.poststed = nyttpoststed;
 
-                }
-                else
-                {
-                    dbTolk.poststed = spraakFunnet;
-                }
-                db.Personer.Add(dbTolk);
-                db.SaveChanges();
+					}
+					else
+					{
+						dbTolk.poststed = spraakFunnet;
+					}
+					db.Personer.Add(dbTolk);
+					db.SaveChanges();
 
-                return true;
-            }
+					return true;
+			}
             catch (Exception feil)
             {
                 Debug.WriteLine("Exception Message: " + feil.Message);
@@ -404,6 +562,13 @@ namespace Tolkesentralen_v3.Models
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Liste alle tolk. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A List&lt;Tolk_VM&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Tolk_VM> ListeAlleTolk()
         {
@@ -434,36 +599,45 @@ namespace Tolkesentralen_v3.Models
                 }
                 return utListe;
             }
-            catch (Exception)
+            catch (Exception feil)
             {
-                return null;
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				
+				return null;
             }
         }
 
 
         public bool RegSprakkPåTolk(int TolkId, Spraak spraak)
         {
-            Spraak funnetspraak = db.Spraak.Find(spraak.spraakId);
+			try
+			{
 
-            // var funnetspraak = db.Spraak.SqlQuery(" SELECT * FROM dbo.Spraak WHERE 'navn' = Norsk").ToList();
+				Spraak funnetspraak = db.Spraak.Find(spraak.spraakId);
 
-            //(s => s.navn == spraak.navn)
-            Tolk funnetTolk = db.Personer.OfType<Tolk>().FirstOrDefault(t => t.persId == TolkId);
+				// var funnetspraak = db.Spraak.SqlQuery(" SELECT * FROM dbo.Spraak WHERE 'navn' = Norsk").ToList();
 
-            if (funnetspraak != null && funnetTolk != null)
-            {
+				//(s => s.navn == spraak.navn)
+				Tolk funnetTolk = db.Personer.OfType<Tolk>().FirstOrDefault(t => t.persId == TolkId);
 
-                funnetTolk.spraak.Add(funnetspraak);
-                db.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+				if (funnetspraak != null && funnetTolk != null)
+				{
 
+					funnetTolk.spraak.Add(funnetspraak);
+					db.SaveChanges();
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			} catch (Exception feil) {
 
-        }
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
+
+		}
 
         public List<Tolk_VM> ListeAlleTolkSomSnakkeDetSprrak(int spraakId, int spraakId2)
         {
@@ -495,9 +669,11 @@ namespace Tolkesentralen_v3.Models
                 }
                 return utListe;
             }
-            catch (Exception)
+            catch (Exception feil)
             {
-                return null;
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				
+				return null;
             }
         }
 
@@ -512,10 +688,18 @@ namespace Tolkesentralen_v3.Models
         /// </returns>
         public List<Admin> ListeAlleAdmin()
         {
-            var db = new DbNetcont();
-            List<Admin> alleAdmin = db.Personer.OfType<Admin>().ToList();
-            return alleAdmin;
+			try
+			{
 
+				var db = new DbNetcont();
+				List<Admin> alleAdmin = db.Personer.OfType<Admin>().ToList();
+				return alleAdmin;
+
+			}
+			catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return null;
+			}
         }
 
         ///// <summary>
@@ -663,12 +847,21 @@ namespace Tolkesentralen_v3.Models
         public Oppdrag HentOppdrag(int oppdragsID)
         {
             var db = new DbNetcont();
-            var enoppdrag = db.Oppdrag.Find(oppdragsID);
-            if(enoppdrag == null)
-            {
-                return null;
-            }
-            return enoppdrag;
+			try
+			{
+
+				var enoppdrag = db.Oppdrag.Find(oppdragsID);
+				if (enoppdrag == null)
+				{
+					return null;
+				}
+				return enoppdrag;
+			}
+			catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return null;
+			}
+
         }
         /// <summary>
         /// Delete a "Oppdrag" first by getting the id  
@@ -680,10 +873,17 @@ namespace Tolkesentralen_v3.Models
         public bool slettOppdrag (int oppdragsID)
         {
             var db = new DbNetcont();
-            Oppdrag slettenOppdrag = db.Oppdrag.Find(oppdragsID);
-            db.Oppdrag.Remove(slettenOppdrag);
-            db.SaveChanges();
-            return true;
+			try
+			{
+				Oppdrag slettenOppdrag = db.Oppdrag.Find(oppdragsID);
+				db.Oppdrag.Remove(slettenOppdrag);
+				db.SaveChanges();
+				return true;
+			}
+			catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
         }
         /// <summary>
         /// 
@@ -692,27 +892,7 @@ namespace Tolkesentralen_v3.Models
         /// <param name="innOppdrag"></param>
         /// <returns>
         /// </returns>
-        //public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
-        //{
-        //    var db = new DbNetcont();
-        //    try
-        //    {
-        //        Oppdrag endreoppdrag = db.Oppdrag.Find(oppdragID);
-        //        endreoppdrag.oppdragsgiver = innOppdrag.oppdragsgiver;
-        //        endreoppdrag.oppdragType = innOppdrag.oppdragType;
-        //        endreoppdrag.språkFra = innOppdrag.språkFra;
-        //        endreoppdrag.språkTil = innOppdrag.språkTil;
-        //        endreoppdrag.kunde.oppdrag = endreoppdrag.kunde.oppdrag;
-                
-        //        db.SaveChanges();
-        //    }
-        //    catch(Exception feil)
-        //    {
-        //        Debug.WriteLine("Exception Message: " + feil.Message);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+     
 
         public bool endreOppdrag (int oppdragID, Oppdrag innOppdrag)
         {
@@ -736,6 +916,13 @@ namespace Tolkesentralen_v3.Models
             return true;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Liste alle oppdrag. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A List&lt;Oppdrag&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Oppdrag> ListeAlleOppdrag()
         {
@@ -764,24 +951,16 @@ namespace Tolkesentralen_v3.Models
             var db = new DbNetcont();
             return db.Oppdrag.FirstOrDefault(Oppd => Oppd.oppdragID == oppdragsID);
         }
-        ///// <summary>
-        ///// Method that lists frammaate
-        ///// </summary>
-        ///// <return>
-        ///// It returns the values in foem of a list 
-        ///// </returns>
-        //public List<Fremmaate> ListeAllefremmaate()
-        //{
-        //    var db = new DbNetcont();
 
-        //    List<Fremmaate> allefremmaate = db.Oppdrag.OfType<Fremmaate>().ToList();
-
-        //    return allefremmaate;
-        //   // List<Kunde> alleKunder = db.Personer.OfType<Kunde>().ToList();
-        //}
-
-
-        /********************** Sikkerhets hjelp ***********************/
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	/********************** Sikkerhets hjelp **********************. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <param name="innStreng">	The inn streng. </param>
+        ///
+        /// <returns>	A byte[]. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public byte[] lagHash(string innStreng)
         {
@@ -792,6 +971,14 @@ namespace Tolkesentralen_v3.Models
             utData = algoritme.ComputeHash(innData);
             return utData;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Lag salt. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ///
+        /// <returns>	A string. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public string lagSalt()
         {

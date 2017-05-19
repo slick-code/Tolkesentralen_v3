@@ -17,13 +17,33 @@ namespace Tolkesentralen_v3.Models
 			db = new DbNetcont();
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Konverter til date time. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="dato">	The dato. </param>
+		/// <param name="kl">  	The kl. </param>
+		///
+		/// <returns>	A DateTime. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public DateTime KonverterTilDateTime(string dato, string kl)
 		{
 			return DateTime.ParseExact(dato + " " + kl, "dd-MM-yyyy HH:mm",
 									   System.Globalization.CultureInfo.InvariantCulture);
 		}
 
-
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Registers the tolk oppdrag. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="input">  	The input. </param>
+		/// <param name="kundeId">	Identifier for the kunde. </param>
+		///
+		/// <returns>	True if it succeeds, false if it fails. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public bool regTolkOppdrag(Tolking_vm input, int kundeId)
 		{
@@ -68,62 +88,105 @@ namespace Tolkesentralen_v3.Models
 
 		}
 
-
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Registers the oppdrag overssettelse. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="input">  	The input. </param>
+		/// <param name="kundeId">	Identifier for the kunde. </param>
+		///
+		/// <returns>	True if it succeeds, false if it fails. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public bool regOppdragOverssettelse(Oversettelse_VM input, int kundeId)
 		{
-
-			Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
-			if (Bestiller != null)
+			try
 			{
-				var oppdragDb = new Oversettelse()
+				Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+				if (Bestiller != null)
 				{
-					fraspraak = input.fraspraak,
-					tilspraak = input.tilspraak,
-					regDato = DateTime.Now,
-					ferdiggjoresdato = input.ferdiggjoresdato,
-					andreopplysninger = input.andreopplysninger
-				};
-
-				foreach (var f in input.Filer)
-				{
-					var nyFil = new Fil()
+					var oppdragDb = new Oversettelse()
 					{
-						filNavn = f.filNavn,
-						ContentType = f.ContentType,
-						Content = f.Content
-
+						fraspraak = input.fraspraak,
+						tilspraak = input.tilspraak,
+						regDato = DateTime.Now,
+						ferdiggjoresdato = input.ferdiggjoresdato,
+						andreopplysninger = input.andreopplysninger
 					};
 
-					oppdragDb.fil.Add(nyFil);
+					foreach (var f in input.Filer)
+					{
+						var nyFil = new Fil()
+						{
+							filNavn = f.filNavn,
+							ContentType = f.ContentType,
+							Content = f.Content
+
+						};
+
+						oppdragDb.fil.Add(nyFil);
+					}
+
+					Bestiller.oppdrag.Add(oppdragDb);
+					db.Oppdrag.Add(oppdragDb);
+					db.SaveChanges();
+
+					return true;
 				}
 
-				Bestiller.oppdrag.Add(oppdragDb);
-				db.Oppdrag.Add(oppdragDb);
-				db.SaveChanges();
-
-				return true;
+				return false;
 			}
+			catch (Exception feil)
+			{
 
-			return false;
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Slett oppdrag. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="oppdragsID">	Identifier for the oppdrags. </param>
+		///
+		/// <returns>	True if it succeeds, false if it fails. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public bool slettOppdrag(int oppdragsID)
 		{
-			var oppdrag = db.Oppdrag.Find(oppdragsID);
-
-			if (oppdrag != null)
+			try
 			{
+				var oppdrag = db.Oppdrag.Find(oppdragsID);
 
-				db.Oppdrag.Remove(oppdrag);
-				db.SaveChanges();
+				if (oppdrag != null)
+				{
 
-				return true;
+					db.Oppdrag.Remove(oppdrag);
+					db.SaveChanges();
+
+					return true;
+				}
+
+				return false;
 			}
-
-			return false;
+			catch (Exception feil) {
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return false;
+			}
 		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Endre oppdrag. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="oppdrag">	The oppdrag. </param>
+		///
+		/// <returns>	True if it succeeds, false if it fails. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public bool endreOppdrag(Oppdrag oppdrag)
 		{
@@ -140,26 +203,51 @@ namespace Tolkesentralen_v3.Models
 			return false;
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Finn oppdrag. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="oppdragsID">	Identifier for the oppdrags. </param>
+		///
+		/// <returns>	An Oppdrag. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public Oppdrag finnOppdrag(int? oppdragsID)
 		{
-			var oppdrag = db.Oppdrag.Find(oppdragsID);
-
-			if (oppdrag != null)
+			try
 			{
+				var oppdrag = db.Oppdrag.Find(oppdragsID);
 
-				return oppdrag;
+				if (oppdrag != null)
+				{
+
+					return oppdrag;
+				}
+
+				return null;
+			} catch (Exception feil) {
+
+				Debug.WriteLine("Exception Message: " + feil.Message);
+				return null;
 			}
-
-			return null;
 		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag fremmate. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <returns>	A List&lt;Tolking_vm&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public List<Tolking_vm> listOppdrag_fremmate()
 		{
-			// return db.Oppdrag.ToList();
-			List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().ToList();
+			
 			try
 			{
+				// return db.Oppdrag.ToList();
+				List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().ToList();
 
 				List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
 				foreach (var row in alleFramaate)
@@ -191,13 +279,22 @@ namespace Tolkesentralen_v3.Models
 
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag tolk ubehandlett. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <returns>	A List&lt;OppdragOgKunde&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public List<OppdragOgKunde> listOppdragTolkUbehandlett()
 		{
-			// return db.Oppdrag.ToList();
-			List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == false).ToList();
-
+			
 			try
 			{
+				// return db.Oppdrag.ToList();
+				List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == false).ToList();
+
 				var liste = new List<OppdragOgKunde>();
 				foreach (var row in alleFramaate)
 				{
@@ -236,12 +333,23 @@ namespace Tolkesentralen_v3.Models
 
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag tolk sendt. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <returns>	A List&lt;Tolking_vm&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public List<Tolking_vm> listOppdragTolkSendt()
 		{
-			List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true && O.Tolk == null).ToList();
+			
 
 			try
 			{
+				List<Tolking> alleFramaate = db.Oppdrag.OfType<Tolking>().Where(O => O.sendt == true && O.Tolk == null).ToList();
+
+
 				List<Tolking_vm> vm_listeframmate = new List<Tolking_vm>();
 				foreach (var row in alleFramaate)
 				{
@@ -270,47 +378,79 @@ namespace Tolkesentralen_v3.Models
 			}
 
 		}
-		//etter godkjenelser av tolk slette oppdgrad fra foresporsle fra table
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	Registers the oppdrag paa en tolk. </summary>
+		///etter godkjenelser av tolk slette oppdgrad fra foresporsle fra table
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="fspId"> 	Identifier for the fsp. </param>
+		/// <param name="tolkId">	Identifier for the tolk. </param>
+		/// <param name="svar">  	The svar. </param>
+		///
+		/// <returns>	True if it succeeds, false if it fails. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public bool regOppdragPaaEnTolk(int fspId, int tolkId, string svar)
 		{
-
-			var fp = db.foresporelse.Find(fspId);
-			//finner oppdraget  og Tolken
-			var oppdrag = finnOppdrag(fp.oppdragID);
-			var Tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
-
-			if (svar.Equals("ja"))
+			try
 			{
+				var fp = db.foresporelse.Find(fspId);
+				//finner oppdraget  og Tolken
+				var oppdrag = finnOppdrag(fp.oppdragID);
+				var Tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
 
-				if (Tolk != null && oppdrag != null && fp != null)
+				if (svar.Equals("ja"))
 				{
-					//registrerer oppdrag på Tolken som takket ja 
-					Tolk.oppdrag.Add(oppdrag);
 
-					//sletter  føresspørslet 
-					db.foresporelse.Remove(fp);
+					if (Tolk != null && oppdrag != null && fp != null)
+					{
+						//registrerer oppdrag på Tolken som takket ja 
+						Tolk.oppdrag.Add(oppdrag);
 
-					db.SaveChanges();
-					return true;
+						//sletter  føresspørslet 
+						db.foresporelse.Remove(fp);
+
+						db.SaveChanges();
+						return true;
+					}
+					else
+					{
+
+						return false;
+					}
 				}
 				else
 				{
+					//sletter  føresspørslet 
+					Tolk.foresporsler.Remove(fp);
 
+					db.SaveChanges();
 					return false;
 				}
 			}
-			else
+			catch (Exception feil)
 			{
-				//sletter  føresspørslet 
-				Tolk.foresporsler.Remove(fp);
 
-				db.SaveChanges();
+				Debug.WriteLine("Exception Message: " + feil.Message);
 				return false;
 			}
 
 		}
 
-		// Lister Tolkinger som tilhører en kunde
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag median kunde identifier. </summary>
+		/// Lister Tolkinger som tilhører en kunde
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="kundeId">	Identifier for the kunde. </param>
+		///
+		/// <returns>	A List&lt;Tolking_vm&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		public List<Tolking_vm> listOppdragMedKundeId(int kundeId)
 		{
 
@@ -353,6 +493,14 @@ namespace Tolkesentralen_v3.Models
 			}
 
 		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag bestillinger. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <returns>	A List&lt;OppdragOgKunde&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public List<OppdragOgKunde> listOppdragBestillinger()
 		{
@@ -403,6 +551,15 @@ namespace Tolkesentralen_v3.Models
 
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>	List oppdrag median tolk identifier. </summary>
+		///
+		/// <remarks>	Mojola, 19/05/2017. </remarks>
+		///
+		/// <param name="tolkId">	Identifier for the tolk. </param>
+		///
+		/// <returns>	A List&lt;Tolking_vm&gt; </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public List<Tolking_vm> listOppdragMedTolkId(int tolkId)
 		{
