@@ -102,7 +102,7 @@ namespace Tolkesentralen_v3.Controllers
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id) {
-            bool OK = repository.slettKunde(id);
+            bool OK = repository.slettPerson(id);
 
             if (OK)
             {

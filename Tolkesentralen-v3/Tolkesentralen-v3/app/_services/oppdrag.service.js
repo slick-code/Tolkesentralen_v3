@@ -18,7 +18,7 @@ var OppdragService = (function () {
     }
     OppdragService.prototype.postOppdragOgKunde = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
-        return this.http.post(this.url, body, { headers: headers })
+        return this.http.post(this.url + "/PostOppdragogKunde", body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
     OppdragService.prototype.postOppdragFraKunde = function (body) {

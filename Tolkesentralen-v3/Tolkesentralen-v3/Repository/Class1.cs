@@ -9,6 +9,12 @@ namespace Tolkesentralen_v3.Repository
 {
     public class Class1
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>	Default constructor. </summary>
+        ///
+        /// <remarks>	Mojola, 19/05/2017. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Class1()
         {
             string[] lines = new string[140];
