@@ -39,9 +39,10 @@ export class RegistrerComponent implements OnInit {
             fakturaadresse: ["", Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             postnr: ["", Validators.pattern("[0-9]{4}")],
             poststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
-            andreopplysninger: [],
-            passord: [],
+            passord: [""],
             bekreftpassord: [],
+            andreopplysninger: [],
+            
         });
 
     }
@@ -101,13 +102,10 @@ export class RegistrerComponent implements OnInit {
             res => {
                 if (res.status == 202) {
                     this.postKunde();
-                    console.log("202: " + res.status);
                 }
                 else {
-                    console.log("status ikke 202"+ res.status);
                     this.avbryt();
                 }
-                
                 return true;
             },
             error => {

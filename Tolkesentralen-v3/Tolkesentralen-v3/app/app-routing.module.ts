@@ -10,8 +10,8 @@ const appRoutes: Routes = [
     {
         path: 'admin',
         loadChildren: 'app/admin/admin.module#AdminModule',
-         
-       // data: { preload: true }
+
+        // data: { preload: true }
     },
     {
         path: 'kunde',
@@ -32,13 +32,13 @@ const appRoutes: Routes = [
 ];
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes, { preloadingStrategy: SelectivePreloadingStrategy })
+        RouterModule.forRoot(appRoutes,)// { preloadingStrategy: SelectivePreloadingStrategy })
     ],
     exports: [
         RouterModule
     ],
     providers: [
-        SelectivePreloadingStrategy
+        //SelectivePreloadingStrategy
     ]
 })
 export class AppRoutingModule { }

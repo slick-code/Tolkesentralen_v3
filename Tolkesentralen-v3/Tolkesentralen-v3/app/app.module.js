@@ -15,7 +15,7 @@ var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
-var auth_service_1 = require('./_services/auth.service');
+var login_service_1 = require('./_services/login.service');
 var auth_guard_1 = require('./_guards/auth.guard');
 var oppdrag_service_1 = require('./_services/oppdrag.service');
 var temp_service_1 = require('./_services/temp.service');
@@ -29,7 +29,7 @@ var AppModule = (function () {
     function AppModule(router) {
         // HUSK: Fjern denne!!
         //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
-        console.log("Hvorfor printes denne ut 2 ganger?");
+        console.log("HOME - Hvorfor printes denne ut 2 ganger?");
     }
     AppModule = __decorate([
         core_1.NgModule({
@@ -38,7 +38,7 @@ var AppModule = (function () {
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 auth_guard_1.AuthGuard,
-                auth_service_1.AuthenticationService,
+                login_service_1.LoginService,
                 oppdrag_service_1.OppdragService,
                 temp_service_1.TempService,
                 data_service_1.DataService,

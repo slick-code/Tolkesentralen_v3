@@ -15,11 +15,9 @@ var DataService = (function () {
         this.dataObs$ = new Subject_1.Subject();
     }
     DataService.prototype.getData = function () {
-        console.log("serv -> get");
         return this.dataObs$;
     };
     DataService.prototype.updateData = function (data) {
-        console.log("serv -> update");
         this.dataObs$.next(data);
     };
     DataService = __decorate([

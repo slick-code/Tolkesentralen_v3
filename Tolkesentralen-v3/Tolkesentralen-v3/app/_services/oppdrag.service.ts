@@ -2,20 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
-
-import { AuthenticationService } from '../_services/auth.service';
 import { Oppdrag, OppdragOgKunde } from '../_models/models';
 
 @Injectable()
 export class OppdragService {
     private url = 'api/oppdrag/';  // URL to web API
 
-    constructor(
-        private http: Http,
-        private authenticationService: AuthenticationService) {
-    }
-
-
+    constructor( private http: Http) {}
 
     postOppdragOgKunde(body: any) {
         var headers = new Headers({ "Content-Type": "application/json" });

@@ -27,9 +27,9 @@ var RegistrerComponent = (function () {
             fakturaadresse: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             postnr: ["", forms_1.Validators.pattern("[0-9]{4}")],
             poststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
-            andreopplysninger: [],
-            passord: [],
+            passord: [""],
             bekreftpassord: [],
+            andreopplysninger: [],
         });
     }
     RegistrerComponent.prototype.ngOnInit = function () {
@@ -82,10 +82,8 @@ var RegistrerComponent = (function () {
         this.kundeService.SjekkOmEpostEksisterer(body).subscribe(function (res) {
             if (res.status == 202) {
                 _this.postKunde();
-                console.log("202: " + res.status);
             }
             else {
-                console.log("status ikke 202" + res.status);
                 _this.avbryt();
             }
             return true;

@@ -7,7 +7,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthenticationService } from './_services/auth.service';
+import { LoginService } from './_services/login.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { OppdragService } from './_services/oppdrag.service'
 import { TempService } from './_services/temp.service'
@@ -29,7 +29,7 @@ import { SharedModule } from './shared/shared.module';
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         AuthGuard,
-        AuthenticationService,
+        LoginService,
         OppdragService,
         TempService,
         DataService,
@@ -42,7 +42,7 @@ export class AppModule {
         
         // HUSK: Fjern denne!!
         //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
-        console.log("Hvorfor printes denne ut 2 ganger?");
+        console.log("HOME - Hvorfor printes denne ut 2 ganger?");
     }
 }
  

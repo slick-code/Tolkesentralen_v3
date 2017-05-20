@@ -13,6 +13,7 @@ namespace Tolkesentralen_v3.Controllers
 {
     public class KundeController : ApiController
     {
+        
         // Post   -> Når en kunde registerer seg skal kunden registreres som ikke godkjent
         // Put    -> Admin skal oppdatere kunden-med-ID til Godkjent 
         // Delete -> Admin skal kunne slette kunden-med-ID

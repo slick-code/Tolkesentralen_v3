@@ -80,57 +80,10 @@ var Counter = (function () {
     return Counter;
 }());
 exports.Counter = Counter;
-//export class Oversettelse {
-//    id: number;
-//    spraak: string;
-//    email: string;
-//    tlf: string;
-//    fornavn: string;
-//    etternavn: string;
-//    adresse: string;
-//    postnr: string;
-//    poststed: string;
-//    valgt: boolean;
-//}
-//export class Oversettelse {
-//    id: number;
-//    dato: string;
-//    typedokument: string;
-//    fraspraak: string;
-//    tilspraak: string;
-//    ferdiggjoresdato: string;
-//    firma: string;
-//    fornavn: string;
-//    etternavn: string;
-//    epost: string;
-//    telefon: number;
-//    telefax: number;
-//    fakturaadresse: string;
-//    postnr: string;
-//    poststed: string;
-//    andreopplysninger: string;
-//    valgt: boolean;
-//}
-//export class Oppdrag {
-//    id: number;
-//    dato: string;
-//    typetolk: string;
-//    fraspraak: string;
-//    tilspraak: string;
-//    oppdragsdato: string;
-//    frakl: string;
-//    tilkl: string;
-//    oppmotested: string;
-//    firma: string;
-//    fornavn: string;
-//    etternavn: string;
-//    telefon: string;
-//    telefax: string;
-//    epost: string;
-//    fakturaadresse: string;
-//    postnr: string;
-//    poststed: string;
-//    andreopplysninger: string;
-//    kunde: Kunde;
-//}
+var Bruker = (function () {
+    function Bruker() {
+    }
+    return Bruker;
+}());
+exports.Bruker = Bruker;
 //# sourceMappingURL=models.js.map

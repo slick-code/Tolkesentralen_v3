@@ -11,16 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var auth_service_1 = require('../_services/auth.service');
 var OppdragService = (function () {
-    function OppdragService(http, authenticationService) {
+    function OppdragService(http) {
         this.http = http;
-        this.authenticationService = authenticationService;
         this.url = 'api/oppdrag/'; // URL to web API
     }
     OppdragService.prototype.postOppdragOgKunde = function (body) {
         var headers = new http_1.Headers({ "Content-Type": "application/json" });
-        return this.http.post(this.url + "/PostOppdragogKunde", body, { headers: headers })
+        return this.http.post(this.url, body, { headers: headers })
             .map(function (returData) { return returData.toString(); });
     };
     OppdragService.prototype.postOppdragFraKunde = function (body) {
@@ -62,7 +60,7 @@ var OppdragService = (function () {
     };
     OppdragService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+        __metadata('design:paramtypes', [http_1.Http])
     ], OppdragService);
     return OppdragService;
 }());

@@ -17,14 +17,17 @@ var NyeKunderComponent = (function () {
         this.service = service;
         this.dataService = dataService;
         this.arrayNyeKunder = [];
+        console.log("KUNDE_CONSTRUC");
     }
     NyeKunderComponent.prototype.ngOnInit = function () {
+        console.log("KUNDE_INIT");
         this.getKunder();
     };
     NyeKunderComponent.prototype.getKunder = function () {
         var _this = this;
         this.service.getNyeKunder()
             .subscribe(function (kunder) {
+            console.log("kunder har blitt hentet");
             if (kunder != null) {
                 _this.arrayNyeKunder = kunder;
                 _this.updateNavBar();

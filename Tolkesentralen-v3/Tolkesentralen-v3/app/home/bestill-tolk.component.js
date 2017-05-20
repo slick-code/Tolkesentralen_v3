@@ -37,6 +37,7 @@ var BestillTolkComponent = (function () {
             oppmotepoststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
+        console.log("dette er bestill tolk");
     }
     BestillTolkComponent.prototype.ngOnInit = function () {
         this.showForm = true;
@@ -101,27 +102,26 @@ var BestillTolkComponent = (function () {
     BestillTolkComponent.prototype.postKunde = function (navn) {
         var _this = this;
         this.ugyldigFelter = false;
-        if (!this.validerSpraak) {
-            this.ugyldigFelter = true;
-            return;
-        }
-        if (this.adresseFelt) {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
-            }
-            if (!this.form2.valid) {
-                this.form2_MarkAsTouched();
-                this.ugyldigFelter = true;
-                return;
-            }
-        }
-        else {
-            if (!this.form.valid) {
-                this.form_MarkAsTouched();
-                this.ugyldigFelter = true;
-                return;
-            }
-        }
+        //if (!this.validerSpraak) {
+        //    this.ugyldigFelter = true;
+        //    return;
+        //}
+        //if (this.adresseFelt) {
+        //    if (!this.form.valid) {
+        //        this.form_MarkAsTouched();
+        //    }
+        //    if (!this.form2.valid) {
+        //        this.form2_MarkAsTouched();
+        //        this.ugyldigFelter = true;
+        //        return;
+        //    }
+        //} else {
+        //    if (!this.form.valid) {
+        //        this.form_MarkAsTouched();
+        //        this.ugyldigFelter = true;
+        //        return;
+        //    }
+        //}
         this.showForm = false;
         this.response = "loading";
         var ny = new models_1.OppdragOgKunde();

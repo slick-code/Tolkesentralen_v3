@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
-var auth_service_1 = require('../_services/auth.service');
+var login_service_1 = require('../_services/login.service');
 var router_1 = require('@angular/router');
 var LoginComponent = (function () {
     function LoginComponent(authService, router, fb) {
@@ -20,8 +20,8 @@ var LoginComponent = (function () {
         this.skjema = fb.group({
             // Skjekk om brukernavnet er en gyldig e-post adresse
             brukernavn: ["", forms_1.Validators.pattern("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")],
-            // Todo -> Begrensinger til passord
-            passord: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
+            // Todo -> Begrensinger til passord, forløping velegnet til testing
+            passord: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{4,30}")]
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -34,17 +34,26 @@ var LoginComponent = (function () {
         this.error = "";
         var body = JSON.stringify({ brukernavn: this.skjema.value.brukernavn, passord: this.skjema.value.passord });
         this.authService.login(body)
-            .subscribe(function (retur) {
-            localStorage.setItem('id', JSON.stringify(retur.id));
-            localStorage.setItem('currentUser', JSON.stringify(retur));
-            _this.router.navigate(["/" + retur.rolle]);
-        }, function (error) { _this.loading = false; _this.error = "Feil brukernavn eller passord"; }, function () { _this.loading = false; });
+            .subscribe(function (response) {
+            _this.loading = false;
+            localStorage.setItem('id', JSON.stringify(response.id)); // TODO: Fjern denne
+            localStorage.setItem('currentUser', JSON.stringify(response));
+            _this.router.navigate(["/" + response.rolle]);
+        }, function (error) {
+            _this.loading = false;
+            if (error.status == 401) {
+                _this.error = "Feil brukernavn eller passord";
+            }
+            else {
+                _this.error = "Noe gikk galt";
+            }
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/login/login.component.html',
         }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthenticationService, router_1.Router, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router, forms_1.FormBuilder])
     ], LoginComponent);
     return LoginComponent;
 }());

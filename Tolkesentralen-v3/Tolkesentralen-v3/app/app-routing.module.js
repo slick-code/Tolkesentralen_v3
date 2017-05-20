@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var not_found_component_1 = require('./shared/not-found.component');
 var login_comonent_1 = require('./login/login.comonent');
-var selective_preloading_strategy_1 = require('./_services/selective-preloading-strategy');
 var appRoutes = [
     { path: 'login', component: login_comonent_1.LoginComponent },
     {
@@ -42,14 +41,12 @@ var AppRoutingModule = (function () {
     AppRoutingModule = __decorate([
         core_1.NgModule({
             imports: [
-                router_1.RouterModule.forRoot(appRoutes, { preloadingStrategy: selective_preloading_strategy_1.SelectivePreloadingStrategy })
+                router_1.RouterModule.forRoot(appRoutes) // { preloadingStrategy: SelectivePreloadingStrategy })
             ],
             exports: [
                 router_1.RouterModule
             ],
-            providers: [
-                selective_preloading_strategy_1.SelectivePreloadingStrategy
-            ]
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
     ], AppRoutingModule);

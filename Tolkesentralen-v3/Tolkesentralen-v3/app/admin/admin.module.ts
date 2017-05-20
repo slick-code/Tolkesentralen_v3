@@ -18,13 +18,8 @@
     import { OpprettKundeComponent } from './opprett/opprett-kunde.component';
     import { OpprettBestillingComponent } from './opprett/opprett-bestilling.component';
     import { OpprettOversettelseComponent } from './opprett/opprett-oversettelse.component';
-
+    import { Router } from '@angular/router';
     import { ResponseModule } from '../shared/response.module';
-
-    
-
-    
-
     import { AdminRoutingModule } from './admin-routing.module';
     import { SharedModule } from '../shared/shared.module';
     
@@ -61,4 +56,11 @@
       ],
       //bootstrap: [ AppComponent ]
     })
-    export class AdminModule { }
+    export class AdminModule {
+        constructor(router: Router) {
+
+            // HUSK: Fjern denne!!
+            //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
+            console.log("Admin - Hvorfor printes denne ut 2 ganger?");
+        }
+    }

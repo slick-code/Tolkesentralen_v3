@@ -15,17 +15,17 @@ var router_1 = require('@angular/router');
 var temp_service_1 = require('../../_services/temp.service');
 var data_service_1 = require('../../_services/data.service');
 var models_1 = require('../../_models/models');
-var selective_preloading_strategy_1 = require('../../_services/selective-preloading-strategy');
 var OppdragComponent = (function () {
-    function OppdragComponent(preloadStrategy, dataService, oppdragService, route, tempService, router) {
-        this.preloadStrategy = preloadStrategy;
+    function OppdragComponent(
+        //private preloadStrategy: SelectivePreloadingStrategy,
+        dataService, oppdragService, route, tempService, router) {
         this.dataService = dataService;
         this.oppdragService = oppdragService;
         this.route = route;
         this.tempService = tempService;
         this.router = router;
         this.d = new Date(1494576900000);
-        this.modules = preloadStrategy.preloadedModules;
+        // this.modules = preloadStrategy.preloadedModules;
         this.arraySpraak = new spraak_1.Spraak().liste;
     }
     OppdragComponent.prototype.ngOnInit = function () {
@@ -131,7 +131,7 @@ var OppdragComponent = (function () {
         core_1.Component({
             templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
         }), 
-        __metadata('design:paramtypes', [selective_preloading_strategy_1.SelectivePreloadingStrategy, data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
+        __metadata('design:paramtypes', [data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
     ], OppdragComponent);
     return OppdragComponent;
 }());

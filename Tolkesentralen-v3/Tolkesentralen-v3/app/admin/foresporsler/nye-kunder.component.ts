@@ -19,10 +19,12 @@ export class NyeKunderComponent {
 
     constructor(
         private service: KundeService,
-        private dataService: DataService) { }
+        private dataService: DataService) {
+        console.log("KUNDE_CONSTRUC");
+    }
 
     ngOnInit() {
-        
+        console.log("KUNDE_INIT");
         this.getKunder();
     }
 
@@ -31,6 +33,7 @@ export class NyeKunderComponent {
     getKunder() {
         this.service.getNyeKunder()
             .subscribe(kunder => {
+                console.log("kunder har blitt hentet");
                 if (kunder != null) {
                     this.arrayNyeKunder = kunder;
                     this.updateNavBar();

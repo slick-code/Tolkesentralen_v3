@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var auth_service_1 = require('../_services/auth.service');
 var TolkService = (function () {
-    function TolkService(http, authenticationService) {
+    function TolkService(http) {
         this.http = http;
-        this.authenticationService = authenticationService;
         this.url = 'api/tolk/'; // URL to web API
     }
     TolkService.prototype.getTolkMedSpraak = function (body) {
@@ -57,7 +55,7 @@ var TolkService = (function () {
     };
     TolkService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+        __metadata('design:paramtypes', [http_1.Http])
     ], TolkService);
     return TolkService;
 }());

@@ -33,13 +33,13 @@ export class OppdragComponent {
     default: boolean;
 
     constructor(
-        private preloadStrategy: SelectivePreloadingStrategy,
+        //private preloadStrategy: SelectivePreloadingStrategy,
         private dataService: DataService,
         private oppdragService: OppdragService,
         private route: ActivatedRoute,
         private tempService: TempService,
         private router: Router) {
-        this.modules = preloadStrategy.preloadedModules;
+       // this.modules = preloadStrategy.preloadedModules;
         this.arraySpraak = new Spraak().liste;
 
     }

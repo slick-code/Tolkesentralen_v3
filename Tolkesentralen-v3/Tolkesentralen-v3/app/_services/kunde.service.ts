@@ -20,12 +20,9 @@ export class KundeService {
         var headers = new Headers({ "Content-Type": "application/json" });
 
         return this.http.post(this.url, body, { headers: headers })
-            .map(returData => returData.toString())
-            
+            .map(returData => returData.toString())  
     }
-
-   
-
+    
     getNyeKunder(): Observable<Kunde[]> {
         return this.http.get(this.url + "/GetN")
             .map((response: Response) => response.json());

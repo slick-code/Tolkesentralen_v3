@@ -1,19 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
-
-import { AuthenticationService } from '../_services/auth.service';
+import 'rxjs/add/operator/map';
 import { Tolk, Utilgjengelig } from '../_models/models';
 
 @Injectable()
 export class TolkService {
     private url = 'api/tolk/';  // URL to web API
 
-    constructor(
-        private http: Http,
-        private authenticationService: AuthenticationService) {
-    }
+    constructor(private http: Http) { }
 
     getTolkMedSpraak(body: any): Observable<Tolk[]> {
         var headers = new Headers({ "Content-Type": "application/json" });

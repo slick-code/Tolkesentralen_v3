@@ -42,6 +42,7 @@ namespace Tolkesentralen_v3.ViewModels
         public int id { get; set; }
         public string rolle { get; set; }
         public string brukernavn { get; set; }
+        public bool godkjent { get; set; }
     }
 
     public class SpraakID

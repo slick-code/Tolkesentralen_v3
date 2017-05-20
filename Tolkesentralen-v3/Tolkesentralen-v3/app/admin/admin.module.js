@@ -28,11 +28,15 @@ var admin_avbestilte_oversettelse_oppdrag_component_1 = require('./oversettelseh
 var opprett_kunde_component_1 = require('./opprett/opprett-kunde.component');
 var opprett_bestilling_component_1 = require('./opprett/opprett-bestilling.component');
 var opprett_oversettelse_component_1 = require('./opprett/opprett-oversettelse.component');
+var router_1 = require('@angular/router');
 var response_module_1 = require('../shared/response.module');
 var admin_routing_module_1 = require('./admin-routing.module');
 var shared_module_1 = require('../shared/shared.module');
 var AdminModule = (function () {
-    function AdminModule() {
+    function AdminModule(router) {
+        // HUSK: Fjern denne!!
+        //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
+        console.log("Admin - Hvorfor printes denne ut 2 ganger?");
     }
     AdminModule = __decorate([
         core_1.NgModule({
@@ -64,7 +68,7 @@ var AdminModule = (function () {
                 opprett_oversettelse_component_1.OpprettOversettelseComponent
             ],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AdminModule);
     return AdminModule;
 }());

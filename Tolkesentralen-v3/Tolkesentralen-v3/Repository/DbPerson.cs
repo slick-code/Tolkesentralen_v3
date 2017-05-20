@@ -286,28 +286,42 @@ namespace Tolkesentralen_v3.Models
 
         public Get_Login_VM AutoriserOgReturnerBruker(string brukernavn, string passord)
         {
-            using (var db = new DbNetcont())
+            try
             {
-                // Finner første machende rad til brukernavn
-                Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
-
-                if (dbData == null) return null;
-
-                // Sjekker om passord#hash macher brukeren
-                byte[] passordForTest = lagHash(passord + dbData.Salt);
-                bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
-
-                if (!riktigBruker)
+                using (var db = new DbNetcont())
                 {
-                    return null;
-                }
+                    // Finner første machende rad til brukernavn
+                    Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
 
-                var bruker = new Get_Login_VM();
-                bruker.brukernavn = dbData.email;
-                bruker.id = dbData.persId;
-                bruker.rolle = dbData.GetType().BaseType.Name.ToLower();
-                return bruker;
+                    var response = new Get_Login_VM();
+                    if (dbData == null)
+                    {
+                        response.godkjent = false;
+                        return response;
+                    }
+
+                    // Sjekker om passord#hash macher brukeren
+                    byte[] passordForTest = lagHash(passord + dbData.Salt);
+                    bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
+
+                    if (!riktigBruker)
+                    {
+                        response.godkjent = false;
+                        return response;
+                    }
+                    response.godkjent = true;
+                    response.brukernavn = dbData.email;
+                    response.id = dbData.persId;
+                    response.rolle = dbData.GetType().BaseType.Name.ToLower();
+                    return response;
+                }
             }
+            catch (Exception feil)
+            {
+                Debug.WriteLine("Exception Message: " + feil.Message);
+                return null;
+            }
+
         }
 
 

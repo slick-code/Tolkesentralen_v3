@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var auth_service_1 = require('../_services/auth.service');
 var AdminService = (function () {
-    function AdminService(http, authenticationService) {
+    function AdminService(http) {
         this.http = http;
-        this.authenticationService = authenticationService;
         this.url = 'api/admin/'; // URL to web API
     }
     AdminService.prototype.getUbehandleOppdrag = function () {
@@ -24,7 +22,7 @@ var AdminService = (function () {
     };
     AdminService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthenticationService])
+        __metadata('design:paramtypes', [http_1.Http])
     ], AdminService);
     return AdminService;
 }());

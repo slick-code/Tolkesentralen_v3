@@ -15,29 +15,15 @@
             </div>
         </div>
     </div>
-   
     <div style="height: calc(100vh - 0px); background-image:  url('../../bilder/tastatur.jpg') ;background-size:cover; background-repeat:no-repeat;  ">
 
-        
-
-
-
             <div class="login-panel container">
-                
-
-
-                <div class="col-md-5 col-md-offset-4 panel panel-default">
-                    
+                <div class="col-md-5 col-md-offset-4 panel panel-default">              
                     <div class="gap margin-base-vertical" align="center">
                         <img style="width:95px" src="../../bilder/guard1.png">
-                        <h1  style="margin-top:10px" align="center"><a style="color:darkred;text-decoration : none" routerLink="/home" routerLinkActive="active" href="/home"><span style="color:black" class="glyphicon glyphicon-home"></span> Tolkesentralen</a> </h1>
-                        
-                        
+                        <h1  style="margin-top:10px" align="center"><a style="color:darkred;text-decoration : none" routerLink="/home" routerLinkActive="active" href="/home"><span style="color:black" class="glyphicon glyphicon-home"></span> Tolkesentralen</a> </h1>   
                     </div>
-                    
-
-
-
+      
                     <h4 align="center" class="ubuntu-text">{{error}}</h4>
 
                     <form [formGroup]="skjema" style="margin-top:30px">
@@ -55,12 +41,7 @@
                             </p>
                         </div>
 
-
-
-
                         <br />
-
-
 
                         <p *ngIf="!loading" class="text-center">
                             <button  (click)="onLogin()" class="btn btn-primary btn-lg">Logg inn</button>
@@ -68,12 +49,9 @@
                         </p>
 
                         <p class="text-center" *ngIf="loading">
-                            <!--<img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
                             <loading></loading>
                         </p>
                     </form>
-
-
 
                     <div class="gap margin-base-vertical">
                         <h5 *ngIf="!loading" align="center">Har du ikke konto? <a routerLink="/register">Opprett én</a></h5>
@@ -83,12 +61,7 @@
 
                 </div>
             </div>
-
-
-
-
         </div>
-
     </div>
 
 

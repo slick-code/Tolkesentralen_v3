@@ -1,19 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
-
-import { AuthenticationService } from '../_services/auth.service';
+import 'rxjs/add/operator/map';
 import { Oppdrag, Oversettelse, OppdragOgKunde } from '../_models/models';
 
 @Injectable()
 export class OversettelseService {
     private url = 'api/oversettelse/';  // URL to web API
 
-    constructor(
-        private http: Http,
-        private authenticationService: AuthenticationService) {
-    }
+    constructor(private http: Http) { }
 
     postOversettelseOgKunde(body: any) {
         let headers = new Headers();

@@ -11,25 +11,24 @@ namespace Tolkesentralen_v3.Controllers
 {
     public class LoginController : ApiController
     {
-
         DbPerson repository = new DbPerson();
         
         [System.Web.Mvc.HttpPost]
         public HttpResponseMessage Post([FromBody]Post_Login_VM input)
         {
-            if (1 == 1)//(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                repository.HentKunde(1);
-                Get_Login_VM output = repository.AutoriserOgReturnerBruker(input.brukernavn, input.passord);
-                if (output != null)
+                Get_Login_VM response = repository.AutoriserOgReturnerBruker(input.brukernavn, input.passord);
+                if (response != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Created, output);
+                    if (response.godkjent)  return Request.CreateResponse(HttpStatusCode.Accepted, response);
+                    
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized, response);
                 }
             }
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.BadRequest,
-                // Midlertidlig løsning. Her må vi sende tilbake et resultat på hva som gikk galt
                 Content = new StringContent("Autorisering returnerte null")
             };
         }
