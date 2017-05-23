@@ -24,6 +24,12 @@ export class TolkForesporselComponent implements OnInit {
         
     }
 
+
+    fix(jsonDate: any) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    }
+
     getOppdragTolk() {
         this.oppdragService.getForesposelTilTolk(this.ID).subscribe(
             retur => {

@@ -52,7 +52,8 @@ namespace Tolkesentralen_v3.Repository
 						oppmoteadresse = oppdrag.oppmoteadresse,
 						fratidspunkt = oppdrag.fratidspunkt,
 						tiltidspunkt = oppdrag.tiltidspunkt,
-						andreopplysninger = oppdrag.andreopplysninger
+						andreopplysninger = oppdrag.andreopplysninger,
+                        poststed = oppdrag.poststed
 					};
 
 					foreach (int tolk_ID in tolkId)
