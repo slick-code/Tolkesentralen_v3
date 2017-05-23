@@ -39,10 +39,6 @@ import { SharedModule } from './shared/shared.module';
 })
 export class AppModule {
     constructor(router: Router) {
-        
-        // HUSK: Fjern denne!!
-        //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
-        console.log("HOME - Hvorfor printes denne ut 2 ganger?");
     }
 }
  

@@ -50,8 +50,8 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         this.form.setValue({
             fornavn: tolk.fornavn,
             etternavn: tolk.etternavn,
-            epost: tolk.email,
-            telefon: "",
+            epost: tolk.epost,
+            telefon: tolk.telefon,
             mobil: "",
             adresse: tolk.adresse,
             adresse2: "",
@@ -67,7 +67,7 @@ var TolkRedigjerPersondetaljerComponent = (function () {
         ny.persId = this.persId;
         ny.fornavn = this.form.value.fornavn;
         ny.etternavn = this.form.value.etternavn;
-        ny.email = this.form.value.epost;
+        ny.epost = this.form.value.epost;
         ny.telefon = this.form.value.telefon;
         ny.telefon = this.form.value.mobil;
         ny.adresse = this.form.value.adresse;

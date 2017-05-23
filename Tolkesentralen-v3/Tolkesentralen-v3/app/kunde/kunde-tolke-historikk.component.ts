@@ -21,7 +21,7 @@ export class KundeTolkeHistorikkComponent implements OnInit {
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
-        this.getOppdragTolk();
+       // this.getOppdragTolk();
     }
 
     getOppdragTolk() {

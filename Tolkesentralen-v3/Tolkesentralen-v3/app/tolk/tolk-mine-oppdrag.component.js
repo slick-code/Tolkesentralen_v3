@@ -29,6 +29,10 @@ var TolkMineOppdragComponent = (function () {
             return false;
         return true;
     };
+    TolkMineOppdragComponent.prototype.fix = function (jsonDate) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    };
     TolkMineOppdragComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.oppdragService.getBestillingerTilTolk(this.ID).subscribe(function (retur) {

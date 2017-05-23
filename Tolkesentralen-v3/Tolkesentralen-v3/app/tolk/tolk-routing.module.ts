@@ -17,7 +17,7 @@
             canActivate: [AuthGuard],
             data: { domene: 'tolk' },
             children: [
-                { path: '', redirectTo: 'tolk-mine-oppdrag', pathMatch: 'full' },
+                { path: '', redirectTo: 'tolk-foresporsel', pathMatch: 'full' },
                 { path: 'tolk-mine-oppdrag', component: TolkMineOppdragComponent },
                 { path: 'tolk-foresporsel', component: TolkForesporselComponent },
                 { path: 'tolk-oppdrag-historikk', component: TolkOppdragHistorikkComponent }, 

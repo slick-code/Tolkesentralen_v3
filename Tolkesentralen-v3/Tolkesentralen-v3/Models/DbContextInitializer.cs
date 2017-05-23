@@ -280,15 +280,15 @@ namespace Tolkesentralen_v3.Models
                 tolk2.spraak = new List<Spraak>();
                 tolk3.spraak = new List<Spraak>();
                 tolk4.spraak = new List<Spraak>();
-                for (int i = 1; i < 10; i++)
+                for (int i = 40; i < 50; i++)
                 {
                     tolk1.spraak.Add(db.Spraak.Find(i));
                 }
-                for (int i = 1; i < 10; i++)
+                for (int i = 40; i < 50; i++)
                 {
                     tolk2.spraak.Add(db.Spraak.Find(i));
                 }
-                for (int i = 1; i < 20; i++)
+                for (int i = 20; i < 50; i++)
                 {
                     tolk3.spraak.Add(db.Spraak.Find(i));
                 }
@@ -296,7 +296,9 @@ namespace Tolkesentralen_v3.Models
                 {
                     tolk4.spraak.Add(db.Spraak.Find(i));
                 }
-
+                tolk1.spraak.Add(db.Spraak.Find(92));
+                tolk2.spraak.Add(db.Spraak.Find(92));
+                tolk3.spraak.Add(db.Spraak.Find(92));
                 db.SaveChanges();
 
 
@@ -310,10 +312,10 @@ namespace Tolkesentralen_v3.Models
                 
                 var oppdrag1 = new Tolking_vm()
                 {
-                    oppdragsdato = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"),
-                    dato = "12-07-2017",
-                    fraspraak = 21,
-                    tilspraak = 22,
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                    dato = "2017-07-05",
+                    fraspraak = 41,
+                    tilspraak = 92,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -323,10 +325,10 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag2 = new Tolking_vm()
                 {
-                    oppdragsdato = DateTime.Now.AddDays(2).ToString("dd-MM-yyyy"),
-                    dato = "12-07-2017",
-                    fraspraak = 1,
-                    tilspraak = 2,
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                    dato = "2017-07-05",
+                    fraspraak = 41,
+                    tilspraak = 92,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Fremmedmøte",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -336,10 +338,10 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag3 = new Tolking_vm()
                 {
-                    oppdragsdato = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"),
-                    dato = "12-07-2017",
-                    fraspraak = 4,
-                    tilspraak = 3,
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                    dato = "2017-07-07",
+                    fraspraak = 21,
+                    tilspraak = 34,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -349,10 +351,10 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag4 = new Tolking_vm()
                 {
-                    oppdragsdato = DateTime.Now.AddDays(4).ToString("dd-MM-yyyy"),
-                    dato = "12-07-2017",
-                    fraspraak = 5,
-                    tilspraak = 6,
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                    dato = "2017-07-09",
+                    fraspraak = 25,
+                    tilspraak = 92,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -362,10 +364,10 @@ namespace Tolkesentralen_v3.Models
 
                 var oppdrag5 = new Tolking_vm()
                 {
-                    oppdragsdato = DateTime.Now.AddDays(5).ToString("dd-MM-yyyy"),
-                    dato = "12-07-2017",
-                    fraspraak = 7,
-                    tilspraak = 8,
+                    oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                    dato = "2017-07-17",
+                    fraspraak = 34,
+                    tilspraak = 92,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",

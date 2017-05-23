@@ -79,7 +79,6 @@ export class OpprettKundeComponent implements OnInit {
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.postnr = this.form.value.postnr;
         ny.poststed = this.form.value.poststed;
-        ny.email = this.form.value.email;
 
         var body: string = JSON.stringify(ny);
 

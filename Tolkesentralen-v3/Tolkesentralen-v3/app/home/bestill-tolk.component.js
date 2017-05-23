@@ -18,8 +18,6 @@ var BestillTolkComponent = (function () {
         this.service = service;
         this.fb = fb;
         this.form = fb.group({
-            frakl: [],
-            tilkl: [],
             firma: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             fornavn: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
             etternavn: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
@@ -29,6 +27,8 @@ var BestillTolkComponent = (function () {
             fakturaadresse: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             postnr: ["", forms_1.Validators.pattern("[0-9]{4}")],
             poststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            frakl: [],
+            tilkl: [],
             andreopplysninger: [],
         });
         this.form2 = fb.group({
@@ -37,7 +37,6 @@ var BestillTolkComponent = (function () {
             oppmotepoststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
-        console.log("dette er bestill tolk");
     }
     BestillTolkComponent.prototype.ngOnInit = function () {
         this.showForm = true;
@@ -49,7 +48,6 @@ var BestillTolkComponent = (function () {
         this.adresseFelt = true;
         this.fraspraak = 1;
         this.tilspraak = 2;
-        console.log("ASDADASD " + this.startDate);
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -102,26 +100,27 @@ var BestillTolkComponent = (function () {
     BestillTolkComponent.prototype.postKunde = function (navn) {
         var _this = this;
         this.ugyldigFelter = false;
-        //if (!this.validerSpraak) {
-        //    this.ugyldigFelter = true;
-        //    return;
-        //}
-        //if (this.adresseFelt) {
-        //    if (!this.form.valid) {
-        //        this.form_MarkAsTouched();
-        //    }
-        //    if (!this.form2.valid) {
-        //        this.form2_MarkAsTouched();
-        //        this.ugyldigFelter = true;
-        //        return;
-        //    }
-        //} else {
-        //    if (!this.form.valid) {
-        //        this.form_MarkAsTouched();
-        //        this.ugyldigFelter = true;
-        //        return;
-        //    }
-        //}
+        if (!this.validerSpraak) {
+            this.ugyldigFelter = true;
+            return;
+        }
+        if (this.adresseFelt) {
+            if (!this.form.valid) {
+                this.form_MarkAsTouched();
+            }
+            if (!this.form2.valid) {
+                this.form2_MarkAsTouched();
+                this.ugyldigFelter = true;
+                return;
+            }
+        }
+        else {
+            if (!this.form.valid) {
+                this.form_MarkAsTouched();
+                this.ugyldigFelter = true;
+                return;
+            }
+        }
         this.showForm = false;
         this.response = "loading";
         var ny = new models_1.OppdragOgKunde();

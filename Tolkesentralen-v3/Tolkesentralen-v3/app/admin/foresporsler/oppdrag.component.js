@@ -44,6 +44,7 @@ var OppdragComponent = (function () {
         else {
             console.log("This page is not reloaded");
         }
+        // this.loading = false;
     };
     OppdragComponent.prototype.btnTilSlettClick = function () {
         this.slettErTrykket = true;
@@ -52,7 +53,6 @@ var OppdragComponent = (function () {
         this.slettErTrykket = false;
     };
     OppdragComponent.prototype.btnInfoClick = function (index, nr) {
-        console.log("INFOOO " + index + " , " + nr);
         if (this.index == index && this.nr == nr) {
             this.SetDefault();
         }

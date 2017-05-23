@@ -135,8 +135,6 @@ export class RegistrerComponent implements OnInit {
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.postnr = this.form.value.postnr;
         ny.poststed = this.form.value.poststed;
-        ny.email = this.form.value.email;
-        ny.passord = this.form.value.passord;
         
         var body: string = JSON.stringify(ny);
         

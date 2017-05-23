@@ -1,0 +1,43 @@
+Opened connection at 21.05.2017 19.05.58 +02:00
+SELECT 
+    [Limit1].[persId] AS [persId], 
+    [Limit1].[Discriminator] AS [Discriminator], 
+    [Limit1].[fornavn] AS [fornavn], 
+    [Limit1].[etternavn] AS [etternavn], 
+    [Limit1].[telefon] AS [telefon], 
+    [Limit1].[email] AS [email], 
+    [Limit1].[adresse] AS [adresse], 
+    [Limit1].[password] AS [password], 
+    [Limit1].[regDato] AS [regDato], 
+    [Limit1].[godkjent] AS [godkjent], 
+    [Limit1].[Salt] AS [Salt], 
+    [Limit1].[firma] AS [firma], 
+    [Limit1].[telefax] AS [telefax], 
+    [Limit1].[fakturaAddress] AS [fakturaAddress], 
+    [Limit1].[adminNr] AS [adminNr], 
+    [Limit1].[poststed_postNr] AS [poststed_postNr]
+    FROM ( SELECT TOP (1) 
+        [Extent1].[persId] AS [persId], 
+        [Extent1].[fornavn] AS [fornavn], 
+        [Extent1].[etternavn] AS [etternavn], 
+        [Extent1].[telefon] AS [telefon], 
+        [Extent1].[email] AS [email], 
+        [Extent1].[adresse] AS [adresse], 
+        [Extent1].[password] AS [password], 
+        [Extent1].[regDato] AS [regDato], 
+        [Extent1].[godkjent] AS [godkjent], 
+        [Extent1].[Salt] AS [Salt], 
+        [Extent1].[firma] AS [firma], 
+        [Extent1].[telefax] AS [telefax], 
+        [Extent1].[fakturaAddress] AS [fakturaAddress], 
+        [Extent1].[adminNr] AS [adminNr], 
+        [Extent1].[Discriminator] AS [Discriminator], 
+        [Extent1].[poststed_postNr] AS [poststed_postNr]
+        FROM [dbo].[Person] AS [Extent1]
+        WHERE ([Extent1].[Discriminator] IN (N'Kunde',N'Tolk',N'Admin')) AND (([Extent1].[email] = @p__linq__0) OR (([Extent1].[email] IS NULL) AND (@p__linq__0 IS NULL)))
+    )  AS [Limit1]
+-- p__linq__0: 'admin@admin.no' (Type = String, Size = 4000)
+-- Executing at 21.05.2017 19.05.58 +02:00
+-- Completed in 32 ms with result: SqlDataReader
+
+Closed connection at 21.05.2017 19.05.58 +02:00

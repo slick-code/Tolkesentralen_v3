@@ -60,6 +60,8 @@ export class OppdragComponent {
         } else {
             console.log("This page is not reloaded");
         }
+
+       // this.loading = false;
     
     }
 
@@ -72,7 +74,6 @@ export class OppdragComponent {
     }
 
     btnInfoClick(index: number, nr: number) {
-        console.log("INFOOO " + index + " , " + nr);
         if (this.index == index && this.nr == nr) {
             this.SetDefault();
         } else {

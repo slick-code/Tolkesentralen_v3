@@ -17,7 +17,7 @@ export class Utilgjengelig {
 export class Person {
     persId: number;
 
-    email: string;
+    epost: string;
     telefon: string;
 
     fornavn: string;
@@ -33,7 +33,6 @@ export class Kunde extends Person {
     firma: string;
     kontaktperson: string;
     telefax: number;
-    epost: string;
     passord: string;
     fakturaadresse: string;
 }

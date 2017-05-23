@@ -65,7 +65,6 @@ var OpprettKundeComponent = (function () {
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.postnr = this.form.value.postnr;
         ny.poststed = this.form.value.poststed;
-        ny.email = this.form.value.email;
         var body = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(function (retur) {
             _this.Success = true;

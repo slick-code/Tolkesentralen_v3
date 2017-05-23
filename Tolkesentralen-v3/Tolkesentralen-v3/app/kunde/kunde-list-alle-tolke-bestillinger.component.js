@@ -21,6 +21,10 @@ var KundeListAlleTolkeBestillingerComponent = (function () {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
     };
+    KundeListAlleTolkeBestillingerComponent.prototype.fix = function (jsonDate) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    };
     KundeListAlleTolkeBestillingerComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.oppdragService.getOppdragTilKunde(this.ID).subscribe(function (retur) {

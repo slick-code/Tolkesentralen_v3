@@ -41,7 +41,7 @@ var KundeBestillTolkComponent = (function () {
     KundeBestillTolkComponent.prototype.ngOnInit = function () {
         this.showForm = true;
         this.validerSpraak = true;
-        this.typetolk = this.tolkTyper[1];
+        this.typetolk = this.tolkTyper[0];
         this.spraak = new spraak_1.Spraak().liste;
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
@@ -60,7 +60,7 @@ var KundeBestillTolkComponent = (function () {
     };
     KundeBestillTolkComponent.prototype.onchange = function (nr) {
         this.typetolk = this.tolkTyper[nr];
-        if (nr == 1 || nr == 4) {
+        if (nr == 0 || nr == 3) {
             this.adresseFelt = true;
             ;
         }
@@ -120,9 +120,10 @@ var KundeBestillTolkComponent = (function () {
         ny.tilkl = this.form.value.tilkl;
         ny.andreopplysninger = this.form.value.andreopplysninger;
         if (this.adresseFelt) {
-            ny.oppmoteadresse = this.form.value.oppmoteadresse;
-            ny.oppmotepostnr = this.form.value.oppmotepostnr;
-            ny.oppmotepoststed = this.form.value.oppmotepoststed;
+            console.log("adressefelt: " + this.form.value.oppmoteadresse);
+            ny.oppmoteadresse = this.form2.value.oppmoteadresse;
+            ny.oppmotepostnr = this.form2.value.oppmotepostnr;
+            ny.oppmotepoststed = this.form2.value.oppmotepoststed;
         }
         var body = JSON.stringify(ny);
         this.service.postOppdragFraKunde(body).subscribe(function (retur) {
@@ -131,8 +132,8 @@ var KundeBestillTolkComponent = (function () {
             _this.underText = "Se Mine Bestillinger..";
         }, function (error) {
             _this.response = "error";
-            _this.responseText = "Ingen kontakt med server";
-            _this.underText = "Tilkoblet internett?";
+            _this.responseText = "Ooops..";
+            _this.underText = "En feil har oppstått";
         }, function () { });
     };
     KundeBestillTolkComponent = __decorate([

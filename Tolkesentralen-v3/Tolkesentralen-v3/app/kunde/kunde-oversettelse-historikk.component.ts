@@ -21,7 +21,7 @@ export class KundeOversettelseHistorikkComponent implements OnInit {
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
-        this.getOppdragOversettelse();
+        //this.getOppdragOversettelse();
     }
 
 

@@ -111,8 +111,6 @@ var RegistrerComponent = (function () {
         ny.fakturaadresse = this.form.value.fakturaadresse;
         ny.postnr = this.form.value.postnr;
         ny.poststed = this.form.value.poststed;
-        ny.email = this.form.value.email;
-        ny.passord = this.form.value.passord;
         var body = JSON.stringify(ny);
         this.kundeService.postKunde(body).subscribe(function (retur) {
             _this.response = "success";

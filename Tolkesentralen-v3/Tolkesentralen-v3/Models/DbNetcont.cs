@@ -15,7 +15,8 @@ namespace Tolkesentralen_v3.Models
           // bool ok = Database.CreateIfNotExists();
             
            Database.SetInitializer(new DBContextInitializer());
-   
+           
+
         }
 
         // public DbSet<Oppdrag> Oppdrager { get; set; }

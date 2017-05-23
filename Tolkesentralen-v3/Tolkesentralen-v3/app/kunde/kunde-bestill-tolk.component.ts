@@ -61,7 +61,7 @@ export class KundeBestillTolkComponent implements OnInit {
     ngOnInit() {
         this.showForm = true;
         this.validerSpraak = true;
-        this.typetolk = this.tolkTyper[1];
+        this.typetolk = this.tolkTyper[0];
         this.spraak = new Spraak().liste;
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
@@ -83,7 +83,7 @@ export class KundeBestillTolkComponent implements OnInit {
 
     onchange(nr: number) {
         this.typetolk = this.tolkTyper[nr];
-        if (nr == 1 || nr == 4) {
+        if (nr == 0 || nr == 3) {
             this.adresseFelt = true;;
         } else {
             this.adresseFelt = false;
@@ -121,6 +121,7 @@ export class KundeBestillTolkComponent implements OnInit {
     }
 
     postKunde(navn: string) {
+        
         this.ugyldigFelter = false;
         if (!this.validerSpraak) {
             this.ugyldigFelter = true;
@@ -146,9 +147,10 @@ export class KundeBestillTolkComponent implements OnInit {
         ny.tilkl = this.form.value.tilkl;
         ny.andreopplysninger = this.form.value.andreopplysninger;
         if (this.adresseFelt) {
-            ny.oppmoteadresse = this.form.value.oppmoteadresse;
-            ny.oppmotepostnr = this.form.value.oppmotepostnr;
-            ny.oppmotepoststed = this.form.value.oppmotepoststed;
+            console.log("adressefelt: " + this.form.value.oppmoteadresse);
+            ny.oppmoteadresse = this.form2.value.oppmoteadresse;
+            ny.oppmotepostnr = this.form2.value.oppmotepostnr;
+            ny.oppmotepoststed = this.form2.value.oppmotepoststed;
         }
         var body: string = JSON.stringify(ny);
         this.service.postOppdragFraKunde(body).subscribe(
@@ -159,8 +161,8 @@ export class KundeBestillTolkComponent implements OnInit {
             },
             error => {
                 this.response = "error";
-                this.responseText = "Ingen kontakt med server";
-                this.underText = "Tilkoblet internett?";
+                this.responseText = "Ooops..";
+                this.underText = "En feil har oppstått";
             },
             () => { }
         );

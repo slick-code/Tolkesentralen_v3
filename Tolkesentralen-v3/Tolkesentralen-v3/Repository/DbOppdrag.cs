@@ -30,7 +30,7 @@ namespace Tolkesentralen_v3.Models
 
 		public DateTime KonverterTilDateTime(string dato, string kl)
 		{
-			return DateTime.ParseExact(dato + " " + kl, "dd-MM-yyyy HH:mm",
+			return DateTime.ParseExact(dato + " " + kl, "yyyy-MM-dd HH:mm",
 									   System.Globalization.CultureInfo.InvariantCulture);
 		}
 
@@ -49,7 +49,8 @@ namespace Tolkesentralen_v3.Models
 		{
 			try
 			{
-				Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
+
+                Kunde Bestiller = db.Personer.OfType<Kunde>().FirstOrDefault(k => k.persId == kundeId);
 				if (Bestiller != null)
 				{
 					var oppdragDb = new Tolking()
@@ -64,7 +65,26 @@ namespace Tolkesentralen_v3.Models
 						andreopplysninger = input.andreopplysninger
 					};
 
-					if (Bestiller != null)
+                    Poststed eksistererPoststed = db.Poststeder.Find(input.oppmotepostnr);
+
+                    if (eksistererPoststed == null)
+                    {
+                        var nyttpoststed = new Poststed()
+                        {
+                            postNr = input.oppmotepostnr,
+                            postSted = input.oppmotepoststed
+
+                        };
+                        // db.Poststeder.Add(nyttpoststed);
+                        oppdragDb.poststed = nyttpoststed;
+
+                    }
+                    else
+                    {
+                        oppdragDb.poststed = eksistererPoststed;
+                    }
+
+                    if (Bestiller != null)
 					{
 						Bestiller.oppdrag.Add(oppdragDb);
 					}
@@ -265,7 +285,9 @@ namespace Tolkesentralen_v3.Models
 						fratidspunkt = row.fratidspunkt,
 						tiltidspunkt = row.tiltidspunkt,
 						andreopplysninger = row.andreopplysninger,
-					};
+                        oppmotepostnr = row.poststed.postNr,
+                        oppmotepoststed = row.poststed.postSted
+                    };
 					vm_listeframmate.Add(framaater);
 				}
 
@@ -306,7 +328,9 @@ namespace Tolkesentralen_v3.Models
 						fraspraak = row.fraspraak,
 						tilspraak = row.tilspraak,
 						oppmoteadresse = row.oppmoteadresse,
-						fratidspunkt = row.fratidspunkt,
+                        oppmotepostnr = row.poststed.postNr,
+                        oppmotepoststed = row.poststed.postSted,
+                        fratidspunkt = row.fratidspunkt,
 						tiltidspunkt = row.tiltidspunkt,
 						andreopplysninger = row.andreopplysninger,
 
@@ -364,8 +388,10 @@ namespace Tolkesentralen_v3.Models
 						oppmoteadresse = row.oppmoteadresse,
 						fratidspunkt = row.fratidspunkt,
 						tiltidspunkt = row.tiltidspunkt,
-						andreopplysninger = row.andreopplysninger
-					};
+						andreopplysninger = row.andreopplysninger,
+                        oppmotepostnr = row.poststed.postNr,
+                        oppmotepoststed = row.poststed.postSted
+                    };
 					vm_listeframmate.Add(framaater);
 				}
 
@@ -476,8 +502,12 @@ namespace Tolkesentralen_v3.Models
 							oppmoteadresse = row.oppmoteadresse,
 							fratidspunkt = row.fratidspunkt,
 							tiltidspunkt = row.tiltidspunkt,
-							andreopplysninger = row.andreopplysninger
-						};
+							andreopplysninger = row.andreopplysninger,
+                            oppmotepostnr = row.poststed.postNr,
+                            oppmotepoststed = row.poststed.postSted
+                        };
+
+
 
 						utListe.Add(Tolking_vm);
 					}
@@ -521,8 +551,11 @@ namespace Tolkesentralen_v3.Models
 						fratidspunkt = row.fratidspunkt,
 						tiltidspunkt = row.tiltidspunkt,
 						andreopplysninger = row.andreopplysninger,
+                        oppmotepostnr = row.poststed.postNr,
+                        oppmotepoststed = row.poststed.postSted,
 
-						persId = row.kunde.persId,
+
+                        persId = row.kunde.persId,
 						firma = row.kunde.firma,
 						fornavn = row.kunde.fornavn,
 						etternavn = row.kunde.etternavn,
@@ -581,8 +614,10 @@ namespace Tolkesentralen_v3.Models
 							oppmoteadresse = row.oppmoteadresse,
 							fratidspunkt = row.fratidspunkt,
 							tiltidspunkt = row.tiltidspunkt,
-							andreopplysninger = row.andreopplysninger
-						};
+							andreopplysninger = row.andreopplysninger,
+                            oppmotepostnr = row.poststed.postNr,
+                            oppmotepoststed = row.poststed.postSted
+                        };
 						utListe.Add(Tolking_vm);
 					}
 				}

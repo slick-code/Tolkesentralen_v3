@@ -8,19 +8,19 @@
             <th>Kunde</th>
             <th>Fra språk</th>
             <th>Til språk</th>
-            <th>Tidsrom</th>
-         
-           
+            <th>Dato</th>
+            <th>Tid</th>
         </tr>
     </thead>
     <tbody  *ngFor="let oppdrag of oppdrag; let i = index">
         <tr>
-            <td>{{oppdrag.oppdragsNr}}</td>
+            <td>{{oppdrag.oppdragID}}</td>
             <td>{{oppdrag.typetolk}}</td>
             <td>{{oppdrag.firma}}</td>
             <td>{{oppdrag.fraspraak}}</td>
             <td>{{oppdrag.tilspraak}}</td>
-            <td>Dato: {{oppdrag.oppdragsdato}} &nbsp; Fra kl: {{oppdrag.frakl}} &nbsp; Til kl: {{oppdrag.tilkl}}</td>
+            <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}} </td>
+            <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <b>-</b> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
 
         </tr>
     </tbody>

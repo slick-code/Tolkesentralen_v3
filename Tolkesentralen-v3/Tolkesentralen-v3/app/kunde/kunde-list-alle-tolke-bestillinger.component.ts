@@ -24,6 +24,11 @@ export class KundeListAlleTolkeBestillingerComponent implements OnInit {
         this.getOppdragTolk();
     }
 
+    fix(jsonDate: any) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    }
+
     getOppdragTolk() {
         this.oppdragService.getOppdragTilKunde(this.ID).subscribe(
             retur => {

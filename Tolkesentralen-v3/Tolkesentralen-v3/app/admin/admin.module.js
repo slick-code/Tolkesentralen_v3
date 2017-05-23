@@ -34,9 +34,6 @@ var admin_routing_module_1 = require('./admin-routing.module');
 var shared_module_1 = require('../shared/shared.module');
 var AdminModule = (function () {
     function AdminModule(router) {
-        // HUSK: Fjern denne!!
-        //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
-        console.log("Admin - Hvorfor printes denne ut 2 ganger?");
     }
     AdminModule = __decorate([
         core_1.NgModule({

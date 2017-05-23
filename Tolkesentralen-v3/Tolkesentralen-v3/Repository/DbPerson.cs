@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -428,6 +429,15 @@ namespace Tolkesentralen_v3.Models
             {
                 using (var db = new DbNetcont())
                 {
+                    //string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Repository\log.txt");
+                    //db.Database.Log = message => File.AppendText(relativePath).WriteLine(message);
+                    //var logFile = new StreamWriter(relativePath);
+                    //db.Database.Log = logFile.Write;
+
+                    // Execute your queries here
+                    // ....
+
+                    
                     // Finner første machende rad til brukernavn
                     Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
 
@@ -451,6 +461,7 @@ namespace Tolkesentralen_v3.Models
                     response.brukernavn = dbData.email;
                     response.id = dbData.persId;
                     response.rolle = dbData.GetType().BaseType.Name.ToLower();
+                    //logFile.Close();
                     return response;
                 }
             }

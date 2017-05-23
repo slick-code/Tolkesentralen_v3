@@ -125,7 +125,9 @@ namespace Tolkesentralen_v3.Repository
                         oppmoteadresse = row.oppmoteadresse,
                         fratidspunkt = row.fratidspunkt,
                         tiltidspunkt = row.tiltidspunkt,
-                        andreopplysninger = row.andreopplysninger
+                        andreopplysninger = row.andreopplysninger,
+                        oppmotepostnr = row.poststed.postNr,
+                        oppmotepoststed = row.poststed.postSted
                     };
 
                     utListe.Add(Tolking_vm);
@@ -178,7 +180,9 @@ namespace Tolkesentralen_v3.Repository
                             oppmoteadresse = row.oppmoteadresse,
                             fratidspunkt = row.fratidspunkt,
                             tiltidspunkt = row.tiltidspunkt,
-                            andreopplysninger = row.andreopplysninger
+                            andreopplysninger = row.andreopplysninger,
+                            oppmotepostnr = row.poststed.postNr,
+                            oppmotepoststed = row.poststed.postSted
                         };
 
                         utListe.Add(Tolking_vm);

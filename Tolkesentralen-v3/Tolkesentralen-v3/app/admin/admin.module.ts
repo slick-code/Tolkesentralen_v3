@@ -58,9 +58,5 @@
     })
     export class AdminModule {
         constructor(router: Router) {
-
-            // HUSK: Fjern denne!!
-            //console.log('Routes: ', JSON.stringify(router.config, undefined, 1));
-            console.log("Admin - Hvorfor printes denne ut 2 ganger?");
         }
     }

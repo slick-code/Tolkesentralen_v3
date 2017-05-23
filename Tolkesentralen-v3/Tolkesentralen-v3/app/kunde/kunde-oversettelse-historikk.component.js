@@ -19,7 +19,7 @@ var KundeOversettelseHistorikkComponent = (function () {
     }
     KundeOversettelseHistorikkComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
-        this.getOppdragOversettelse();
+        //this.getOppdragOversettelse();
     };
     KundeOversettelseHistorikkComponent.prototype.getOppdragOversettelse = function () {
         var _this = this;

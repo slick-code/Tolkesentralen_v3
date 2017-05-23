@@ -38,8 +38,6 @@ export class BestillTolkComponent implements OnInit {
     form2: FormGroup;
     constructor(private service: OppdragService, private fb: FormBuilder) {
         this.form = fb.group({
-            frakl: [],
-            tilkl: [],
             firma: ["", Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             fornavn: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
             etternavn: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
@@ -49,6 +47,8 @@ export class BestillTolkComponent implements OnInit {
             fakturaadresse: ["", Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")],
             postnr: ["", Validators.pattern("[0-9]{4}")],
             poststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
+            frakl: [],
+            tilkl: [],
             andreopplysninger: [],
         });
 
@@ -58,7 +58,6 @@ export class BestillTolkComponent implements OnInit {
             oppmotepoststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")]
         });
         this.tolkTyper = ["Fremmøtetolk", "Telefontolk", "Videotolk", "Konferansetolk"];
-        console.log("dette er bestill tolk");
     }
 
     ngOnInit() {
@@ -71,7 +70,6 @@ export class BestillTolkComponent implements OnInit {
         this.adresseFelt = true; 
         this.fraspraak = 1;
         this.tilspraak = 2;
-        console.log("ASDADASD " + this.startDate);
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -128,26 +126,26 @@ export class BestillTolkComponent implements OnInit {
 
     postKunde(navn: string) {
         this.ugyldigFelter = false;
-        //if (!this.validerSpraak) {
-        //    this.ugyldigFelter = true;
-        //    return;
-        //}
-        //if (this.adresseFelt) {
-        //    if (!this.form.valid) {
-        //        this.form_MarkAsTouched();
-        //    }
-        //    if (!this.form2.valid) {
-        //        this.form2_MarkAsTouched();
-        //        this.ugyldigFelter = true;
-        //        return;
-        //    }
-        //} else {
-        //    if (!this.form.valid) {
-        //        this.form_MarkAsTouched();
-        //        this.ugyldigFelter = true;
-        //        return;
-        //    }
-        //}
+        if (!this.validerSpraak) {
+            this.ugyldigFelter = true;
+            return;
+        }
+        if (this.adresseFelt) {
+            if (!this.form.valid) {
+                this.form_MarkAsTouched();
+            }
+            if (!this.form2.valid) {
+                this.form2_MarkAsTouched();
+                this.ugyldigFelter = true;
+                return;
+            }
+        } else {
+            if (!this.form.valid) {
+                this.form_MarkAsTouched();
+                this.ugyldigFelter = true;
+                return;
+            }
+        }
         this.showForm = false;
         this.response = "loading";
         
