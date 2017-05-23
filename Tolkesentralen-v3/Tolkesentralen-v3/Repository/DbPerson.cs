@@ -425,33 +425,25 @@ namespace Tolkesentralen_v3.Models
 
         public Get_Login_VM AutoriserOgReturnerBruker(string brukernavn, string passord)
         {
+            //string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Repository\log.txt");
+            //db.Database.Log = message => File.AppendText(relativePath).WriteLine(message);
+            //var logFile = new StreamWriter(relativePath);
+            //db.Database.Log = logFile.Write;
             try
             {
                 using (var db = new DbNetcont())
                 {
-                    //string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Repository\log.txt");
-                    //db.Database.Log = message => File.AppendText(relativePath).WriteLine(message);
-                    //var logFile = new StreamWriter(relativePath);
-                    //db.Database.Log = logFile.Write;
-
-                    // Execute your queries here
-                    // ....
-
-                    
                     // Finner første machende rad til brukernavn
                     Person dbData = db.Personer.FirstOrDefault(b => b.email == brukernavn);
-
                     var response = new Get_Login_VM();
                     if (dbData == null)
                     {
                         response.godkjent = false;
                         return response;
                     }
-
                     // Sjekker om passord#hash macher brukeren
                     byte[] passordForTest = lagHash(passord + dbData.Salt);
                     bool riktigBruker = dbData.password.SequenceEqual(passordForTest);
-
                     if (!riktigBruker)
                     {
                         response.godkjent = false;

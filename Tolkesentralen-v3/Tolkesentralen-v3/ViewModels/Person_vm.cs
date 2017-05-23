@@ -26,7 +26,7 @@ namespace Tolkesentralen_v3.ViewModels
         public string fakturaadresse { get; set; }
     }
 
-    public class Post_Login_VM{
+    public class Post_Login_VM {
         public string passord { get; set; }
         public string brukernavn { get; set; }
     }
@@ -51,7 +51,7 @@ namespace Tolkesentralen_v3.ViewModels
         public int tilspraak { get; set; }
     }
 
-    public class Tolk_VM: Person_VM
+    public class Tolk_VM : Person_VM
     {
 
     }
@@ -64,5 +64,6 @@ namespace Tolkesentralen_v3.ViewModels
         public string tilDato { get; set; }
     }
 
+    public class ViewModel{}
 
 }
