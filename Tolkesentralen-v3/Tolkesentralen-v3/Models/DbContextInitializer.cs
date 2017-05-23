@@ -340,8 +340,8 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-07",
-                    fraspraak = 21,
-                    tilspraak = 34,
+                    fraspraak = 41,
+                    tilspraak = 92,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -386,6 +386,7 @@ namespace Tolkesentralen_v3.Models
                 var de = new DbForessporsel();
                 int[] tolkId = { 9 };
                 de.regEnForesporselPåEnEllerFlereTolk(tolkId, 1);
+                de.regEnForesporselPåEnEllerFlereTolk(tolkId, 2);
                 //de.regEnForesporselPåEnEllerFlereTolk(tolkId, 6);
                 db.SaveChanges();
                 o.regOppdragPaaEnTolk(1, 9, "ja");
