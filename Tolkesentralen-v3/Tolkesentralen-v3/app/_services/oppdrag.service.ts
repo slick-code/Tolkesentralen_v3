@@ -44,7 +44,7 @@ export class OppdragService {
             .map((response: Response) => response.json());
     }
 
-    getBestillingerTilTolk(id: number): Observable<Oppdrag[]> {
+    getBestillingerTilTolk(id: number): Observable<OppdragOgKunde[]> {
         return this.http.get(this.url + "GetBestillingerTilTolk/" + id)
             .map((response: Response) => response.json());
     }

@@ -40,17 +40,22 @@ export class RegistrerComponent implements OnInit {
             postnr: ["", Validators.pattern("[0-9]{4}")],
             poststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
             passord: [""],
-            bekreftpassord: [],
-            andreopplysninger: [],
+            bekreftpassord: []
             
         });
+        this.form.valueChanges.subscribe(data => {
+            if (this.ugyldigFelter) {
+                if (this.form.valid) this.ugyldigFelter = false;
+            }
+        })
 
     }
 
     ngOnInit() {
         this.showForm = true;
         //this.getKunder();
-        this.errorMessage = "Ooops! Bestilling ble ikke sendt."
+        this.errorMessage = "Ooops! Bestilling ble ikke sendt.";
+        
     }
     
     getKunder() {
@@ -78,6 +83,24 @@ export class RegistrerComponent implements OnInit {
             this.passordMatch = false;
             return false;
         }
+    }
+
+    AutoFill(event: any) {
+        console.log("EVENT: "+ event);
+        if(event !== "---auto") return
+        this.form.setValue({
+            firma: "Advokat-Nor",
+            fornavn: "Jens",
+            etternavn: "Pedersen",
+            telefon: "92662755",
+            telefax: "10099100",
+            fakturaadresse: "Rambydalen",
+            postnr: "2050",
+            poststed: "Jessheim",
+            epost: "mail_123@mail.no",
+            passord: "1234",
+            bekreftpassord: "1234"
+        });
     }
 
     responseHandler(data: any) {

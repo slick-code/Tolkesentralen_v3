@@ -24,7 +24,7 @@ namespace Tolkesentralen_v3.Controllers
         // Hent alle oppdrag til kunde ID
         // Slett et oppdrag med gitt ID
 
-        
+
         DbOppdrag repository = new DbOppdrag();
         DbForessporsel dbForesp = new DbForessporsel();
         OppdragRepository funk = new OppdragRepository();
@@ -63,7 +63,7 @@ namespace Tolkesentralen_v3.Controllers
                 bool OK;
                 if (input != null) OK = true;
                 else OK = false;
-                
+
                 if (OK)
                 {
                     return new HttpResponseMessage()
@@ -79,8 +79,8 @@ namespace Tolkesentralen_v3.Controllers
                 Content = new StringContent("Søknaden ble ikke lagret!")
             };
         }
-        
-        
+
+
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
@@ -108,20 +108,20 @@ namespace Tolkesentralen_v3.Controllers
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
-               // var fileName = Path.GetFileName(file.FileName);
+                // var fileName = Path.GetFileName(file.FileName);
                 //var path = Path.Combine(HttpContext.Current.Server.MapPath("~/uploads"), fileName);
                 //file.SaveAs(path);
-                
+
                 return new HttpResponseMessage()
                 {
                     StatusCode = HttpStatusCode.BadRequest,
-                    
+
                 };
 
             }
             var httpRequest = HttpContext.Current.Request;
             var filenavn = "første fil: " + httpRequest.Files[0].FileName;
-            
+
             var Json = new JavaScriptSerializer();
             return new HttpResponseMessage()
             {
@@ -133,14 +133,14 @@ namespace Tolkesentralen_v3.Controllers
 
         }
 
-        
+
 
         [Route("api/oppdrag/GetForesposlerTilTolk/{id}")]
         public HttpResponseMessage GetForesposlerTilTolk(int id)
         {
             DbForessporsel f = new DbForessporsel();
             List<Tolking_vm> liste = f.listTolkForesporslerMedID(id);
-            
+
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
 
@@ -155,8 +155,8 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oppdrag/GeOppdragMedTolkId/{id}")]
         public HttpResponseMessage GeOppdragMedTolkId(int tolkID)
         {
-            List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
-            
+            var liste = repository.listOppdragMedTolkId(tolkID);
+
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);
 
@@ -171,7 +171,7 @@ namespace Tolkesentralen_v3.Controllers
         public HttpResponseMessage GetBestillingerTilTolk(int id)
         {
 
-            List<Tolking_vm> liste = repository.listOppdragMedTolkId(id);
+            var liste = repository.listOppdragMedTolkId(id);
 
 
             var Json = new JavaScriptSerializer();
@@ -335,12 +335,12 @@ namespace Tolkesentralen_v3.Controllers
         //regstrerer oppdrag på en tolk
         [Route("api/oppdrag/regOppdragPaaEnTolk")]
         [HttpPost]
-        public HttpResponseMessage regOppdragPaaEnTolk(int fpId,int tolkId ,string svar)
+        public HttpResponseMessage regOppdragPaaEnTolk(int fpId, int tolkId, string svar)
         {
 
             if (ModelState.IsValid)
             {
-                bool OK = repository.regOppdragPaaEnTolk(fpId,tolkId, svar);
+                bool OK = repository.regOppdragPaaEnTolk(fpId, tolkId, svar);
 
                 if (OK)
                 {

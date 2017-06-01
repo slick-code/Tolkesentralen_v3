@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
 var tolk_service_1 = require('../_services/tolk.service');
+var spraak_1 = require('../_models/spraak');
 var TolkForesporselComponent = (function () {
     function TolkForesporselComponent(oppdragService, tolkService) {
         this.oppdragService = oppdragService;
@@ -20,6 +21,12 @@ var TolkForesporselComponent = (function () {
     TolkForesporselComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.Spraak = new spraak_1.Spraak().liste;
+    };
+    TolkForesporselComponent.prototype.PoststedStreng = function (nr, adr) {
+        if (nr == 0)
+            return "";
+        return " - " + nr + " - " + adr;
     };
     TolkForesporselComponent.prototype.fix = function (jsonDate) {
         // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)

@@ -8,7 +8,7 @@
             <div style="padding-left: 30px;padding-top: 10px;float: left;width:300px; display:inline-block">
                 <div class="form-group">
                     <label for="firma">Firma</label>
-                    <input required [ngStyle]="{'border-left': form.controls.firma.valid || !form.controls.firma.touched ? '' : '3px solid red'}" class="form-control" type="text" formControlName="firma" placeholder="Firma/institusjon" />
+                    <input (change)="AutoFill($event.target.value)" required [ngStyle]="{'border-left': form.controls.firma.valid || !form.controls.firma.touched ? '' : '3px solid red'}" class="form-control" type="text" formControlName="firma" placeholder="Firma/institusjon" />
 
                 </div>
                 <div class="form-group line-equal">

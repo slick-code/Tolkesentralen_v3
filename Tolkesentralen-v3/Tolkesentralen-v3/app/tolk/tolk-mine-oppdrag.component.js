@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var oppdrag_service_1 = require('../_services/oppdrag.service');
 var router_1 = require('@angular/router');
+var spraak_1 = require('../_models/spraak');
 var TolkMineOppdragComponent = (function () {
     function TolkMineOppdragComponent(oppdragService, router) {
         this.oppdragService = oppdragService;
@@ -20,7 +21,24 @@ var TolkMineOppdragComponent = (function () {
     TolkMineOppdragComponent.prototype.ngOnInit = function () {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.Spraak = new spraak_1.Spraak().liste;
         //  this.getOppdragTolk();
+    };
+    TolkMineOppdragComponent.prototype.VisInfo = function (index) {
+        if (this.index == index && this.infoErTrykket) {
+            return true;
+        }
+        return false;
+    };
+    TolkMineOppdragComponent.prototype.btnInfoClick = function (index) {
+        if (this.index == index) {
+            this.infoErTrykket = false;
+            this.index = -1;
+        }
+        else {
+            this.index = index;
+            this.infoErTrykket = true;
+        }
     };
     TolkMineOppdragComponent.prototype.checkIfArrayIsEmthy = function (array) {
         if (array == null)
@@ -36,9 +54,8 @@ var TolkMineOppdragComponent = (function () {
     TolkMineOppdragComponent.prototype.getOppdragTolk = function () {
         var _this = this;
         this.oppdragService.getBestillingerTilTolk(this.ID).subscribe(function (retur) {
-            _this.oppdrag = retur;
-            console.log("Success -> Mine-oppdrag  , test val:  " + _this.oppdrag);
-        }, function (error) { return console.log("Error -> Mine oppdrag feilet! ->" + error); }, function () { return console.log("ferdig: Mine oppdrag"); });
+            _this.oppdragArray = retur;
+        }, function (error) { return console.log("Error -> Mine oppdrag feilet! ->" + error); });
     };
     TolkMineOppdragComponent = __decorate([
         core_1.Component({

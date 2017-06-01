@@ -15,6 +15,7 @@ var kunde_service_1 = require('../_services/kunde.service');
 var forms_1 = require('@angular/forms');
 var RegistrerComponent = (function () {
     function RegistrerComponent(kundeService, fb) {
+        var _this = this;
         this.kundeService = kundeService;
         this.fb = fb;
         this.form = fb.group({
@@ -28,8 +29,13 @@ var RegistrerComponent = (function () {
             postnr: ["", forms_1.Validators.pattern("[0-9]{4}")],
             poststed: ["", forms_1.Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
             passord: [""],
-            bekreftpassord: [],
-            andreopplysninger: [],
+            bekreftpassord: []
+        });
+        this.form.valueChanges.subscribe(function (data) {
+            if (_this.ugyldigFelter) {
+                if (_this.form.valid)
+                    _this.ugyldigFelter = false;
+            }
         });
     }
     RegistrerComponent.prototype.ngOnInit = function () {
@@ -62,6 +68,24 @@ var RegistrerComponent = (function () {
             this.passordMatch = false;
             return false;
         }
+    };
+    RegistrerComponent.prototype.AutoFill = function (event) {
+        console.log("EVENT: " + event);
+        if (event !== "---auto")
+            return;
+        this.form.setValue({
+            firma: "Advokat-Nor",
+            fornavn: "Jens",
+            etternavn: "Pedersen",
+            telefon: "92662755",
+            telefax: "10099100",
+            fakturaadresse: "Rambydalen",
+            postnr: "2050",
+            poststed: "Jessheim",
+            epost: "mail_123@mail.no",
+            passord: "1234",
+            bekreftpassord: "1234"
+        });
     };
     RegistrerComponent.prototype.responseHandler = function (data) {
         if (this.epostEksiterer) {

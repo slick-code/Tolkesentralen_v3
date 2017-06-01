@@ -594,19 +594,18 @@ namespace Tolkesentralen_v3.Models
 		/// <returns>	A List&lt;Tolking_vm&gt; </returns>
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public List<Tolking_vm> listOppdragMedTolkId(int tolkId)
+		public List<OppdragOgKunde> listOppdragMedTolkId(int tolkId)
 		{
 			Tolk tolk = db.Personer.OfType<Tolk>().FirstOrDefault(T => T.persId == tolkId);
-			List<Tolking_vm> utListe = new List<Tolking_vm>();
+			var utListe = new List<OppdragOgKunde>();
 			try
 			{
 				if (tolk != null)
 				{
 					foreach (var row in tolk.oppdrag.OfType<Tolking>())
 					{
-						var Tolking_vm = new Tolking_vm()
+						var Tolking_vm = new OppdragOgKunde()
 						{
-							kundeID = row.kunde.persId,
 							oppdragID = row.oppdragID,
 							typetolk = row.typetolk,
 							fraspraak = row.fraspraak,
@@ -616,7 +615,17 @@ namespace Tolkesentralen_v3.Models
 							tiltidspunkt = row.tiltidspunkt,
 							andreopplysninger = row.andreopplysninger,
                             oppmotepostnr = row.poststed.postNr,
-                            oppmotepoststed = row.poststed.postSted
+                            oppmotepoststed = row.poststed.postSted,
+
+                            persId = row.kunde.persId,
+                            firma = row.kunde.firma,
+                            fornavn = row.kunde.fornavn,
+                            etternavn = row.kunde.etternavn,
+                            telefon = row.kunde.telefax,
+                            epost = row.kunde.email,
+                            adresse = row.kunde.adresse,
+                            postnr = row.kunde.poststed.postNr,
+                            poststed = row.kunde.poststed.postSted,
                         };
 						utListe.Add(Tolking_vm);
 					}

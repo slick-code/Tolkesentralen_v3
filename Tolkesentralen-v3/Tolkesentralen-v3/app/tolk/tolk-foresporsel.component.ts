@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Oppdrag } from '../_models/models';
 import { OppdragService, } from '../_services/oppdrag.service';
 import { TolkService, } from '../_services/tolk.service';
+import { Spraak } from '../_models/spraak';
 
 
 @Component({
@@ -15,13 +16,21 @@ import { TolkService, } from '../_services/tolk.service';
 export class TolkForesporselComponent implements OnInit {
     ID: number;
     oppdrag: Oppdrag[];
+    Spraak: any[];
+
 
     constructor(private oppdragService: OppdragService, private tolkService: TolkService) { }
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.Spraak = new Spraak().liste;
         
+    }
+
+    PoststedStreng(nr: number, adr: string) {
+        if (nr == 0) return "";
+        return " - " + nr + " - " + adr;
     }
 
 

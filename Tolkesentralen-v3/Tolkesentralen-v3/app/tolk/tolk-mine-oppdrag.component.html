@@ -1,26 +1,41 @@
 ﻿<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Oppdrag tilordnet deg" : "Ingen oppdrag"}}</h1>
 <br />
-<table *ngIf="checkIfArrayIsEmthy(oppdrag)" class="table table-bordered table-condensed">
+<table *ngIf="checkIfArrayIsEmthy(oppdragArray)" class="table table-bordered table-condensed">
     <thead>
         <tr>
             <th>OppdragsNr</th>
             <th>Oppdragstype</th>
-            <th>Kunde</th>
             <th>Fra språk</th>
             <th>Til språk</th>
             <th>Dato</th>
             <th>Tid</th>
+            <th>Kunde</th>
         </tr>
     </thead>
-    <tbody  *ngFor="let oppdrag of oppdrag; let i = index">
+    <tbody  *ngFor="let oppdrag of oppdragArray; let i = index">
         <tr>
             <td>{{oppdrag.oppdragID}}</td>
             <td>{{oppdrag.typetolk}}</td>
-            <td>{{oppdrag.firma}}</td>
-            <td>{{oppdrag.fraspraak}}</td>
-            <td>{{oppdrag.tilspraak}}</td>
+            <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{Spraak[oppdrag.fraspraak-1].spraak}}.gif"> {{Spraak[oppdrag.fraspraak-1].spraak}}</td>
+            <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{Spraak[oppdrag.tilspraak-1].spraak}}.gif"> {{Spraak[oppdrag.tilspraak-1].spraak}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}} </td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <b>-</b> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
+            <td>{{oppdrag.firma}}</td>
+            <td width="100px"><button class="btn btn-success" (click)="btnInfoClick(i)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button></td>
+        </tr>
+
+        <tr *ngIf="VisInfo(i)">
+            <td colspan="8">
+                <table style="margin-bottom:0" class="table table-bordered table-condensed table1">
+                    <tr><th style="width:140px">Kontaktperson</th><td style="color:black">{{oppdragArray[index].fornavn}} {{oppdragArray[index].etternavn}}</td></tr>
+                    <tr><th>Telefon</th><td style="color:black">{{oppdragArray[index].telefon}}</td></tr>
+                    <tr><th>Epost</th><td style="color:black">{{oppdragArray[index].epost}}</td></tr>
+                    <tr>
+                        <th>Melding</th>
+                        <td>{{oppdragArray[index].andreopplysninger}}</td>
+                    </tr>
+                </table>
+            </td>
 
         </tr>
     </tbody>

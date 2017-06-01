@@ -1,9 +1,10 @@
 ﻿// Promise Version
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Oppdrag} from '../_models/models';
+import { OppdragOgKunde} from '../_models/models';
 import { OppdragService } from '../_services/oppdrag.service';
 import { Router } from '@angular/router';
+import { Spraak } from '../_models/spraak';
 
 
 
@@ -16,13 +17,35 @@ import { Router } from '@angular/router';
 })
 export class TolkMineOppdragComponent implements OnInit {
     ID: number;
-    oppdrag: Oppdrag[];
+    oppdragArray: OppdragOgKunde[];
+    Spraak: any[];
+    infoErTrykket: boolean;
+    index: number;
+
     constructor(private oppdragService: OppdragService, private router: Router,) { }
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.Spraak = new Spraak().liste;
       //  this.getOppdragTolk();
+    }
+
+    VisInfo(index: number) {
+        if (this.index == index && this.infoErTrykket) {
+            return true;
+        }
+        return false;
+    }
+
+    btnInfoClick(index: number) {
+        if (this.index == index) {
+            this.infoErTrykket = false;
+            this.index = -1;
+        } else {
+            this.index = index;
+            this.infoErTrykket = true;
+        }
     }
 
     checkIfArrayIsEmthy(array: any) {
@@ -39,11 +62,9 @@ export class TolkMineOppdragComponent implements OnInit {
     getOppdragTolk() {
         this.oppdragService.getBestillingerTilTolk(this.ID).subscribe(
             retur => {
-                this.oppdrag = retur;
-                console.log("Success -> Mine-oppdrag  , test val:  " + this.oppdrag);
+                this.oppdragArray = retur;
             },
-            error => console.log("Error -> Mine oppdrag feilet! ->" + error),
-            () => console.log("ferdig: Mine oppdrag")
+            error => console.log("Error -> Mine oppdrag feilet! ->" + error)
         );
     }
 

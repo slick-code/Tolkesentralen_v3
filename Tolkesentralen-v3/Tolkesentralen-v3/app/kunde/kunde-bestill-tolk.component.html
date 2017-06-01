@@ -32,7 +32,7 @@
                         <div class="form-group line-equal">
                             <label for="fraspraak">Fra Språk</label>
                             <select [ngStyle]="{'border-left': validerSpraak ? '' : '3px solid red'}" (change)="setFraSpraak($event.target.value)" class="form-control">
-                                <option [value]="item.id" [selected]="i == 41" *ngFor="let item of spraak; let i = index">{{item.spraak}}</option>
+                                <option  [value]="item.id" [selected]="i == 41" *ngFor="let item of spraak; let i = index"> {{item.spraak}}</option>
                             </select>
                         </div>
 
