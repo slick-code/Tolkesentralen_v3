@@ -20,8 +20,8 @@
             <td>#{{oppdrag.oppdragID}}</td>
             <td>Ingen tildelt</td>
             <td>{{oppdrag.typetolk}}</td>
-            <td>{{Spraak[oppdrag.fraspraak-1].spraak}}</td>
-            <td>{{Spraak[oppdrag.tilspraak-1].spraak}}</td>
+            <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{Spraak[oppdrag.fraspraak-1].spraak}}.gif"> {{Spraak[oppdrag.fraspraak-1].spraak}}</td>
+            <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{Spraak[oppdrag.tilspraak-1].spraak}}.gif"> {{Spraak[oppdrag.tilspraak-1].spraak}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
             <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>

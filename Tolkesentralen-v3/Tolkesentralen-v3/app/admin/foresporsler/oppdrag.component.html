@@ -32,7 +32,7 @@
                         <td>{{oppdrag.dato}}</td>
                         <td>{{oppdrag.typetolk}}</td>
                         <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.fraspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.fraspraak-1].spraak}}</td>
-                        <td><img style="height:14px;margin-bottom:2px" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
+                        <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
                         <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
@@ -104,8 +104,8 @@
                     <tr>
                         <td>{{oppdrag.dato}}</td>
                         <td>{{oppdrag.typetolk}}</td>
-                        <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/norsk.gif';" src="../../bilder/{{arraySpraak[oppdrag.fraspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.fraspraak-1].spraak}}</td>
-                        <td><img style="height:14px;margin-bottom:2px" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
+                        <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.fraspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.fraspraak-1].spraak}}</td>
+                        <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
                         <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
