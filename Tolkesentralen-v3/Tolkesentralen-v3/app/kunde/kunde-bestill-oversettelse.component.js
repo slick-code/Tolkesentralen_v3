@@ -28,8 +28,8 @@ var KundeBestillOversettelseComponent = (function () {
         this.spraak = new spraak_1.Spraak().liste;
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
-        this.fraspraak = 1;
-        this.tilspraak = 2;
+        this.fraspraak = 42;
+        this.tilspraak = 93;
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -46,11 +46,11 @@ var KundeBestillOversettelseComponent = (function () {
             + ('0' + (date.getDate() + 3)).slice(-2);
     };
     KundeBestillOversettelseComponent.prototype.setFraSpraak = function (id) {
-        this.fraspraak = id;
+        this.fraspraak = id + 1;
         this.ValidateSpraak();
     };
     KundeBestillOversettelseComponent.prototype.setTilSpraak = function (id) {
-        this.tilspraak = id;
+        this.tilspraak = id + 1;
         this.ValidateSpraak();
     };
     KundeBestillOversettelseComponent.prototype.ValidateSpraak = function () {
@@ -87,6 +87,10 @@ var KundeBestillOversettelseComponent = (function () {
         ny.fraspraak = this.fraspraak;
         ny.tilspraak = this.tilspraak;
         ny.andreopplysninger = this.form.value.andreopplysninger;
+        var formData = new FormData();
+        formData.append('uploadFile', this.File, File.name);
+        ny.form = formData;
+        ny.fil = this.File;
         var body = JSON.stringify(ny);
         this.service.postOversettelseKunde(body).subscribe(function (retur) {
             _this.response = "success";
@@ -97,6 +101,13 @@ var KundeBestillOversettelseComponent = (function () {
             _this.responseText = "Ingen kontakt med server";
             _this.underText = "Tilkoblet internett?";
         }, function () { });
+    };
+    KundeBestillOversettelseComponent.prototype.fileChange = function (event) {
+        var fileList = event.target.files;
+        if (fileList.length > 0) {
+            this.File = fileList[0];
+            console.log("FIL: " + this.File.name);
+        }
     };
     KundeBestillOversettelseComponent = __decorate([
         core_1.Component({

@@ -2,7 +2,7 @@
 
 
 <div *ngIf="showForm">
-    <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Utvalg av tolker med språk <b>{{oppdrag !== undefined  ? getSpraak(oppdrag.fraspraak): "null"}}</b> og <b>{{oppdrag !== undefined ? getSpraak(oppdrag.tilspraak): "null"}}</b></p>
+    <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Utvalg av tolker med språk <b>{{oppdrag !== undefined  ? getSpraak(oppdrag.fraspraak): "null"}}</b> <img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/norsk.gif';" src="../../bilder/{{getSpraak(oppdrag.fraspraak)}}.gif"> og <b>{{oppdrag !== undefined ? getSpraak(oppdrag.tilspraak): "null"}}</b> <img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/norsk.gif';" src="../../bilder/{{getSpraak(oppdrag.tilspraak)}}.gif"></p>
    
     
      <hr />
@@ -22,20 +22,24 @@
         <table class="table table-bordered table-condensed">
             <thead>
                 <tr>
-                    <th><p style="display: inline-block;">Velg Alle</p> </th>
+                    <th><p style="margin-left:3px">Velg Alle</p> </th>
                     <td align="center"><input style="width: 35px" (click)="setAllChecked()" type="checkbox" name="mon" id="mon" value="1" class="form-control big-checkbox" /></td>
                 </tr>
             </thead>
             <tbody *ngFor="let tolk of arrayTolk; let i = index  ">
                 <tr>
                     <td>
-                        <table>
+                        <table style="width: 100%;table-layout: fixed;" >
                             <tr>
-                                <td style="display:inline-block"><p style="display:inline-block;width: 240px">{{tolk.fornavn}} {{tolk.etternavn}}</p> <p style="display:inline-block;"><span class="glyphicon glyphicon-earphone"></span> {{tolk.telefon}}</p></td>
+                                <td><p style="margin-left:3px">{{tolk.fornavn}} {{tolk.etternavn}}</p></td>
+                                <td><p style="float:right"><span class="glyphicon glyphicon-earphone"></span> {{tolk.telefon}}</p></td>
+                                <td><span *ngIf="!checkTilgjengelig(i)" style="color:orangered;float:right;margin-right:5px">Utilgjengelig</span></td>
+                            </tr>
+                                
 
                         </table>
                     </td>
-                    <td align="center"><input [checked]="arrayTolk[i].valgt" (change)="arrayTolk[i].valgt = !arrayTolk[i].valgt" style="width: 35px" type="checkbox" name="checkbox" id="" value="{{tolk}}" class="form-control" /></td>
+                    <td align="center"><input [disabled]="!checkTilgjengelig(i)"  [checked]="arrayTolk[i].valgt" (change)="arrayTolk[i].valgt = !arrayTolk[i].valgt" style="width: 35px" type="checkbox" name="checkbox" id="" value="{{tolk}}" class="form-control" /></td>
                 </tr>
 
             </tbody>

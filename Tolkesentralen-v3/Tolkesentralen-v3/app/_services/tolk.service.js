@@ -16,13 +16,16 @@ var TolkService = (function () {
         this.http = http;
         this.url = 'api/tolk/'; // URL to web API
     }
-    TolkService.prototype.getTolkMedSpraak = function (body) {
-        var headers = new http_1.Headers({ "Content-Type": "application/json" });
-        return this.http.post(this.url + "returnTolk", body, { headers: headers })
+    TolkService.prototype.getTolkMedSpraak = function (id) {
+        return this.http.get(this.url + "GetTolker/" + id)
             .map(function (response) { return response.json(); });
     };
     TolkService.prototype.getTolk = function (id) {
         return this.http.get(this.url + "GetTolk/" + id)
+            .map(function (response) { return response.json(); });
+    };
+    TolkService.prototype.getAlle = function () {
+        return this.http.get(this.url)
             .map(function (response) { return response.json(); });
     };
     TolkService.prototype.updateTolk = function (body) {

@@ -23,6 +23,12 @@ var TolkSettTilgjenglighetComponent = (function () {
         this.getPerioderUtilgjengelig();
         this.fraStartDate = new Date();
         this.tilStartDate = this.fraStartDate;
+        this.minDate = this.getDateString(new Date());
+    };
+    TolkSettTilgjenglighetComponent.prototype.getDateString = function (date) {
+        return date = date.getFullYear() + '-'
+            + ('0' + (date.getMonth() + 1)).slice(-2) + '-'
+            + ('0' + date.getDate()).slice(-2);
     };
     TolkSettTilgjenglighetComponent.prototype.postUtilgjengelig = function (fraDato, tilDato) {
         var _this = this;

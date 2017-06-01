@@ -13,6 +13,13 @@ namespace Tolkesentralen_v3.Models
 {
     public class DbPerson
     {
+        public DateTime KonverterTilDateTime(string dato)
+        {
+            return DateTime.ParseExact(dato, "yyyy-MM-dd",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+
         DbNetcont db = new DbNetcont();
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +88,30 @@ namespace Tolkesentralen_v3.Models
 				Debug.WriteLine("Exception Message: " + feil.Message);
 				
 				return false;
+            }
+        }
+
+        public bool sjekkUtilgjengelig(int persId, DateTime dato)
+        {
+            try
+            {
+                var db = new DbNetcont();
+                var periodeListe = db.Utilgjengelig.Where(t => t.persId == persId).ToList();
+
+                var perioder = new List<Utilgjengelig_ViewModel>();
+                foreach (var item in periodeListe)
+                {
+                    if(dato >= item.fraDato && dato <= item.tilDato)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception Message: " + e.Message);
+                return false;
             }
         }
 
@@ -578,6 +609,8 @@ namespace Tolkesentralen_v3.Models
         /// <returns>	A List&lt;Tolk_VM&gt; </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        
+
         public List<Tolk_VM> ListeAlleTolk()
         {
             var db = new DbNetcont();
@@ -600,8 +633,21 @@ namespace Tolkesentralen_v3.Models
                             poststed = row.poststed.postSted,
                             epost = row.email,
                             adresse = row.adresse,
-                            godkjent = row.godkjent
+                            godkjent = row.godkjent,
+                            utilgjengelig = getUtilgjengelig(row.persId)
+
                         };
+                        var spraakListe = new List<SpraakDomene>();
+                        foreach (var s in row.spraak)
+                        {
+                            var sd = new SpraakDomene()
+                            {
+                                navn = s.navn,
+                                spraakId = s.spraakId
+                            };
+                            spraakListe.Add(sd);
+                        }
+                        Tolk.spraak = spraakListe;
                         utListe.Add(Tolk);
                     }
                 }
@@ -647,7 +693,7 @@ namespace Tolkesentralen_v3.Models
 
 		}
 
-        public List<Tolk_VM> ListeAlleTolkSomSnakkeDetSprrak(int spraakId, int spraakId2)
+        public List<Tolk_VM> ListeAlleTolkSomSnakkeDetSprrak(int id)
         {
 
             var db = new DbNetcont();
@@ -655,12 +701,13 @@ namespace Tolkesentralen_v3.Models
             List<Tolk> alleTolk = db.Personer.OfType<Tolk>().ToList();
             try
             {
+                var oppdrag = db.Oppdrag.OfType<Tolking>().FirstOrDefault(k => k.oppdragID == id);
                 List<Tolk_VM> utListe = new List<Tolk_VM>();
                 foreach (var row in alleTolk)
                 {
-                    if (row.spraak.Contains(db.Spraak.Find(spraakId)) && row.spraak.Contains(db.Spraak.Find(spraakId2)))
+                    if (row.spraak.Contains(db.Spraak.Find(oppdrag.fraspraak)) && row.spraak.Contains(db.Spraak.Find(oppdrag.tilspraak)))
                     {
-                        var Tolk = new Tolk_VM()
+                        var tolk = new Tolk_VM()
                         {
                             persId = row.persId,
                             fornavn = row.fornavn,
@@ -670,9 +717,10 @@ namespace Tolkesentralen_v3.Models
                             poststed = row.poststed.postSted,
                             epost = row.email,
                             adresse = row.adresse,
-                            godkjent = row.godkjent
+                            godkjent = row.godkjent,
+                            tilgjengelig = sjekkUtilgjengelig(row.persId, oppdrag.fratidspunkt)
                         };
-                        utListe.Add(Tolk);
+                        utListe.Add(tolk);
                     }
                 }
                 return utListe;

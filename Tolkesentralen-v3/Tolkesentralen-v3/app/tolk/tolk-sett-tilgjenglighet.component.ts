@@ -22,6 +22,8 @@ export class TolkSettTilgjenglighetComponent implements OnInit {
     fraStartDate: any;
     tilStartDate: any;
 
+    minDate: any;
+
     constructor(
         private service: TolkService) { }
     
@@ -34,6 +36,14 @@ export class TolkSettTilgjenglighetComponent implements OnInit {
         this.fraStartDate = new Date();
         this.tilStartDate = this.fraStartDate;
 
+        this.minDate = this.getDateString(new Date());
+        
+    }
+
+    getDateString(date: any) {
+        return date = date.getFullYear() + '-'
+            + ('0' + (date.getMonth() + 1)).slice(-2) + '-'
+            + ('0' + date.getDate()).slice(-2);
     }
     
 

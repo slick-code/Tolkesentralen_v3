@@ -23,6 +23,21 @@ namespace Tolkesentralen_v3.Controllers
                 StatusCode = HttpStatusCode.OK
             };
         }
+        
+        public HttpResponseMessage Get()
+        {
+            //List<Tolking_vm> liste = repository.listOppdragMedTolkId(tolkID);
+            var liste = repository.ListeAlleTolk();
+            
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(liste);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
 
         [Route("api/tolk/GetTolk/{id}")]
         public HttpResponseMessage GetTolk(int id)
@@ -61,11 +76,10 @@ namespace Tolkesentralen_v3.Controllers
             };
         }
 
-        [Route("api/tolk/returnTolk")]
-        [System.Web.Mvc.HttpPost]
-        public HttpResponseMessage Post([FromBody]SpraakID input)
+        [Route("api/tolk/GetTolker/{id}")]
+        public HttpResponseMessage GetTolker(int id)
         {
-            List<Tolk_VM> liste = repository.ListeAlleTolkSomSnakkeDetSprrak(input.fraspraak, input.tilspraak);
+            List<Tolk_VM> liste = repository.ListeAlleTolkSomSnakkeDetSprrak(id);
             
             var Json = new JavaScriptSerializer();
             string JsonString = Json.Serialize(liste);

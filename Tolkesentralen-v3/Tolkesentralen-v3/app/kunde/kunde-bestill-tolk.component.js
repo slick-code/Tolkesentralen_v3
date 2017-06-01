@@ -46,8 +46,8 @@ var KundeBestillTolkComponent = (function () {
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
         this.adresseFelt = true;
-        this.fraspraak = 1;
-        this.tilspraak = 2;
+        this.fraspraak = 42;
+        this.tilspraak = 93;
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -69,6 +69,7 @@ var KundeBestillTolkComponent = (function () {
         }
     };
     KundeBestillTolkComponent.prototype.setFraSpraak = function (id) {
+        console.log("SPRÅÅL " + this.fraspraak);
         this.fraspraak = id;
         this.ValidateSpraak();
     };

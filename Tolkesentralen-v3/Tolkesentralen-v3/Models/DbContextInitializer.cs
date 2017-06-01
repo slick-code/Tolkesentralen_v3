@@ -296,9 +296,12 @@ namespace Tolkesentralen_v3.Models
                 {
                     tolk4.spraak.Add(db.Spraak.Find(i));
                 }
-                tolk1.spraak.Add(db.Spraak.Find(92));
-                tolk2.spraak.Add(db.Spraak.Find(92));
-                tolk3.spraak.Add(db.Spraak.Find(92));
+                tolk1.spraak.Add(db.Spraak.Find(93));
+                tolk2.spraak.Add(db.Spraak.Find(93));
+                tolk3.spraak.Add(db.Spraak.Find(93));
+                tolk1.spraak.Add(db.Spraak.Find(116));
+                tolk2.spraak.Add(db.Spraak.Find(116));
+                tolk3.spraak.Add(db.Spraak.Find(116));
                 db.SaveChanges();
 
 
@@ -314,8 +317,8 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-05",
-                    fraspraak = 41,
-                    tilspraak = 92,
+                    fraspraak = 42,
+                    tilspraak = 93,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -327,8 +330,8 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-05",
-                    fraspraak = 41,
-                    tilspraak = 92,
+                    fraspraak = 42,
+                    tilspraak = 93,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Fremmedmøte",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -340,8 +343,8 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-07",
-                    fraspraak = 41,
-                    tilspraak = 92,
+                    fraspraak = 42,
+                    tilspraak = 93,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -353,8 +356,8 @@ namespace Tolkesentralen_v3.Models
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-09",
-                    fraspraak = 25,
-                    tilspraak = 92,
+                    fraspraak = 33,
+                    tilspraak = 93,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",
@@ -367,7 +370,7 @@ namespace Tolkesentralen_v3.Models
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
                     dato = "2017-07-17",
                     fraspraak = 34,
-                    tilspraak = 92,
+                    tilspraak = 116,
                     andreopplysninger = "Dette er andre opplysninger",
                     typetolk = "Telefontolk",
                     oppmoteadresse = "HIOA pilestredet 35",

@@ -30,6 +30,12 @@ var Kunde = (function (_super) {
     return Kunde;
 }(Person));
 exports.Kunde = Kunde;
+var SpraakDomene = (function () {
+    function SpraakDomene() {
+    }
+    return SpraakDomene;
+}());
+exports.SpraakDomene = SpraakDomene;
 var Tolk = (function (_super) {
     __extends(Tolk, _super);
     function Tolk() {

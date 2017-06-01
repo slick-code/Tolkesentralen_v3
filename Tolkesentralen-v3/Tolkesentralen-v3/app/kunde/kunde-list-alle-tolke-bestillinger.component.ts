@@ -4,6 +4,7 @@ import { Oppdrag, Oversettelse } from '../_models/models';
 import { OppdragService } from '../_services/oppdrag.service';
 import { OversettelseService } from '../_services/oversettelse.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Spraak } from '../_models/spraak';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class KundeListAlleTolkeBestillingerComponent implements OnInit {
     ID: number;
     oppdrag: Oppdrag[];
+    Spraak: any[];
 
 
     constructor(private oppdragService: OppdragService, private oversettelseService: OversettelseService){}
@@ -22,6 +24,7 @@ export class KundeListAlleTolkeBestillingerComponent implements OnInit {
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.Spraak = new Spraak().liste;
     }
 
     fix(jsonDate: any) {

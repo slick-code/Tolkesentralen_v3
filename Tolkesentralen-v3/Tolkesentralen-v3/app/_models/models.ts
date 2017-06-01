@@ -37,10 +37,19 @@ export class Kunde extends Person {
     fakturaadresse: string;
 }
 
-export class Tolk extends Person {
-    spraak: string;
-    valgt: boolean;
+export class SpraakDomene {
+    spraakId: number;
+    navn: string;
 }
+
+export class Tolk extends Person {
+    //spraak: string;
+    valgt: boolean;
+    tilgjengelig: boolean;
+    spraak: SpraakDomene[];
+}
+
+
 
 export class Oversettelse {
     kundeID: number;
@@ -51,6 +60,7 @@ export class Oversettelse {
     ferdiggjoresdato: string;
     andreopplysninger: string;
     fil: File;
+    form: FormData;
 }
 
 export class OversettelseOgKunde extends Kunde {

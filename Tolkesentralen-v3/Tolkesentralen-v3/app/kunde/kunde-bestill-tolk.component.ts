@@ -66,8 +66,8 @@ export class KundeBestillTolkComponent implements OnInit {
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
         this.adresseFelt = true;
-        this.fraspraak = 1;
-        this.tilspraak = 2;
+        this.fraspraak = 42;
+        this.tilspraak = 93;
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -91,6 +91,7 @@ export class KundeBestillTolkComponent implements OnInit {
     }
 
     setFraSpraak(id: number) {
+        console.log("SPRÅÅL " + this.fraspraak);
         this.fraspraak = id;
         this.ValidateSpraak();
     }

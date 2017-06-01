@@ -142,6 +142,9 @@ var Spraak = (function () {
             { 'id': 138, 'spraak': 'Wolof' },
         ];
     }
+    Spraak.prototype.getSpraak = function (id) {
+        return this.liste[id].spraak;
+    };
     return Spraak;
 }());
 exports.Spraak = Spraak;

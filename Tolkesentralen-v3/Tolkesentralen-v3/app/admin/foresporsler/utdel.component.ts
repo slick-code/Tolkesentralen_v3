@@ -31,8 +31,7 @@ export class UtdelComponent {
         private tolkService: TolkService,
         private router: Router) {
         this.oppdrag = this.tempService.getObject();
-
-        
+        this.hentTolkmedGittSpraak();
     }
 
     ngOnInit() {
@@ -40,28 +39,34 @@ export class UtdelComponent {
             this.router.navigate(['./admin/oppdrag']);
             return;
         }
-        this.hentTolkmedGittSpraak();
+        
+    }
+
+    checkTilgjengelig(i: number) {
+        return this.arrayTolk[i].tilgjengelig;
     }
 
     getSpraak(i: number) {
-        return new Spraak().liste[i].spraak;
+        return new Spraak().liste[i-1].spraak;
     }
 
     setAllChecked() {
         this.allChecked = !this.allChecked;
         if (this.arrayTolk) {
             for (let object of this.arrayTolk) {
-                object.valgt = this.allChecked;
+                if (object.tilgjengelig) {
+                    object.valgt = this.allChecked;
+                }
+                
             }
         }
     }
 
     hentTolkmedGittSpraak() {
-        console.log("hentTolkmedGittSpraak BLIR KANL");
         this.showForm = false;
         this.response = "loading";
-        var body: string = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
-        this.tolkService.getTolkMedSpraak(body).subscribe(
+        //var body: string = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
+        this.tolkService.getTolkMedSpraak(this.oppdrag.oppdragID).subscribe(
             retur => {
                 this.showForm = true;
                 this.response = "";

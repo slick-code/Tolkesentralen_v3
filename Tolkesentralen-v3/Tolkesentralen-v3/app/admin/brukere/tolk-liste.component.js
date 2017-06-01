@@ -9,37 +9,82 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var kunde_service_1 = require('../../_services/kunde.service');
-var models_1 = require('../../_models/models');
-var data_service_1 = require('../../_services/data.service');
+var tolk_service_1 = require('../../_services/tolk.service');
 var TolkListeComponent = (function () {
-    function TolkListeComponent(service, dataService) {
+    function TolkListeComponent(service) {
         this.service = service;
-        this.dataService = dataService;
-        this.arrayKunder = [];
+        this.d = new Date(1494576900000);
     }
     TolkListeComponent.prototype.ngOnInit = function () {
-        this.getKunder();
+        this.count = 77;
+        this.loading = true;
+        this.getTolk();
+        console.info("This is console.indo");
+        if (window.performance) {
+            console.log("window.performance work's fine on this browser");
+        }
+        if (performance.navigation.type == 1) {
+            console.log("This page is reloaded");
+        }
+        else {
+            console.log("This page is not reloaded");
+        }
+        // this.loading = false;
     };
-    TolkListeComponent.prototype.getKunder = function () {
+    TolkListeComponent.prototype.btnTilSlettClick = function () {
+        this.slettErTrykket = true;
+    };
+    TolkListeComponent.prototype.btnAvbrytTilSlettClick = function () {
+        this.slettErTrykket = false;
+    };
+    TolkListeComponent.prototype.btnInfoClick = function (index, nr) {
+        if (this.index == index && this.nr == nr) {
+            this.SetDefault();
+        }
+        else {
+            this.index = index;
+            this.nr = nr;
+            this.infoErTrykket = true;
+        }
+    };
+    TolkListeComponent.prototype.VisInfo = function (index, nr) {
+        if (this.index == index && this.nr == nr && this.infoErTrykket) {
+            return true;
+        }
+        return false;
+    };
+    TolkListeComponent.prototype.SetDefault = function () {
+        this.infoErTrykket = false;
+        this.slettErTrykket = false;
+        this.default = true;
+        this.index = -1;
+        this.nr = -1;
+    };
+    TolkListeComponent.prototype.checkIfArrayIsEmthy = function (array) {
+        if (array == null)
+            return false;
+        if (array.length == 0)
+            return false;
+        return true;
+    };
+    TolkListeComponent.prototype.fix = function (jsonDate) {
+        // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
+        return new Date(parseInt(jsonDate.substr(6)));
+    };
+    TolkListeComponent.prototype.getTolk = function () {
         var _this = this;
-        // get users from secure api end point
-        this.service.getKunder()
-            .subscribe(function (kunder) {
-            if (kunder != null) {
-                _this.arrayKunder = kunder;
-                _this.element = new models_1.NavbarElement();
-                _this.element.nr = _this.arrayKunder.length;
-                _this.element.element = 'kunder';
-                _this.dataService.updateData(_this.element);
-            }
-        });
+        this.service.getAlle()
+            .subscribe(function (retur) {
+            _this.arrayTolk = retur;
+        }, function (error) {
+        }, function () { _this.loading = false; });
     };
     TolkListeComponent = __decorate([
         core_1.Component({
-            templateUrl: "./app/admin/brukere/tolk-liste.component.html"
+            templateUrl: "./app/admin/brukere/tolk-liste.component.html",
+            providers: [tolk_service_1.TolkService],
         }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
+        __metadata('design:paramtypes', [tolk_service_1.TolkService])
     ], TolkListeComponent);
     return TolkListeComponent;
 }());

@@ -10,15 +10,18 @@ export class TolkService {
 
     constructor(private http: Http) { }
 
-    getTolkMedSpraak(body: any): Observable<Tolk[]> {
-        var headers = new Headers({ "Content-Type": "application/json" });
-        
-        return this.http.post(this.url + "returnTolk", body, { headers: headers })
+    getTolkMedSpraak(id: number): Observable<Tolk[]> {
+        return this.http.get(this.url + "GetTolker/"+ id)
             .map((response: Response) => response.json());
     }
 
     getTolk(id: number): Observable<Tolk> {
         return this.http.get(this.url + "GetTolk/" +id)
+            .map((response: Response) => response.json());
+    }
+
+    getAlle(): Observable<Tolk[]> {
+        return this.http.get(this.url)
             .map((response: Response) => response.json());
     }
 

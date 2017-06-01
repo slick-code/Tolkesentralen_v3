@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using Tolkesentralen_v3.Models;
@@ -54,6 +55,9 @@ namespace Tolkesentralen_v3.Controllers
         [Route("api/oversettelse/PostOppdragFraKunde")]
         public HttpResponseMessage PostOppdragFraKunde([FromBody]Oversettelse_VM input)
         {
+            
+
+
             if (ModelState.IsValid)
             {
                 bool OK = repository.LagreOppdragAvTypeOversettelse(input);

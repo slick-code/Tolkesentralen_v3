@@ -51,9 +51,17 @@ namespace Tolkesentralen_v3.ViewModels
         public int tilspraak { get; set; }
     }
 
+    public class SpraakDomene
+    {
+        public int spraakId { get; set; }
+        public string navn { get; set; }
+    }
+
     public class Tolk_VM : Person_VM
     {
-
+        public bool tilgjengelig { get; set; }
+        public List<SpraakDomene> spraak { get; set; }
+        public List<Utilgjengelig_ViewModel> utilgjengelig { get; set; }
     }
 
     public class Utilgjengelig_ViewModel

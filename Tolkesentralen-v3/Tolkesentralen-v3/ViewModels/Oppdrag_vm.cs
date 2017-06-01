@@ -73,6 +73,8 @@ namespace Tolkesentralen_v3.ViewModels
 
     public class Oversettelse_VM : Oppdrag_VM
     {
+        public Fil fil { get; set; }
+        public Fil form { get; set; }
         public virtual List<Fil> Filer { get; set; }
         public string ferdiggjoresdato { get; set; }
     }

@@ -19,7 +19,7 @@ namespace Tolkesentralen_v3.Models
         public bool sendt { get; set; }
 
         public virtual Kunde kunde { get; set; }
-        public virtual Tolk Tolk { get; set; }  
+        public virtual Tolk Tolk { get; set; }
     }
     
     // [Table("Fremmaate")]

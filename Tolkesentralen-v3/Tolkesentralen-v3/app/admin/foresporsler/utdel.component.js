@@ -22,33 +22,37 @@ var UtdelComponent = (function () {
         this.router = router;
         this.path = 'admin/oppdrag';
         this.oppdrag = this.tempService.getObject();
+        this.hentTolkmedGittSpraak();
     }
     UtdelComponent.prototype.ngOnInit = function () {
         if (this.oppdrag == null) {
             this.router.navigate(['./admin/oppdrag']);
             return;
         }
-        this.hentTolkmedGittSpraak();
+    };
+    UtdelComponent.prototype.checkTilgjengelig = function (i) {
+        return this.arrayTolk[i].tilgjengelig;
     };
     UtdelComponent.prototype.getSpraak = function (i) {
-        return new spraak_1.Spraak().liste[i].spraak;
+        return new spraak_1.Spraak().liste[i - 1].spraak;
     };
     UtdelComponent.prototype.setAllChecked = function () {
         this.allChecked = !this.allChecked;
         if (this.arrayTolk) {
             for (var _i = 0, _a = this.arrayTolk; _i < _a.length; _i++) {
                 var object = _a[_i];
-                object.valgt = this.allChecked;
+                if (object.tilgjengelig) {
+                    object.valgt = this.allChecked;
+                }
             }
         }
     };
     UtdelComponent.prototype.hentTolkmedGittSpraak = function () {
         var _this = this;
-        console.log("hentTolkmedGittSpraak BLIR KANL");
         this.showForm = false;
         this.response = "loading";
-        var body = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
-        this.tolkService.getTolkMedSpraak(body).subscribe(function (retur) {
+        //var body: string = JSON.stringify({ fraspraak: this.oppdrag.fraspraak, tilspraak: this.oppdrag.tilspraak });
+        this.tolkService.getTolkMedSpraak(this.oppdrag.oppdragID).subscribe(function (retur) {
             _this.showForm = true;
             _this.response = "";
             _this.responseText = "Forespørselen er sendt! Gå til Bestillinger for å se detaljer.";

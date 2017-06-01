@@ -1,65 +1,94 @@
 ﻿
-
-
 <div>
     <div class="col-md-offset-0">
 
-        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span>Liste over alle tolker  </p>
-        <p style="display: inline-block;" class="text-center" *ngIf="loading">
-            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        </p>
+        <p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Informasjon om ansatte</p>
+        <loading *ngIf="loading"></loading>
 
         <hr />
-        <div>
-            <h1 style="display: inline-block;">Tolkoversikt </h1>
+        <div *ngIf="checkIfArrayIsEmthy(arrayTolk)">
+            <div>
+                <h1 style="display: inline-block;"> Alle Tolker</h1>
 
+            </div>
+            <br />
+
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>AnsattNr</th>
+                        <th>Navn</th>
+                        <th>Telefon</th>
+                        <th>Epost</th>
+                        <th>Adresse</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of arrayTolk; let i = index">
+                    <tr>
+                        <td>{{item.persId}}</td>
+                        <td>{{item.fornavn}} {{item.etternavn}}</td>
+                        <td>{{item.telefon}}</td>
+                        <td>{{item.epost}}</td>
+                        <td>{{item.adresse}} {{item.postnr}} {{item.poststed}}</td>
+                        <td width="100">
+                            <button style="width:100%" class="btn btn-success" (click)="btnInfoClick(i,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="VisInfo(i, 0)">
+                        <td  colspan="8">
+                            <div>
+                                <div style="width:180px;display:inline-block; margin:10px">
+                                    <table class="table table-bordered table-condensed ">
+                                        <thead>
+                                            <tr>
+                                                <th style="color:#005200;"><b>Språk</b></th>
+                                                <th style="width:50px">Nivå</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let item of arrayTolk[i].spraak; let i = index">
+                                            <tr>
+                                                <td>{{item.navn}}</td>
+                                                <td>{{item.spraakId}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div style="width:200px;vertical-align:top;display:inline-block; margin:10px">
+                                    <table class="table table-bordered table-condensed ">
+                                        <thead>
+                                            <tr><th  colspan="2" style="color:#005200;"><b>Utilgjengelig</b></th></tr>
+                                            <tr>
+                                                
+                                                <th>Fra Dato</th>
+                                                <th>Til Dato</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let item of arrayTolk[i].utilgjengelig; let i = index">
+                                            <tr>
+                                                <td>{{item.fraDato}}</td>
+                                                <td>{{item.tilDato}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                            
+                            <div  style="clear:both"></div>
+                            <button style="margin:10px;margin-left:5px;clear:both" class="btn btn-primary" ><span class="glyphicon glyphicon-edit"></span> Endre</button>
+                            
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br />
 
-        <table class="table table-bordered table-condensed">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Fornavn</th>
-                    <th>Etternavn</th>
-                    <th>Språk</th>
-                    <th>Nivå</th>
-                    <th>Mobil</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let oppdrag of arrayOppdrag; let i = index">
-                <tr>
-                    <td>{{tolk.tolkId}}</td>
-                    <td>{{tolk.fornavn}}</td>
-                    <td>{{tolk.etternavn}}</td>
-                    <td>{{tolk.spraak}}</td>
-                    <td>{{tolk.nivaa}}</td>
-                    <td>{{tolk.mobil}}</td>
-                    <td *ngIf="i !== index || !avbryt" width="230">
-                        <button style="width:85px" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> {{i === index && info ? "Sjul" : "Vis mer"}}</button>
-                        <button style="width:85px" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span> Endre</button>
-                        <button style="width:40px" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                    <td *ngIf="i === index && avbryt" width="205">
-                        <button style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>
-                        <button style="width:49%" class="btn btn-default" (click)="setAvbryt(i)"><span class="glyphicon glyphicon-chevron-right"></span> Avbryt</button>
-                    </td>
-                </tr>
-                <tr *ngIf="i === index && info">
-                    <td colspan="7">
-                        <table class="table table-bordered table-condensed table1">
-                            <tr><th style="color:orange">Telefon</th><td style="color:black">{{arrayTolker[index].telefon}}</td></tr>
-                            <tr><th style="color:darkorange">Ansattelse-dato</th><td style="color:black">{{arrayTolker[index].ansattelsedato}}</td></tr>
-                            <tr><th style="color:orange">E-post</th><td style="color:black">{{arrayTolker[index].epost}}</td></tr>
-                            <tr><th style="color:darkorange">Adresse</th><td style="color:black">{{arrayTolker[index].adresse}}</td></tr>
-                            <tr><th style="color:orange">Adresse2</th><td style="color:black">{{arrayTolker[index].adresse2}}</td></tr>
-                            <tr><th style="color:darkorange">Postnr</th><td style="color:black">{{arrayTolker[index].postnr}}</td></tr>
-                            <tr><th style="color:orange">Poststed</th><td style="color:black">{{arrayTolker[index].poststed}}</td></tr>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 style="color:forestgreen" *ngIf="!loading && !checkIfArrayIsEmthy(arrayTolk)">Ingen nye oppdrag</h3>
+
+
+
     </div>
 </div>
-<br />

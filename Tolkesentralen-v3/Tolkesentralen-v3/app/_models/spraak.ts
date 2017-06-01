@@ -147,5 +147,9 @@ export class Spraak {
         ];
     }
 
+    getSpraak(id: number) {
+        return this.liste[id].spraak
+    }
+
    
 }

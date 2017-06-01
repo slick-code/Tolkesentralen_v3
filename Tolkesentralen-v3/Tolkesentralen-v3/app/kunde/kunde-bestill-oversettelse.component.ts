@@ -30,6 +30,8 @@ export class KundeBestillOversettelseComponent implements OnInit {
     validerSpraak: boolean;
     ugyldigFelter: boolean;
 
+    File: File;
+
 
     form: FormGroup;
     constructor(private service: OversettelseService, private fb: FormBuilder) {
@@ -45,8 +47,8 @@ export class KundeBestillOversettelseComponent implements OnInit {
         this.spraak = new Spraak().liste;
         this.minDate = this.getDateString(new Date());
         this.startDate = this.minDate;
-        this.fraspraak = 1;
-        this.tilspraak = 2;
+        this.fraspraak = 42;
+        this.tilspraak = 93;
         this.form.patchValue({
             frakl: "08:00",
             tilkl: "10:00"
@@ -66,12 +68,12 @@ export class KundeBestillOversettelseComponent implements OnInit {
     }
 
     setFraSpraak(id: number) {
-        this.fraspraak = id;
+        this.fraspraak = id+1;
         this.ValidateSpraak();
     }
 
     setTilSpraak(id: number) {
-        this.tilspraak = id;
+        this.tilspraak = id+1;
         this.ValidateSpraak();
     }
 
@@ -111,6 +113,10 @@ export class KundeBestillOversettelseComponent implements OnInit {
         ny.fraspraak = this.fraspraak;
         ny.tilspraak = this.tilspraak;
         ny.andreopplysninger = this.form.value.andreopplysninger;
+        let formData: FormData = new FormData();
+        formData.append('uploadFile', this.File, File.name);
+        ny.form = formData;
+        ny.fil = this.File;
         var body: string = JSON.stringify(ny);
         this.service.postOversettelseKunde(body).subscribe(
             retur => {
@@ -127,25 +133,27 @@ export class KundeBestillOversettelseComponent implements OnInit {
         );
     }
 
-    //fileChange(event: any) {
-    //    let fileList: FileList = event.target.files;
-    //    if (fileList.length > 0) {
-    //        this.fil = fileList[0];
-    //        //let file: File = fileList[0];
-    //        //let formData: FormData = new FormData();
-    //        //formData.append('uploadFile', file, file.name);
-    //        //let headers = new Headers();
-    //        //headers.append('Content-Type', 'multipart/form-data');
-    //        //headers.append('Accept', 'application/json');
-    //        //let options = new RequestOptions({ headers: headers });
-    //        //this.http.post(`${this.apiEndPoint}`, formData, options)
-    //        //    .map(res => res.json())
-    //        //    .catch(error => Observable.throw(error))
-    //        //    .subscribe(
-    //        //    data => console.log('success'),
-    //        //    error => console.log(error)
-    //        //    )
-    //    }
-    //}
+    fileChange(event: any) {
+        
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            this.File = fileList[0];
+            console.log("FIL: " + this.File.name);
+            //let formData: FormData = new FormData();
+            //formData.append('uploadFile', file, file.name);
+           
+            //let headers = new Headers();
+            //headers.append('Content-Type', 'multipart/form-data');
+            //headers.append('Accept', 'application/json');
+            //let options = new RequestOptions({ headers: headers });
+            //this.http.post(`${this.apiEndPoint}`, formData, options)
+            //    .map(res => res.json())
+            //    .catch(error => Observable.throw(error))
+            //    .subscribe(
+            //    data => console.log('success'),
+            //    error => console.log(error)
+            //    )
+        }
+    }
 
 }

@@ -7,14 +7,14 @@
 <div class="form-group" style="display:inline-block;">
     <label for="oppdragsdato">Fra dato</label>
     <div class="inner-addon left-addon">
-        <input [ngModelOptions]="{standalone: true}" [ngModel]="fraStartDate | date:'yyyy-MM-dd'" (ngModelChange)="fraStartDate = $event" type="date" class="form-control" #fra   />
+        <input min="{{minDate}}" [ngModelOptions]="{standalone: true}" [ngModel]="fraStartDate | date:'yyyy-MM-dd'" (ngModelChange)="fraStartDate = $event" type="date" class="form-control" #fra   />
     </div>
 </div>
 
 <div class="form-group" style="display:inline-block;">
     <label for="oppdragsdato">Til dato</label>
     <div class="inner-addon left-addon">
-        <input [ngModelOptions]="{standalone: true}" [ngModel]="tilStartDate | date:'yyyy-MM-dd'" (ngModelChange)="tilStartDate = $event" type="date" class="form-control" #til />
+        <input min="{{fraStartDate | date:'yyyy-MM-dd'}}"  [ngModelOptions]="{standalone: true}" [ngModel]="fraStartDate | date:'yyyy-MM-dd'" (ngModelChange)="tilStartDate = $event" type="date" class="form-control" #til />
     </div>
 </div>
 
