@@ -35,7 +35,7 @@
                         </td>
                     </tr>
                     <tr *ngIf="VisInfo(i, 0)">
-                        <td  colspan="8">
+                        <td style="background-color:white" colspan="7">
                             <div>
                                 <div style="width:180px;display:inline-block; margin:10px">
                                     <table class="table table-bordered table-condensed ">
@@ -54,7 +54,7 @@
                                     </table>
 
                                 </div>
-                                <div style="width:200px;vertical-align:top;display:inline-block; margin:10px">
+                                <div *ngIf="arrayTolk[i].utilgjengelig[0]" style="width:200px;vertical-align:top;display:inline-block; margin:10px">
                                     <table class="table table-bordered table-condensed ">
                                         <thead>
                                             <tr><th  colspan="2" style="color:#005200;"><b>Utilgjengelig</b></th></tr>

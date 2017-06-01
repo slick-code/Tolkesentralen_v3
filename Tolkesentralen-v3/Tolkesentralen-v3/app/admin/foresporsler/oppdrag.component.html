@@ -35,7 +35,7 @@
                         <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
-                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} {{PoststedStreng(oppdrag.oppmotepostnr,oppdrag.oppmotepoststed)}}</td>
                         <td width="185">
                             <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,0)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 0) ? "Sjul" : "Vis mer"}}</button>
                             <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-share-alt"></span> Utdel</button>
@@ -108,7 +108,7 @@
                         <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{arraySpraak[oppdrag.tilspraak-1].spraak}}.gif"> {{arraySpraak[oppdrag.tilspraak-1].spraak}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
                         <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
-                        <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+                        <td>{{oppdrag.oppmoteadresse}} {{PoststedStreng(oppdrag.oppmotepostnr,oppdrag.oppmotepoststed)}}</td>
                         <td width="185">
                             <button style="width:49%" class="btn btn-success" (click)="btnInfoClick(i,1)"><span class="glyphicon glyphicon-info-sign"></span> {{VisInfo(i, 1) ? "Sjul" : "Vis mer"}}</button>
                             <button style="width:49%" class="btn btn-primary" (click)="onUtdel(oppdrag)"><span class="glyphicon glyphicon-user"></span> Utdelt</button>

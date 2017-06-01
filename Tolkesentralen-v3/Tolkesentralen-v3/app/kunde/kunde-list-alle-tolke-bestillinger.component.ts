@@ -27,6 +27,11 @@ export class KundeListAlleTolkeBestillingerComponent implements OnInit {
         this.Spraak = new Spraak().liste;
     }
 
+    PoststedStreng(nr: number, adr: string) {
+        if (nr == 0) return "";
+        return " - " + nr + " - " + adr;
+    }
+
     fix(jsonDate: any) {
         // -> //Date(1494501300000)/ -> returnerer -> new Date(1494501300000)
         return new Date(parseInt(jsonDate.substr(6)));

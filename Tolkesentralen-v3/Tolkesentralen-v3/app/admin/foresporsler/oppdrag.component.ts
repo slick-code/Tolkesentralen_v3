@@ -65,6 +65,11 @@ export class OppdragComponent {
     
     }
 
+    PoststedStreng(nr: number, adr: string) {
+        if (nr == 0) return "";
+        return " - " + nr + " - " + adr;
+    }
+
     btnTilSlettClick() {
         this.slettErTrykket = true;
     }

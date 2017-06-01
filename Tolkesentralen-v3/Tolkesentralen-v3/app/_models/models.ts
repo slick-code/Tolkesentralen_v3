@@ -47,6 +47,7 @@ export class Tolk extends Person {
     valgt: boolean;
     tilgjengelig: boolean;
     spraak: SpraakDomene[];
+    utilgjengelig: Utilgjengelig[];
 }
 
 

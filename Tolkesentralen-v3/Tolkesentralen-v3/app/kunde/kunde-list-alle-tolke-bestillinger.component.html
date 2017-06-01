@@ -24,7 +24,7 @@
             <td><img style="height:14px;margin-bottom:2px" onError="this.src='../../bilder/white.gif';" src="../../bilder/{{Spraak[oppdrag.tilspraak-1].spraak}}.gif"> {{Spraak[oppdrag.tilspraak-1].spraak}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'dd-MM-yyyy'}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
-            <td>{{oppdrag.oppmoteadresse}} - {{oppdrag.oppmotepostnr}} - {{oppdrag.oppmotepoststed}}</td>
+            <td>{{oppdrag.oppmoteadresse}} {{PoststedStreng(oppdrag.oppmotepostnr,oppdrag.oppmotepoststed)}}</td>
             <td><button>Avbestill</button> <button>Endre</button></td>
         </tr>
     </tbody>
