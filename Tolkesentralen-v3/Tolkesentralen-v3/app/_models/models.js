@@ -1,9 +1,5 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+Object.defineProperty(exports, "__esModule", { value: true });
 var Login = (function () {
     function Login() {
     }
@@ -25,7 +21,7 @@ exports.Person = Person;
 var Kunde = (function (_super) {
     __extends(Kunde, _super);
     function Kunde() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return Kunde;
 }(Person));
@@ -39,7 +35,7 @@ exports.SpraakDomene = SpraakDomene;
 var Tolk = (function (_super) {
     __extends(Tolk, _super);
     function Tolk() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return Tolk;
 }(Person));
@@ -53,7 +49,7 @@ exports.Oversettelse = Oversettelse;
 var OversettelseOgKunde = (function (_super) {
     __extends(OversettelseOgKunde, _super);
     function OversettelseOgKunde() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return OversettelseOgKunde;
 }(Kunde));
@@ -67,7 +63,7 @@ exports.Oppdrag = Oppdrag;
 var OppdragOgKunde = (function (_super) {
     __extends(OppdragOgKunde, _super);
     function OppdragOgKunde() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return OppdragOgKunde;
 }(Kunde));
@@ -92,4 +88,3 @@ var Bruker = (function () {
     return Bruker;
 }());
 exports.Bruker = Bruker;
-//# sourceMappingURL=models.js.map

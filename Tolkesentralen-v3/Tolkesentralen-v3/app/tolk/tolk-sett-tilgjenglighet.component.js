@@ -1,17 +1,9 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+Object.defineProperty(exports, "__esModule", { value: true });
 // Promise Version
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var tolk_service_1 = require('../_services/tolk.service');
+var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
+var tolk_service_1 = require("../_services/tolk.service");
 var TolkSettTilgjenglighetComponent = (function () {
     function TolkSettTilgjenglighetComponent(service) {
         this.service = service;
@@ -69,16 +61,15 @@ var TolkSettTilgjenglighetComponent = (function () {
             _this.tilgjengelig.splice(index, 1);
         }, function (error) { console.log("Feil: slettPerioderUtilgjengelig - " + error); }, function () { _this.slettLoading = false; });
     };
-    TolkSettTilgjenglighetComponent = __decorate([
-        core_1.Component({
-            //moduleId: module.id,
-            templateUrl: './app/tolk/tolk-sett-tilgjenglighet.component.html',
-            providers: [tolk_service_1.TolkService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [tolk_service_1.TolkService])
-    ], TolkSettTilgjenglighetComponent);
     return TolkSettTilgjenglighetComponent;
 }());
+TolkSettTilgjenglighetComponent = __decorate([
+    core_1.Component({
+        //moduleId: module.id,
+        templateUrl: './app/tolk/tolk-sett-tilgjenglighet.component.html',
+        providers: [tolk_service_1.TolkService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [tolk_service_1.TolkService])
+], TolkSettTilgjenglighetComponent);
 exports.TolkSettTilgjenglighetComponent = TolkSettTilgjenglighetComponent;
-//# sourceMappingURL=tolk-sett-tilgjenglighet.component.js.map

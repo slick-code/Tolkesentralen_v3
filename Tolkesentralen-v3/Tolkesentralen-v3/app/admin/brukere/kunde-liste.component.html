@@ -35,8 +35,8 @@
                     <td>{{kunde.telefax}}</td>
                     <td>{{kunde.fakturaadresse}} {{kunde.postnr}} {{kunde.poststed}}</td>
                     <td>{{kunde.epost}}</td>
-                    <td style="width:40px;" *ngIf="!setTilSlettErTrykket(i)" >
-                        <button [ngClass]="{'fl': slett }" style="width:40px" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-trash"></span></button>
+                    <td style="width:190px;" *ngIf="!setTilSlettErTrykket(i)" >
+                        <button [ngClass]="{'fl': slett }" style="width:100%" class="btn btn-default" (click)="setTilSlett(i)"><span class="glyphicon glyphicon-trash"></span> Slett kunde?</button>
                     </td>
                     <td *ngIf="setTilSlettErTrykket(i)" width="190">
                         <button (click)="slettKunde(i, kunde.persId)" style="width:49%" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Slett</button>

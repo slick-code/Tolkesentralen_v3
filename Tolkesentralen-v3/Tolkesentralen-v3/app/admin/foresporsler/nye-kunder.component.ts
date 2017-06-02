@@ -1,13 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Kunde } from '../../_models/models'
 import { KundeService } from '../../_services/kunde.service'
 import { NavbarElement } from '../../_models/models'
 import { DataService } from '../../_services/data.service'
-
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+    keyframes,
+    group
+} from '@angular/core';
 
 
 @Component({
-    templateUrl: "./app/admin/foresporsler/nye-kunder.component.html"
+    templateUrl: "./app/admin/foresporsler/nye-kunder.component.html",
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({ width: 120, transform: 'translateX(0)', opacity: 1 })),
+            transition('void => *', [
+                style({ width: 10, transform: 'translateX(10px)', opacity: 0 }),
+                group([
+                    animate('0.2s 0.1s ease', style({
+                        transform: 'translateX(0)',
+                        width: 120
+                    })),
+                    animate('0.2s ease', style({
+                        opacity: 1
+                    }))
+                ])
+            ]),
+            transition('* => void', [
+                group([
+                    animate('0.1s ease', style({
+                        transform: 'translateX(10px)',
+                        width: 10
+                    })),
+                    animate('0.1s 0.1s ease', style({
+                        opacity: 0
+                    }))
+                ])
+            ])
+        ])
+    ]
 })
 export class NyeKunderComponent {
    arrayNyeKunder: Kunde[] = [];
@@ -16,6 +52,7 @@ export class NyeKunderComponent {
    slett: boolean;
    default: boolean;
    loading: boolean;
+   state: string = 'inactive';
 
     constructor(
         private service: KundeService,
@@ -26,6 +63,10 @@ export class NyeKunderComponent {
     ngOnInit() {
         console.log("KUNDE_INIT");
         this.getKunder();
+    }
+
+    toggleState() {
+        this.state = (this.state === 'active' ? 'inactive' : 'active');
     }
 
     

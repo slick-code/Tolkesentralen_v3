@@ -5,13 +5,50 @@ import { Oppdrag } from '../_models/models';
 import { OppdragService, } from '../_services/oppdrag.service';
 import { TolkService, } from '../_services/tolk.service';
 import { Spraak } from '../_models/spraak';
+import {
+    trigger,
+    state,
+    style,
+    transition,
+    animate,
+    keyframes,
+    group
+} from '@angular/core';
 
 
 @Component({
     //moduleId: module.id,
     templateUrl: './app/tolk/tolk-foresporsel.component.html',
     providers: [OppdragService, TolkService],
-    styles: ['.error {color:red;}']
+    styles: ['.error {color:red;}'],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({ width: 120, transform: 'translateX(0)', opacity: 1 })),
+            transition('void => *', [
+                style({ width: 10, transform: 'translateX(10px)', opacity: 0 }),
+                group([
+                    animate('0.2s 0.1s ease', style({
+                        transform: 'translateX(0)',
+                        width: 120
+                    })),
+                    animate('0.2s ease', style({
+                        opacity: 1
+                    }))
+                ])
+            ]),
+            transition('* => void', [
+                group([
+                    animate('0.1s ease', style({
+                        transform: 'translateX(10px)',
+                        width: 10
+                    })),
+                    animate('0.1s 0.1s ease', style({
+                        opacity: 0
+                    }))
+                ])
+            ])
+        ])
+    ]
 })
 export class TolkForesporselComponent implements OnInit {
     ID: number;

@@ -6,6 +6,11 @@ import { AuthGuard } from './_guards/auth.guard';
 import { SelectivePreloadingStrategy } from './_services/selective-preloading-strategy';
 
 const appRoutes: Routes = [
+    {
+        path: '',
+        loadChildren: 'app/home/home.module#HomeModule'
+        //loadChildren: 'app/animate/animate.module#AnimateModule'
+    },
     { path: 'login', component: LoginComponent },
     {
         path: 'admin',
@@ -24,10 +29,7 @@ const appRoutes: Routes = [
     {
         path: 'home', redirectTo: ''
     },
-    {
-        path: '',
-        loadChildren: 'app/home/home.module#HomeModule'
-    },
+    
     { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({

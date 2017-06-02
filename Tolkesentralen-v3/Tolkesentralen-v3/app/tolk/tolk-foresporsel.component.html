@@ -1,4 +1,6 @@
-﻿<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Dine ubesvarte forespørsler" : "Ingen nye forespørsler"}}</h1>
+﻿<p style="display: inline-block;"><span class="glyphicon glyphicon-info-sign"></span> Godtatte forespørsler vil bli lagt i Mine oppdrag</p>
+<hr />
+<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Dine ubesvarte forespørsler" : "Ingen nye forespørsler"}}</h1>
 
 <br />
 <table *ngIf="checkIfArrayIsEmthy(oppdrag)" class="table table-bordered table-condensed">
@@ -16,7 +18,7 @@
 
         </tr>
     </thead>
-    <tbody *ngFor="let oppdrag of oppdrag; let i = index">
+    <tbody *ngFor="let oppdrag of oppdrag; let i = index" [@flyInOut]="'in'">
         <tr>
             <td>{{oppdrag.oppdragID}}</td>
             <td>{{oppdrag.typetolk}}</td>
@@ -26,7 +28,9 @@
             <td>{{fix(oppdrag.fratidspunkt) | date: 'yyyy-MM-dd'}}</td>
             <td>{{fix(oppdrag.fratidspunkt) | date: 'HH:mm'}} <span style="color: lightgray" class="glyphicon glyphicon-arrow-right"></span> {{fix(oppdrag.tiltidspunkt) | date: 'HH:mm'}}</td>
             <td>{{oppdrag.oppmoteadresse}}  {{PoststedStreng(oppdrag.oppmotepostnr, oppdrag.oppmotepoststed)}} </td>
-            <td><button (click)="postSvarOpprag(i, oppdrag.oppdragID, 0)" class="btn btn-danger">Nei</button> &nbsp; <button (click)="postSvarOpprag(i, oppdrag.oppdragID, 1)" class="btn btn-success">Ja</button></td>
+            <td style="width:160px">
+            <button style="width:48%" (click)="postSvarOpprag(i, oppdrag.oppdragID, 0)" class="btn btn-danger"><span class="glyphicon glyphicon-thumbs-down"></span> Nei</button> 
+            <button style="width:48%" (click)="postSvarOpprag(i, oppdrag.oppdragID, 1)" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Ja</button></td>
         </tr>
     </tbody>
 </table>

@@ -1,27 +1,24 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var kunde_service_1 = require('../../_services/kunde.service');
-var models_1 = require('../../_models/models');
-var data_service_1 = require('../../_services/data.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var kunde_service_1 = require("../../_services/kunde.service");
+var models_1 = require("../../_models/models");
+var data_service_1 = require("../../_services/data.service");
+var core_2 = require("@angular/core");
 var NyeKunderComponent = (function () {
     function NyeKunderComponent(service, dataService) {
         this.service = service;
         this.dataService = dataService;
         this.arrayNyeKunder = [];
+        this.state = 'inactive';
         console.log("KUNDE_CONSTRUC");
     }
     NyeKunderComponent.prototype.ngOnInit = function () {
         console.log("KUNDE_INIT");
         this.getKunder();
+    };
+    NyeKunderComponent.prototype.toggleState = function () {
+        this.state = (this.state === 'active' ? 'inactive' : 'active');
     };
     NyeKunderComponent.prototype.getKunder = function () {
         var _this = this;
@@ -83,13 +80,41 @@ var NyeKunderComponent = (function () {
             return false;
         return true;
     };
-    NyeKunderComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/foresporsler/nye-kunder.component.html"
-        }), 
-        __metadata('design:paramtypes', [kunde_service_1.KundeService, data_service_1.DataService])
-    ], NyeKunderComponent);
     return NyeKunderComponent;
 }());
+NyeKunderComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/foresporsler/nye-kunder.component.html",
+        animations: [
+            core_2.trigger('flyInOut', [
+                core_2.state('in', core_2.style({ width: 120, transform: 'translateX(0)', opacity: 1 })),
+                core_2.transition('void => *', [
+                    core_2.style({ width: 10, transform: 'translateX(10px)', opacity: 0 }),
+                    core_2.group([
+                        core_2.animate('0.2s 0.1s ease', core_2.style({
+                            transform: 'translateX(0)',
+                            width: 120
+                        })),
+                        core_2.animate('0.2s ease', core_2.style({
+                            opacity: 1
+                        }))
+                    ])
+                ]),
+                core_2.transition('* => void', [
+                    core_2.group([
+                        core_2.animate('0.1s ease', core_2.style({
+                            transform: 'translateX(5px)',
+                            width: 10
+                        })),
+                        core_2.animate('0.1s 0.1s ease', core_2.style({
+                            opacity: 0
+                        }))
+                    ])
+                ])
+            ])
+        ]
+    }),
+    __metadata("design:paramtypes", [kunde_service_1.KundeService,
+        data_service_1.DataService])
+], NyeKunderComponent);
 exports.NyeKunderComponent = NyeKunderComponent;
-//# sourceMappingURL=nye-kunder.component.js.map

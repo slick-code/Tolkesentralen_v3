@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -136,6 +136,7 @@
     <Content Include="app\admin\oversettelsehistorikk\admin-utforte-oversettelse-oppdrag.component.html" />
     <Content Include="app\admin\tolkehistorikk\admin-tolk-avbestillinger-oversikt.component.html" />
     <Content Include="app\admin\tolkehistorikk\admin-tolk-utforte-oppdrag.component.html" />
+    <Content Include="app\animate\animate.component.html" />
     <Content Include="app\home\bestill-oversettelse.component.html" />
     <Content Include="app\home\bestill-tolk.component.html" />
     <Content Include="app\home\home.component.html" />
@@ -233,7 +234,9 @@
     <Compile Include="ViewModels\Resultat.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -268,6 +271,9 @@
     <TypeScriptCompile Include="app\admin\oversettelsehistorikk\admin-utforte-oversettelse-oppdrag.component.ts" />
     <TypeScriptCompile Include="app\admin\tolkehistorikk\admin-tolk-avbestillinger-oversikt.component.ts" />
     <TypeScriptCompile Include="app\admin\tolkehistorikk\admin-tolk-utforte-oppdrag.component.ts" />
+    <TypeScriptCompile Include="app\animate\animate-routing.module.ts" />
+    <TypeScriptCompile Include="app\animate\animate.component.ts" />
+    <TypeScriptCompile Include="app\animate\animate.module.ts" />
     <TypeScriptCompile Include="app\app-routing.module.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />

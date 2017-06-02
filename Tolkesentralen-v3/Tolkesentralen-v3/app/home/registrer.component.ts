@@ -40,7 +40,7 @@ export class RegistrerComponent implements OnInit {
             postnr: ["", Validators.pattern("[0-9]{4}")],
             poststed: ["", Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")],
             passord: [""],
-            bekreftpassord: []
+            bekreftpassord: [""]
             
         });
         this.form.valueChanges.subscribe(data => {
@@ -101,6 +101,7 @@ export class RegistrerComponent implements OnInit {
             passord: "1234",
             bekreftpassord: "1234"
         });
+        this.form_MarkAsTouched();
     }
 
     responseHandler(data: any) {

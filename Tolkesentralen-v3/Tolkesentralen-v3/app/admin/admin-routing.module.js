@@ -1,33 +1,25 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var admin_component_1 = require('./admin.component');
-var auth_guard_1 = require('../_guards/auth.guard');
-var oppdrag_component_1 = require('./foresporsler/oppdrag.component');
-var oversettelse_component_1 = require('./foresporsler/oversettelse.component');
-var utdel_component_1 = require('./foresporsler/utdel.component');
-var nye_kunder_component_1 = require('./foresporsler/nye-kunder.component');
-var kunde_liste_component_1 = require('./brukere/kunde-liste.component');
-var tolk_liste_component_1 = require('./brukere/tolk-liste.component');
-var opprett_tolk_component_1 = require('./opprett/opprett-tolk.component');
-var admin_tolk_bestilling_oversikt_component_1 = require('./bestillinger/admin-tolk-bestilling-oversikt.component');
-var admin_oversettelse_bestilling_oversikt_component_1 = require('./bestillinger/admin-oversettelse-bestilling-oversikt.component');
-var admin_tolk_avbestillinger_oversikt_component_1 = require('./tolkehistorikk/admin-tolk-avbestillinger-oversikt.component');
-var admin_tolk_utforte_oppdrag_component_1 = require('./tolkehistorikk/admin-tolk-utforte-oppdrag.component');
-var admin_utforte_oversettelse_oppdrag_component_1 = require('./oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component');
-var admin_avbestilte_oversettelse_oppdrag_component_1 = require('./oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component');
-var opprett_kunde_component_1 = require('./opprett/opprett-kunde.component');
-var opprett_bestilling_component_1 = require('./opprett/opprett-bestilling.component');
-var opprett_oversettelse_component_1 = require('./opprett/opprett-oversettelse.component');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var admin_component_1 = require("./admin.component");
+var auth_guard_1 = require("../_guards/auth.guard");
+var oppdrag_component_1 = require("./foresporsler/oppdrag.component");
+var oversettelse_component_1 = require("./foresporsler/oversettelse.component");
+var utdel_component_1 = require("./foresporsler/utdel.component");
+var nye_kunder_component_1 = require("./foresporsler/nye-kunder.component");
+var kunde_liste_component_1 = require("./brukere/kunde-liste.component");
+var tolk_liste_component_1 = require("./brukere/tolk-liste.component");
+var opprett_tolk_component_1 = require("./opprett/opprett-tolk.component");
+var admin_tolk_bestilling_oversikt_component_1 = require("./bestillinger/admin-tolk-bestilling-oversikt.component");
+var admin_oversettelse_bestilling_oversikt_component_1 = require("./bestillinger/admin-oversettelse-bestilling-oversikt.component");
+var admin_tolk_avbestillinger_oversikt_component_1 = require("./tolkehistorikk/admin-tolk-avbestillinger-oversikt.component");
+var admin_tolk_utforte_oppdrag_component_1 = require("./tolkehistorikk/admin-tolk-utforte-oppdrag.component");
+var admin_utforte_oversettelse_oppdrag_component_1 = require("./oversettelsehistorikk/admin-utforte-oversettelse-oppdrag.component");
+var admin_avbestilte_oversettelse_oppdrag_component_1 = require("./oversettelsehistorikk/admin-avbestilte-oversettelse-oppdrag.component");
+var opprett_kunde_component_1 = require("./opprett/opprett-kunde.component");
+var opprett_bestilling_component_1 = require("./opprett/opprett-bestilling.component");
+var opprett_oversettelse_component_1 = require("./opprett/opprett-oversettelse.component");
 var appRoutes = [
     {
         path: '',
@@ -63,18 +55,16 @@ var appRoutes = [
 var AdminRoutingModule = (function () {
     function AdminRoutingModule() {
     }
-    AdminRoutingModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                router_1.RouterModule.forChild(appRoutes)
-            ],
-            exports: [
-                router_1.RouterModule
-            ]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AdminRoutingModule);
     return AdminRoutingModule;
 }());
+AdminRoutingModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            router_1.RouterModule.forChild(appRoutes)
+        ],
+        exports: [
+            router_1.RouterModule
+        ]
+    })
+], AdminRoutingModule);
 exports.AdminRoutingModule = AdminRoutingModule;
-//# sourceMappingURL=admin-routing.module.js.map

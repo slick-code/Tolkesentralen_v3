@@ -1,19 +1,11 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var oppdrag_service_1 = require('../../_services/oppdrag.service');
-var temp_service_1 = require('../../_services/temp.service');
-var tolk_service_1 = require('../../_services/tolk.service');
-var router_1 = require('@angular/router');
-var spraak_1 = require('../../_models/spraak');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var oppdrag_service_1 = require("../../_services/oppdrag.service");
+var temp_service_1 = require("../../_services/temp.service");
+var tolk_service_1 = require("../../_services/tolk.service");
+var router_1 = require("@angular/router");
+var spraak_1 = require("../../_models/spraak");
 var UtdelComponent = (function () {
     function UtdelComponent(oppdragService, tempService, tolkService, router) {
         this.oppdragService = oppdragService;
@@ -91,14 +83,16 @@ var UtdelComponent = (function () {
             _this.underText = "En feil oppsto og handlingen ble avbrutt!";
         }, function () { });
     };
-    UtdelComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/foresporsler/utdel.component.html",
-            providers: [tolk_service_1.TolkService],
-        }), 
-        __metadata('design:paramtypes', [oppdrag_service_1.OppdragService, temp_service_1.TempService, tolk_service_1.TolkService, router_1.Router])
-    ], UtdelComponent);
     return UtdelComponent;
 }());
+UtdelComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/foresporsler/utdel.component.html",
+        providers: [tolk_service_1.TolkService],
+    }),
+    __metadata("design:paramtypes", [oppdrag_service_1.OppdragService,
+        temp_service_1.TempService,
+        tolk_service_1.TolkService,
+        router_1.Router])
+], UtdelComponent);
 exports.UtdelComponent = UtdelComponent;
-//# sourceMappingURL=utdel.component.js.map

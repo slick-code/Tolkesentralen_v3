@@ -22,11 +22,14 @@ export class TolkMineOppdragComponent implements OnInit {
     infoErTrykket: boolean;
     index: number;
 
+    response: boolean;
+
     constructor(private oppdragService: OppdragService, private router: Router,) { }
 
     ngOnInit() {
         this.ID = parseInt(localStorage.getItem('id'));
         this.getOppdragTolk();
+        this.checkIfArrayIsEmthy(this.oppdragArray);
         this.Spraak = new Spraak().liste;
       //  this.getOppdragTolk();
     }
@@ -49,9 +52,9 @@ export class TolkMineOppdragComponent implements OnInit {
     }
 
     checkIfArrayIsEmthy(array: any) {
-        if (array == null) return false;
-        if (array.length == 0) return false;
-        return true;
+        if (array == null) return this.response = false; 
+        if (array.length == 0) return this.response = false; 
+        return this.response = true; 
     }
 
     fix(jsonDate: any) {

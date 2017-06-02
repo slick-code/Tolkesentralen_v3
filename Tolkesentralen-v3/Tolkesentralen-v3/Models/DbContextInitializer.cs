@@ -8,7 +8,7 @@ using Tolkesentralen_v3.Models;
 using Tolkesentralen_v3.Repository;
 using Tolkesentralen_v3.ViewModels;
 
-namespace Tolkesentralen_v3.Models    
+namespace Tolkesentralen_v3.Models
 {
     public class DBContextInitializer : DropCreateDatabaseAlways<DbNetcont>
     {
@@ -45,19 +45,20 @@ namespace Tolkesentralen_v3.Models
 
                 //Poststed errorfix = db.Poststeder.Find("2050");
 
-                var kunde = new Kunde() {
+                var kunde = new Kunde()
+                {
                     fornavn = "Emilie",
                     etternavn = "Nice",
                     telefon = 9595995,
                     email = "kunde@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Blåbærtråkket",
                     regDato = DateTime.Now,
                     godkjent = 0,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "Emile&Co",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Blåbærtråkket"
                 };
 
                 var kunde2 = new Kunde()
@@ -66,14 +67,14 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Star",
                     telefon = 77734969,
                     email = "rockstar@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Midtskogvegen",
                     regDato = DateTime.Now,
                     godkjent = 0,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "RockStars",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Midtskogvegen"
                 };
 
                 var kunde3 = new Kunde()
@@ -82,14 +83,14 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Jeger",
                     telefon = 9595995,
                     email = "jeger@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Epletråkket",
                     regDato = DateTime.Now,
                     godkjent = 0,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "Jegerforbundet",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Epletråkket"
                 };
 
 
@@ -99,14 +100,14 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Marley",
                     telefon = 9595995,
                     email = "bob@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Chilloutgate",
                     regDato = DateTime.Now,
                     godkjent = 1,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "Mr.Smokealot&Co",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Chilloutgate"
                 };
 
                 var kunde5 = new Kunde()
@@ -115,14 +116,14 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Don",
                     telefon = 9595995,
                     email = "rassmus@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Flabyseter",
                     regDato = DateTime.Now,
                     godkjent = 1,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "Boss&Co",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Flabyseter"
                 };
 
                 var kunde6 = new Kunde()
@@ -131,14 +132,14 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Ammok",
                     telefon = 9595995,
                     email = "rambo@kunde.no",
-                    adresse = "addresse1",
+                    adresse = "Rogntråkket",
                     regDato = DateTime.Now,
                     godkjent = 1,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
-                    firma = "Firma1",
+                    firma = "Film00",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Rogntråkket"
                 };
 
 
@@ -148,26 +149,128 @@ namespace Tolkesentralen_v3.Models
                     etternavn = "Einstein",
                     telefon = 9595995,
                     email = "alberit@einstein.no",
-                    adresse = "addresse1",
+                    adresse = "Ovshaugsvegen",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Brainiacs&Co",
+                    telefax = 999999,
+                    fakturaAddress = "Ovshaugsvegen"
+                };
+
+                var kunde8 = new Kunde()
+                {
+                    fornavn = "Lars",
+                    etternavn = "Fleksnes",
+                    telefon = 9595995,
+                    email = "lars@fleksnes.no",
+                    adresse = "FlexStreet",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "fleksnes&Co",
+                    telefax = 999999,
+                    fakturaAddress = "FlexStreet"
+                };
+
+                var kunde9 = new Kunde()
+                {
+                    fornavn = "Per",
+                    etternavn = "Håkonsen",
+                    telefon = 9595995,
+                    email = "per@mail.no",
+                    adresse = "Baregate",
                     regDato = DateTime.Now,
                     godkjent = 0,
                     password = res.lagHash("1234" + saltKunde),
                     Salt = saltKunde,
                     firma = "Firma1",
                     telefax = 999999,
-                    fakturaAddress = "fakAdresse"
+                    fakturaAddress = "Baregate"
+                };
+
+                var kunde10 = new Kunde()
+                {
+                    fornavn = "Harrald",
+                    etternavn = "Esteves",
+                    telefon = 9595995,
+                    email = "harald@mail.no",
+                    adresse = "Gate",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Esteves&Co",
+                    telefax = 999999,
+                    fakturaAddress = "Gate"
+                };
+
+                var kunde11 = new Kunde()
+                {
+                    fornavn = "Mr.",
+                    etternavn = "Smoketomuch",
+                    telefon = 9595995,
+                    email = "m_m@mail.no",
+                    adresse = "Underbrua",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Smoketomuch&Co",
+                    telefax = 999999,
+                    fakturaAddress = "Smoketomuch"
+                };
+
+                var kunde12 = new Kunde()
+                {
+                    fornavn = "Be",
+                    etternavn = "Nice",
+                    telefon = 9595995,
+                    email = "nice@mail.no",
+                    adresse = "Soltoppen",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Mokka&Co",
+                    telefax = 999999,
+                    fakturaAddress = "Soltoppen"
+                };
+
+                var kunde13 = new Kunde()
+                {
+                    fornavn = "Frans",
+                    etternavn = "Bakko",
+                    telefon = 9595995,
+                    email = "bakko@mail.no",
+                    adresse = "Bakkegata",
+                    regDato = DateTime.Now,
+                    godkjent = 0,
+                    password = res.lagHash("1234" + saltKunde),
+                    Salt = saltKunde,
+                    firma = "Bakko&Co",
+                    telefax = 999999,
+                    fakturaAddress = "Bakkegata"
                 };
 
                 var jessheim = db.Poststeder.Find(2050);
                 var gardermoden = db.Poststeder.Find(2060);
-                var lillehammer = db.Poststeder.Find(2061);
+                var lillehammer = db.Poststeder.Find(2601);
                 kunde.poststed = jessheim;
                 kunde2.poststed = gardermoden;
                 kunde3.poststed = jessheim;
-                kunde4.poststed = jessheim;
+                kunde4.poststed = lillehammer;
                 kunde5.poststed = gardermoden;
                 kunde6.poststed = jessheim;
                 kunde7.poststed = jessheim;
+                kunde8.poststed = lillehammer;
+                kunde9.poststed = gardermoden;
+                kunde10.poststed = lillehammer;
+                kunde11.poststed = jessheim;
+                kunde12.poststed = gardermoden;
+                kunde13.poststed = jessheim;
 
                 db.Personer.Add(kunde);
                 db.Personer.Add(kunde2);
@@ -176,7 +279,17 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(kunde5);
                 db.Personer.Add(kunde6);
                 db.Personer.Add(kunde7);
+                db.Personer.Add(kunde8);
+                db.Personer.Add(kunde9);
+                db.Personer.Add(kunde10);
+                db.Personer.Add(kunde11);
+                db.Personer.Add(kunde12);
+                db.Personer.Add(kunde13);
                 db.SaveChanges();
+
+                res.OppdaterTilGodkjentKunde(11);
+                res.OppdaterTilGodkjentKunde(12);
+                res.OppdaterTilGodkjentKunde(13);
 
 
 
@@ -273,13 +386,15 @@ namespace Tolkesentralen_v3.Models
 
                 tolk1.poststed = jessheim;
                 tolk2.poststed = jessheim;
-                tolk3.poststed = jessheim;
+                tolk3.poststed = gardermoden;
                 tolk4.poststed = jessheim;
+                tolk5.poststed = jessheim;
 
                 tolk1.spraak = new List<Spraak>();
                 tolk2.spraak = new List<Spraak>();
                 tolk3.spraak = new List<Spraak>();
                 tolk4.spraak = new List<Spraak>();
+                tolk5.spraak = new List<Spraak>();
                 for (int i = 40; i < 50; i++)
                 {
                     tolk1.spraak.Add(db.Spraak.Find(i));
@@ -292,16 +407,20 @@ namespace Tolkesentralen_v3.Models
                 {
                     tolk3.spraak.Add(db.Spraak.Find(i));
                 }
-                for (int i = 20; i < 40; i++)
+                for (int i = 20; i < 43; i++)
                 {
                     tolk4.spraak.Add(db.Spraak.Find(i));
                 }
                 tolk1.spraak.Add(db.Spraak.Find(93));
                 tolk2.spraak.Add(db.Spraak.Find(93));
                 tolk3.spraak.Add(db.Spraak.Find(93));
+                tolk4.spraak.Add(db.Spraak.Find(93));
+                tolk5.spraak.Add(db.Spraak.Find(93));
                 tolk1.spraak.Add(db.Spraak.Find(116));
                 tolk2.spraak.Add(db.Spraak.Find(116));
                 tolk3.spraak.Add(db.Spraak.Find(116));
+                tolk4.spraak.Add(db.Spraak.Find(116));
+                tolk5.spraak.Add(db.Spraak.Find(116));
                 db.SaveChanges();
 
 
@@ -309,10 +428,11 @@ namespace Tolkesentralen_v3.Models
                 db.Personer.Add(tolk2);
                 db.Personer.Add(tolk3);
                 db.Personer.Add(tolk4);
+                db.Personer.Add(tolk5);
 
                 db.SaveChanges();
 
-                
+
                 var oppdrag1 = new Tolking_vm()
                 {
                     oppdragsdato = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
@@ -387,12 +507,12 @@ namespace Tolkesentralen_v3.Models
                 db.SaveChanges();
 
                 var de = new DbForessporsel();
-                int[] tolkId = { 9 };
+                int[] tolkId = { 15 };
                 de.regEnForesporselPåEnEllerFlereTolk(tolkId, 1);
                 de.regEnForesporselPåEnEllerFlereTolk(tolkId, 2);
                 //de.regEnForesporselPåEnEllerFlereTolk(tolkId, 6);
                 db.SaveChanges();
-                o.regOppdragPaaEnTolk(1, 9, "ja");
+                o.regOppdragPaaEnTolk(1, 15, "ja");
 
                 /***************************THis runs the method to register a foresler to a tolk**************************************/
                 //int[] tolkId = new int[2];

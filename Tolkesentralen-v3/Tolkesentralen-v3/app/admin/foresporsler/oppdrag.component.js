@@ -1,20 +1,12 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var spraak_1 = require('../../_models/spraak');
-var oppdrag_service_1 = require('../../_services/oppdrag.service');
-var router_1 = require('@angular/router');
-var temp_service_1 = require('../../_services/temp.service');
-var data_service_1 = require('../../_services/data.service');
-var models_1 = require('../../_models/models');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var spraak_1 = require("../../_models/spraak");
+var oppdrag_service_1 = require("../../_services/oppdrag.service");
+var router_1 = require("@angular/router");
+var temp_service_1 = require("../../_services/temp.service");
+var data_service_1 = require("../../_services/data.service");
+var models_1 = require("../../_models/models");
 var OppdragComponent = (function () {
     function OppdragComponent(
         //private preloadStrategy: SelectivePreloadingStrategy,
@@ -45,6 +37,11 @@ var OppdragComponent = (function () {
             console.log("This page is not reloaded");
         }
         // this.loading = false;
+    };
+    OppdragComponent.prototype.PoststedStreng = function (nr, adr) {
+        if (nr == 0)
+            return "";
+        return " - " + nr + " - " + adr;
     };
     OppdragComponent.prototype.btnTilSlettClick = function () {
         this.slettErTrykket = true;
@@ -96,9 +93,11 @@ var OppdragComponent = (function () {
         var _this = this;
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(function (oppdrag) {
-            _this.arrayOppdrag = oppdrag;
+            if (oppdrag)
+                _this.arrayOppdrag = oppdrag;
             _this.updateNavBar();
         }, function (error) {
+            _this.loading = false;
         }, function () { _this.loading = false; });
     };
     OppdragComponent.prototype.getSendteOppdrag = function () {
@@ -127,13 +126,16 @@ var OppdragComponent = (function () {
         }, function (error) {
         }, function () { _this.loading = false; });
     };
-    OppdragComponent = __decorate([
-        core_1.Component({
-            templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
-        }), 
-        __metadata('design:paramtypes', [data_service_1.DataService, oppdrag_service_1.OppdragService, router_1.ActivatedRoute, temp_service_1.TempService, router_1.Router])
-    ], OppdragComponent);
     return OppdragComponent;
 }());
+OppdragComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/admin/foresporsler/oppdrag.component.html"
+    }),
+    __metadata("design:paramtypes", [data_service_1.DataService,
+        oppdrag_service_1.OppdragService,
+        router_1.ActivatedRoute,
+        temp_service_1.TempService,
+        router_1.Router])
+], OppdragComponent);
 exports.OppdragComponent = OppdragComponent;
-//# sourceMappingURL=oppdrag.component.js.map

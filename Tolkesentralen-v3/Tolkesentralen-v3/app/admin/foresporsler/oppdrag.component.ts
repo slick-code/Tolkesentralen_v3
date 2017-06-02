@@ -127,10 +127,11 @@ export class OppdragComponent {
     getNyeOppdrag() {
         this.oppdragService.getUbehandleOppdrag()
             .subscribe(oppdrag => {
-                this.arrayOppdrag = oppdrag;
+                if(oppdrag) this.arrayOppdrag = oppdrag;
                 this.updateNavBar();
             },
             error => {
+                this.loading = false;
             },
             () => { this.loading = false;}
             );

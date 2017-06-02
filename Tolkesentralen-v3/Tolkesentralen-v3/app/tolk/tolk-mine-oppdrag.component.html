@@ -1,6 +1,6 @@
-﻿<h1>{{ checkIfArrayIsEmthy(oppdrag) ? "Oppdrag tilordnet deg" : "Ingen oppdrag"}}</h1>
+﻿<h1>{{ !response ? "Oppdrag tilordnet deg" : "Ingen oppdrag"}}</h1>
 <br />
-<table *ngIf="checkIfArrayIsEmthy(oppdragArray)" class="table table-bordered table-condensed">
+<table *ngIf="!response" class="table table-bordered table-condensed">
     <thead>
         <tr>
             <th>OppdragsNr</th>

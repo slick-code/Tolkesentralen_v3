@@ -12,11 +12,11 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:aquamarine;"><b> {{counter == null ? "0" : counter.nyeoppdrag}}</b></span></a></li>
+                        <li><a routerLink="./oppdrag" routerLinkActive="active">Oppdrag<span style="color:aquamarine;"><b> {{counter == null || counter.nyeoppdrag == 0 ? "" : counter.nyeoppdrag}}</b></span></a></li>
 
                         <li><a routerLink="./oversettelse" routerLinkActive="active">Oversettelser <span style="color:aquamarine;"><b> {{antallOversettelser }}</b></span></a></li>
 
-                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:aquamarine;"><b>{{counter == null ? "0" : counter.nyekunder}}</b></span></a></li>
+                        <li><a routerLink="./nye_kunder" routerLinkActive="active">Kunder <span style="color:aquamarine;"><b>{{counter == null || counter.nyekunder == 0 ? "" : counter.nyekunder}}</b></span></a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

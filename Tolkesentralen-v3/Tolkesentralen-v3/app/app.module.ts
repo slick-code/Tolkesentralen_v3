@@ -21,10 +21,12 @@ import { PageNotFoundComponent } from './shared/not-found.component';
 
 import { SharedModule } from './shared/shared.module';
 
+import { AnimateModule } from './animate/animate.module'
+
 
 
 @NgModule({
-    imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule, SharedModule],
+    imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule, SharedModule, AnimateModule],
     declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

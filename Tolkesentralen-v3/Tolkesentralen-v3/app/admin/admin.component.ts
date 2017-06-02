@@ -33,7 +33,7 @@ export class AdminComponent  {
         this.dataService.getData().subscribe(data => {
             this.temp = data;
             this.element = this.temp;
-
+            if (this.element.nr == null) this.element.nr = 0;
             switch (this.element.element) {
                 case 'oppdrag': this.counter.nyeoppdrag = this.element.nr; break;
                 case 'oversettelse': this.antallOversettelser = this.element.nr; break;

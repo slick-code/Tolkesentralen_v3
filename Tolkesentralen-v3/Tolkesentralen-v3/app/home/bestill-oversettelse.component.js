@@ -1,18 +1,10 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var models_1 = require('../_models/models');
-var spraak_1 = require('../_models/spraak');
-var oversettelse_service_1 = require('../_services/oversettelse.service');
-var forms_1 = require('@angular/forms');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var models_1 = require("../_models/models");
+var spraak_1 = require("../_models/spraak");
+var oversettelse_service_1 = require("../_services/oversettelse.service");
+var forms_1 = require("@angular/forms");
 var BestillOversettelseComponent = (function () {
     function BestillOversettelseComponent(service, fb) {
         this.service = service;
@@ -120,15 +112,14 @@ var BestillOversettelseComponent = (function () {
             _this.underText = "Tilkoblet internett?";
         }, function () { });
     };
-    BestillOversettelseComponent = __decorate([
-        core_1.Component({
-            templateUrl: './app/home/bestill-oversettelse.component.html',
-            providers: [oversettelse_service_1.OversettelseService],
-            styles: ['.error {color:red;}']
-        }), 
-        __metadata('design:paramtypes', [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
-    ], BestillOversettelseComponent);
     return BestillOversettelseComponent;
 }());
+BestillOversettelseComponent = __decorate([
+    core_1.Component({
+        templateUrl: './app/home/bestill-oversettelse.component.html',
+        providers: [oversettelse_service_1.OversettelseService],
+        styles: ['.error {color:red;}']
+    }),
+    __metadata("design:paramtypes", [oversettelse_service_1.OversettelseService, forms_1.FormBuilder])
+], BestillOversettelseComponent);
 exports.BestillOversettelseComponent = BestillOversettelseComponent;
-//# sourceMappingURL=bestill-oversettelse.component.js.map

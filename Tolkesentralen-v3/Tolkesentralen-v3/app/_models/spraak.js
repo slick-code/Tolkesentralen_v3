@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Spraak = (function () {
     function Spraak() {
         this.liste = [
@@ -148,4 +149,3 @@ var Spraak = (function () {
     return Spraak;
 }());
 exports.Spraak = Spraak;
-//# sourceMappingURL=spraak.js.map

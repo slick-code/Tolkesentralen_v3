@@ -59,6 +59,7 @@ export class KundeListeComponent {
         this.service.slettKunde(kundeID).subscribe(
             retur => {
                 this.arrayKunder.splice(index, 1);
+                this.index = -1;
             },
             error => console.log("Beklager PUT, en feil har oppstått - " + error),
             () => console.log("ferdig post-api/bestilling")

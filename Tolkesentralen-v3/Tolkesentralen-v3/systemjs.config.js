@@ -37,7 +37,10 @@
       // our app is within the app folder
       app: 'app',
 
-      // angular bundles
+        // angular bundles
+      '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
+      '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
+      '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
       '@angular/common': 'npm:@angular/common@2.2.1/bundles/common.umd.js',
       '@angular/compiler': 'npm:@angular/compiler@2.2.1/bundles/compiler.umd.js',
       '@angular/core': 'npm:@angular/core@2.2.1/bundles/core.umd.js',

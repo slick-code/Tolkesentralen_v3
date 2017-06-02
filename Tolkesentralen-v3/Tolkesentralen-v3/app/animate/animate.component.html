@@ -1,0 +1,14 @@
+﻿<h1>ANIIIII</h1>
+<h3>??</h3>
+
+<ul>
+    <li *ngFor="let hero of heroes"
+        [@heroState]="hero.state"
+        (click)="hero.toggleState()">
+        {{hero.name}}
+    </li>
+</ul>
+
+<div class="container body-content">
+    <router-outlet></router-outlet>
+</div>
